@@ -6,11 +6,13 @@ title: Developer Guide
 - Table of Contents
   {:toc}
 
+- <img src="images/Ui.png" width="200px">
+Project Notes [here](https://docs.google.com/document/d/1RhaqsaVuwVx2mTAK8PnwCucL4GLogysB7gb0Q07h9JA/edit?tab=t.0#heading=h.iyihp78zxf2d)
 ---
 
 ## **Acknowledgements**
 
-- {list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
+- This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org).
 
 ---
 
