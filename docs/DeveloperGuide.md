@@ -328,6 +328,34 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
 * **Private contact detail**: A contact detail that is not meant to be shared with others
 
+* **Instructor**: Teaching staff who manage course delivery and teams. Can assign students to teams, view rosters, and monitor projects
+
+* **Student**: A learner enrolled in a course, whose details (name, email, phone, GitHub) are managed in SWEatless
+
+* **Team**: A group of students working together on a project. Identified by a Team ID (e.g., F12-3)
+
+* **Team ID**: A structured identifier used to represent a team, where:
+1. Format: <ClassNumber>-<GroupNumber>
+2. ClassNumber: Two digit number representing the tutorial class
+3. GroupNumber: one digit number representing the group (from 1 to 4)
+4. Example: 12-1 (Class 12, Group 1)
+
+* **GitHub Username**: The student’s GitHub handle (1–39 characters, alphanumeric and hyphen only). Used for linking project repositories
+
+* **GitHub Repository (Repo)**: A storage space for a team’s project files hosted on GitHub. SWEatless may store these links for instructors to monitor progress
+
+* **Roster**: A list of students enrolled in a course. Maintained by the Administrator, accessible by Instructors.
+
+* **CLI (Command-Line Interface)**: The text-based interface used by teaching staff to interact with SWEatless. Users enter typed commands instead of using a graphical interface
+
+* **Command Format**: The strict syntax required for each CLI command (e.g., add_student NAME /email EMAIL /phone PHONE /github USERNAME)
+
+* **Duplicate Handling**: The rules SWEatless uses to prevent duplicate entries (e.g., duplicate students identified by email/phone)
+
+* **Validation Rule**: A defined rule that ensures inputs (e.g., email, phone, GitHub username) are valid before being stored in the system
+
+* **Error Message**: A system response shown when invalid input or actions occur (e.g., “Invalid email format.”)
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Instructions for manual testing**
