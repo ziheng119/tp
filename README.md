@@ -15,4 +15,8 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
 - For the detailed documentation of this project, see the **[Address Book Product Website](https://se-education.org/addressbook-level3)**.
 - This project is a **part of the se-education.org** initiative. If you would like to contribute code to this project, see [se-education.org](https://se-education.org/#contributing-to-se-edu) for more info.
 
-TEST
+Target User
+Teaching Staff favouring CLI who would like to access student information readily
+
+Value Proposition
+Currently, student and academic information are all over the place. We want to provide a platform that simplifies project coordination for teaching staff, allowing efficient access to team and student information in one place, giving them quick access to important student data.
