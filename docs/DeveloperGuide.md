@@ -304,7 +304,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `*`      | Careless Instructor  | be warned before entering duplicate data      | avoid accidental data errors                                         |
 | `*`      | User on the go       | access the platform from any device           | manage student data from home, office, or in class                   |
 | `*`      | Forgetful Instructor | have the system auto-save changes             | prevent losing updates when managing multiple teams                  |
-| `*`      | Module Coordinator   | export student and team data                  | share it with TAs and instructors                                    |
+| `*`      | Instructor           | export student and team data                  | share it with TAs and instructors                                    |
 
 _{More to be added}_
 
