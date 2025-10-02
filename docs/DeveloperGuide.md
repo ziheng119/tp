@@ -291,32 +291,77 @@ _{More to be added}_
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
-
-**Use case: Delete a person**
+**Use case: UC01 - Add Student Contact Details**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
-
+1.  Instructor chooses to add a student.
+2.  SWEatless requests for required details.
+3.  Instructor enters the required details (name, email, phone, Github username).
+4.  SWEatless validates input.
+5.  SWEatless displays details of new student.
     Use case ends.
 
 **Extensions**
 
-- 2a. The list is empty.
+- 3a. Missing/invalid details entered.
+  3a1. SWEatless shows error message.
+  3a2. Instructor re-enters details.
+  Use case resumes from step 3.
 
-  Use case ends.
+**Use case: UC02 - Delete Student Contact Details**
 
-- 3a. The given index is invalid.
+**MSS**
 
-  - 3a1. AddressBook shows an error message.
+1.  Instructor chooses to delete a student.
+2.  SWEatless requests for student email or id.
+3.  Instructor provides details.
+4.  SWEatless verifies membership.
+5.  SWEatless requests confirmation.
+6.  Instructor confirms.
+7.  SWEatless removes student.
+    Use case ends.
 
-    Use case resumes at step 2.
+**Extensions**
 
-_{More to be added}_
+- 4a. Student not found.
+  SWEatless shows error and cancels.
+
+**Use case: UC03 - View list of students**
+
+**MSS**
+
+1.  Instructor requests to view all students.
+2.  SWEatless retrieves and displays student list.
+    Use case ends.
+
+**Extensions**
+
+- 2a. No students exist.
+  SWEatless displays “No students found.”
+
+**Use case: UC04 - Add Student to Team**
+
+**MSS**
+
+1.  Instructor chooses to add a student to a team.
+2.  SWEatless requests student name and team ID.
+3.  Instructor provides details.
+4.  SWEatless checks if student and team exist.
+5.  SWEatless adds the student to the team.
+6.  SWEatless displays confirmation and updated team list.
+    Use case ends.
+
+**Extensions**
+
+- 4a. Student does not exist.
+  SWEatless shows error.
+
+- 4b. Team does not exist or is full.
+  SWEatless shows error.
+
+- 4c. Student already in the team.
+  SWEatless warns and prevents duplication.
 
 ### Non-Functional Requirements
 
