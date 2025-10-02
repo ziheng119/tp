@@ -6,7 +6,7 @@
 
 SWEatless is a desktop application for **teaching staff who favour CLI usage** and want to **access and manage student and team information efficiently**.
 
-It is based on This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org).
+It is based on the project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org).
 
 ## Product Overview
 
