@@ -17,14 +17,13 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](https://github.com/cavannn)]
 [[portfolio](team/cavannn.md)]
 
+- Role: Developer
 
-* Role: Developer
+### Gan Zi Heng
 
-### Jane Doe
+<img src="images/ziheng119.png" width="200px">
 
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
+[[github](http://github.com/ziheng119)]
 [[portfolio](team/johndoe.md)]
 
 - Role: Team Lead
@@ -37,8 +36,8 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](http://github.com/lihloway)]
 [[portfolio](team/johndoe.md)]
 
-* Role: Bum
-* Responsibilities: Dev Ops + Threading
+- Role: Bum
+- Responsibilities: Dev Ops + Threading
 
 ### Ethan Yap
 
@@ -47,7 +46,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](http://github.com/bacenl)]
 [[portfolio](team/bacenl.md)]
 
-* Role: Developer
+- Role: Developer
 
 ### Clinton Tay
 
@@ -58,4 +57,3 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 - Role: Developer
 - Responsibilities: UI
-
