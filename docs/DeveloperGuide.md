@@ -3,8 +3,7 @@ layout: page
 title: Developer Guide
 ---
 
-- Table of Contents
-  {:toc}
+- Table of Contents {:toc}
 
 ---
 
@@ -275,36 +274,37 @@ _{Explain here how the data archiving feature will be implemented}_
 **Value proposition**: manage contacts faster than a typical mouse/GUI driven app
 
 ## MVP User Stories
+
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​            | I want to …​                             | So that I can…​                                      |
-| -------- |--------------------| ---------------------------------------- | ---------------------------------------------------- |
-| `* * *`  | Instructor         | add a student’s details                  | new student details can be added                     |
-| `* * *`  | Instructor         | delete a student’s details               | remove or withdraw incorrect entries from the system |
-| `* * *`  | Instructor         | view a list of all students in my course | quickly see who is enrolled                          |
-| `* * *`  | Instructor         | add students to a team                   | teams remain accurate throughout the semester        |
-| `* * *`  | Instructor         | remove students from a team              | teams remain accurate throughout the semester        |
+| Priority | As a …​    | I want to …​                             | So that I can…​                                      |
+| -------- | ---------- | ---------------------------------------- | ---------------------------------------------------- |
+| `* * *`  | Instructor | add a student’s details                  | new student details can be added                     |
+| `* * *`  | Instructor | delete a student’s details               | remove or withdraw incorrect entries from the system |
+| `* * *`  | Instructor | view a list of all students in my course | quickly see who is enrolled                          |
+| `* * *`  | Instructor | add students to a team                   | teams remain accurate throughout the semester        |
+| `* * *`  | Instructor | remove students from a team              | teams remain accurate throughout the semester        |
 
 ## Non-MVP User Stories
 
-| Priority | As a …​              | I want to …​                                  | So that I can…​                                                      |
-| -------- |----------------------| --------------------------------------------- | -------------------------------------------------------------------- |
-| `* *`    | Instructor           | assign teams to designated tutors             | each tutor knows which teams they are responsible for monitoring     |
-| `* *`    | Instructor           | edit a student’s contact details              | student records are kept up to date                                  |
-| `* *`    | Instructor           | view teammates’ GitHub links or repositories  | submissions can be easily checked                                    |
-| `* *`    | Instructor           | search for a student by name, ID, or team     | quickly locate student information                                   |
-| `* *`    | Instructor           | see which students belong to each team        | monitor team formation and collaboration                             |
-| `* *`    | Instructor           | attach GitHub repo links or project files     | keep all relevant information in one place                           |
-| `* *`    | Instructor           | store Zoom links for team meetings            | ensure all teams can access the correct meeting easily               |
-| `* *`    | Instructor           | filter students/teams by submission or status | quickly find relevant groups                                         |
-| `* *`    | Instructor           | assign teams to specific tutorial groups      | align team activities with tutorial sessions                         |
-| `* *`    | Instructor           | track student contributions                   | assess participation and ensure fair grading                         |
-| `* *`    | Instructor           | receive notifications of repo updates         | stay informed of progress and submissions in real time               |
-| `* *`    | Instructor           | set deadlines or milestones                   | keep students on track and monitor progress                          |
-| `*`      | Careless Instructor  | be warned before entering duplicate data      | avoid accidental data errors                                         |
-| `*`      | User on the go       | access the platform from any device           | manage student data from home, office, or in class                   |
-| `*`      | Forgetful Instructor | have the system auto-save changes             | prevent losing updates when managing multiple teams                  |
-| `*`      | Instructor           | export student and team data                  | share it with TAs and instructors                                    |
+| Priority | As a …​              | I want to …​                                  | So that I can…​                                                  |
+| -------- | -------------------- | --------------------------------------------- | ---------------------------------------------------------------- |
+| `* *`    | Instructor           | assign teams to designated tutors             | each tutor knows which teams they are responsible for monitoring |
+| `* *`    | Instructor           | edit a student’s contact details              | student records are kept up to date                              |
+| `* *`    | Instructor           | view teammates’ GitHub links or repositories  | submissions can be easily checked                                |
+| `* *`    | Instructor           | search for a student by name, ID, or team     | quickly locate student information                               |
+| `* *`    | Instructor           | see which students belong to each team        | monitor team formation and collaboration                         |
+| `* *`    | Instructor           | attach GitHub repo links or project files     | keep all relevant information in one place                       |
+| `* *`    | Instructor           | store Zoom links for team meetings            | ensure all teams can access the correct meeting easily           |
+| `* *`    | Instructor           | filter students/teams by submission or status | quickly find relevant groups                                     |
+| `* *`    | Instructor           | assign teams to specific tutorial groups      | align team activities with tutorial sessions                     |
+| `* *`    | Instructor           | track student contributions                   | assess participation and ensure fair grading                     |
+| `* *`    | Instructor           | receive notifications of repo updates         | stay informed of progress and submissions in real time           |
+| `* *`    | Instructor           | set deadlines or milestones                   | keep students on track and monitor progress                      |
+| `*`      | Careless Instructor  | be warned before entering duplicate data      | avoid accidental data errors                                     |
+| `*`      | User on the go       | access the platform from any device           | manage student data from home, office, or in class               |
+| `*`      | Forgetful Instructor | have the system auto-save changes             | prevent losing updates when managing multiple teams              |
+| `*`      | Instructor           | export student and team data                  | share it with TAs and instructors                                |
 
 _{More to be added}_
 
@@ -418,29 +418,29 @@ _{More to be added}_
 * **Team**: A group of students working together on a project. Identified by a Team ID (e.g., F12-3)
 
 * **Team ID**: A structured identifier used to represent a team, where:
+
 1. Format: <ClassNumber>-<GroupNumber>
 2. ClassNumber: Two digit number representing the tutorial class
 3. GroupNumber: one digit number representing the group (from 1 to 4)
 4. Example: 12-1 (Class 12, Group 1)
 
-* **GitHub Username**: The student’s GitHub handle (1–39 characters, alphanumeric and hyphen only). Used for linking project repositories
+- **GitHub Username**: The student’s GitHub handle (1–39 characters, alphanumeric and hyphen only). Used for linking project repositories
 
-* **GitHub Repository (Repo)**: A storage space for a team’s project files hosted on GitHub. SWEatless may store these links for instructors to monitor progress
+- **GitHub Repository (Repo)**: A storage space for a team’s project files hosted on GitHub. SWEatless may store these links for instructors to monitor progress
 
-* **Roster**: A list of students enrolled in a course. Maintained by the Administrator, accessible by Instructors.
+- **Roster**: A list of students enrolled in a course. Maintained by the Administrator, accessible by Instructors.
 
-* **CLI (Command-Line Interface)**: The text-based interface used by teaching staff to interact with SWEatless. Users enter typed commands instead of using a graphical interface
+- **CLI (Command-Line Interface)**: The text-based interface used by teaching staff to interact with SWEatless. Users enter typed commands instead of using a graphical interface
 
-* **Command Format**: The strict syntax required for each CLI command (e.g., add_student NAME /email EMAIL /phone PHONE /github USERNAME)
+- **Command Format**: The strict syntax required for each CLI command (e.g., add_student NAME /email EMAIL /phone PHONE /github USERNAME)
 
-* **Duplicate Handling**: The rules SWEatless uses to prevent duplicate entries (e.g., duplicate students identified by email/phone)
+- **Duplicate Handling**: The rules SWEatless uses to prevent duplicate entries (e.g., duplicate students identified by email/phone)
 
-* **Validation Rule**: A defined rule that ensures inputs (e.g., email, phone, GitHub username) are valid before being stored in the system
+- **Validation Rule**: A defined rule that ensures inputs (e.g., email, phone, GitHub username) are valid before being stored in the system
 
-* **Error Message**: A system response shown when invalid input or actions occur (e.g., “Invalid email format.”)
+- **Error Message**: A system response shown when invalid input or actions occur (e.g., “Invalid email format.”)
 
---------------------------------------------------------------------------------------------------------------------
-
+---
 
 ## **Appendix: Instructions for manual testing**
 
