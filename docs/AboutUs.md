@@ -9,15 +9,16 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-### John Doe
+### Cavan Chua
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/cavannn.png" width="200px">
 
 [[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](https://github.com/cavannn)]
+[[portfolio](team/cavannn.md)]
 
-* Role: Project Advisor
+
+* Role: Developer
 
 ### Jane Doe
 
@@ -26,17 +27,8 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](http://github.com/johndoe)]
 [[portfolio](team/johndoe.md)]
 
-* Role: Team Lead
-* Responsibilities: UI
-
-### Johnny Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
-
-* Role: Developer
-* Responsibilities: Data
+- Role: Team Lead
+- Responsibilities: UI
 
 ### Tay Cole Lin
 
@@ -48,12 +40,22 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Bum
 * Responsibilities: Dev Ops + Threading
 
-### James Doe
+### Ethan Yap
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/bacenl.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/bacenl)]
+[[portfolio](team/bacenl.md)]
 
 * Role: Developer
-* Responsibilities: UI
+
+### Clinton Tay
+
+<img src="images/ctrf03.png" width="200px">
+
+[[github](http://github.com/ctrf03)]
+[[portfolio](team/johndoe.md)]
+
+- Role: Developer
+- Responsibilities: UI
+
