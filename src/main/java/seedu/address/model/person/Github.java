@@ -1,4 +1,4 @@
-package main.java.seedu.address.model.person;
+package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
 

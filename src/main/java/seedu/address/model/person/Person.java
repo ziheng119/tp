@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
-import main.java.seedu.address.model.person.Github;
+import seedu.address.model.person.Github;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.tag.Tag;
 
@@ -28,7 +28,7 @@ public class Person {
      * Every field must be present and not null.
      */
     public Person(Name name, Phone phone, Email email, Github github) {
-        requireAllNonNull(name, phone, email, github, tags);
+        requireAllNonNull(name, phone, email, github);
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -49,14 +49,6 @@ public class Person {
 
     public Github getGithub() {
         return github;
-    }
-
-    /**
-     * Returns an immutable tag set, which throws {@code UnsupportedOperationException} if
-     * modification is attempted.
-     */
-    public Set<Tag> getTags() {
-        return Collections.unmodifiableSet(tags);
     }
 
     /**
