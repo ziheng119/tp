@@ -31,7 +31,7 @@ public class CreateTeamCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
 
-        return new CommandResult(generateSuccessMessage("hi"));
+        return new CommandResult(generateSuccessMessage(this.teamName));
     }
 
     /**
