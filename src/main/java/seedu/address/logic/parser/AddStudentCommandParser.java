@@ -33,7 +33,7 @@ public class AddStudentCommandParser implements Parser<AddCommand> {
          */
         public AddCommand parse(String args) throws ParseException {
                 ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME,
-                                PREFIX_PHONE, PREFIX_EMAIL, PREFIX_GITHUB, PREFIX_TAG);
+                                PREFIX_PHONE, PREFIX_EMAIL, PREFIX_GITHUB);
 
                 if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_GITHUB, PREFIX_PHONE,
                                 PREFIX_EMAIL) || !argMultimap.getPreamble().isEmpty()) {
@@ -47,9 +47,8 @@ public class AddStudentCommandParser implements Parser<AddCommand> {
                 Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
                 Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
                 Github github = ParserUtil.parseGithub(argMultimap.getValue(PREFIX_GITHUB).get());
-                Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-                Person person = new Person(name, phone, email, github, tagList);
+                Person person = new Person(name, phone, email, github);
 
                 return new AddStudentCommand(person);
         }
