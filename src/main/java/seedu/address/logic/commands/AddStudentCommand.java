@@ -36,7 +36,7 @@ public class AddStudentCommand extends Command {
     /**
      * Creates an AddCommand to add the specified {@code Person}
      */
-    public AddCommand(Person person) {
+    public AddStudentCommand(Person person) {
         requireNonNull(person);
         toAdd = person;
     }
