@@ -59,12 +59,12 @@ public class AddStudentCommand extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof AddCommand)) {
+        if (!(other instanceof AddStudentCommand)) {
             return false;
         }
 
-        AddCommand otherAddCommand = (AddCommand) other;
-        return toAdd.equals(otherAddCommand.toAdd);
+        AddStudentCommand otherAddStudentCommand = (AddStudentCommand) other;
+        return toAdd.equals(otherAddStudentCommand.toAdd);
     }
 
     @Override
