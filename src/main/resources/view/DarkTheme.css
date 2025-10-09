@@ -350,3 +350,16 @@
     -fx-background-radius: 2;
     -fx-font-size: 11;
 }
+
+.titled-pane {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.titled-pane > .title {
+    -fx-background-color: #3e7b91;
+}
+
+.titled-pane > .content {
+    -fx-background-color: transparent;
+}

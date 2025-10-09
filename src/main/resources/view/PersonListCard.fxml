@@ -8,7 +8,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TitledPane?>
 
+<!--
+<TitledPane text="Contact Details" expanded="true"  xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+-->
 <HBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
   <GridPane HBox.hgrow="ALWAYS">
     <columnConstraints>
@@ -34,3 +38,6 @@
     </VBox>
   </GridPane>
 </HBox>
+<!--
+</TitledPane>
+-->
