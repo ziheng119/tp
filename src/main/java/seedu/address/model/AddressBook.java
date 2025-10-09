@@ -8,6 +8,8 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
+import seedu.address.model.team.Team;
+import seedu.address.model.team.UniqueTeamList;
 
 /**
  * Wraps all data at the address-book level
@@ -16,6 +18,7 @@ import seedu.address.model.person.UniquePersonList;
 public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniquePersonList persons;
+    private final UniqueTeamList teams;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -26,6 +29,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     {
         persons = new UniquePersonList();
+        teams = new UniqueTeamList();
     }
 
     public AddressBook() {}
@@ -49,12 +53,21 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Replaces the contents of the team list with {@code teams}.
+     * {@code teams} must not contain duplicate teams.
+     */
+    public void setTeams(List<Team> teams) {
+        this.teams.setTeams(teams);
+    }
+
+    /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
      */
     public void resetData(ReadOnlyAddressBook newData) {
         requireNonNull(newData);
 
         setPersons(newData.getPersonList());
+        setTeams(newData.getTeamList());
     }
 
     //// person-level operations
@@ -94,18 +107,77 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons.remove(key);
     }
 
+    //// team-level operations
+
+    /**
+     * Returns true if a team with the same identity as {@code team} exists in the address book.
+     */
+    public boolean hasTeam(Team team) {
+        requireNonNull(team);
+        return teams.contains(team);
+    }
+
+    /**
+     * Returns true if a team with the given name exists in the address book.
+     */
+    public boolean hasTeamWithName(String teamName) {
+        requireNonNull(teamName);
+        return teams.containsTeamWithName(teamName);
+    }
+
+    /**
+     * Returns the team with the given name.
+     */
+    public Team getTeamByName(String teamName) {
+        requireNonNull(teamName);
+        return teams.getTeamByName(teamName);
+    }
+
+    /**
+     * Adds a team to the address book.
+     * The team must not already exist in the address book.
+     */
+    public void addTeam(Team team) {
+        teams.add(team);
+    }
+
+    /**
+     * Replaces the given team {@code target} in the list with {@code editedTeam}.
+     * {@code target} must exist in the address book.
+     * The team identity of {@code editedTeam} must not be the same as another existing team in the address book.
+     */
+    public void setTeam(Team target, Team editedTeam) {
+        requireNonNull(editedTeam);
+
+        teams.setTeam(target, editedTeam);
+    }
+
+    /**
+     * Removes {@code key} from this {@code AddressBook}.
+     * {@code key} must exist in the address book.
+     */
+    public void removeTeam(Team key) {
+        teams.remove(key);
+    }
+
     //// util methods
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .add("persons", persons)
+                .add("teams", teams)
                 .toString();
     }
 
     @Override
     public ObservableList<Person> getPersonList() {
         return persons.asUnmodifiableObservableList();
+    }
+
+    @Override
+    public ObservableList<Team> getTeamList() {
+        return teams.asUnmodifiableObservableList();
     }
 
     @Override
@@ -120,11 +192,11 @@ public class AddressBook implements ReadOnlyAddressBook {
         }
 
         AddressBook otherAddressBook = (AddressBook) other;
-        return persons.equals(otherAddressBook.persons);
+        return persons.equals(otherAddressBook.persons) && teams.equals(otherAddressBook.teams);
     }
 
     @Override
     public int hashCode() {
-        return persons.hashCode();
+        return persons.hashCode() + teams.hashCode();
     }
 }
