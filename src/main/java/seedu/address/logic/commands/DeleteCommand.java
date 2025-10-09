@@ -64,7 +64,7 @@ public class DeleteCommand extends Command {
             personToDelete = lastShownList.get(targetIndex.getZeroBased());
         } else {
             // Delete by email
-            List<Person> allPersons = model.getAddressBook().getPersonList();
+            List<Person> allPersons = model.getFilteredPersonList();
             personToDelete = null;
 
             for (Person person : allPersons) {
