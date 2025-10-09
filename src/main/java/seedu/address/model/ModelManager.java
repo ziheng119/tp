@@ -12,6 +12,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Person;
+import seedu.address.model.team.Team;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -126,6 +127,54 @@ public class ModelManager implements Model {
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
+    }
+
+    //=========== Team Management ==================================================================================
+
+    @Override
+    public boolean hasTeam(Team team) {
+        requireNonNull(team);
+        return addressBook.hasTeam(team);
+    }
+
+    @Override
+    public boolean hasTeamWithName(String teamName) {
+        requireNonNull(teamName);
+        return addressBook.hasTeamWithName(teamName);
+    }
+
+    @Override
+    public Team getTeamByName(String teamName) {
+        requireNonNull(teamName);
+        return addressBook.getTeamByName(teamName);
+    }
+
+    @Override
+    public void addTeam(Team team) {
+        addressBook.addTeam(team);
+    }
+
+    @Override
+    public void setTeam(Team target, Team editedTeam) {
+        requireAllNonNull(target, editedTeam);
+        addressBook.setTeam(target, editedTeam);
+    }
+
+    @Override
+    public void deleteTeam(Team team) {
+        addressBook.removeTeam(team);
+    }
+
+    @Override
+    public void addPersonToTeam(Person person, Team team) {
+        requireAllNonNull(person, team);
+        team.addPerson(person);
+    }
+
+    @Override
+    public void removePersonFromTeam(Person person, Team team) {
+        requireAllNonNull(person, team);
+        team.removePerson(person);
     }
 
     @Override

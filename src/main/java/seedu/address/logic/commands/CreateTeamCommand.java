@@ -1,9 +1,12 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.team.Team;
 
 /**
  * Creates a team with the input name.
@@ -28,8 +31,21 @@ public class CreateTeamCommand extends Command {
 
         this.teamName = teamName;
     }
+
+    public String getTeamName() {
+        return teamName;
+    }
+
     @Override
     public CommandResult execute(Model model) throws CommandException {
+        requireNonNull(model);
+
+        if (model.hasTeamWithName(this.teamName)) {
+            throw new CommandException("Team with name '" + this.teamName + "' already exists");
+        }
+
+        Team team = new Team(this.teamName);
+        model.addTeam(team);
 
         return new CommandResult(generateSuccessMessage(this.teamName));
     }
@@ -56,5 +72,12 @@ public class CreateTeamCommand extends Command {
         // state check
         CreateTeamCommand e = (CreateTeamCommand) other;
         return teamName.equals(e.teamName);
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .add("teamName", teamName)
+                .toString();
     }
 }

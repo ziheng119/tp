@@ -161,11 +161,11 @@ public class Team implements ReadOnlyTeam {
         }
 
         Team otherTeam = (Team) other;
-        return persons.equals(otherTeam.persons);
+        return name.equals(otherTeam.name) && persons.equals(otherTeam.persons);
     }
 
     @Override
     public int hashCode() {
-        return persons.hashCode();
+        return name.hashCode() + persons.hashCode();
     }
 }
