@@ -22,21 +22,21 @@ import seedu.address.model.person.Person;
 public class TypicalPersons {
 
     public static final Person ALICE = new PersonBuilder().withName("Alice Pauline")
-            .withGithub("alice").withEmail("alice@example.com")
+            .withGithub("alicepauline").withEmail("alice@example.com")
             .withPhone("94351253").build();
     public static final Person BENSON = new PersonBuilder().withName("Benson Meier")
-            .withGithub("benson").withEmail("johnd@example.com")
+            .withGithub("bensonmeier").withEmail("johnd@example.com")
             .withPhone("98765432").build();
     public static final Person CARL = new PersonBuilder().withName("Carl Kurz").withPhone("95352563")
-            .withEmail("heinz@example.com").withGithub("carl").build();
+            .withEmail("heinz@example.com").withGithub("carlkurz").build();
     public static final Person DANIEL = new PersonBuilder().withName("Daniel Meier").withPhone("87652533")
-            .withEmail("cornelia@example.com").withGithub("daniel").build();
+            .withEmail("cornelia@example.com").withGithub("danielmeier").build();
     public static final Person ELLE = new PersonBuilder().withName("Elle Meyer").withPhone("9482224")
-            .withEmail("werner@example.com").withGithub("elle").build();
+            .withEmail("werner@example.com").withGithub("ellemeyer").build();
     public static final Person FIONA = new PersonBuilder().withName("Fiona Kunz").withPhone("9482427")
-            .withEmail("lydia@example.com").withGithub("fiona").build();
+            .withEmail("lydia@example.com").withGithub("fionakunz").build();
     public static final Person GEORGE = new PersonBuilder().withName("George Best").withPhone("9482442")
-            .withEmail("anna@example.com").withGithub("george").build();
+            .withEmail("anna@example.com").withGithub("georgebest").build();
 
     // Manually added
     public static final Person HOON = new PersonBuilder().withName("Hoon Meier").withPhone("8482424")
