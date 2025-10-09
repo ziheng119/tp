@@ -51,12 +51,22 @@ public class DeleteCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        Person personToDelete;
+        Person personToDelete = null;
 
-        if (targetIndex == null) {
+        if (targetIndex != null) {
+            // Delete by index
+            List<Person> lastShownList = model.getFilteredPersonList();
+
+            if (targetIndex.getZeroBased() >= lastShownList.size()) {
+                throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            }
+
+            personToDelete = lastShownList.get(targetIndex.getZeroBased());
+        }
+
+        if (targetEmail != null) {
             // Delete by email (case-insensitive)
             List<Person> allPersons = model.getFilteredPersonList();
-            personToDelete = null;
 
             for (Person person : allPersons) {
                 if (person.getEmail().value.equalsIgnoreCase(targetEmail.value)) {
@@ -68,15 +78,6 @@ public class DeleteCommand extends Command {
             if (personToDelete == null) {
                 throw new CommandException(String.format(MESSAGE_PERSON_NOT_FOUND, targetEmail));
             }
-        } else {
-            // Delete by index
-            List<Person> lastShownList = model.getFilteredPersonList();
-
-            if (targetIndex.getZeroBased() >= lastShownList.size()) {
-                throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
-            }
-
-            personToDelete = lastShownList.get(targetIndex.getZeroBased());
         }
 
         model.deletePerson(personToDelete);
