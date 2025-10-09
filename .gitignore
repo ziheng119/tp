@@ -24,3 +24,6 @@ docs/_site/
 
 #Bin Files
 /bin/
+
+#VS Code settings
+/.vscode/
