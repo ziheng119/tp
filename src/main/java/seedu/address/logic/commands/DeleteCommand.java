@@ -95,15 +95,15 @@ public class DeleteCommand extends Command {
         }
 
         DeleteCommand otherDeleteCommand = (DeleteCommand) other;
-        
+
         // Compare targetIndex (handle nulls)
         boolean indexEquals = (targetIndex == null && otherDeleteCommand.targetIndex == null)
                 || (targetIndex != null && targetIndex.equals(otherDeleteCommand.targetIndex));
-        
+
         // Compare targetEmail (handle nulls)
         boolean emailEquals = (targetEmail == null && otherDeleteCommand.targetEmail == null)
                 || (targetEmail != null && targetEmail.equals(otherDeleteCommand.targetEmail));
-        
+
         return indexEquals && emailEquals;
     }
 
