@@ -38,6 +38,14 @@ public class RemoveFromTeamCommand extends Command {
         this.teamName = teamName;
     }
 
+    public String getPersonName() {
+        return personName;
+    }
+
+    public String getTeamName() {
+        return teamName;
+    }
+
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);

@@ -40,6 +40,14 @@ public class AddStudentToTeamCommand extends Command {
         this.teamName = teamName;
     }
 
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public String getTeamName() {
+        return teamName;
+    }
+
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
