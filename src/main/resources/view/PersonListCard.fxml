@@ -10,7 +10,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.TitledPane?>
 
-<TitledPane text="CS2103T-F12-3" expanded="true"  xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<!--
+<TitledPane text="test" expanded="true"  xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+-->
 <HBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
   <GridPane HBox.hgrow="ALWAYS">
     <columnConstraints>
@@ -36,4 +38,6 @@
     </VBox>
   </GridPane>
 </HBox>
+<!--
 </TitledPane>
+-->
