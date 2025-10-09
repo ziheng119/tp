@@ -34,24 +34,24 @@ public class DeleteCommandParserTest {
     @Test
     public void parse_validEmail_returnsDeleteCommand() {
         Email email = new Email("alice@example.com");
-        assertParseSuccess(parser, "e/alice@example.com", new DeleteCommand(email));
+        assertParseSuccess(parser, " e/alice@example.com", new DeleteCommand(email));
     }
 
     @Test
     public void parse_invalidEmail_throwsParseException() {
-        assertParseFailure(parser, "e/invalidemail",
+        assertParseFailure(parser, " e/invalidemail",
                 DeleteCommandParser.INVALID_EMAIL_FORMAT);
     }
 
     @Test
     public void parse_emptyEmail_throwsParseException() {
-        assertParseFailure(parser, "e/",
+        assertParseFailure(parser, " e/",
                 DeleteCommandParser.INVALID_EMAIL_FORMAT);
     }
 
     @Test
     public void parse_emailWithSpacesOnly_throwsParseException() {
-        assertParseFailure(parser, "e/   ",
+        assertParseFailure(parser, " e/   ",
                 DeleteCommandParser.INVALID_EMAIL_FORMAT);
     }
 }
