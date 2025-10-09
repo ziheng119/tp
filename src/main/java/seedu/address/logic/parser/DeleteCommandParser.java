@@ -11,7 +11,7 @@ import seedu.address.model.person.Email;
  * Parses input arguments and creates a new DeleteCommand object
  */
 public class DeleteCommandParser implements Parser<DeleteCommand> {
-    private static final String INVALID_EMAIL_FORMAT = "Invalid email format. Please use: delete e/username@example.com";
+    static final String INVALID_EMAIL_FORMAT = "Invalid email format. Please use: delete e/username@example.com";
 
     /**
      * Parses the given {@code String} of arguments in the context of the DeleteCommand
