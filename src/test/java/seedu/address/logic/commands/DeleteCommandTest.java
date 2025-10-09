@@ -17,6 +17,7 @@ import seedu.address.logic.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.person.Email;
 import seedu.address.model.person.Person;
 
 /**
@@ -80,6 +81,46 @@ public class DeleteCommandTest {
     }
 
     @Test
+    public void execute_validEmail_success() {
+        Person personToDelete = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Email targetEmail = personToDelete.getEmail();
+        DeleteCommand deleteCommand = new DeleteCommand(targetEmail);
+
+        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS,
+                Messages.format(personToDelete));
+
+        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        expectedModel.deletePerson(personToDelete);
+
+        assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
+    public void execute_invalidEmail_throwsCommandException() {
+        Email nonExistentEmail = new Email("nonexistent@example.com");
+        DeleteCommand deleteCommand = new DeleteCommand(nonExistentEmail);
+
+        assertCommandFailure(deleteCommand, model,
+                String.format(DeleteCommand.MESSAGE_PERSON_NOT_FOUND, nonExistentEmail));
+    }
+
+    @Test
+    public void execute_validEmailDifferentCase_success() {
+        Person personToDelete = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        // ALICE has email "alice@example.com", test with different case
+        Email targetEmail = new Email("ALICE@EXAMPLE.COM");
+        DeleteCommand deleteCommand = new DeleteCommand(targetEmail);
+
+        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS,
+                Messages.format(personToDelete));
+
+        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        expectedModel.deletePerson(personToDelete);
+
+        assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
     public void equals() {
         DeleteCommand deleteFirstCommand = new DeleteCommand(INDEX_FIRST_PERSON);
         DeleteCommand deleteSecondCommand = new DeleteCommand(INDEX_SECOND_PERSON);
@@ -102,10 +143,49 @@ public class DeleteCommandTest {
     }
 
     @Test
+    public void equals_deleteByEmail() {
+        Email firstEmail = new Email("alice@example.com");
+        Email secondEmail = new Email("johnd@example.com");
+
+        DeleteCommand deleteFirstEmailCommand = new DeleteCommand(firstEmail);
+        DeleteCommand deleteSecondEmailCommand = new DeleteCommand(secondEmail);
+
+        // same object -> returns true
+        assertTrue(deleteFirstEmailCommand.equals(deleteFirstEmailCommand));
+
+        // same email -> returns true
+        DeleteCommand deleteFirstEmailCommandCopy = new DeleteCommand(firstEmail);
+        assertTrue(deleteFirstEmailCommand.equals(deleteFirstEmailCommandCopy));
+
+        // different types -> returns false
+        assertFalse(deleteFirstEmailCommand.equals(1));
+
+        // null -> returns false
+        assertFalse(deleteFirstEmailCommand.equals(null));
+
+        // different email -> returns false
+        assertFalse(deleteFirstEmailCommand.equals(deleteSecondEmailCommand));
+
+        // delete by index vs delete by email -> returns false
+        DeleteCommand deleteByIndexCommand = new DeleteCommand(INDEX_FIRST_PERSON);
+        assertFalse(deleteFirstEmailCommand.equals(deleteByIndexCommand));
+    }
+
+    @Test
     public void toStringMethod() {
         Index targetIndex = Index.fromOneBased(1);
         DeleteCommand deleteCommand = new DeleteCommand(targetIndex);
-        String expected = DeleteCommand.class.getCanonicalName() + "{targetIndex=" + targetIndex + "}";
+        String expected = DeleteCommand.class.getCanonicalName()
+                + "{targetIndex=" + targetIndex + ", targetEmail=null}";
+        assertEquals(expected, deleteCommand.toString());
+    }
+
+    @Test
+    public void toStringMethod_deleteByEmail() {
+        Email targetEmail = new Email("alice@example.com");
+        DeleteCommand deleteCommand = new DeleteCommand(targetEmail);
+        String expected = DeleteCommand.class.getCanonicalName()
+                + "{targetIndex=null, targetEmail=" + targetEmail + "}";
         assertEquals(expected, deleteCommand.toString());
     }
 
