@@ -105,6 +105,22 @@ public class DeleteCommandTest {
     }
 
     @Test
+    public void execute_validEmailDifferentCase_success() {
+        Person personToDelete = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        // ALICE has email "alice@example.com", test with different case
+        Email targetEmail = new Email("ALICE@EXAMPLE.COM");
+        DeleteCommand deleteCommand = new DeleteCommand(targetEmail);
+
+        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS,
+                Messages.format(personToDelete));
+
+        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        expectedModel.deletePerson(personToDelete);
+
+        assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
     public void equals() {
         DeleteCommand deleteFirstCommand = new DeleteCommand(INDEX_FIRST_PERSON);
         DeleteCommand deleteSecondCommand = new DeleteCommand(INDEX_SECOND_PERSON);

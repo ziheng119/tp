@@ -63,12 +63,12 @@ public class DeleteCommand extends Command {
 
             personToDelete = lastShownList.get(targetIndex.getZeroBased());
         } else {
-            // Delete by email
+            // Delete by email (case-insensitive)
             List<Person> allPersons = model.getFilteredPersonList();
             personToDelete = null;
 
             for (Person person : allPersons) {
-                if (person.getEmail().equals(targetEmail)) {
+                if (person.getEmail().value.equalsIgnoreCase(targetEmail.value)) {
                     personToDelete = person;
                     break;
                 }
