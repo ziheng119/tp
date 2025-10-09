@@ -17,15 +17,17 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 
 /**
- * Parses input arguments and creates a new AddCommand object
+ * Parses input arguments and creates a new AddStudentCommand object.
  */
 public class AddStudentCommandParser implements Parser<AddStudentCommand> {
 
 	/**
-	 * Parses the given {@code String} of arguments in the context of the AddCommand and returns an
-	 * AddCommand object for execution.
+	 * Parses the given {@code String} of arguments in the context of the AddStudentCommand and
+	 * returns an AddStudentCommand object for execution.
 	 *
-	 * @throws ParseException if the user input does not conform the expected format
+	 * @param args user input arguments
+	 * @return AddStudentCommand object
+	 * @throws ParseException if the user input does not conform to the expected format
 	 */
 	public AddStudentCommand parse(String args) throws ParseException {
 		ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE,
@@ -52,6 +54,10 @@ public class AddStudentCommandParser implements Parser<AddStudentCommand> {
 	/**
 	 * Returns true if none of the prefixes contains empty {@code Optional} values in the given
 	 * {@code ArgumentMultimap}.
+	 *
+	 * @param argumentMultimap the argument multimap
+	 * @param prefixes the prefixes to check
+	 * @return true if all prefixes are present
 	 */
 	private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap,
 			Prefix... prefixes) {
