@@ -32,7 +32,7 @@ public class GithubTest {
         assertTrue(Github.isValidGithub("octo-cat"));
         assertTrue(Github.isValidGithub("OCTOcat123"));
         assertTrue(Github.isValidGithub("a")); // minimum length
-        assertTrue(Github.isValidGithub("a123456789012345678901234567890123456789")); // 39 chars
+        assertTrue(Github.isValidGithub("123456789012345678901234567890123456789")); // 39 chars
 
         // invalid usernames
         assertTrue(!Github.isValidGithub(""));

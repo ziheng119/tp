@@ -41,7 +41,7 @@ public class UniquePersonListTest {
     @Test
     public void contains_personWithSameIdentityFieldsInList_returnsTrue() {
         uniquePersonList.add(ALICE);
-        Person editedAlice = new PersonBuilder(ALICE).withGithub(null)
+        Person editedAlice = new PersonBuilder(ALICE).withGithub(VALID_GITHUB_BOB)
                 .build();
         assertTrue(uniquePersonList.contains(editedAlice));
     }
