@@ -21,12 +21,13 @@ public class AddStudentCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a person to the system. "
             + "Parameters: " + PREFIX_NAME + "NAME " + PREFIX_PHONE + "PHONE " + PREFIX_EMAIL
-            + "EMAIL " + PREFIX_GITHUB + "GITHUB_USERNAME " + "Example: " + COMMAND_WORD + " "
+            + "EMAIL " + PREFIX_GITHUB + "GITHUB_USERNAME\n" + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "John Doe " + PREFIX_PHONE + "98765432 " + PREFIX_EMAIL
             + "johnd@example.com " + PREFIX_GITHUB + "johndoe ";
 
     public static final String MESSAGE_SUCCESS = "New person added: %1$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the system.";
+    public static final String MESSAGE_DUPLICATE_PERSON =
+            "This person already exists in the system.";
 
     private final Person toAdd;
 
