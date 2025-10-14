@@ -70,7 +70,8 @@ public class AddStudentToTeamCommandTest {
         model.addTeam(team);
         // Add 5 people to reach max capacity
         for (int i = 0; i < 5; i++) {
-            Person person = new PersonBuilder().withName("Person" + i).withEmail("testtest" + i + "@example.com").build();
+            Person person = new PersonBuilder().withName("Person" + i)
+                    .withEmail("testtest" + i + "@example.com").build();
             model.addPerson(person);
             model.addPersonToTeam(person, team);
         }
