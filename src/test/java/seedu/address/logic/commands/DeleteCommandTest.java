@@ -189,6 +189,26 @@ public class DeleteCommandTest {
         assertEquals(expected, deleteCommand.toString());
     }
 
+    @Test
+    public void equals_sameEmailDifferentObjects() {
+        Email email1 = new Email("test@example.com");
+        Email email2 = new Email("test@example.com");
+        DeleteCommand deleteCommand1 = new DeleteCommand(email1);
+        DeleteCommand deleteCommand2 = new DeleteCommand(email2);
+
+        // Both have non-null emails that are equal -> returns true
+        assertTrue(deleteCommand1.equals(deleteCommand2));
+    }
+
+    @Test
+    public void equals_bothNullEmails() {
+        DeleteCommand deleteCommand1 = new DeleteCommand(INDEX_FIRST_PERSON);
+        DeleteCommand deleteCommand2 = new DeleteCommand(INDEX_FIRST_PERSON);
+
+        // Both have null emails and same index -> returns true
+        assertTrue(deleteCommand1.equals(deleteCommand2));
+    }
+
     /**
      * Updates {@code model}'s filtered list to show no one.
      */
