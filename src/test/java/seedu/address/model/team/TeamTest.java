@@ -89,7 +89,7 @@ public class TeamTest {
     public void addPerson_teamAtMaxCapacity_throwsTeamMaxCapacityException() {
         // Add 5 people to reach max capacity
         for (int i = 0; i < 5; i++) {
-            Person person = new PersonBuilder().withName("Person" + i).build();
+            Person person = new PersonBuilder().withName("Person" + i).withEmail("testtest" + i + "@example.com").build();
             team.addPerson(person);
         }
 
