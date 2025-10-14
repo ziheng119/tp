@@ -54,4 +54,10 @@ public class DeleteCommandParserTest {
         assertParseFailure(parser, " e/   ",
                 DeleteCommandParser.INVALID_EMAIL_FORMAT);
     }
+
+    @Test
+    public void parse_emailWithPreamble_throwsParseException() {
+        assertParseFailure(parser, "1 e/alice@example.com",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
+    }
 }
