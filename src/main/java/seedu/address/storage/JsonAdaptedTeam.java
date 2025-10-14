@@ -32,7 +32,9 @@ class JsonAdaptedTeam {
     public JsonAdaptedTeam(@JsonProperty("name") String name,
                            @JsonProperty("members") List<Email> members) {
         this.name = name;
-        this.members.addAll(members);
+        if (members != null) {
+            this.members.addAll(members);
+        }
     }
 
     /**
