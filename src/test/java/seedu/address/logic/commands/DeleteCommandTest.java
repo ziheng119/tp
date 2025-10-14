@@ -195,7 +195,7 @@ public class DeleteCommandTest {
         Email email2 = new Email("test@example.com");
         DeleteCommand deleteCommand1 = new DeleteCommand(email1);
         DeleteCommand deleteCommand2 = new DeleteCommand(email2);
-        
+
         // Both have non-null emails that are equal -> returns true
         assertTrue(deleteCommand1.equals(deleteCommand2));
     }
@@ -204,7 +204,7 @@ public class DeleteCommandTest {
     public void equals_bothNullEmails() {
         DeleteCommand deleteCommand1 = new DeleteCommand(INDEX_FIRST_PERSON);
         DeleteCommand deleteCommand2 = new DeleteCommand(INDEX_FIRST_PERSON);
-        
+
         // Both have null emails and same index -> returns true
         assertTrue(deleteCommand1.equals(deleteCommand2));
     }
