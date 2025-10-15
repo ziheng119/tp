@@ -1,0 +1,27 @@
+package seedu.address.logic.parser;
+
+import static seedu.address.testutil.Assert.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
+import seedu.address.logic.commands.CreateTeamCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
+
+public class CreateTeamCommandParserTest {
+
+    private final CreateTeamCommandParser parser = new CreateTeamCommandParser();
+
+    @Test
+    public void parse_validTeamName_success() throws Exception {
+        String teamName = "Team 123";
+        CreateTeamCommand command = parser.parse(teamName);
+        assertEquals(new CreateTeamCommand(teamName), command);
+    }
+
+    @Test
+    public void parse_invalidTeamName_throwsParseException() {
+        assertThrows(ParseException.class, () -> parser.parse("Team@123"));
+        assertThrows(ParseException.class, () -> parser.parse(""));
+        assertThrows(ParseException.class, () -> parser.parse("   "));
+    }
+}
