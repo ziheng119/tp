@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
@@ -73,8 +74,19 @@ public class AddStudentToTeamCommand extends Command {
         try {
             // Add person to team
             model.addPersonToTeam(targetPerson, targetTeam);
+
+            Person updatedPerson = new Person(
+                    targetPerson.getName(),
+                    targetPerson.getPhone(),
+                    targetPerson.getEmail(),
+                    targetPerson.getGithub(),
+                    targetTeam);
+
+            model.setPerson(targetPerson, updatedPerson);
+            model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+
             return new CommandResult(String.format(MESSAGE_SUCCESS,
-                Messages.format(targetPerson), teamName));
+                    Messages.format(targetPerson), teamName));
         } catch (TeamMaxCapacityException e) {
             throw new CommandException(String.format(MESSAGE_TEAM_FULL, teamName));
         }

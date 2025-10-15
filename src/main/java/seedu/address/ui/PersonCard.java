@@ -6,6 +6,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.person.Person;
+import seedu.address.model.team.Team;
 
 /**
  * An UI component that displays information of a {@code Person}.
@@ -48,8 +49,8 @@ public class PersonCard extends UiPart<Region> {
         this.person = person;
         id.setText(displayedIndex + ". ");
         name.setText(person.getName().fullName);
-        if (displayedIndex == 1) {
-            team.getChildren().add(new Label("hi"));
+        if (person.getTeam() != Team.NONE) {
+            team.getChildren().add(new Label(person.getTeamName()));
         }
         phone.setText(person.getPhone().value);
         github.setText(person.getGithub().value);

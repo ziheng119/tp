@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
@@ -70,6 +71,17 @@ public class RemoveFromTeamCommand extends Command {
 
         // Remove person from team
         model.removePersonFromTeam(targetPerson, targetTeam);
+
+        Person updatedPerson = new Person(
+                targetPerson.getName(),
+                targetPerson.getPhone(),
+                targetPerson.getEmail(),
+                targetPerson.getGithub(),
+                Team.NONE);
+
+        model.setPerson(targetPerson, updatedPerson);
+        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+
         return new CommandResult(String.format(MESSAGE_SUCCESS,
             Messages.format(targetPerson), teamName));
     }

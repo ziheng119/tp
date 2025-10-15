@@ -7,6 +7,7 @@ import seedu.address.model.person.Github;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.team.Team;
 
 /**
  * Contains utility methods for populating {@code AddressBook} with sample data.
@@ -16,17 +17,17 @@ public class SampleDataUtil {
     public static Person[] getSamplePersons() {
         return new Person[] {
             new Person(new Name("Alex Yeoh"), new Phone("87438807"),
-                    new Email("alexyeoh@example.com"), new Github("AlexYeoh")),
+                    new Email("alexyeoh@example.com"), new Github("AlexYeoh"), Team.NONE),
             new Person(new Name("Bernice Yu"), new Phone("99272758"),
-                    new Email("berniceyu@example.com"), new Github("BerniceYu")),
+                    new Email("berniceyu@example.com"), new Github("BerniceYu"), Team.NONE),
             new Person(new Name("Charlotte Oliveiro"), new Phone("93210283"),
-                    new Email("charlotte@example.com"), new Github("CharlotteO")),
+                    new Email("charlotte@example.com"), new Github("CharlotteO"), Team.NONE),
             new Person(new Name("David Li"), new Phone("91031282"),
-                    new Email("lidavid@example.com"), new Github("DavidLi")),
+                    new Email("lidavid@example.com"), new Github("DavidLi"), Team.NONE),
             new Person(new Name("Irfan Ibrahim"), new Phone("92492021"),
-                    new Email("irfan@example.com"), new Github("IrfanIbrahim")),
+                    new Email("irfan@example.com"), new Github("IrfanIbrahim"), Team.NONE),
             new Person(new Name("Roy Balakrishnan"), new Phone("92624417"),
-                    new Email("royb@example.com"), new Github("RoyB"))
+                    new Email("royb@example.com"), new Github("RoyB"), Team.NONE)
         };
     }
 

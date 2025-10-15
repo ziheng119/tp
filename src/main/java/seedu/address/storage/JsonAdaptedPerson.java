@@ -1,5 +1,7 @@
 package seedu.address.storage;
 
+import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -9,6 +11,7 @@ import seedu.address.model.person.Github;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.team.Team;
 
 /**
  * Jackson-friendly version of {@link Person}.
@@ -21,17 +24,22 @@ class JsonAdaptedPerson {
     private final String phone;
     private final String email;
     private final String github;
+    private final String teamName;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
      */
     @JsonCreator
-    public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
-            @JsonProperty("email") String email, @JsonProperty("github") String github) {
+    public JsonAdaptedPerson(@JsonProperty("name") String name,
+            @JsonProperty("phone") String phone,
+            @JsonProperty("email") String email,
+            @JsonProperty("github") String github,
+            @JsonProperty("teamName") String teamName) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.github = github;
+        this.teamName = teamName;
     }
 
     /**
@@ -42,15 +50,18 @@ class JsonAdaptedPerson {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         github = source.getGithub().value;
+        teamName = source.getTeamName();
     }
 
     /**
      * Converts this Jackson-friendly adapted person object into the model's {@code Person} object.
      *
+     * @param teamMap A Map mapping teamName to a Team.
+     *
      * @throws IllegalValueException if there were any data constraints violated in the adapted
      *         person.
      */
-    public Person toModelType() throws IllegalValueException {
+    public Person toModelType(Map<String, Team> teamMap) throws IllegalValueException {
 
         if (name == null) {
             throw new IllegalValueException(
@@ -88,7 +99,9 @@ class JsonAdaptedPerson {
         }
         final Github modelGithub = new Github(github);
 
-        return new Person(modelName, modelPhone, modelEmail, modelGithub);
+        final Team modelTeam = teamMap.get(teamName);
+
+        return new Person(modelName, modelPhone, modelEmail, modelGithub, modelTeam);
     }
 
 }

@@ -93,8 +93,9 @@ public class EditCommand extends Command {
         Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Github updatedGithub = editPersonDescriptor.getGithub().orElse(personToEdit.getGithub());
+        Team previousTeam = personToEdit.getTeam();
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedGithub);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedGithub, previousTeam);
     }
 
     @Override

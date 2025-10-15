@@ -30,7 +30,7 @@ class JsonAdaptedTeam {
      */
     @JsonCreator
     public JsonAdaptedTeam(@JsonProperty("name") String name,
-                           @JsonProperty("members") List<Email> members) {
+                @JsonProperty("members") List<Email> members) {
         this.name = name;
         if (members != null) {
             this.members.addAll(members);
@@ -59,14 +59,16 @@ class JsonAdaptedTeam {
                             .findFirst()
                             .orElse(null);
             if (found == null) {
-                throw new IllegalValueException(
-                        String.format(MISSING_PERSON_MESSAGE_FORMAT, email));
+                throw new IllegalValueException(String.format(MISSING_PERSON_MESSAGE_FORMAT, email));
             }
             memberList.add(found);
         }
         if (name == null) {
-            throw new IllegalValueException(
-                    String.format(MISSING_FIELD_MESSAGE_FORMAT));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT));
+        }
+
+        if (name == "") {
+            return Team.NONE;
         }
 
         if (!Team.isValidName(name)) {

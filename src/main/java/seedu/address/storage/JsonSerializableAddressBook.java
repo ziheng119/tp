@@ -1,7 +1,9 @@
 package seedu.address.storage;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -63,20 +65,26 @@ class JsonSerializableAddressBook {
      */
     public AddressBook toModelType() throws IllegalValueException {
         AddressBook addressBook = new AddressBook();
-        for (JsonAdaptedPerson jsonAdaptedPerson : persons) {
-            Person person = jsonAdaptedPerson.toModelType();
-            if (addressBook.hasPerson(person)) {
-                throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
-            }
-            addressBook.addPerson(person);
-        }
+        Map<String, Team> teamMap = new HashMap<>();
+
         for (JsonAdaptedTeam jsonAdaptedTeam : teams) {
             Team team = jsonAdaptedTeam.toModelType(addressBook.getPersonList());
             if (addressBook.hasTeam(team)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_TEAM);
             }
+            teamMap.put(team.getName(), team);
             addressBook.addTeam(team);
         }
+        teamMap.put("", Team.NONE);
+
+        for (JsonAdaptedPerson jsonAdaptedPerson : persons) {
+            Person person = jsonAdaptedPerson.toModelType(teamMap);
+            if (addressBook.hasPerson(person)) {
+                throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
+            }
+            addressBook.addPerson(person);
+        }
+
         return addressBook;
     }
 

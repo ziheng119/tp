@@ -24,6 +24,7 @@ public class Team {
      * otherwise " " (a blank string) becomes a valid input.
      */
     public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
+    public static final Team NONE = new Team();
     private static final int MAX_CAPACITY = 5;
 
     private final String name;
@@ -38,6 +39,11 @@ public class Team {
      */
     {
         persons = new UniquePersonList();
+    }
+
+    // Private constructor for NONE
+    private Team() {
+        this.name = "";
     }
 
     /**
