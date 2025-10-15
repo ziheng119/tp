@@ -6,7 +6,6 @@ import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.model.ReadOnlyTeam;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.team.exceptions.TeamMaxCapacityException;
@@ -15,7 +14,7 @@ import seedu.address.model.team.exceptions.TeamMaxCapacityException;
  * Wraps all data at the team level
  * Duplicates are not allowed (by .isSamePerson comparison)
  */
-public class Team implements ReadOnlyTeam {
+public class Team {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Names should only contain alphanumeric characters and spaces, and it should not be blank";
@@ -127,7 +126,11 @@ public class Team implements ReadOnlyTeam {
     public String getName() {
         return name;
     }
+
     //// util methods
+    public ObservableList<Person> getPersonList() {
+        return persons.asUnmodifiableObservableList();
+    }
 
     /**
      * Returns true if a given string is a valid name.
@@ -142,11 +145,6 @@ public class Team implements ReadOnlyTeam {
                 .add("name", name)
                 .add("persons", persons)
                 .toString();
-    }
-
-    @Override
-    public ObservableList<Person> getPersonList() {
-        return persons.asUnmodifiableObservableList();
     }
 
     @Override
