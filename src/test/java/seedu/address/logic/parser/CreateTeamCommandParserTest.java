@@ -1,9 +1,10 @@
 package seedu.address.logic.parser;
 
-import static seedu.address.testutil.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static seedu.address.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
+
 import seedu.address.logic.commands.CreateTeamCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
