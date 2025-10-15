@@ -55,7 +55,7 @@ public class Team implements ReadOnlyTeam {
     /**
      * Creates an Team using the Persons in the {@code toBeCopied}
      */
-    public Team(String name, ReadOnlyTeam toBeCopied) {
+    public Team(String name, ObservableList<Person> toBeCopied) {
         requireNonNull(name);
         checkArgument(isValidName(name), MESSAGE_CONSTRAINTS);
         this.name = name;
@@ -78,10 +78,10 @@ public class Team implements ReadOnlyTeam {
     /**
      * Resets the existing data of this {@code Team} with {@code newData}.
      */
-    public void resetData(ReadOnlyTeam newData) {
+    public void resetData(ObservableList<Person> newData) {
         requireNonNull(newData);
 
-        setPersons(newData.getPersonList());
+        setPersons(newData);
     }
 
     //// person-level operations

@@ -33,7 +33,9 @@ public class UniqueTeamList implements Iterable<Team> {
      */
     public boolean contains(Team toCheck) {
         requireNonNull(toCheck);
-        return internalList.stream().anyMatch(toCheck::equals);
+        return internalList.stream()
+                .map(Team::getName)
+                .anyMatch(toCheck.getName()::equals);
     }
 
     /**
@@ -158,7 +160,7 @@ public class UniqueTeamList implements Iterable<Team> {
     private boolean teamsAreUnique(List<Team> teams) {
         for (int i = 0; i < teams.size() - 1; i++) {
             for (int j = i + 1; j < teams.size(); j++) {
-                if (teams.get(i).equals(teams.get(j))) {
+                if (teams.get(i).equals(teams.get(j)) || teams.get(i).getName().equals(teams.get(j).getName())) {
                     return false;
                 }
             }
