@@ -3,6 +3,7 @@ package seedu.address.logic.parser;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TEAM;
 
+import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.AddStudentToTeamCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
@@ -20,11 +21,15 @@ public class AddStudentToTeamCommandParser implements Parser<AddStudentToTeamCom
         requireNonNull(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_TEAM);
 
-        String studentName;
+        Index studentIndex;
         String teamName;
 
-        // Extract person name from preamble (everything before the team prefix)
-        studentName = argMultimap.getPreamble();
+        // Extract person index from preamble (everything before the team prefix)
+        try {
+            studentIndex = ParserUtil.parseIndex(argMultimap.getPreamble());
+        } catch (ParseException pe) {
+            throw new ParseException(String.format(AddStudentToTeamCommand.MESSAGE_USAGE), pe);
+        }
 
         // Extract team name from team prefix
         if (argMultimap.getValue(PREFIX_TEAM).isEmpty()) {
@@ -32,10 +37,6 @@ public class AddStudentToTeamCommandParser implements Parser<AddStudentToTeamCom
         }
         teamName = argMultimap.getValue(PREFIX_TEAM).get();
 
-        if (studentName.isEmpty()) {
-            throw new ParseException(String.format(AddStudentToTeamCommand.MESSAGE_USAGE));
-        }
-
-        return new AddStudentToTeamCommand(studentName, teamName);
+        return new AddStudentToTeamCommand(studentIndex, teamName);
     }
 }

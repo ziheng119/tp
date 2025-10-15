@@ -2,6 +2,9 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.List;
+
+import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -17,29 +20,28 @@ public class RemoveFromTeamCommand extends Command {
     public static final String COMMAND_WORD = "remove_from_team";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Removes a person from a team. "
-            + "Parameters: PERSON_NAME /team TEAM_NAME\n"
-            + "Example: " + COMMAND_WORD + " John Doe /team Team_1";
+            + "Parameters: INDEX /team TEAM_NAME\n"
+            + "Example: " + COMMAND_WORD + " 1 /team Team_1";
 
     public static final String MESSAGE_SUCCESS = "Person %s removed from team %s";
-    public static final String MESSAGE_PERSON_NOT_FOUND = "Person with name '%s' not found in address book";
     public static final String MESSAGE_TEAM_NOT_FOUND = "Team with name '%s' not found";
     public static final String MESSAGE_PERSON_NOT_IN_TEAM = "Person %s is not in team %s";
 
-    private final String personName;
+    private final Index personIndex;
     private final String teamName;
 
     /**
      * Creates a RemoveFromTeamCommand to remove the specified person from the team.
      */
-    public RemoveFromTeamCommand(String personName, String teamName) {
-        requireNonNull(personName);
+    public RemoveFromTeamCommand(Index personIndex, String teamName) {
+        requireNonNull(personIndex);
         requireNonNull(teamName);
-        this.personName = personName;
+        this.personIndex = personIndex;
         this.teamName = teamName;
     }
 
-    public String getPersonName() {
-        return personName;
+    public Index getPersonIndex() {
+        return personIndex;
     }
 
     public String getTeamName() {
@@ -50,11 +52,13 @@ public class RemoveFromTeamCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        // Find the person by name
-        Person targetPerson = findPersonByName(model, personName);
-        if (targetPerson == null) {
-            throw new CommandException(String.format(MESSAGE_PERSON_NOT_FOUND, personName));
+        List<Person> lastShownList = model.getFilteredPersonList();
+
+        if (personIndex.getZeroBased() >= lastShownList.size()) {
+            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
+
+        Person targetPerson = lastShownList.get(personIndex.getZeroBased());
 
         // Find the team by name
         Team targetTeam = model.getTeamByName(teamName);
@@ -74,16 +78,6 @@ public class RemoveFromTeamCommand extends Command {
             Messages.format(targetPerson), teamName));
     }
 
-    /**
-     * Finds a person by name in the model.
-     * Returns null if not found.
-     */
-    private Person findPersonByName(Model model, String name) {
-        return model.getFilteredPersonList().stream()
-                .filter(person -> person.getName().toString().equalsIgnoreCase(name))
-                .findFirst()
-                .orElse(null);
-    }
 
     @Override
     public boolean equals(Object other) {
@@ -97,14 +91,14 @@ public class RemoveFromTeamCommand extends Command {
         }
 
         RemoveFromTeamCommand otherRemoveFromTeamCommand = (RemoveFromTeamCommand) other;
-        return personName.equals(otherRemoveFromTeamCommand.personName)
+        return personIndex.equals(otherRemoveFromTeamCommand.personIndex)
                 && teamName.equals(otherRemoveFromTeamCommand.teamName);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("personName", personName)
+                .add("personIndex", personIndex)
                 .add("teamName", teamName)
                 .toString();
     }
