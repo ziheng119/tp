@@ -20,8 +20,8 @@ public class RemoveFromTeamCommand extends Command {
     public static final String COMMAND_WORD = "remove_from_team";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Removes a person from a team. "
-            + "Parameters: INDEX /team TEAM_NAME\n"
-            + "Example: " + COMMAND_WORD + " 1 /team Team_1";
+            + "Parameters: INDEX team/TEAM_NAME\n"
+            + "Example: " + COMMAND_WORD + " 1 t/Team_1";
 
     public static final String MESSAGE_SUCCESS = "Person %s removed from team %s";
     public static final String MESSAGE_TEAM_NOT_FOUND = "Team with name '%s' not found";
