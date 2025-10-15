@@ -200,6 +200,11 @@ public class AddCommandTest {
         public void removePersonFromTeam(Person person, Team team) {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public Team getTeamContainingPerson(Person person) {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**

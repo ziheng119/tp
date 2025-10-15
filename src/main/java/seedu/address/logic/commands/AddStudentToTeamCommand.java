@@ -25,6 +25,8 @@ public class AddStudentToTeamCommand extends Command {
     public static final String MESSAGE_PERSON_NOT_FOUND = "Person with name '%s' not found in address book";
     public static final String MESSAGE_TEAM_NOT_FOUND = "Team with name '%s' not found";
     public static final String MESSAGE_PERSON_ALREADY_IN_TEAM = "Person %s is already in team %s";
+    public static final String MESSAGE_PERSON_IN_ANOTHER_TEAM = "Person %s is already in team %s. "
+            + "Remove them from their current team before adding to a new team";
     public static final String MESSAGE_TEAM_FULL = "Team %s is at maximum capacity (5 members)";
 
     private final String studentName;
@@ -64,10 +66,18 @@ public class AddStudentToTeamCommand extends Command {
             throw new CommandException(String.format(MESSAGE_TEAM_NOT_FOUND, teamName));
         }
 
-        // Check if person is already in the team
-        if (targetTeam.hasPerson(targetPerson)) {
-            throw new CommandException(String.format(MESSAGE_PERSON_ALREADY_IN_TEAM,
-                Messages.format(targetPerson), teamName));
+        // Check if person is already in any team
+        Team existingTeam = model.getTeamContainingPerson(targetPerson);
+        if (existingTeam != null) {
+            if (existingTeam.equals(targetTeam)) {
+                // Person is already in the same team
+                throw new CommandException(String.format(MESSAGE_PERSON_ALREADY_IN_TEAM,
+                    Messages.format(targetPerson), teamName));
+            } else {
+                // Person is in a different team
+                throw new CommandException(String.format(MESSAGE_PERSON_IN_ANOTHER_TEAM,
+                    Messages.format(targetPerson), existingTeam.getName()));
+            }
         }
 
         try {

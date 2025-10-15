@@ -178,6 +178,12 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public Team getTeamContainingPerson(Person person) {
+        requireNonNull(person);
+        return addressBook.getTeamContainingPerson(person);
+    }
+
+    @Override
     public boolean equals(Object other) {
         if (other == this) {
             return true;

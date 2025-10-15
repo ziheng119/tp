@@ -160,6 +160,15 @@ public class AddressBook implements ReadOnlyAddressBook {
         teams.remove(key);
     }
 
+    /**
+     * Returns the team that contains the given person.
+     * Returns null if the person is not in any team.
+     */
+    public Team getTeamContainingPerson(Person person) {
+        requireNonNull(person);
+        return teams.getTeamContainingPerson(person);
+    }
+
     //// util methods
 
     @Override
