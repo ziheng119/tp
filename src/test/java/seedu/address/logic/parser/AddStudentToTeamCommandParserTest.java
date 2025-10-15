@@ -34,13 +34,13 @@ public class AddStudentToTeamCommandParserTest {
 
     @Test
     public void parse_missingPersonName_throwsParseException() {
-        assertThrows(ParseException.class, () -> parser.parse("/team Team1"));
+        assertThrows(ParseException.class, () -> parser.parse("t/Team1"));
     }
 
     @Test
     public void parse_validInput_returnsAddStudentToTeamCommand() throws ParseException {
         AddStudentToTeamCommand expected = new AddStudentToTeamCommand("John Doe", "Team1");
-        AddStudentToTeamCommand actual = parser.parse("John Doe /team Team1");
+        AddStudentToTeamCommand actual = parser.parse("John Doe t/Team1");
         assertEquals(expected.getStudentName(), actual.getStudentName());
         assertEquals(expected.getTeamName(), actual.getTeamName());
     }
@@ -48,7 +48,7 @@ public class AddStudentToTeamCommandParserTest {
     @Test
     public void parse_personNameWithSpaces_returnsAddStudentToTeamCommand() throws ParseException {
         AddStudentToTeamCommand expected = new AddStudentToTeamCommand("John Michael Doe", "Team1");
-        AddStudentToTeamCommand actual = parser.parse("John Michael Doe /team Team1");
+        AddStudentToTeamCommand actual = parser.parse("John Michael Doe t/Team1");
         assertEquals(expected.getStudentName(), actual.getStudentName());
         assertEquals(expected.getTeamName(), actual.getTeamName());
     }
@@ -56,7 +56,7 @@ public class AddStudentToTeamCommandParserTest {
     @Test
     public void parse_teamNameWithSpaces_returnsAddStudentToTeamCommand() throws ParseException {
         AddStudentToTeamCommand expected = new AddStudentToTeamCommand("John Doe", "Team Alpha");
-        AddStudentToTeamCommand actual = parser.parse("John Doe /team Team Alpha");
+        AddStudentToTeamCommand actual = parser.parse("John Doe t/Team Alpha");
         assertEquals(expected.getStudentName(), actual.getStudentName());
         assertEquals(expected.getTeamName(), actual.getTeamName());
     }
@@ -64,7 +64,7 @@ public class AddStudentToTeamCommandParserTest {
     @Test
     public void parse_extraWhitespace_returnsAddStudentToTeamCommand() throws ParseException {
         AddStudentToTeamCommand expected = new AddStudentToTeamCommand("John Doe", "Team1");
-        AddStudentToTeamCommand actual = parser.parse("  John Doe  /team  Team1  ");
+        AddStudentToTeamCommand actual = parser.parse("  John Doe  t/Team1  ");
         assertEquals(expected.getStudentName(), actual.getStudentName());
         assertEquals(expected.getTeamName(), actual.getTeamName());
     }
