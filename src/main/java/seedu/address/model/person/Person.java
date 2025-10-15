@@ -106,7 +106,7 @@ public class Person {
                 .add("phone", phone)
                 .add("email", email)
                 .add("github", github)
-                .add("team", team)
+                .add("team", team.getName())
                 .toString();
     }
 

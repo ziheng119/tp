@@ -7,8 +7,6 @@ import java.util.stream.Collectors;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Person;
@@ -51,18 +49,7 @@ class JsonAdaptedTeam {
      * Converts this Jackson-friendly adapted team object into the model's {@code Team} object.
      * Needs all persons to match email and link correct person object
      */
-    public Team toModelType(ObservableList<Person> allPersons) throws IllegalValueException {
-        List<Person> memberList = new ArrayList<>();
-        for (Email email : members) {
-            Person found = allPersons.stream()
-                            .filter(person -> person.getEmail().equals(email))
-                            .findFirst()
-                            .orElse(null);
-            if (found == null) {
-                throw new IllegalValueException(String.format(MISSING_PERSON_MESSAGE_FORMAT, email));
-            }
-            memberList.add(found);
-        }
+    public Team toModelType() throws IllegalValueException {
         if (name == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT));
         }
@@ -75,6 +62,11 @@ class JsonAdaptedTeam {
             throw new IllegalValueException(Team.MESSAGE_CONSTRAINTS);
         }
 
-        return new Team(name, FXCollections.observableList(memberList));
+        return new Team(name);
     }
+
+    public List<Email> getMemberEmail() {
+        return members;
+    }
+
 }
