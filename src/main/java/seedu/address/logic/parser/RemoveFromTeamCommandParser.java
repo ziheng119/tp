@@ -35,7 +35,10 @@ public class RemoveFromTeamCommandParser implements Parser<RemoveFromTeamCommand
         if (argMultimap.getValue(PREFIX_TEAM).isEmpty()) {
             throw new ParseException(String.format(RemoveFromTeamCommand.MESSAGE_USAGE));
         }
-        teamName = argMultimap.getValue(PREFIX_TEAM).get();
+        teamName = argMultimap.getValue(PREFIX_TEAM).get().trim();
+        if (teamName.isEmpty()) {
+            throw new ParseException(String.format(RemoveFromTeamCommand.MESSAGE_USAGE));
+        }
 
         return new RemoveFromTeamCommand(personIndex, teamName);
     }

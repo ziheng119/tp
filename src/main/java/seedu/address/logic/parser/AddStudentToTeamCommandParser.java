@@ -35,7 +35,10 @@ public class AddStudentToTeamCommandParser implements Parser<AddStudentToTeamCom
         if (argMultimap.getValue(PREFIX_TEAM).isEmpty()) {
             throw new ParseException(String.format(AddStudentToTeamCommand.MESSAGE_USAGE));
         }
-        teamName = argMultimap.getValue(PREFIX_TEAM).get();
+        teamName = argMultimap.getValue(PREFIX_TEAM).get().trim();
+        if (teamName.isEmpty()) {
+            throw new ParseException(String.format(AddStudentToTeamCommand.MESSAGE_USAGE));
+        }
 
         return new AddStudentToTeamCommand(studentIndex, teamName);
     }
