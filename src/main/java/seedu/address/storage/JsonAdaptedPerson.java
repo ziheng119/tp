@@ -99,6 +99,13 @@ class JsonAdaptedPerson {
         }
         final Github modelGithub = new Github(github);
 
+        if (teamName == null) {
+            throw new IllegalValueException(
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT, Team.class.getSimpleName()));
+        }
+        if (!Team.isValidName(teamName) && !Team.isNoneTeamName(teamName)) {
+            throw new IllegalValueException(Team.MESSAGE_CONSTRAINTS);
+        }
         final Team modelTeam = teamMap.get(teamName);
 
         return new Person(modelName, modelPhone, modelEmail, modelGithub, modelTeam);

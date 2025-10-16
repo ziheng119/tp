@@ -17,7 +17,7 @@ import seedu.address.model.team.exceptions.TeamMaxCapacityException;
 public class Team {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Names should only contain alphanumeric characters and spaces, and it should not be blank";
+            "Team names should only contain alphanumeric characters and spaces, and it should not be blank";
 
     /*
      * The first character of the address must not be a whitespace,
@@ -145,6 +145,13 @@ public class Team {
         return test.matches(VALIDATION_REGEX);
     }
 
+    /**
+     * Returns true if a given string is a valid name.
+     */
+    public static boolean isNoneTeamName(String test) {
+        return test.equals("");
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this)
@@ -165,7 +172,8 @@ public class Team {
         }
 
         Team otherTeam = (Team) other;
-        return name.equals(otherTeam.name) && persons.equals(otherTeam.persons);
+        return name.equals(otherTeam.name)
+                && persons.equals(otherTeam.persons);
     }
 
     @Override
