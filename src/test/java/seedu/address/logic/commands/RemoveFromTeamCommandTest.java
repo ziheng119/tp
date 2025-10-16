@@ -40,8 +40,8 @@ public class RemoveFromTeamCommandTest {
         // Create team first
         Team team = new Team("Team1");
         model.addTeam(team);
-        assertThrows(CommandException.class, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX,
-                () -> command.execute(model));
+        assertThrows(CommandException.class, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX, ()
+                -> command.execute(model));
     }
 
     @Test
@@ -124,7 +124,8 @@ public class RemoveFromTeamCommandTest {
     @Test
     public void toStringMethod() {
         RemoveFromTeamCommand command = new RemoveFromTeamCommand(Index.fromOneBased(1), "Team1");
-        String expected = RemoveFromTeamCommand.class.getCanonicalName() + "{personIndex=" + Index.fromOneBased(1) + ", teamName=Team1}";
+        String expected = RemoveFromTeamCommand.class.getCanonicalName() + "{personIndex="
+                + Index.fromOneBased(1) + ", teamName=Team1}";
         assertEquals(expected, command.toString());
     }
 }
