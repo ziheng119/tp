@@ -14,6 +14,8 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 
 public class ParserUtilTest {
+    private static final String WHITESPACE = " \t\r\n";
+
     private static final String INVALID_NAME = "R@chel";
     private static final String INVALID_PHONE = "+651234";
     private static final String INVALID_GITHUB = "-rachel";
@@ -24,7 +26,9 @@ public class ParserUtilTest {
     private static final String VALID_GITHUB = "rachelwalker";
     private static final String VALID_EMAIL = "rachel@example.com";
 
-    private static final String WHITESPACE = " \t\r\n";
+    private static final String INVALID_TEAM_NAME = "Team@123";
+    private static final String VALID_TEAM_NAME = "Team 123";
+    private static final String TEAM_NAME_WHITESPACE = WHITESPACE + VALID_TEAM_NAME + WHITESPACE;
 
     @Test
     public void parseIndex_invalidInput_throwsParseException() {
@@ -136,5 +140,27 @@ public class ParserUtilTest {
         String emailWithWhitespace = WHITESPACE + VALID_EMAIL + WHITESPACE;
         Email expectedEmail = new Email(VALID_EMAIL);
         assertEquals(expectedEmail, ParserUtil.parseEmail(emailWithWhitespace));
+    }
+
+    @Test
+    public void parseTeamName_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseTeamName(null));
+    }
+
+    @Test
+    public void parseTeamName_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseTeamName(INVALID_TEAM_NAME));
+        assertThrows(ParseException.class, () -> ParserUtil.parseTeamName("")); // blank
+        assertThrows(ParseException.class, () -> ParserUtil.parseTeamName("   ")); // only spaces
+    }
+
+    @Test
+    public void parseTeamName_validValueWithoutWhitespace_returnsTrimmedName() throws Exception {
+        assertEquals(VALID_TEAM_NAME, ParserUtil.parseTeamName(VALID_TEAM_NAME));
+    }
+
+    @Test
+    public void parseTeamName_validValueWithWhitespace_returnsTrimmedName() throws Exception {
+        assertEquals(VALID_TEAM_NAME, ParserUtil.parseTeamName(TEAM_NAME_WHITESPACE));
     }
 }

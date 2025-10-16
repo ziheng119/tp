@@ -8,6 +8,7 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.model.person.Person;
 import seedu.address.model.team.exceptions.DuplicateTeamException;
 import seedu.address.model.team.exceptions.TeamNotFoundException;
 
@@ -34,8 +35,7 @@ public class UniqueTeamList implements Iterable<Team> {
     public boolean contains(Team toCheck) {
         requireNonNull(toCheck);
         return internalList.stream()
-                .map(Team::getName)
-                .anyMatch(toCheck.getName()::equals);
+                .anyMatch(toCheck::isSameTeam);
     }
 
     /**
@@ -53,6 +53,18 @@ public class UniqueTeamList implements Iterable<Team> {
         requireNonNull(teamName);
         return internalList.stream()
                 .filter(team -> team.getName().equals(teamName))
+                .findFirst()
+                .orElse(null);
+    }
+
+    /**
+     * Returns the team that contains the given person.
+     * Returns null if the person is not in any team.
+     */
+    public Team getTeamContainingPerson(Person person) {
+        requireNonNull(person);
+        return internalList.stream()
+                .filter(team -> team.hasPerson(person))
                 .findFirst()
                 .orElse(null);
     }
@@ -160,7 +172,7 @@ public class UniqueTeamList implements Iterable<Team> {
     private boolean teamsAreUnique(List<Team> teams) {
         for (int i = 0; i < teams.size() - 1; i++) {
             for (int j = i + 1; j < teams.size(); j++) {
-                if (teams.get(i).equals(teams.get(j)) || teams.get(i).getName().equals(teams.get(j).getName())) {
+                if (teams.get(i).isSameTeam(teams.get(j))) {
                     return false;
                 }
             }
