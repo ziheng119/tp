@@ -34,13 +34,13 @@ public class RemoveFromTeamCommandParserTest {
 
     @Test
     public void parse_missingPersonName_throwsParseException() {
-        assertThrows(ParseException.class, () -> parser.parse("/team Team1"));
+        assertThrows(ParseException.class, () -> parser.parse("t/Team1"));
     }
 
     @Test
     public void parse_validInput_returnsRemoveFromTeamCommand() throws ParseException {
         RemoveFromTeamCommand expected = new RemoveFromTeamCommand("John Doe", "Team1");
-        RemoveFromTeamCommand actual = parser.parse("John Doe /team Team1");
+        RemoveFromTeamCommand actual = parser.parse("John Doe t/Team1");
         assertEquals(expected.getPersonName(), actual.getPersonName());
         assertEquals(expected.getTeamName(), actual.getTeamName());
     }
@@ -48,7 +48,7 @@ public class RemoveFromTeamCommandParserTest {
     @Test
     public void parse_personNameWithSpaces_returnsRemoveFromTeamCommand() throws ParseException {
         RemoveFromTeamCommand expected = new RemoveFromTeamCommand("John Michael Doe", "Team1");
-        RemoveFromTeamCommand actual = parser.parse("John Michael Doe /team Team1");
+        RemoveFromTeamCommand actual = parser.parse("John Michael Doe t/Team1");
         assertEquals(expected.getPersonName(), actual.getPersonName());
         assertEquals(expected.getTeamName(), actual.getTeamName());
     }
@@ -56,7 +56,7 @@ public class RemoveFromTeamCommandParserTest {
     @Test
     public void parse_teamNameWithSpaces_returnsRemoveFromTeamCommand() throws ParseException {
         RemoveFromTeamCommand expected = new RemoveFromTeamCommand("John Doe", "Team Alpha");
-        RemoveFromTeamCommand actual = parser.parse("John Doe /team Team Alpha");
+        RemoveFromTeamCommand actual = parser.parse("John Doe t/Team Alpha");
         assertEquals(expected.getPersonName(), actual.getPersonName());
         assertEquals(expected.getTeamName(), actual.getTeamName());
     }
@@ -64,7 +64,7 @@ public class RemoveFromTeamCommandParserTest {
     @Test
     public void parse_extraWhitespace_returnsRemoveFromTeamCommand() throws ParseException {
         RemoveFromTeamCommand expected = new RemoveFromTeamCommand("John Doe", "Team1");
-        RemoveFromTeamCommand actual = parser.parse("  John Doe  /team  Team1  ");
+        RemoveFromTeamCommand actual = parser.parse("  John Doe  t/Team1  ");
         assertEquals(expected.getPersonName(), actual.getPersonName());
         assertEquals(expected.getTeamName(), actual.getTeamName());
     }
