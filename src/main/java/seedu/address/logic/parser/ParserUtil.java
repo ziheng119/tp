@@ -90,4 +90,19 @@ public class ParserUtil {
         }
         return new Email(trimmedEmail);
     }
+
+    /**
+     * Parses a {@code String teamName} into a valid team name string.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code teamName} is invalid.
+     */
+    public static String parseTeamName(String teamName) throws ParseException {
+        requireNonNull(teamName);
+        String trimmedName = teamName.trim();
+        if (!seedu.address.model.team.Team.isValidName(trimmedName)) {
+            throw new ParseException(seedu.address.model.team.Team.MESSAGE_CONSTRAINTS);
+        }
+        return trimmedName;
+    }
 }
