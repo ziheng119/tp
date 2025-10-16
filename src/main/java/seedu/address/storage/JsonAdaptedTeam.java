@@ -18,7 +18,6 @@ import seedu.address.model.team.Team;
 class JsonAdaptedTeam {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Team's Name field is missing!";
-    public static final String MISSING_PERSON_MESSAGE_FORMAT = "Member %s not found in address book!";
 
     private final String name;
     private final List<Email> members = new ArrayList<>();

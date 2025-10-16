@@ -81,6 +81,14 @@ public class Team {
     }
 
     /**
+     * Overloaded method to replace the contents of the person list with an {@code ObservableList}.
+     * Delegates to the List-based setPersons method.
+     */
+    public void setPersons(ObservableList<Person> persons) {
+        setPersons((List<Person>) persons);
+    }
+
+    /**
      * Resets the existing data of this {@code Team} with {@code newData}.
      */
     public void resetData(ObservableList<Person> newData) {
@@ -134,35 +142,12 @@ public class Team {
     }
 
     //// util methods
-    public ObservableList<Person> getPersonList() {
-        return persons.asUnmodifiableObservableList();
-    }
 
     /**
      * Returns true if a given string is a valid name.
      */
     public static boolean isValidName(String test) {
         return test.matches(VALIDATION_REGEX);
-    }
-
-    /**
-     * Returns true if a given string is a valid name.
-     */
-    public static boolean isNoneTeamName(String test) {
-        return test.equals("");
-    }
-
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this)
-                .add("name", name)
-                .add("persons", persons)
-                .toString();
-    }
-
-    @Override
-    public ObservableList<Person> getPersonList() {
-        return persons.asUnmodifiableObservableList();
     }
 
     /**
@@ -174,6 +159,17 @@ public class Team {
             return true;
         }
         return otherTeam != null && otherTeam.getName().equals(getName());
+    }
+
+    /**
+     * Returns true if a given string is a valid name.
+     */
+    public static boolean isNoneTeamName(String test) {
+        return test.equals("");
+    }
+
+    public ObservableList<Person> getPersonList() {
+        return persons.asUnmodifiableObservableList();
     }
 
     @Override
@@ -194,5 +190,13 @@ public class Team {
     @Override
     public int hashCode() {
         return name.hashCode() + persons.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .add("name", name)
+                .add("persons", persons)
+                .toString();
     }
 }
