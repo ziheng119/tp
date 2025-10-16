@@ -15,6 +15,7 @@ import seedu.address.model.person.Github;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.team.Team;
 
 /**
  * Parses input arguments and creates a new AddStudentCommand object.
@@ -45,8 +46,9 @@ public class AddStudentCommandParser implements Parser<AddStudentCommand> {
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
         Github github = ParserUtil.parseGithub(argMultimap.getValue(PREFIX_GITHUB).get());
+        Team team = Team.NONE;
 
-        Person person = new Person(name, phone, email, github);
+        Person person = new Person(name, phone, email, github, team);
 
         return new AddStudentCommand(person);
     }

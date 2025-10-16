@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class RemoveFromTeamCommand extends Command {
     public static final String COMMAND_WORD = "remove_from_team";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Removes a person from a team. "
-            + "Parameters: INDEX team/TEAM_NAME\n"
+            + "Parameters: INDEX t/TEAM_NAME\n"
             + "Example: " + COMMAND_WORD + " 1 t/Team_1";
 
     public static final String MESSAGE_SUCCESS = "Person %s removed from team %s";
@@ -74,6 +75,17 @@ public class RemoveFromTeamCommand extends Command {
 
         // Remove person from team
         model.removePersonFromTeam(targetPerson, targetTeam);
+
+        Person updatedPerson = new Person(
+                targetPerson.getName(),
+                targetPerson.getPhone(),
+                targetPerson.getEmail(),
+                targetPerson.getGithub(),
+                Team.NONE);
+
+        model.setPerson(targetPerson, updatedPerson);
+        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+
         return new CommandResult(String.format(MESSAGE_SUCCESS,
             Messages.format(targetPerson), teamName));
     }

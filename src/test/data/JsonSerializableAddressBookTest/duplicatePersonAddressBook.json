@@ -3,11 +3,14 @@
     "name": "Alice Pauline",
     "phone": "94351253",
     "email": "alice@example.com",
-    "github": "alicepauline"
+    "github": "alice1",
+    "teamName" : ""
   }, {
     "name": "Alice Pauline",
     "phone": "94351253",
     "email": "alice@example.com",
-    "github": "alidusrename"
-  } ]
+    "github": "alice1",
+    "teamName" : ""
+  } ],
+  "teams" : [ ]
 }

@@ -6,7 +6,6 @@ import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.model.ReadOnlyTeam;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.team.exceptions.TeamMaxCapacityException;
@@ -15,16 +14,17 @@ import seedu.address.model.team.exceptions.TeamMaxCapacityException;
  * Wraps all data at the team level
  * Duplicates are not allowed (by .isSamePerson comparison)
  */
-public class Team implements ReadOnlyTeam {
+public class Team {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Names should only contain alphanumeric characters and spaces, and it should not be blank";
+            "Team names should only contain alphanumeric characters and spaces, and it should not be blank";
 
     /*
      * The first character of the address must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
     public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
+    public static final Team NONE = new Team();
     private static final int MAX_CAPACITY = 5;
 
     private final String name;
@@ -39,6 +39,11 @@ public class Team implements ReadOnlyTeam {
      */
     {
         persons = new UniquePersonList();
+    }
+
+    // Private constructor for NONE
+    private Team() {
+        this.name = "";
     }
 
     /**
@@ -73,6 +78,14 @@ public class Team implements ReadOnlyTeam {
             throw new TeamMaxCapacityException();
         }
         this.persons.setPersons(persons);
+    }
+
+    /**
+     * Overloaded method to replace the contents of the person list with an {@code ObservableList}.
+     * Delegates to the List-based setPersons method.
+     */
+    public void setPersons(ObservableList<Person> persons) {
+        setPersons((List<Person>) persons);
     }
 
     /**
@@ -127,6 +140,7 @@ public class Team implements ReadOnlyTeam {
     public String getName() {
         return name;
     }
+
     //// util methods
 
     /**
@@ -134,19 +148,6 @@ public class Team implements ReadOnlyTeam {
      */
     public static boolean isValidName(String test) {
         return test.matches(VALIDATION_REGEX);
-    }
-
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this)
-                .add("name", name)
-                .add("persons", persons)
-                .toString();
-    }
-
-    @Override
-    public ObservableList<Person> getPersonList() {
-        return persons.asUnmodifiableObservableList();
     }
 
     /**
@@ -158,6 +159,17 @@ public class Team implements ReadOnlyTeam {
             return true;
         }
         return otherTeam != null && otherTeam.getName().equals(getName());
+    }
+
+    /**
+     * Returns true if a given string is a valid name.
+     */
+    public static boolean isNoneTeamName(String test) {
+        return test.equals("");
+    }
+
+    public ObservableList<Person> getPersonList() {
+        return persons.asUnmodifiableObservableList();
     }
 
     @Override
@@ -172,11 +184,19 @@ public class Team implements ReadOnlyTeam {
         }
 
         Team otherTeam = (Team) other;
-        return name.equals(otherTeam.name) && persons.equals(otherTeam.persons);
+        return name.equals(otherTeam.name);
     }
 
     @Override
     public int hashCode() {
         return name.hashCode() + persons.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .add("name", name)
+                .add("persons", persons)
+                .toString();
     }
 }

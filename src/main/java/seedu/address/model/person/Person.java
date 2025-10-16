@@ -5,6 +5,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.util.Objects;
 
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.model.team.Team;
 
 /**
  * Represents a Person in the address book. Guarantees: details are present and not null, field
@@ -19,16 +20,18 @@ public class Person {
 
     // Data fields
     private final Github github;
+    private final Team team;
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Github github) {
-        requireAllNonNull(name, phone, email, github);
+    public Person(Name name, Phone phone, Email email, Github github, Team team) {
+        requireAllNonNull(name, phone, email, github, team);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.github = github;
+        this.team = team;
     }
 
     public Name getName() {
@@ -45,6 +48,14 @@ public class Person {
 
     public Github getGithub() {
         return github;
+    }
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public String getTeamName() {
+        return team.getName();
     }
 
     /**
@@ -75,20 +86,28 @@ public class Person {
         }
 
         Person otherPerson = (Person) other;
-        return name.equals(otherPerson.name) && phone.equals(otherPerson.phone)
-                && email.equals(otherPerson.email) && github.equals(otherPerson.github);
+        return name.equals(otherPerson.name)
+                && phone.equals(otherPerson.phone)
+                && email.equals(otherPerson.email)
+                && github.equals(otherPerson.github)
+                && team.equals(otherPerson.team);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, github);
+        return Objects.hash(name, phone, email, github, team);
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).add("name", name).add("phone", phone).add("email", email)
-                .add("github", github).toString();
+        return new ToStringBuilder(this)
+                .add("name", name)
+                .add("phone", phone)
+                .add("email", email)
+                .add("github", github)
+                .add("team", team.getName())
+                .toString();
     }
 
 }

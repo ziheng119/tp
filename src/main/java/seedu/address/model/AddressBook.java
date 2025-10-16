@@ -105,6 +105,11 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void removePerson(Person key) {
         persons.remove(key);
+        for (Team team : teams) {
+            if (team.hasPerson(key)) {
+                team.removePerson(key);
+            }
+        }
     }
 
     //// team-level operations

@@ -5,6 +5,7 @@ import seedu.address.model.person.Github;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.team.Team;
 
 /**
  * A utility class to help with building Person objects.
@@ -20,6 +21,7 @@ public class PersonBuilder {
     private Phone phone;
     private Email email;
     private Github github;
+    private Team team;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -29,6 +31,7 @@ public class PersonBuilder {
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
         github = new Github(DEFAULT_GITHUB);
+        team = Team.NONE;
     }
 
     /**
@@ -39,6 +42,7 @@ public class PersonBuilder {
         phone = personToCopy.getPhone();
         email = personToCopy.getEmail();
         github = personToCopy.getGithub();
+        team = personToCopy.getTeam();
     }
 
     /**
@@ -73,8 +77,16 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code Team} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withTeam(Team team) {
+        this.team = team;
+        return this;
+    }
+
     public Person build() {
-        return new Person(name, phone, email, github);
+        return new Person(name, phone, email, github, team);
     }
 
 }

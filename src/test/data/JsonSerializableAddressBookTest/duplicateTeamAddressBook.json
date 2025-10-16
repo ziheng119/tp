@@ -3,12 +3,14 @@
     "name" : "John Doe",
     "phone" : "98765432",
     "email" : "johnd@example.com",
-    "github" : "johndoe"
+    "github" : "johndoe",
+    "teamName" : "team123"
   }, {
     "name" : "John De",
     "phone" : "98765432",
     "email" : "johnd@exmple.com",
-    "github" : "johnde"
+    "github" : "johnde",
+    "teamName" : "team123"
   } ],
   "teams" : [ {
     "name" : "team123",

@@ -2,9 +2,11 @@ package seedu.address.ui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.person.Person;
+import seedu.address.model.team.Team;
 
 /**
  * An UI component that displays information of a {@code Person}.
@@ -31,6 +33,8 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label id;
     @FXML
+    private FlowPane team;
+    @FXML
     private Label phone;
     @FXML
     private Label github;
@@ -45,6 +49,9 @@ public class PersonCard extends UiPart<Region> {
         this.person = person;
         id.setText(displayedIndex + ". ");
         name.setText(person.getName().fullName);
+        if (person.getTeam() != Team.NONE) {
+            team.getChildren().add(new Label(person.getTeamName()));
+        }
         phone.setText(person.getPhone().value);
         github.setText(person.getGithub().value);
         email.setText(person.getEmail().value);
