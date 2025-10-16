@@ -102,7 +102,7 @@ public class RemoveFromTeamCommand extends Command {
                 .filter(person -> person.getEmail().equals(email))
                 .findFirst()
                 .orElse(null);
-        
+
         if (personToReplace != null) {
             model.setPerson(personToReplace, updatedPerson);
         }
