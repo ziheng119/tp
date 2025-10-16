@@ -172,8 +172,7 @@ public class Team {
         }
 
         Team otherTeam = (Team) other;
-        return name.equals(otherTeam.name)
-                && persons.equals(otherTeam.persons);
+        return name.equals(otherTeam.name);
     }
 
     @Override
