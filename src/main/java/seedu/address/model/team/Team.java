@@ -149,6 +149,13 @@ public class Team implements ReadOnlyTeam {
         return persons.asUnmodifiableObservableList();
     }
 
+    public boolean isSameTeam(Team otherTeam) {
+        if (otherTeam == this) {
+            return true;
+        }
+        return otherTeam != null && otherTeam.getName().equals(getName());
+    }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {
