@@ -22,7 +22,7 @@ public class RemoveFromTeamCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Removes a person from a team. "
             + "Parameters: INDEX t/TEAM_NAME\n"
-            + "Example: " + COMMAND_WORD + " 1 t/Team_1";
+            + "Example: " + COMMAND_WORD + " 1 t/Team1";
 
     public static final String MESSAGE_SUCCESS = "Person %s removed from team %s";
     public static final String MESSAGE_TEAM_NOT_FOUND = "Team with name '%s' not found";
