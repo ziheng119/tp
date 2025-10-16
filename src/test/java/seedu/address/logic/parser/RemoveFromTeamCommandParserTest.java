@@ -34,8 +34,8 @@ public class RemoveFromTeamCommandParserTest {
     }
 
     @Test
-    public void parse_missingPersonIndex_throwsParseException() {
-        assertThrows(ParseException.class, () -> parser.parse("t/ Team1"));
+    public void parse_missingPersonName_throwsParseException() {
+        assertThrows(ParseException.class, () -> parser.parse("t/Team1"));
     }
 
     @Test

@@ -21,6 +21,8 @@ public class CreateTeamCommandParser implements Parser<CreateTeamCommand> {
         String teamName;
         teamName = argMultimap.getPreamble();
 
-        return new CreateTeamCommand(teamName);
+        String parsedTeamName = ParserUtil.parseTeamName(teamName);
+
+        return new CreateTeamCommand(parsedTeamName);
     }
 }

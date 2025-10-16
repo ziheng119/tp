@@ -133,4 +133,10 @@ public interface Model {
      * The person and team must exist in the address book.
      */
     void removePersonFromTeam(Person person, Team team);
+
+    /**
+     * Returns the team that contains the given person.
+     * Returns null if the person is not in any team.
+     */
+    Team getTeamContainingPerson(Person person);
 }
