@@ -28,7 +28,6 @@ class JsonAdaptedTeam {
     @JsonCreator
     public JsonAdaptedTeam(@JsonProperty("name") String name,
                 @JsonProperty("members") List<Email> members) {
-        assert name != null : "Ensure name is not null";
         this.name = name;
         if (members != null) {
             assert !members.contains(null) : "Member email list should not contain null values";
@@ -53,6 +52,7 @@ class JsonAdaptedTeam {
      * Needs all persons to match email and link correct person object
      */
     public Team toModelType() throws IllegalValueException {
+        assert name != null : "Team name should not be null before validation";
         if (name == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT));
         }
