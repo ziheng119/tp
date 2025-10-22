@@ -44,7 +44,7 @@ public class NameContainsKeywordsPredicate implements Predicate<Person> {
             .toList();
 
         if (validNameKeywords.isEmpty() && validTeamKeywords.isEmpty()) {
-        return false;
+            return false;
         }
 
         boolean nameMatches = validNameKeywords.isEmpty()
