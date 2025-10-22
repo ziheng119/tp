@@ -119,7 +119,11 @@ Creates a team to add to SWEatless.
 
 Format: `create_team TEAM_NAME`
 
-* `TEAM_NAME` must follow the following format: .
+* `TEAM_NAME` must follow the following format:
+    * First character (day): `M`, `W`, `T`, `F`
+    * Second and third character (time): `08`, `09`, `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`
+    * Fourth character (hyphen): `-`
+    * Fifth character (team number): `1`, `2`, `3`, `4`
 
 Examples:
 * `create_team AY2526S1-CS2103T-F12-3`
@@ -134,6 +138,24 @@ Format: `delete_team TEAM_NAME`
 Examples:
 * `delete_team AY2526S1-CS2103T-F12-3`
 * `delete_team TEAM-1`
+
+### Adding a student to a team: `add_to_team`
+
+Adds the specificed student to the specified team in SWEatless.
+
+Format: `add_to_team INDEX t/TEAM_NAME`
+
+Examples:
+* `add_to_team 2 t/F12-3`
+
+### Removing a student from a team: `remove_from_team`
+
+Removes the specificed student from the specified team in SWEatless.
+
+Format: `remove_from_team INDEX t/TEAM_NAME`
+
+Examples:
+* `remove_from_team 1 t/T11-4`
 
 ### Locating persons by name: `find`
 
