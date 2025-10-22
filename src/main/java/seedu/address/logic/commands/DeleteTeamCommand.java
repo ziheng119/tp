@@ -46,42 +46,24 @@ public class DeleteTeamCommand extends Command {
             throw new CommandException(String.format(MESSAGE_TEAM_NOT_FOUND, teamName));
         }
 
-        // collect current members (use logical equality on person.team)
-        List<Person> members = model.getFilteredPersonList().stream()
+        List<Person> persons = model.getFilteredPersonList().stream()
                 .filter(p -> p.getTeam().equals(targetTeam))
                 .collect(Collectors.toList());
 
-        // For each member, create new Person with Team.NONE and replace in model
-        for (Person member : members) {
+        for (Person targetPerson : persons) {
             Person updatedPerson = new Person(
-                    member.getName(),
-                    member.getPhone(),
-                    member.getEmail(),
-                    member.getGithub(),
+                    targetPerson.getName(),
+                    targetPerson.getPhone(),
+                    targetPerson.getEmail(),
+                    targetPerson.getGithub(),
                     Team.NONE);
-            replacePersonByEmail(model, member.getEmail(), updatedPerson);
+            model.setPerson(targetPerson, updatedPerson);
         }
 
-        // remove team from model
-        model.removeTeam(targetTeam);
+        model.deleteTeam(targetTeam);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
 
         return new CommandResult(String.format(MESSAGE_SUCCESS, teamName));
-    }
-
-    /**
-     * Replaces a person in the model by their email address.
-     * This is needed because setPerson uses equals() which includes team field.
-     */
-    private void replacePersonByEmail(Model model, seedu.address.model.person.Email email, Person updatedPerson) {
-        Person personToReplace = model.getFilteredPersonList().stream()
-                .filter(person -> person.getEmail().equals(email))
-                .findFirst()
-                .orElse(null);
-
-        if (personToReplace != null) {
-            model.setPerson(personToReplace, updatedPerson);
-        }
     }
 
     @Override
