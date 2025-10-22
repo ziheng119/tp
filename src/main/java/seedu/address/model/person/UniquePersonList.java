@@ -3,6 +3,7 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
@@ -121,8 +122,7 @@ public class UniquePersonList implements Iterable<Person> {
             return false;
         }
 
-        return internalList.containsAll(otherList.internalList)
-                && otherList.internalList.containsAll(internalList);
+        return new HashSet<>(internalList).equals(new HashSet<>(otherList.internalList));
     }
 
     /**
