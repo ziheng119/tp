@@ -2,7 +2,6 @@ package seedu.address.model.person;
 
 import java.util.function.Predicate;
 
-import seedu.address.commons.util.StringUtil;
 import seedu.address.commons.util.ToStringBuilder;
 
 /**
@@ -18,7 +17,7 @@ public class TeamNamePredicate implements Predicate<Person> {
     @Override
     public boolean test(Person person) {
         assert person != null;
-        return StringUtil.containsWordIgnoreCase(person.getTeamName(), teamName);
+        return person.getTeamName().equalsIgnoreCase(teamName);
     }
 
     @Override
