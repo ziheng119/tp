@@ -56,14 +56,6 @@ public class TypicalPersons {
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 
-    static {
-        TEAM1.setPersons(Arrays.asList(ALICE, BENSON, CARL));
-
-        TEAM2.setPersons(Arrays.asList(DANIEL, ELLE, FIONA));
-
-        TEAM3.setPersons(Arrays.asList(GEORGE));
-    }
-
     private TypicalPersons() {} // prevents instantiation
 
     /**
@@ -74,6 +66,10 @@ public class TypicalPersons {
         for (Person person : getTypicalPersons()) {
             ab.addPerson(person);
         }
+        TEAM1.setPersons(Arrays.asList(ALICE, BENSON, CARL));
+        TEAM2.setPersons(Arrays.asList(DANIEL, ELLE, FIONA));
+        TEAM3.setPersons(Arrays.asList(GEORGE));
+
         for (Team team : getTypicalTeams()) {
             ab.addTeam(team);
         }
