@@ -35,12 +35,24 @@ public class NameContainsKeywordsPredicate implements Predicate<Person> {
      */
     @Override
     public boolean test(Person person) {
-        boolean nameMatches = nameKeywords.isEmpty()
-                || nameKeywords.stream()
+        List<String> validNameKeywords = nameKeywords.stream()
+        .filter(keyword -> !keyword.isBlank())
+            .toList();
+        
+        List<String> validTeamKeywords = teamKeywords.stream()
+        .filter(keyword -> !keyword.isBlank())
+                .toList();
+        
+        if (validNameKeywords.isEmpty() && validTeamKeywords.isEmpty()) {
+        return false;
+        }
+
+        boolean nameMatches = validNameKeywords.isEmpty()
+                || validNameKeywords.stream()
                         .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword));
 
-        boolean teamMatches = teamKeywords.isEmpty()
-                || teamKeywords.stream()
+        boolean teamMatches = validTeamKeywords.isEmpty()
+                || validTeamKeywords.stream()
                         .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getTeamName(), keyword));
 
         return nameMatches && teamMatches;
