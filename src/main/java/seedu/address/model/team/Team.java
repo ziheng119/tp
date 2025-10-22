@@ -154,7 +154,7 @@ public class Team {
      * Returns true if both teams have the same name. This defines a weaker notion of equality
      * between two teams. Abstracts team comparison for UniqueTeamList.java
      */
-    public boolean isSameTeam(Team otherTeam) {
+    public boolean isSameTeamName(Team otherTeam) {
         if (otherTeam == this) {
             return true;
         }
