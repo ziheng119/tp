@@ -34,7 +34,7 @@ public class FindCommandParser implements Parser<FindCommand> {
                 .collect(Collectors.toList());
 
         if (nameKeywords.isEmpty() && teamKeywords.isEmpty()) {
-            throw new ParseException(   
+            throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
         }
 

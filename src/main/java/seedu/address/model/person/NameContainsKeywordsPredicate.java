@@ -20,7 +20,7 @@ public class NameContainsKeywordsPredicate implements Predicate<Person> {
 
     @Override
     public boolean test(Person person) {
-        boolean nameMatches = nameKeywords.isEmpty() 
+        boolean nameMatches = nameKeywords.isEmpty()
                 || nameKeywords.stream()
                         .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword));
 
