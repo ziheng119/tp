@@ -53,7 +53,6 @@ class JsonAdaptedTeam {
      * Needs all persons to match email and link correct person object
      */
     public Team toModelType() throws IllegalValueException {
-        assert name != null : "Team name should not be null before validation";
         if (name == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT));
         }
