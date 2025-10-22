@@ -18,7 +18,7 @@ import seedu.address.model.team.Team;
 
 public class JsonAdaptedTeamTest {
 
-    private static final String VALID_TEAM_NAME = "TeamAlpha";
+    private static final String VALID_TEAM_NAME = "F12-3";
     private static final Team VALID_TEAM = new Team(VALID_TEAM_NAME);
 
     private static final Name ALICE_NAME = new Name("Alice");
