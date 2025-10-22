@@ -102,7 +102,7 @@ public class ParserUtil {
         requireNonNull(teamName);
         String trimmedName = teamName.trim();
         if (!Team.isValidName(trimmedName)) {
-            throw new ParseException(seedu.address.model.team.Team.MESSAGE_CONSTRAINTS);
+            throw new ParseException(Team.MESSAGE_CONSTRAINTS);
         }
         return trimmedName;
     }
