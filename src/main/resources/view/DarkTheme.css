@@ -132,6 +132,21 @@
     -fx-text-fill: #010504;
 }
 
+.list-cell .hyperlink {
+    -fx-text-fill: white;
+    -fx-underline: false;
+    -fx-border-color: transparent;
+}
+
+.list-cell .hyperlink:visited {
+    -fx-text-fill: white;
+}
+
+.list-cell .hyperlink:hover {
+    -fx-text-fill: white;
+    -fx-underline: true;
+}
+
 .stack-pane {
      -fx-background-color: derive(#1d1d1d, 20%);
 }
