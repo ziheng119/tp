@@ -18,7 +18,7 @@ public class TeamNamePredicate implements Predicate<Person> {
     @Override
     public boolean test(Person person) {
         assert person != null;
-        return StringUtil.equalsIgnoreCase(person.getTeamName(), teamName);
+        return StringUtil.containsWordIgnoreCase(person.getTeamName(), teamName);
     }
 
     @Override
