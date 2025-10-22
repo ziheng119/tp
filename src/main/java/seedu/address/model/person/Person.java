@@ -90,13 +90,13 @@ public class Person {
                 && phone.equals(otherPerson.phone)
                 && email.equals(otherPerson.email)
                 && github.equals(otherPerson.github)
-                && team.equals(otherPerson.team);
+                && team.isSameTeamName(otherPerson.team);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, github, team);
+        return Objects.hash(name, phone, email, github, team.getName());
     }
 
     @Override
