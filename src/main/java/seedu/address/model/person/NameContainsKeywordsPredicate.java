@@ -36,12 +36,12 @@ public class NameContainsKeywordsPredicate implements Predicate<Person> {
     @Override
     public boolean test(Person person) {
         List<String> validNameKeywords = nameKeywords.stream()
-        .filter(keyword -> !keyword.isBlank())
-        .toList();
+            .filter(keyword -> !keyword.isBlank())
+            .toList();
 
         List<String> validTeamKeywords = teamKeywords.stream()
-        .filter(keyword -> !keyword.isBlank())
-        .toList();
+            .filter(keyword -> !keyword.isBlank())
+            .toList();
 
         if (validNameKeywords.isEmpty() && validTeamKeywords.isEmpty()) {
         return false;
