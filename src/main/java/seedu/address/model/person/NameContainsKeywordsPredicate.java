@@ -10,16 +10,25 @@ import seedu.address.commons.util.ToStringBuilder;
  * Tests that a {@code Person}'s {@code Name} matches any of the keywords given.
  */
 public class NameContainsKeywordsPredicate implements Predicate<Person> {
-    private final List<String> keywords;
+    private final List<String> nameKeywords;
+    private final List<String> teamKeywords;
 
-    public NameContainsKeywordsPredicate(List<String> keywords) {
-        this.keywords = keywords;
+    public NameContainsKeywordsPredicate(List<String> nameKeywords, List<String> teamKeywords) {
+        this.nameKeywords = nameKeywords;
+        this.teamKeywords = teamKeywords;
     }
 
     @Override
     public boolean test(Person person) {
-        return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword));
+        boolean nameMatches = nameKeywords.isEmpty() 
+                || nameKeywords.stream()
+                        .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword));
+
+        boolean teamMatches = teamKeywords.isEmpty()
+                || teamKeywords.stream()
+                        .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getTeamName(), keyword));
+
+        return nameMatches && teamMatches;
     }
 
     @Override
@@ -34,11 +43,15 @@ public class NameContainsKeywordsPredicate implements Predicate<Person> {
         }
 
         NameContainsKeywordsPredicate otherNameContainsKeywordsPredicate = (NameContainsKeywordsPredicate) other;
-        return keywords.equals(otherNameContainsKeywordsPredicate.keywords);
+        return nameKeywords.equals(otherNameContainsKeywordsPredicate.nameKeywords)
+                && teamKeywords.equals(otherNameContainsKeywordsPredicate.teamKeywords);
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).add("keywords", keywords).toString();
+        return new ToStringBuilder(this)
+                .add("nameKeywords", nameKeywords)
+                .add("teamKeywords", teamKeywords)
+                .toString();
     }
 }

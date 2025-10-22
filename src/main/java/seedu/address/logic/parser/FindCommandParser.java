@@ -1,9 +1,11 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TEAM;
 import java.util.Arrays;
-
+import java.util.List;
+import java.util.stream.Collectors;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
@@ -19,15 +21,24 @@ public class FindCommandParser implements Parser<FindCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public FindCommand parse(String args) throws ParseException {
-        String trimmedArgs = args.trim();
-        if (trimmedArgs.isEmpty()) {
-            throw new ParseException(
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_TEAM);
+
+        List<String> nameKeywords = argMultimap.getAllValues(PREFIX_NAME).stream()
+                .flatMap(s -> Arrays.stream(s.trim().split("\\s+")))
+                .filter(s -> !s.isEmpty())
+                .collect(Collectors.toList());
+
+        List<String> teamKeywords = argMultimap.getAllValues(PREFIX_TEAM).stream()
+                .flatMap(s -> Arrays.stream(s.trim().split("\\s+")))
+                .filter(s -> !s.isEmpty())
+                .collect(Collectors.toList());
+
+        if (nameKeywords.isEmpty() && teamKeywords.isEmpty()) {
+            throw new ParseException(   
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
         }
 
-        String[] nameKeywords = trimmedArgs.split("\\s+");
-
-        return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)));
+        return new FindCommand(new NameContainsKeywordsPredicate(nameKeywords, teamKeywords));
     }
 
 }
