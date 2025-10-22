@@ -6,6 +6,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
@@ -68,12 +69,12 @@ public class PersonCard extends UiPart<Region> {
     }
 
     /**
-     * Build the external URL for a team. Replace BASE_URL with your real target.
+     * Build the external URL for a team.
      */
     private String buildTeamUrl(String teamName) {
-        final String BASE_URL = "https://github.com/AY2526S1-CS2103T-"; // <-- change to your real base URL
+        final String baseUrl = "https://github.com/AY2526S1-CS2103T-";
         String encoded = URLEncoder.encode(teamName, StandardCharsets.UTF_8);
-        return BASE_URL + encoded;
+        return baseUrl + encoded;
     }
 
     private void openTeamUrl(String teamName) {
@@ -82,11 +83,9 @@ public class PersonCard extends UiPart<Region> {
             if (Desktop.isDesktopSupported()) {
                 Desktop.getDesktop().browse(new URI(url));
             } else {
-                // fallback for Windows if Desktop not supported
                 Runtime.getRuntime().exec(new String[] {"cmd", "/c", "start", "\"\"", url});
             }
         } catch (IOException | URISyntaxException e) {
-            // optionally show a user alert or log the error
             System.err.println("Failed to open team URL: " + e.getMessage());
         }
     }
