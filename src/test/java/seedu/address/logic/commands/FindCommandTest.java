@@ -76,7 +76,8 @@ public class FindCommandTest {
 
     @Test
     public void toStringMethod() {
-        NameContainsKeywordsPredicate predicate = new NameContainsKeywordsPredicate(Arrays.asList("keyword"), Collections.emptyList());
+        NameContainsKeywordsPredicate predicate =
+            new NameContainsKeywordsPredicate(Arrays.asList("keyword"), Collections.emptyList());
         FindCommand findCommand = new FindCommand(predicate);
         String expected = FindCommand.class.getCanonicalName() + "{predicate=" + predicate + "}";
         assertEquals(expected, findCommand.toString());
