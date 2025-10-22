@@ -106,13 +106,6 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /**
-     * Returns the backing list as an unmodifiable {@code ObservableList}.
-     */
-    public ObservableList<Person> asUnmodifiableObservableList() {
-        return internalUnmodifiableList;
-    }
-    
-    /**
      * Returns true if both {@code UniquePersonList} instances contain the same set of persons.
      * The order of persons does not matter, but all persons must match based on {@code Person#equals(Object)}.
      *
@@ -130,6 +123,13 @@ public class UniquePersonList implements Iterable<Person> {
 
         return internalList.containsAll(otherList.internalList)
                 && otherList.internalList.containsAll(internalList);
+    }
+
+    /**
+     * Returns the backing list as an unmodifiable {@code ObservableList}.
+     */
+    public ObservableList<Person> asUnmodifiableObservableList() {
+        return internalUnmodifiableList;
     }
 
     @Override
