@@ -13,11 +13,26 @@ public class NameContainsKeywordsPredicate implements Predicate<Person> {
     private final List<String> nameKeywords;
     private final List<String> teamKeywords;
 
+    /**
+     * Creates a predicate to test for name and team keyword matches.
+     *
+     * @param nameKeywords List of keywords to match against person names. Empty list means no name filtering.
+     * @param teamKeywords List of keywords to match against team names. Empty list means no team filtering.
+     */
     public NameContainsKeywordsPredicate(List<String> nameKeywords, List<String> teamKeywords) {
         this.nameKeywords = nameKeywords;
         this.teamKeywords = teamKeywords;
     }
 
+    /**
+     * Tests if a given person matches both the name and team keywords (if any).
+     * A person matches if:
+     * - Their name contains any of the name keywords (or no name keywords were provided) AND
+     * - Their team contains any of the team keywords (or no team keywords were provided)
+     *
+     * @param person the person to test
+     * @return true if the person matches both name and team criteria
+     */
     @Override
     public boolean test(Person person) {
         boolean nameMatches = nameKeywords.isEmpty()
