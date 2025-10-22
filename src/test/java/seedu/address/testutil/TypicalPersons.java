@@ -62,7 +62,6 @@ public class TypicalPersons {
         TEAM2.setPersons(Arrays.asList(DANIEL, ELLE, FIONA));
 
         TEAM3.setPersons(Arrays.asList(GEORGE));
-
     }
 
     private TypicalPersons() {} // prevents instantiation
