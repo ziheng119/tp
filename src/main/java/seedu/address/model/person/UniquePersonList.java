@@ -111,7 +111,14 @@ public class UniquePersonList implements Iterable<Person> {
     public ObservableList<Person> asUnmodifiableObservableList() {
         return internalUnmodifiableList;
     }
-
+    
+    /**
+     * Returns true if both {@code UniquePersonList} instances contain the same set of persons.
+     * The order of persons does not matter, but all persons must match based on {@code Person#equals(Object)}.
+     *
+     * @param otherList The other {@code UniquePersonList} to compare with.
+     * @return {@code true} if both lists contain the same persons; {@code false} otherwise.
+     */
     public boolean hasSamePeople(UniquePersonList otherList) {
         if (otherList == this) {
             return true;
