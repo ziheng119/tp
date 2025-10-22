@@ -49,9 +49,8 @@ public class JsonAdaptedTeamTest {
     @Test
     public void toModelType_missingTeamName_throwsIllegalValueException() {
         List<Email> memberEmails = List.of(ALICE_EMAIL);
-        JsonAdaptedTeam jsonTeam = new JsonAdaptedTeam(null, memberEmails);
 
-        assertThrows(IllegalValueException.class, () -> jsonTeam.toModelType());
+        assertThrows(AssertionError.class, () -> new JsonAdaptedTeam(null, memberEmails));
     }
 
     @Test

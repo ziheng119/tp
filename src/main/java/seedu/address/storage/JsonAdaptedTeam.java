@@ -28,6 +28,7 @@ class JsonAdaptedTeam {
     @JsonCreator
     public JsonAdaptedTeam(@JsonProperty("name") String name,
                 @JsonProperty("members") List<Email> members) {
+        assert name != null : "Ensure name is not null";
         this.name = name;
         if (members != null) {
             assert !members.contains(null) : "Member email list should not contain null values";
