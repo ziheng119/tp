@@ -153,7 +153,7 @@ public class UniqueTeamList implements Iterable<Team> {
         }
 
         UniqueTeamList otherUniqueTeamList = (UniqueTeamList) other;
-        return internalList.stream().sorted().equals(otherUniqueTeamList.internalList.stream().sorted());
+        return internalList.equals(otherUniqueTeamList.internalList);
     }
 
     @Override
