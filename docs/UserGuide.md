@@ -17,11 +17,11 @@ Action | Format, Examples
 **Create Student** | `create_student n/NAME p/PHONE_NUMBER e/EMAIL g/GITHUB_USERNAME​` <br> e.g., `create_student n/James Ho p/22224444 e/jamesho@example.com g/jamesho`
 **Delete Student** | `delete_student INDEX`<br> e.g., `delete 3`
 **Edit Student** | `edit_student INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [g/GITHUB_USERNAME]​`<br> e.g.,`edit_student 2 n/James Lee e/jameslee@example.com`
-**Create Team** | `create_team TEAM_NAME` <br> e.g., `create_team AY2526S1-CS2103T-F12-3`
-**Delete Team** | `delete_team TEAM_NAME`<br> e.g., `delete_team AY2526S1-CS2103T-F12-3`
-**Add To Team** | `add_to_team INDEX t/TEAM_NAME` <br> e.g., `add_to_team 1 t/AY2526S1-CS2103T-F12-3`
-**Remove from Team** | `remove_from_team INDEX t/TEAM_NAME`<br> e.g., `remove_from_team 3 t/AY2526S1-CS2103T-F12-3`
-**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**Create Team** | `create_team TEAM_NAME` <br> e.g., `create_team F12-3`
+**Delete Team** | `delete_team TEAM_NAME`<br> e.g., `delete_team F12-3`
+**Add To Team** | `add_to_team INDEX t/TEAM_NAME` <br> e.g., `add_to_team 1 t/F12-3`
+**Remove from Team** | `remove_from_team INDEX t/TEAM_NAME`<br> e.g., `remove_from_team 3 t/F12-3`
+**Find** | `find n/[MORE_NAMES] t/[MORE_TEAM_NAMES]`<br> e.g., `find n/James Jake t/F12-3`
 **List** | `list`
 **Clear** | `clear`
 **Exit** | `exit`
@@ -159,21 +159,28 @@ Examples:
 
 ### Locating persons by name: `find`
 
-Finds students whose names contain any of the given keywords.
+Finds students whose names contain any of the given keywords or who belong in teams provided
 
-Format: `find KEYWORD [MORE_KEYWORDS]`
+Format: `find n/[MORE_NAMES] t/[MORE_TEAM_NAMES]`
+        `find n/[MORE_NAMES]`
+        `find t/[MORE_TEAM_NAMES]`
 
 * The search is case-insensitive. e.g `hans` will match `Hans`
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
+* Only the name and/or team is searched.
 * Only full words will be matched e.g. `Han` will not match `Hans`
-* Studentss matching at least one keyword will be returned (i.e. `OR` search).
+* Students matching at least one name keyword will be returned (i.e. `OR` search).
   e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+* Students matching at least one team keyword will be returned (i.e. `OR` search).
+  e.g. `F12-3 T11-2` will return all students from `F12-3` and `T11-2`
 
 Examples:
-* `find John` returns `john` and `John Doe`
-* `find alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
+* `find n/John` returns `john` and `John Doe`
+* `find n/alex david` returns `Alex Yeoh`, `David Li`<br>
+  ![result for 'find n/alex david'](images/findAlexDavidResult.png)
+* `find t/F12-3` returns all students from team `F12-3`
+* `find t/F12-3 T11-2` returns all students from team `F12-3` and `T11-2`
+* `find n/alex david t/F12-3 T11-2` returns all students from team `F12-3` and `T11-2` with names `Alex` or `David`
 
 
 ### Listing all students : `list`
