@@ -84,28 +84,11 @@ public class RemoveFromTeamCommand extends Command {
                 targetPerson.getGithub(),
                 Team.NONE);
 
-        // Find and replace the person by email (since setPerson uses equals which includes team)
-        replacePersonByEmail(model, targetPerson.getEmail(), updatedPerson);
+        model.setPerson(targetPerson, updatedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
 
         return new CommandResult(String.format(MESSAGE_SUCCESS,
-            Messages.format(targetPerson), teamName));
-    }
-
-    /**
-     * Replaces a person in the model by their email address.
-     * This is needed because setPerson uses equals() which includes team field.
-     */
-    private void replacePersonByEmail(Model model, seedu.address.model.person.Email email, Person updatedPerson) {
-        // Find the person by email in the address book
-        Person personToReplace = model.getFilteredPersonList().stream()
-                .filter(person -> person.getEmail().equals(email))
-                .findFirst()
-                .orElse(null);
-
-        if (personToReplace != null) {
-            model.setPerson(personToReplace, updatedPerson);
-        }
+                Messages.format(targetPerson), teamName));
     }
 
     @Override
