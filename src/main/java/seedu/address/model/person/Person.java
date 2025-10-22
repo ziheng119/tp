@@ -90,7 +90,7 @@ public class Person {
                 && phone.equals(otherPerson.phone)
                 && email.equals(otherPerson.email)
                 && github.equals(otherPerson.github)
-                && team.equals(otherPerson.team);
+                && team.isSameTeam(otherPerson.team);
     }
 
     @Override

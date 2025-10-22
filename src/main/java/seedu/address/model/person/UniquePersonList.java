@@ -112,6 +112,19 @@ public class UniquePersonList implements Iterable<Person> {
         return internalUnmodifiableList;
     }
 
+    public boolean hasSamePeople(UniquePersonList otherList) {
+        if (otherList == this) {
+            return true;
+        }
+
+        if (internalList.size() != otherList.internalList.size()) {
+            return false;
+        }
+
+        return internalList.containsAll(otherList.internalList)
+                && otherList.internalList.containsAll(internalList);
+    }
+
     @Override
     public Iterator<Person> iterator() {
         return internalList.iterator();
