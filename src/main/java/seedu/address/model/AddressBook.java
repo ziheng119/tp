@@ -17,7 +17,7 @@ import seedu.address.model.team.UniqueTeamList;
  */
 public class AddressBook implements ReadOnlyAddressBook {
 
-    private final UniquePersonList persons;
+    public final UniquePersonList persons;
     private final UniqueTeamList teams;
 
     /*
