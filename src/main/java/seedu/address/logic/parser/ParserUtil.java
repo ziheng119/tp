@@ -9,6 +9,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Github;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
+import seedu.address.model.team.Team;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -100,7 +101,7 @@ public class ParserUtil {
     public static String parseTeamName(String teamName) throws ParseException {
         requireNonNull(teamName);
         String trimmedName = teamName.trim();
-        if (!seedu.address.model.team.Team.isValidName(trimmedName)) {
+        if (!Team.isValidName(trimmedName)) {
             throw new ParseException(seedu.address.model.team.Team.MESSAGE_CONSTRAINTS);
         }
         return trimmedName;
