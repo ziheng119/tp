@@ -44,18 +44,26 @@
   } ],
   "teams" : [ {
     "name" : "Team1",
-    "members" : [
-
-    ]
+    "members" : [ {
+      "value" : "alice@example.com"
+    }, {
+      "value" : "johnd@example.com"
+    }, {
+      "value" : "heinz@example.com"
+    } ]
   }, {
     "name" : "Team2",
-    "members" : [
-
-    ]
+    "members" : [ {
+      "value" : "cornelia@example.com"
+    }, {
+      "value" : "werner@example.com"
+    }, {
+      "value" : "lydia@example.com"
+    } ]
   }, {
     "name" : "Team3",
-    "members" : [
-
-    ]
+    "members" : [ {
+      "value" : "anna@example.com"
+    } ]
   } ]
 }
