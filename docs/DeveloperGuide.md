@@ -3,8 +3,8 @@ layout: page
 title: Developer Guide
 ---
 
-* Table of Contents
-{:toc}
+- Table of Contents
+  {:toc}
 
 ---
 
@@ -127,8 +127,10 @@ How the parsing works:
 The `Model` component,
 
 - stores the address book data i.e., all `Person` objects (which are contained in a `UniquePersonList` object).
+- stores team data i.e., all `Team` objects (which are contained in a `UniqueTeamList` object).
 - stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
-- stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
+- stores a `UserPref` object that represents the user's preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
+- manages team-student relationships, allowing students to be assigned to teams with validation for team capacity and duplicate assignments.
 - does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>
@@ -158,6 +160,31 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 ## **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
+
+### Current Commands
+
+The application currently supports the following commands:
+
+**Student Management:**
+
+- `create_student n/NAME p/PHONE e/EMAIL g/GITHUB_USERNAME` - Create a new student
+- `edit_student INDEX n/NAME p/PHONE e/EMAIL g/GITHUB` - Edit student details
+- `delete_student INDEX` - Delete a student by index
+- `find n/NAME t/TEAM_NAME` - Find students by name or team name
+- `list` - List all students
+
+**Team Management:**
+
+- `create_team t/TEAM_NAME` - Create a new team
+- `add_to_team INDEX t/TEAM_NAME` - Add student to team
+- `remove_from_team INDEX t/TEAM_NAME` - Remove student from team
+- `delete_team t/TEAM_NAME` - Delete an existing team
+
+**System Commands:**
+
+- `clear` - Clear all data
+- `help` - Show help information
+- `exit` - Exit the application
 
 ### \[Proposed\] Undo/redo feature
 
@@ -244,6 +271,51 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 _{more aspects and alternatives to be added}_
 
+### Team Management Feature
+
+#### Current Implementation
+
+The team management feature allows instructors to create teams, assign students to teams, and manage team membership. This feature is implemented through several key components:
+
+**Key Classes:**
+
+- `Team` - Represents a team with a name and list of persons
+- `UniqueTeamList` - Manages a list of unique teams
+- `CreateTeamCommand` - Creates new teams
+- `AddStudentToTeamCommand` - Assigns students to teams
+- `RemoveFromTeamCommand` - Removes students from teams
+
+**Team Name Validation:**
+Teams follow a specific naming convention enforced by `VALIDATION_REGEX`:
+
+- Format: `[M|W|T|F][08|09|10|11|12|13|14|15|16|17]-[1|2|3|4]`
+- Examples: `F12-3` (Friday, 12pm, Group 3), `W08-1` (Wednesday, 8am, Group 1)
+
+**Team Capacity Management:**
+
+- Maximum capacity: 5 members per team
+- Validation prevents adding students when team is full
+- `TeamMaxCapacityException` thrown when capacity exceeded
+
+**Student-Team Relationship:**
+
+- Each student can belong to only one team at a time
+- Students not in any team are assigned to `Team.NONE`
+- Team assignment updates the student's team field in the `Person` object
+
+**Command Flow:**
+
+1. `create_team t/TEAM_NAME` - Creates a new team with validated name
+2. `add_to_team INDEX t/TEAM_NAME` - Adds student at index to specified team
+3. `remove_from_team INDEX t/TEAM_NAME` - Removes student from team
+
+**Error Handling:**
+
+- Duplicate team names are rejected
+- Students already in teams cannot be added to other teams
+- Team capacity limits are enforced
+- Invalid team names are rejected with appropriate error messages
+
 ### \[Proposed\] Data archiving
 
 _{Explain here how the data archiving feature will be implemented}_
@@ -280,11 +352,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 | Priority | As a …​    | I want to …​                             | So that I can…​                                      |
 | -------- | ---------- | ---------------------------------------- | ---------------------------------------------------- |
-| `* * *`  | Instructor | add a student’s details                  | new student details can be added                     |
-| `* * *`  | Instructor | delete a student’s details               | remove or withdraw incorrect entries from the system |
+| `* * *`  | Instructor | add a student's details                  | new student details can be added                     |
+| `* * *`  | Instructor | delete a student's details               | remove or withdraw incorrect entries from the system |
 | `* * *`  | Instructor | view a list of all students in my course | quickly see who is enrolled                          |
+| `* * *`  | Instructor | create teams with structured names       | organize students into tutorial groups               |
 | `* * *`  | Instructor | add students to a team                   | teams remain accurate throughout the semester        |
 | `* * *`  | Instructor | remove students from a team              | teams remain accurate throughout the semester        |
+| `* * *`  | Instructor | find students by name                    | quickly locate specific students                     |
 
 ## Non-MVP User Stories
 
@@ -360,12 +434,32 @@ _{More to be added}_
 - 2a. No students exist.
   SWEatless displays “No students found.”
 
-**Use case: UC04 - Add Student to Team**
+**Use case: UC04 - Create Team**
+
+**MSS**
+
+1.  Instructor chooses to create a team.
+2.  SWEatless requests team name.
+3.  Instructor provides team name following format [M|W|T|F][08-17]-[1-4].
+4.  SWEatless validates team name format.
+5.  SWEatless creates the team.
+6.  SWEatless displays confirmation.
+    Use case ends.
+
+**Extensions**
+
+- 4a. Invalid team name format.
+  SWEatless shows error message with correct format.
+
+- 4b. Team name already exists.
+  SWEatless shows error and prevents duplication.
+
+**Use case: UC05 - Add Student to Team**
 
 **MSS**
 
 1.  Instructor chooses to add a student to a team.
-2.  SWEatless requests student name and team ID.
+2.  SWEatless requests student index and team name.
 3.  Instructor provides details.
 4.  SWEatless checks if student and team exist.
 5.  SWEatless adds the student to the team.
@@ -382,6 +476,26 @@ _{More to be added}_
 
 - 4c. Student already in the team.
   SWEatless warns and prevents duplication.
+
+- 4d. Student already in another team.
+  SWEatless shows error and suggests removing from current team first.
+
+**Use case: UC06 - Remove Student from Team**
+
+**MSS**
+
+1.  Instructor chooses to remove a student from a team.
+2.  SWEatless requests student index and team name.
+3.  Instructor provides details.
+4.  SWEatless checks if student is in the team.
+5.  SWEatless removes the student from the team.
+6.  SWEatless displays confirmation.
+    Use case ends.
+
+**Extensions**
+
+- 4a. Student not in the specified team.
+  SWEatless shows error.
 
 ### Non-Functional Requirements
 
@@ -433,7 +547,7 @@ _{More to be added}_
 
 - **CLI (Command-Line Interface)**: The text-based interface used by teaching staff to interact with SWEatless. Users enter typed commands instead of using a graphical interface
 
-- **Command Format**: The strict syntax required for each CLI command (e.g., add_student NAME /email EMAIL /phone PHONE /github USERNAME)
+- **Command Format**: The strict syntax required for each CLI command (e.g., create_student n/NAME p/PHONE e/EMAIL g/GITHUB_USERNAME)
 
 - **Duplicate Handling**: The rules SWEatless uses to prevent duplicate entries (e.g., duplicate students identified by email/phone)
 
@@ -485,6 +599,45 @@ testers are expected to do more *exploratory* testing.
       Expected: Similar to previous.
 
 1. _{ more test cases …​ }_
+
+### Team Management
+
+1. Creating a team
+
+   1. Test case: `create_team t/F12-3`<br>
+      Expected: Team F12-3 is created. Success message displayed.
+
+   1. Test case: `create_team t/F13-3`<br>
+      Expected: Error message shown. Team name format invalid (13 not in allowed range).
+
+   1. Test case: `create_team t/F12-3` (duplicate)<br>
+      Expected: Error message shown. Team already exists.
+
+1. Adding a student to a team
+
+   1. Prerequisites: Create a team using `create_team t/F12-3`. Add a student using `add n/John Doe p/98765432 e/john@example.com g/johndoe`.
+
+   1. Test case: `add_to_team 1 t/F12-3`<br>
+      Expected: John Doe is added to team F12-3. Success message displayed.
+
+   1. Test case: `add_to_team 1 t/NonExistentTeam`<br>
+      Expected: Error message shown. Team not found.
+
+   1. Test case: `add_to_team 1 t/F12-3` (duplicate)<br>
+      Expected: Error message shown. Student already in team.
+
+1. Removing a student from a team
+
+   1. Prerequisites: Student is in a team.
+
+   1. Test case: `remove_from_team 1 t/F12-3`<br>
+      Expected: Student is removed from team F12-3. Success message displayed.
+
+   1. Test case: `remove_from_team 1 t/NonExistentTeam`<br>
+      Expected: Error message shown. Team not found.
+
+   1. Test case: `remove_from_team 1 t/F12-3` (student not in team)<br>
+      Expected: Error message shown. Student not in team.
 
 ### Saving data
 
