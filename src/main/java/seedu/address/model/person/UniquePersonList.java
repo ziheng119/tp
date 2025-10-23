@@ -3,6 +3,7 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
@@ -103,6 +104,25 @@ public class UniquePersonList implements Iterable<Person> {
      */
     public int size() {
         return internalList.size();
+    }
+
+    /**
+     * Returns true if both {@code UniquePersonList} instances contain the same set of persons.
+     * The order of persons does not matter, but all persons must match based on {@code Person#equals(Object)}.
+     *
+     * @param otherList The other {@code UniquePersonList} to compare with.
+     * @return {@code true} if both lists contain the same persons; {@code false} otherwise.
+     */
+    public boolean hasSamePeople(UniquePersonList otherList) {
+        if (otherList == this) {
+            return true;
+        }
+
+        if (internalList.size() != otherList.internalList.size()) {
+            return false;
+        }
+
+        return new HashSet<>(internalList).equals(new HashSet<>(otherList.internalList));
     }
 
     /**

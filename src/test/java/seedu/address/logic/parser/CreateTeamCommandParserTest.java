@@ -14,8 +14,8 @@ public class CreateTeamCommandParserTest {
 
     @Test
     public void parse_validTeamName_success() throws Exception {
-        String teamName = "Team 123";
-        CreateTeamCommand command = parser.parse(" t/" + teamName);
+        String teamName = "F12-3";
+        CreateTeamCommand command = parser.parse(teamName);
         assertEquals(new CreateTeamCommand(teamName), command);
     }
 

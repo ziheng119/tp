@@ -17,13 +17,14 @@ import seedu.address.model.team.exceptions.TeamMaxCapacityException;
 public class Team {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Team names should only contain alphanumeric characters and spaces, and it should not be blank";
+            "Team names should follow the format: [M|W|T|F][08|09|10|11|12|13|14|15|16|17]-[1|2|3|4] "
+            + "(e.g., F12-3, W08-1, T02-4)";
 
     /*
-     * The first character of the address must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
+     * Team name format: [M|W|T|F][08|09|10|11|12|13|14|15|16|17]-[1|2|3|4]
+     * Examples: F12-3, W08-1, T02-4
      */
-    public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
+    public static final String VALIDATION_REGEX = "^[MWTF](08|09|10|11|12|13|14|15|16|17)-[1-4]$";
     public static final Team NONE = new Team();
     private static final int MAX_CAPACITY = 5;
 
@@ -154,7 +155,7 @@ public class Team {
      * Returns true if both teams have the same name. This defines a weaker notion of equality
      * between two teams. Abstracts team comparison for UniqueTeamList.java
      */
-    public boolean isSameTeam(Team otherTeam) {
+    public boolean isSameTeamName(Team otherTeam) {
         if (otherTeam == this) {
             return true;
         }
@@ -184,7 +185,8 @@ public class Team {
         }
 
         Team otherTeam = (Team) other;
-        return name.equals(otherTeam.name);
+        return name.equals(otherTeam.name)
+                && otherTeam.persons.hasSamePeople(persons);
     }
 
     @Override

@@ -95,7 +95,6 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void setPerson(Person target, Person editedPerson) {
         requireNonNull(editedPerson);
-
         persons.setPerson(target, editedPerson);
     }
 
@@ -206,7 +205,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         }
 
         AddressBook otherAddressBook = (AddressBook) other;
-        return persons.equals(otherAddressBook.persons) && teams.equals(otherAddressBook.teams);
+        return persons.hasSamePeople(otherAddressBook.persons) && teams.equals(otherAddressBook.teams);
     }
 
     @Override
