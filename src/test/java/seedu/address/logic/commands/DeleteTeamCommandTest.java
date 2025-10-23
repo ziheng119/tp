@@ -37,7 +37,7 @@ public class DeleteTeamCommandTest {
         DeleteTeamCommand command = new DeleteTeamCommand("F12-3");
         CommandResult result = command.execute(model);
 
-        assertEquals(String.format(DeleteTeamCommand.MESSAGE_SUCCESS, "Team1"),
+        assertEquals(String.format(DeleteTeamCommand.MESSAGE_SUCCESS, "F12-3"),
                 result.getFeedbackToUser());
         // team removed
         assertFalse(model.hasTeamWithName("F12-3"));
