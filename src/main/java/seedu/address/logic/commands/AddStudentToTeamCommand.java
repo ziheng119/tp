@@ -86,9 +86,6 @@ public class AddStudentToTeamCommand extends Command {
         }
 
         try {
-            // Add person to team
-            model.addPersonToTeam(targetPerson, targetTeam);
-
             Person updatedPerson = new Person(
                     targetPerson.getName(),
                     targetPerson.getPhone(),
@@ -97,6 +94,7 @@ public class AddStudentToTeamCommand extends Command {
                     targetTeam);
 
             model.setPerson(targetPerson, updatedPerson);
+            model.addPersonToTeam(updatedPerson, targetTeam);
             model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
 
             return new CommandResult(String.format(MESSAGE_SUCCESS,
