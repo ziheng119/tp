@@ -27,7 +27,7 @@ public class ParserUtilTest {
     private static final String VALID_EMAIL = "rachel@example.com";
 
     private static final String INVALID_TEAM_NAME = "Team@123";
-    private static final String VALID_TEAM_NAME = "Team 123";
+    private static final String VALID_TEAM_NAME = "F12-3";
     private static final String TEAM_NAME_WHITESPACE = WHITESPACE + VALID_TEAM_NAME + WHITESPACE;
 
     @Test

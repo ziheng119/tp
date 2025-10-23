@@ -1,22 +1,29 @@
 {
-  "persons" : [ {
-    "name" : "John Doe",
-    "phone" : "98765432",
-    "email" : "johnd@example.com",
-    "github" : "johndoe",
-    "teamName" : "team123"
-  }, {
-    "name" : "John De",
-    "phone" : "98765432",
-    "email" : "johnd@exmple.com",
-    "github" : "johnde",
-    "teamName" : "team123"
-  } ],
-  "teams" : [ {
-    "name" : "team123",
-    "members" : [ {
-      "value" : "johnd@example.com",
-      "value" : "johnd@exmple.com"
-    } ]
-  } ]
+  "persons": [
+    {
+      "name": "John Doe",
+      "phone": "98765432",
+      "email": "johnd@example.com",
+      "github": "johndoe",
+      "teamName": "F12-3"
+    },
+    {
+      "name": "John De",
+      "phone": "98765432",
+      "email": "johnd@exmple.com",
+      "github": "johnde",
+      "teamName": "F12-3"
+    }
+  ],
+  "teams": [
+    {
+      "name": "F12-3",
+      "members": [
+        {
+          "value": "johnd@example.com",
+          "value": "johnd@exmple.com"
+        }
+      ]
+    }
+  ]
 }
