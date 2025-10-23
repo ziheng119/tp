@@ -17,8 +17,8 @@ Action | Format, Examples
 **Create Student** | `create_student n/NAME p/PHONE_NUMBER e/EMAIL g/GITHUB_USERNAME​` <br> e.g., `create_student n/James Ho p/22224444 e/jamesho@example.com g/jamesho`
 **Delete Student** | `delete_student INDEX`<br> e.g., `delete 3`
 **Edit Student** | `edit_student INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [g/GITHUB_USERNAME]​`<br> e.g.,`edit_student 2 n/James Lee e/jameslee@example.com`
-**Create Team** | `create_team TEAM_NAME` <br> e.g., `create_team F12-3`
-**Delete Team** | `delete_team TEAM_NAME`<br> e.g., `delete_team F12-3`
+**Create Team** | `create_team t/TEAM_NAME` <br> e.g., `create_team F12-3`
+**Delete Team** | `delete_team t/TEAM_NAME`<br> e.g., `delete_team F12-3`
 **Add To Team** | `add_to_team INDEX t/TEAM_NAME` <br> e.g., `add_to_team 1 t/F12-3`
 **Remove from Team** | `remove_from_team INDEX t/TEAM_NAME`<br> e.g., `remove_from_team 3 t/F12-3`
 **Find** | `find n/[MORE_NAMES] t/[MORE_TEAM_NAMES]`<br> e.g., `find n/James Jake t/F12-3`
@@ -117,7 +117,7 @@ Examples:
 
 Creates a team to add to SWEatless.
 
-Format: `create_team TEAM_NAME`
+Format: `create_team t/TEAM_NAME`
 
 * `TEAM_NAME` must follow the following format:
     * First character (day): `M`, `W`, `T`, `F`
@@ -126,18 +126,16 @@ Format: `create_team TEAM_NAME`
     * Fifth character (team number): `1`, `2`, `3`, `4`
 
 Examples:
-* `create_team AY2526S1-CS2103T-F12-3`
-* `create_team TEAM-1`
+* `create_team t/F12-3`
 
 ### Deleting a team: `delete_team`
 
 Deletes the specified team from SWEatless.
 
-Format: `delete_team TEAM_NAME`
+Format: `delete_team t/TEAM_NAME`
 
 Examples:
-* `delete_team AY2526S1-CS2103T-F12-3`
-* `delete_team TEAM-1`
+* `delete_team t/F12-3`
 
 ### Adding a student to a team: `add_to_team`
 
