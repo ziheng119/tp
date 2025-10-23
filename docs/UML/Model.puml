@@ -1,0 +1,93 @@
+package "Model Layer" as Model {
+    interface Model {
+        +addPerson(person)
+        +deletePerson(person)
+        +setPerson(target, editedPerson)
+        +addTeam(team)
+        +deleteTeam(team)
+        +addPersonToTeam(person, team)
+        +removePersonFromTeam(person, team)
+        +updateFilteredPersonList(predicate)
+    }
+
+    class ModelManager {
+        -AddressBook addressBook
+        -UserPrefs userPrefs
+        -FilteredList<Person> filteredPersons
+        +addPerson(person)
+        +deletePerson(person)
+        +updateFilteredPersonList(predicate)
+    }
+
+    class AddressBook {
+        -UniquePersonList persons
+        -UniqueTeamList teams
+        +addPerson(person)
+        +removePerson(person)
+        +addTeam(team)
+        +removeTeam(team)
+    }
+
+    class Person {
+        -Name name
+        -Phone phone
+        -Email email
+        -Github github
+        -Team team
+        +getName()
+        +getTeam()
+        +getTeamName()
+        +isSamePerson(other)
+    }
+
+    class Team {
+        -String name
+        -UniquePersonList persons
+        +getName()
+        +addPerson(person)
+        +removePerson(person)
+        +hasPerson(person)
+    }
+
+    class UniquePersonList {
+        -ObservableList<Person> internalList
+        +add(person)
+        +remove(person)
+        +contains(person)
+    }
+
+    class UniqueTeamList {
+        -ObservableList<Team> internalList
+        +add(team)
+        +remove(team)
+        +contains(team)
+        +getTeamByName(name)
+    }
+
+    class NameContainsKeywordsPredicate {
+        -List<String> keywords
+        +test(person)
+    }
+
+    class TeamNamePredicate {
+        -String teamName
+        +test(person)
+    }
+
+    ModelManager .up.|> Model
+    ModelManager --> AddressBook : manages
+    AddressBook --> UniquePersonList : contains
+    AddressBook --> UniqueTeamList : contains
+    Person --> Team : belongs to
+    Team --> UniquePersonList : contains persons
+
+    ' Model relationships
+    AddressBook *-- UniquePersonList
+    AddressBook *-- UniqueTeamList
+    Person *-- Name
+    Person *-- Phone
+    Person *-- Email
+    Person *-- Github
+    Person --> Team
+    Team *-- UniquePersonList
+}
