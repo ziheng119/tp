@@ -10,16 +10,52 @@ import seedu.address.commons.util.ToStringBuilder;
  * Tests that a {@code Person}'s {@code Name} matches any of the keywords given.
  */
 public class NameContainsKeywordsPredicate implements Predicate<Person> {
-    private final List<String> keywords;
+    private final List<String> nameKeywords;
+    private final List<String> teamKeywords;
 
-    public NameContainsKeywordsPredicate(List<String> keywords) {
-        this.keywords = keywords;
+    /**
+     * Creates a predicate to test for name and team keyword matches.
+     *
+     * @param nameKeywords List of keywords to match against person names. Empty list means no name filtering.
+     * @param teamKeywords List of keywords to match against team names. Empty list means no team filtering.
+     */
+    public NameContainsKeywordsPredicate(List<String> nameKeywords, List<String> teamKeywords) {
+        this.nameKeywords = nameKeywords;
+        this.teamKeywords = teamKeywords;
     }
 
+    /**
+     * Tests if a given person matches both the name and team keywords (if any).
+     * A person matches if:
+     * - Their name contains any of the name keywords (or no name keywords were provided) AND
+     * - Their team contains any of the team keywords (or no team keywords were provided)
+     *
+     * @param person the person to test
+     * @return true if the person matches both name and team criteria
+     */
     @Override
     public boolean test(Person person) {
-        return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword));
+        List<String> validNameKeywords = nameKeywords.stream()
+            .filter(keyword -> !keyword.isBlank())
+            .toList();
+
+        List<String> validTeamKeywords = teamKeywords.stream()
+            .filter(keyword -> !keyword.isBlank())
+            .toList();
+
+        if (validNameKeywords.isEmpty() && validTeamKeywords.isEmpty()) {
+            return false;
+        }
+
+        boolean nameMatches = validNameKeywords.isEmpty()
+                || validNameKeywords.stream()
+                        .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword));
+
+        boolean teamMatches = validTeamKeywords.isEmpty()
+                || validTeamKeywords.stream()
+                        .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getTeamName(), keyword));
+
+        return nameMatches && teamMatches;
     }
 
     @Override
@@ -34,11 +70,15 @@ public class NameContainsKeywordsPredicate implements Predicate<Person> {
         }
 
         NameContainsKeywordsPredicate otherNameContainsKeywordsPredicate = (NameContainsKeywordsPredicate) other;
-        return keywords.equals(otherNameContainsKeywordsPredicate.keywords);
+        return nameKeywords.equals(otherNameContainsKeywordsPredicate.nameKeywords)
+                && teamKeywords.equals(otherNameContainsKeywordsPredicate.teamKeywords);
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).add("keywords", keywords).toString();
+        return new ToStringBuilder(this)
+                .add("nameKeywords", nameKeywords)
+                .add("teamKeywords", teamKeywords)
+                .toString();
     }
 }
