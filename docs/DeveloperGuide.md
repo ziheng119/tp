@@ -3,8 +3,8 @@ layout: page
 title: Developer Guide
 ---
 
-* Table of Contents
-{:toc}
+- Table of Contents
+  {:toc}
 
 ---
 
@@ -167,15 +167,15 @@ The application currently supports the following commands:
 
 **Student Management:**
 
-- `add n/NAME p/PHONE e/EMAIL g/GITHUB` - Add a new student
-- `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [g/GITHUB]` - Edit student details
-- `delete INDEX` - Delete a student by index
+- `create_student n/NAME p/PHONE e/EMAIL g/GITHUB_USERNAME` - Create a new student
+- `edit_student INDEX n/NAME p/PHONE e/EMAIL g/GITHUB` - Edit student details
+- `delete_student INDEX` - Delete a student by index
 - `find n/NAME t/TEAM_NAME` - Find students by name or team name
 - `list` - List all students
 
 **Team Management:**
 
-- `create_team TEAM_NAME` - Create a new team
+- `create_team t/TEAM_NAME` - Create a new team
 - `add_to_team INDEX t/TEAM_NAME` - Add student to team
 - `remove_from_team INDEX t/TEAM_NAME` - Remove student from team
 - `delete_team t/TEAM_NAME` - Delete an existing team
@@ -547,7 +547,7 @@ _{More to be added}_
 
 - **CLI (Command-Line Interface)**: The text-based interface used by teaching staff to interact with SWEatless. Users enter typed commands instead of using a graphical interface
 
-- **Command Format**: The strict syntax required for each CLI command (e.g., add_student NAME /email EMAIL /phone PHONE /github USERNAME)
+- **Command Format**: The strict syntax required for each CLI command (e.g., create_student n/NAME p/PHONE e/EMAIL g/GITHUB_USERNAME)
 
 - **Duplicate Handling**: The rules SWEatless uses to prevent duplicate entries (e.g., duplicate students identified by email/phone)
 
