@@ -25,12 +25,12 @@ public class UniqueTeamListTest {
 
     @Test
     public void contains_teamNotInList_returnsFalse() {
-        assertFalse(uniqueTeamList.contains(new Team("Team1")));
+        assertFalse(uniqueTeamList.contains(new Team("F12-3")));
     }
 
     @Test
     public void contains_teamInList_returnsTrue() {
-        Team team = new Team("Team1");
+        Team team = new Team("F12-3");
         uniqueTeamList.add(team);
         assertTrue(uniqueTeamList.contains(team));
     }
@@ -42,14 +42,14 @@ public class UniqueTeamListTest {
 
     @Test
     public void containsTeamWithName_teamNotInList_returnsFalse() {
-        assertFalse(uniqueTeamList.containsTeamWithName("Team1"));
+        assertFalse(uniqueTeamList.containsTeamWithName("F12-3"));
     }
 
     @Test
     public void containsTeamWithName_teamInList_returnsTrue() {
-        Team team = new Team("Team1");
+        Team team = new Team("F12-3");
         uniqueTeamList.add(team);
-        assertTrue(uniqueTeamList.containsTeamWithName("Team1"));
+        assertTrue(uniqueTeamList.containsTeamWithName("F12-3"));
     }
 
     @Test
@@ -59,14 +59,14 @@ public class UniqueTeamListTest {
 
     @Test
     public void getTeamByName_teamNotInList_returnsNull() {
-        assertTrue(uniqueTeamList.getTeamByName("Team1") == null);
+        assertTrue(uniqueTeamList.getTeamByName("F12-3") == null);
     }
 
     @Test
     public void getTeamByName_teamInList_returnsTeam() {
-        Team team = new Team("Team1");
+        Team team = new Team("F12-3");
         uniqueTeamList.add(team);
-        assertEquals(team, uniqueTeamList.getTeamByName("Team1"));
+        assertEquals(team, uniqueTeamList.getTeamByName("F12-3"));
     }
 
     @Test
@@ -76,30 +76,30 @@ public class UniqueTeamListTest {
 
     @Test
     public void add_duplicateTeam_throwsDuplicateTeamException() {
-        Team team = new Team("Team1");
+        Team team = new Team("F12-3");
         uniqueTeamList.add(team);
         assertThrows(DuplicateTeamException.class, () -> uniqueTeamList.add(team));
     }
 
     @Test
     public void setTeam_nullTargetTeam_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> uniqueTeamList.setTeam(null, new Team("Team1")));
+        assertThrows(NullPointerException.class, () -> uniqueTeamList.setTeam(null, new Team("F12-3")));
     }
 
     @Test
     public void setTeam_nullEditedTeam_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> uniqueTeamList.setTeam(new Team("Team1"), null));
+        assertThrows(NullPointerException.class, () -> uniqueTeamList.setTeam(new Team("F12-3"), null));
     }
 
     @Test
     public void setTeam_targetTeamNotInList_throwsTeamNotFoundException() {
-        Team team = new Team("Team1");
+        Team team = new Team("F12-3");
         assertThrows(TeamNotFoundException.class, () -> uniqueTeamList.setTeam(team, team));
     }
 
     @Test
     public void setTeam_editedTeamIsSameTeam_success() {
-        Team team = new Team("Team1");
+        Team team = new Team("F12-3");
         uniqueTeamList.add(team);
         uniqueTeamList.setTeam(team, team);
         UniqueTeamList expectedUniqueTeamList = new UniqueTeamList();
@@ -109,9 +109,9 @@ public class UniqueTeamListTest {
 
     @Test
     public void setTeam_editedTeamHasDifferentName_success() {
-        Team team = new Team("Team1");
+        Team team = new Team("F12-3");
         uniqueTeamList.add(team);
-        Team editedTeam = new Team("Team2");
+        Team editedTeam = new Team("W08-1");
         uniqueTeamList.setTeam(team, editedTeam);
         UniqueTeamList expectedUniqueTeamList = new UniqueTeamList();
         expectedUniqueTeamList.add(editedTeam);
@@ -120,8 +120,8 @@ public class UniqueTeamListTest {
 
     @Test
     public void setTeam_editedTeamHasNonUniqueName_throwsDuplicateTeamException() {
-        Team team1 = new Team("Team1");
-        Team team2 = new Team("Team2");
+        Team team1 = new Team("F12-3");
+        Team team2 = new Team("W08-1");
         uniqueTeamList.add(team1);
         uniqueTeamList.add(team2);
         assertThrows(DuplicateTeamException.class, () -> uniqueTeamList.setTeam(team1, team2));
@@ -134,13 +134,13 @@ public class UniqueTeamListTest {
 
     @Test
     public void remove_teamDoesNotExist_throwsTeamNotFoundException() {
-        Team team = new Team("Team1");
+        Team team = new Team("F12-3");
         assertThrows(TeamNotFoundException.class, () -> uniqueTeamList.remove(team));
     }
 
     @Test
     public void remove_existingTeam_removesTeam() {
-        Team team = new Team("Team1");
+        Team team = new Team("F12-3");
         uniqueTeamList.add(team);
         uniqueTeamList.remove(team);
         UniqueTeamList expectedUniqueTeamList = new UniqueTeamList();
@@ -154,10 +154,10 @@ public class UniqueTeamListTest {
 
     @Test
     public void setTeams_uniqueTeamList_replacesOwnListWithProvidedUniqueTeamList() {
-        Team team = new Team("Team1");
+        Team team = new Team("F12-3");
         uniqueTeamList.add(team);
         UniqueTeamList expectedUniqueTeamList = new UniqueTeamList();
-        Team team2 = new Team("Team2");
+        Team team2 = new Team("W08-1");
         expectedUniqueTeamList.add(team2);
         uniqueTeamList.setTeams(expectedUniqueTeamList);
         assertEquals(expectedUniqueTeamList, uniqueTeamList);
@@ -170,7 +170,7 @@ public class UniqueTeamListTest {
 
     @Test
     public void setTeams_list_replacesOwnListWithProvidedList() {
-        Team team = new Team("Team1");
+        Team team = new Team("F12-3");
         uniqueTeamList.add(team);
         List<Team> teamList = Collections.singletonList(team);
         uniqueTeamList.setTeams(teamList);
@@ -181,7 +181,7 @@ public class UniqueTeamListTest {
 
     @Test
     public void setTeams_listWithDuplicateTeams_throwsDuplicateTeamException() {
-        Team team = new Team("Team1");
+        Team team = new Team("F12-3");
         List<Team> listWithDuplicateTeams = Arrays.asList(team, team);
         assertThrows(DuplicateTeamException.class, () -> uniqueTeamList.setTeams(listWithDuplicateTeams));
     }

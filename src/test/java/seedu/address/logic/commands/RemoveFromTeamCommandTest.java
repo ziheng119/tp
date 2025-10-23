@@ -36,9 +36,9 @@ public class RemoveFromTeamCommandTest {
 
     @Test
     public void execute_invalidIndex_throwsCommandException() {
-        RemoveFromTeamCommand command = new RemoveFromTeamCommand(Index.fromOneBased(999), "Team1");
+        RemoveFromTeamCommand command = new RemoveFromTeamCommand(Index.fromOneBased(999), "F12-3");
         // Create team first
-        Team team = new Team("Team1");
+        Team team = new Team("F12-3");
         model.addTeam(team);
         assertThrows(CommandException.class, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX, ()
                 -> command.execute(model));
@@ -47,32 +47,32 @@ public class RemoveFromTeamCommandTest {
     @Test
     public void execute_teamNotFound_throwsCommandException() {
         RemoveFromTeamCommand command = new RemoveFromTeamCommand(Index.fromOneBased(1),
-                "NonExistentTeam");
+                "M09-4");
         assertThrows(CommandException.class, String.format(RemoveFromTeamCommand.MESSAGE_TEAM_NOT_FOUND,
-                "NonExistentTeam"), () -> command.execute(model));
+                "M09-4"), () -> command.execute(model));
     }
 
     @Test
     public void execute_personNotInTeam_throwsCommandException() throws CommandException {
         // Create team but don't add person to it
-        Team team = new Team("Team1");
+        Team team = new Team("F12-3");
         model.addTeam(team);
-        RemoveFromTeamCommand command = new RemoveFromTeamCommand(Index.fromOneBased(1), "Team1");
+        RemoveFromTeamCommand command = new RemoveFromTeamCommand(Index.fromOneBased(1), "F12-3");
         assertThrows(CommandException.class, String.format(RemoveFromTeamCommand.MESSAGE_PERSON_NOT_IN_TEAM,
-                Messages.format(ALICE), "Team1"), () -> command.execute(model));
+                Messages.format(ALICE), "F12-3"), () -> command.execute(model));
     }
 
     @Test
     public void execute_validInput_success() throws CommandException {
         // Create team and add person
-        Team team = new Team("Team1");
+        Team team = new Team("F12-3");
         model.addTeam(team);
         model.addPersonToTeam(ALICE, team);
         // Verify person is in team
         assertTrue(team.hasPerson(ALICE));
-        RemoveFromTeamCommand command = new RemoveFromTeamCommand(Index.fromOneBased(1), "Team1");
+        RemoveFromTeamCommand command = new RemoveFromTeamCommand(Index.fromOneBased(1), "F12-3");
         CommandResult result = command.execute(model);
-        assertEquals(String.format(RemoveFromTeamCommand.MESSAGE_SUCCESS, Messages.format(ALICE), "Team1"),
+        assertEquals(String.format(RemoveFromTeamCommand.MESSAGE_SUCCESS, Messages.format(ALICE), "F12-3"),
                 result.getFeedbackToUser());
         assertFalse(team.hasPerson(ALICE));
     }
@@ -80,13 +80,13 @@ public class RemoveFromTeamCommandTest {
     @Test
     public void execute_secondPersonInList_success() throws CommandException {
         // Create team and add BOB
-        Team team = new Team("Team1");
+        Team team = new Team("F12-3");
         model.addTeam(team);
         model.addPersonToTeam(BOB, team);
         // Use index 2 to remove BOB (second person in the list)
-        RemoveFromTeamCommand command = new RemoveFromTeamCommand(Index.fromOneBased(2), "Team1");
+        RemoveFromTeamCommand command = new RemoveFromTeamCommand(Index.fromOneBased(2), "F12-3");
         CommandResult result = command.execute(model);
-        assertEquals(String.format(RemoveFromTeamCommand.MESSAGE_SUCCESS, Messages.format(BOB), "Team1"),
+        assertEquals(String.format(RemoveFromTeamCommand.MESSAGE_SUCCESS, Messages.format(BOB), "F12-3"),
                 result.getFeedbackToUser());
         assertFalse(team.hasPerson(BOB));
     }
@@ -94,19 +94,19 @@ public class RemoveFromTeamCommandTest {
     @Test
     public void execute_removeFromEmptyTeam_throwsCommandException() throws CommandException {
         // Create empty team
-        Team team = new Team("Team1");
+        Team team = new Team("F12-3");
         model.addTeam(team);
-        RemoveFromTeamCommand command = new RemoveFromTeamCommand(Index.fromOneBased(1), "Team1");
+        RemoveFromTeamCommand command = new RemoveFromTeamCommand(Index.fromOneBased(1), "F12-3");
         assertThrows(CommandException.class, String.format(RemoveFromTeamCommand.MESSAGE_PERSON_NOT_IN_TEAM,
-                Messages.format(ALICE), "Team1"), () -> command.execute(model));
+                Messages.format(ALICE), "F12-3"), () -> command.execute(model));
     }
 
     @Test
     public void equals() {
-        RemoveFromTeamCommand command1 = new RemoveFromTeamCommand(Index.fromOneBased(1), "Team1");
-        RemoveFromTeamCommand command2 = new RemoveFromTeamCommand(Index.fromOneBased(1), "Team1");
-        RemoveFromTeamCommand command3 = new RemoveFromTeamCommand(Index.fromOneBased(2), "Team1");
-        RemoveFromTeamCommand command4 = new RemoveFromTeamCommand(Index.fromOneBased(1), "Team2");
+        RemoveFromTeamCommand command1 = new RemoveFromTeamCommand(Index.fromOneBased(1), "F12-3");
+        RemoveFromTeamCommand command2 = new RemoveFromTeamCommand(Index.fromOneBased(1), "F12-3");
+        RemoveFromTeamCommand command3 = new RemoveFromTeamCommand(Index.fromOneBased(2), "F12-3");
+        RemoveFromTeamCommand command4 = new RemoveFromTeamCommand(Index.fromOneBased(1), "W08-1");
         // same object -> returns true
         assertTrue(command1.equals(command1));
         // same values -> returns true

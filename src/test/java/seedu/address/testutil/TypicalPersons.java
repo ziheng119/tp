@@ -21,9 +21,9 @@ import seedu.address.model.team.Team;
  * A utility class containing a list of {@code Person} objects to be used in tests.
  */
 public class TypicalPersons {
-    public static final Team TEAM1 = new Team("Team1");
-    public static final Team TEAM2 = new Team("Team2");
-    public static final Team TEAM3 = new Team("Team3");
+    public static final Team TEAM1 = new Team("F12-3");
+    public static final Team TEAM2 = new Team("W08-1");
+    public static final Team TEAM3 = new Team("T14-2");
 
     public static final Person ALICE = new PersonBuilder().withName("Alice Pauline")
             .withGithub("alicepauline").withEmail("alice@example.com")
