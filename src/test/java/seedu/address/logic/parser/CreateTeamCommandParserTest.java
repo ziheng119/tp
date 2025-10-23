@@ -25,4 +25,16 @@ public class CreateTeamCommandParserTest {
         assertThrows(ParseException.class, () -> parser.parse(""));
         assertThrows(ParseException.class, () -> parser.parse("   "));
     }
+
+    @Test
+    public void parse_extraTextBeforePrefix_throwsParseException() {
+        assertThrows(ParseException.class, () -> parser.parse("extra t/Team1"));
+        assertThrows(ParseException.class, () -> parser.parse("invalid t/F12-3"));
+    }
+
+    @Test
+    public void parse_missingPrefix_throwsParseException() {
+        assertThrows(ParseException.class, () -> parser.parse("Team1"));
+        assertThrows(ParseException.class, () -> parser.parse("F12-3"));
+    }
 }
