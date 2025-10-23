@@ -16,8 +16,8 @@ public class CreateTeamCommand extends Command {
     public static final String COMMAND_WORD = "create_team";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Creates a team with a name specified by the input.\n"
-            + "Parameters: NAME (must be a valid string) "
-            + "Example: " + COMMAND_WORD + " Team1";
+            + "Parameters: t/TEAM_NAME (must be a valid team name) "
+            + "Example: " + COMMAND_WORD + " t/F12-3";
 
     public static final String MESSAGE_CREATE_TEAM_SUCESS = "Created Team: %s";
 
