@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.ImageView?>
 
 <!--
 <TitledPane text="test" expanded="true"  xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
@@ -32,10 +33,19 @@
         </Label>
         <Label fx:id="name" text="\$first" styleClass="cell_big_label" />
       </HBox>
-      <FlowPane fx:id="team" />
+      <FlowPane fx:id="team">
+        <HBox fx:id="teamGithubBox" alignment="CENTER_LEFT">
+          <ImageView fx:id="githubIcon1" pickOnBounds="true" preserveRatio="true" />
+        </HBox>
+      </FlowPane>
       <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" />
-      <Hyperlink fx:id="github" styleClass="cell_small_label" text="\$github" />
       <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
+      <FlowPane>
+        <HBox fx:id="githubBox" spacing="0.5" alignment="CENTER_LEFT">
+            <ImageView fx:id="githubIcon2" pickOnBounds="true" preserveRatio="true" />
+            <Hyperlink fx:id="github" styleClass="cell_small_label" text="\$github" />
+        </HBox>
+      </FlowPane>
     </VBox>
   </GridPane>
 </HBox>

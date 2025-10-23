@@ -357,7 +357,23 @@
     -fx-vgap: 3;
 }
 
-#team .label {
+#githubIcon1, #githubIcon2 {
+    -fx-fit-width: 16; /* pixels */
+    -fx-fit-height: 16;
+    -fx-padding: 0 6 0 0;
+}
+
+#githubBox {
+    -fx-text-fill: white;
+    -fx-background-color: #333232;
+    -fx-padding: 1 3 1 3;
+    -fx-border-radius: 2;
+    -fx-background-radius: 2;
+    -fx-font-size: 11;
+    
+}
+
+#teamGithubBox {
     -fx-text-fill: white;
     -fx-background-color: #3e7b91;
     -fx-padding: 1 3 1 3;
