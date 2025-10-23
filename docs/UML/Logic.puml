@@ -58,3 +58,12 @@ package "Logic Layer" as Logic {
         +getFeedbackToUser()
     }
 }
+
+LogicManager .up.|> Logic
+AddressBookParser --> Command : creates
+FindCommand --|> Command
+AddStudentCommand --|> Command
+CreateTeamCommand --|> Command
+AddStudentToTeamCommand --|> Command
+RemoveFromTeamCommand --|> Command
+DeleteCommand --|> Command
