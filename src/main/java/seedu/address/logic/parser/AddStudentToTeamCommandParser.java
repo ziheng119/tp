@@ -1,6 +1,7 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TEAM;
 
 import seedu.address.commons.core.index.Index;
@@ -31,14 +32,12 @@ public class AddStudentToTeamCommandParser implements Parser<AddStudentToTeamCom
             throw new ParseException(String.format(AddStudentToTeamCommand.MESSAGE_USAGE), pe);
         }
 
-        // Extract team name from team prefix
-        if (argMultimap.getValue(PREFIX_TEAM).isEmpty()) {
-            throw new ParseException(String.format(AddStudentToTeamCommand.MESSAGE_USAGE));
+        if (!argMultimap.getValue(PREFIX_TEAM).isPresent()) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddStudentToTeamCommand.MESSAGE_USAGE));
         }
-        teamName = argMultimap.getValue(PREFIX_TEAM).get().trim();
-        if (teamName.isEmpty()) {
-            throw new ParseException(String.format(AddStudentToTeamCommand.MESSAGE_USAGE));
-        }
+
+        teamName = ParserUtil.parseTeamName(argMultimap.getValue(PREFIX_TEAM).get());
 
         return new AddStudentToTeamCommand(studentIndex, teamName);
     }

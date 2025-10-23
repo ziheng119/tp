@@ -30,59 +30,56 @@ public class RemoveFromTeamCommandParserTest {
 
     @Test
     public void parse_missingTeamPrefix_throwsParseException() {
-        assertThrows(ParseException.class, () -> parser.parse("1 Team1"));
+        assertThrows(ParseException.class, () -> parser.parse("1 F12-3"));
     }
 
     @Test
-    public void parse_missingPersonName_throwsParseException() {
-        assertThrows(ParseException.class, () -> parser.parse("t/Team1"));
+    public void parse_invalidTeamPrefix_throwsParseException() {
+        assertThrows(ParseException.class, () -> parser.parse("1 t/TEAM 1"));
+    }
+
+    @Test
+    public void parse_missingIndex_throwsParseException() {
+        assertThrows(ParseException.class, () -> parser.parse("t/F12-3"));
     }
 
     @Test
     public void parse_validInput_returnsRemoveFromTeamCommand() throws ParseException {
-        RemoveFromTeamCommand expected = new RemoveFromTeamCommand(Index.fromOneBased(1), "Team1");
-        RemoveFromTeamCommand actual = parser.parse("1 t/Team1");
+        RemoveFromTeamCommand expected = new RemoveFromTeamCommand(Index.fromOneBased(1), "F12-3");
+        RemoveFromTeamCommand actual = parser.parse("1 t/F12-3");
         assertEquals(expected.getPersonIndex(), actual.getPersonIndex());
         assertEquals(expected.getTeamName(), actual.getTeamName());
     }
 
     @Test
     public void parse_multipleDigitIndex_returnsRemoveFromTeamCommand() throws ParseException {
-        RemoveFromTeamCommand expected = new RemoveFromTeamCommand(Index.fromOneBased(123), "Team1");
-        RemoveFromTeamCommand actual = parser.parse("123 t/Team1");
-        assertEquals(expected.getPersonIndex(), actual.getPersonIndex());
-        assertEquals(expected.getTeamName(), actual.getTeamName());
-    }
-
-    @Test
-    public void parse_teamNameWithSpaces_returnsRemoveFromTeamCommand() throws ParseException {
-        RemoveFromTeamCommand expected = new RemoveFromTeamCommand(Index.fromOneBased(1), "Team Alpha");
-        RemoveFromTeamCommand actual = parser.parse("1 t/Team Alpha");
+        RemoveFromTeamCommand expected = new RemoveFromTeamCommand(Index.fromOneBased(123), "F12-3");
+        RemoveFromTeamCommand actual = parser.parse("123 t/F12-3");
         assertEquals(expected.getPersonIndex(), actual.getPersonIndex());
         assertEquals(expected.getTeamName(), actual.getTeamName());
     }
 
     @Test
     public void parse_extraWhitespace_returnsRemoveFromTeamCommand() throws ParseException {
-        RemoveFromTeamCommand expected = new RemoveFromTeamCommand(Index.fromOneBased(1), "Team1");
-        RemoveFromTeamCommand actual = parser.parse("  1  t/  Team1  ");
+        RemoveFromTeamCommand expected = new RemoveFromTeamCommand(Index.fromOneBased(1), "F12-3");
+        RemoveFromTeamCommand actual = parser.parse("  1  t/  F12-3  ");
         assertEquals(expected.getPersonIndex(), actual.getPersonIndex());
         assertEquals(expected.getTeamName(), actual.getTeamName());
     }
 
     @Test
     public void parse_invalidIndex_throwsParseException() {
-        assertThrows(ParseException.class, () -> parser.parse("abc t/Team1"));
+        assertThrows(ParseException.class, () -> parser.parse("abc t/F12-3"));
     }
 
     @Test
     public void parse_zeroIndex_throwsParseException() {
-        assertThrows(ParseException.class, () -> parser.parse("0 t/Team1"));
+        assertThrows(ParseException.class, () -> parser.parse("0 t/F12-3"));
     }
 
     @Test
     public void parse_negativeIndex_throwsParseException() {
-        assertThrows(ParseException.class, () -> parser.parse("-1 t/Team1"));
+        assertThrows(ParseException.class, () -> parser.parse("-1 t/F12-3"));
     }
 
     @Test
