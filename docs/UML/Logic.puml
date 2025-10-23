@@ -1,0 +1,60 @@
+package "Logic Layer" as Logic {
+    interface Logic {
+        +execute(commandText)
+        +getAddressBook()
+        +getFilteredPersonList()
+    }
+    
+    class LogicManager {
+        -Model model
+        -Storage storage
+        -AddressBookParser parser
+        +execute(commandText)
+    }
+    
+    class AddressBookParser {
+        +parseCommand(commandText)
+    }
+    
+    abstract class Command {
+        +execute(model)
+    }
+    
+    class FindCommand {
+        -NameContainsKeywordsPredicate predicate
+        +execute(model)
+    }
+    
+    class AddStudentCommand {
+        -Person toAdd
+        +execute(model)
+    }
+    
+    class CreateTeamCommand {
+        -String teamName
+        +execute(model)
+    }
+    
+    class AddStudentToTeamCommand {
+        -Index studentIndex
+        -String teamName
+        +execute(model)
+    }
+    
+    class RemoveFromTeamCommand {
+        -Index personIndex
+        -String teamName
+        +execute(model)
+    }
+    
+    class DeleteCommand {
+        -Index targetIndex
+        -Email targetEmail
+        +execute(model)
+    }
+    
+    class CommandResult {
+        -String feedbackToUser
+        +getFeedbackToUser()
+    }
+}
