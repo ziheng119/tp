@@ -45,7 +45,7 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label phone;
     @FXML
-    private Label github;
+    private Hyperlink github;
     @FXML
     private Label email;
 
@@ -65,6 +65,14 @@ public class PersonCard extends UiPart<Region> {
         }
         phone.setText(person.getPhone().value);
         github.setText(person.getGithub().value);
+        github.setOnAction(event -> {
+            try {
+                String url = "https://github.com/" + person.getGithub().value;
+                Desktop.getDesktop().browse(new URI(url));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
         email.setText(person.getEmail().value);
     }
 
