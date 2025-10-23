@@ -22,15 +22,14 @@ public class DeleteTeamCommandParser implements Parser<DeleteTeamCommand> {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_TEAM);
 
         String teamName;
-        System.out.println(argMultimap.getValue(PREFIX_TEAM));
-        if (!argMultimap.getValue(PREFIX_TEAM).isPresent()) {
+        if (!argMultimap.getValue(PREFIX_TEAM).isPresent()
+                || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteTeamCommand.MESSAGE_USAGE));
         }
 
         // Extract team name from team prefix
         teamName = ParserUtil.parseTeamName(argMultimap.getValue(PREFIX_TEAM).get());
-        System.out.println(teamName);
 
         return new DeleteTeamCommand(teamName);
     }

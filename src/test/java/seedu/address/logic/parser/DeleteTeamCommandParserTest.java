@@ -1,6 +1,6 @@
 package seedu.address.logic.parser;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -8,7 +8,7 @@ import static seedu.address.testutil.Assert.assertThrows;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.DeleteTeamCommand;
-import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.team.Team;
 
 public class DeleteTeamCommandParserTest {
 
@@ -20,28 +20,22 @@ public class DeleteTeamCommandParserTest {
     }
 
     @Test
-    public void parse_emptyString_throwsParseException() {
-        assertThrows(ParseException.class, () -> parser.parse(""));
-    }
-
-    @Test
-    public void parse_whitespaceOnly_throwsParseException() {
-        assertThrows(ParseException.class, () -> parser.parse("   "));
-    }
-
-    @Test
-    public void parse_missingTeamPrefix_throwsParseException() {
-        assertThrows(ParseException.class, () -> parser.parse("F12-3"));
+    public void parse_compulsoryFieldMissing_failure() {
+        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteTeamCommand.MESSAGE_USAGE);
+        assertParseFailure(parser, "",
+                expectedMessage);
+        assertParseFailure(parser, " ",
+                expectedMessage);
+        assertParseFailure(parser, " F12-3",
+                expectedMessage);
     }
 
     @Test
     public void parse_invalidTeam_throwsParseException() {
-        assertThrows(ParseException.class, () -> parser.parse("t/TEAM 1"));
-    }
-
-    @Test
-    public void parse_emptyTeamName_throwsParseException() {
-        assertThrows(ParseException.class, () -> parser.parse("t/"));
+        assertParseFailure(parser, " t/Team 1",
+                Team.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, " t/",
+                Team.MESSAGE_CONSTRAINTS);
     }
 
     @Test
