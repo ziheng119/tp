@@ -4,8 +4,10 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.List;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -17,6 +19,7 @@ import seedu.address.model.team.Team;
  */
 public class DeleteTeamCommand extends Command {
 
+
     public static final String COMMAND_WORD = "delete_team";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
@@ -26,6 +29,8 @@ public class DeleteTeamCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Team %s deleted";
     public static final String MESSAGE_TEAM_NOT_FOUND = "Team with name '%s' not found";
+
+    private static final Logger logger = LogsCenter.getLogger(DeleteTeamCommand.class);
 
     private final String teamName;
 
@@ -40,15 +45,21 @@ public class DeleteTeamCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        assert teamName != null : "Ensure target team name is not null";
+
+        logger.info("Executing " + this.getClass().getSimpleName() + "...");
 
         Team targetTeam = model.getTeamByName(teamName);
         if (targetTeam == null) {
+            logger.warning("Error finding team with name " + teamName);
             throw new CommandException(String.format(MESSAGE_TEAM_NOT_FOUND, teamName));
         }
 
         List<Person> persons = model.getFilteredPersonList().stream()
                 .filter(p -> p.getTeam().equals(targetTeam))
                 .collect(Collectors.toList());
+
+        assert persons != null : "Ensure that persons found is not null (can still be empty)";
 
         for (Person targetPerson : persons) {
             Person updatedPerson = new Person(
