@@ -1,6 +1,8 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TEAM;
 
 import seedu.address.logic.commands.DeleteTeamCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -17,13 +19,19 @@ public class DeleteTeamCommandParser implements Parser<DeleteTeamCommand> {
      */
     public DeleteTeamCommand parse(String args) throws ParseException {
         requireNonNull(args);
-        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_TEAM);
 
         String teamName;
-        teamName = argMultimap.getPreamble();
+        System.out.println(argMultimap.getValue(PREFIX_TEAM));
+        if (!argMultimap.getValue(PREFIX_TEAM).isPresent()) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteTeamCommand.MESSAGE_USAGE));
+        }
 
-        String parsedTeamName = ParserUtil.parseTeamName(teamName);
+        // Extract team name from team prefix
+        teamName = ParserUtil.parseTeamName(argMultimap.getValue(PREFIX_TEAM).get());
+        System.out.println(teamName);
 
-        return new DeleteTeamCommand(parsedTeamName);
+        return new DeleteTeamCommand(teamName);
     }
 }

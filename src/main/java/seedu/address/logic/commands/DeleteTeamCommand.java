@@ -25,7 +25,7 @@ public class DeleteTeamCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes a team.\n"
             + "Parameters: t/TEAM_NAME\n"
-            + "Example: " + COMMAND_WORD + " t/Team1";
+            + "Example: " + COMMAND_WORD + " t/F12-3";
 
     public static final String MESSAGE_SUCCESS = "Team %s deleted";
     public static final String MESSAGE_TEAM_NOT_FOUND = "Team with name '%s' not found";

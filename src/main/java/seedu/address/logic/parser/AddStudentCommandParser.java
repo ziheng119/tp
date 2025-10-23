@@ -66,5 +66,4 @@ public class AddStudentCommandParser implements Parser<AddStudentCommand> {
         return Stream.of(prefixes)
                 .allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
-
 }
