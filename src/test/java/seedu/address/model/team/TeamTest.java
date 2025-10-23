@@ -20,7 +20,7 @@ import seedu.address.testutil.PersonBuilder;
 
 public class TeamTest {
 
-    private final Team team = new Team("Team1");
+    private final Team team = new Team("F12-3");
 
     @Test
     public void constructor_nullName_throwsNullPointerException() {
@@ -45,15 +45,15 @@ public class TeamTest {
         assertFalse(Team.isValidName("team*")); // contains non-alphanumeric characters
 
         // valid name
-        assertTrue(Team.isValidName("Team1")); // alphanumeric characters
-        assertTrue(Team.isValidName("Team Alpha")); // alphanumeric characters and spaces
-        assertTrue(Team.isValidName("A")); // single character
-        assertTrue(Team.isValidName("Team 123")); // alphanumeric with spaces
+        assertTrue(Team.isValidName("F12-3")); // valid tutorial slot format
+        assertTrue(Team.isValidName("W08-1")); // valid tutorial slot format
+        assertTrue(Team.isValidName("T14-2")); // valid tutorial slot format
+        assertTrue(Team.isValidName("M09-4")); // valid tutorial slot format
     }
 
     @Test
     public void getName() {
-        assertEquals("Team1", team.getName());
+        assertEquals("F12-3", team.getName());
     }
 
     @Test
@@ -144,9 +144,9 @@ public class TeamTest {
 
     @Test
     public void equals() {
-        Team team1 = new Team("Team1");
-        Team team1Copy = new Team("Team1");
-        Team team2 = new Team("Team2");
+        Team team1 = new Team("F12-3");
+        Team team1Copy = new Team("F12-3");
+        Team team2 = new Team("W08-1");
         // same object -> returns true
         assertTrue(team1.equals(team1));
         // same name -> returns true
@@ -161,14 +161,14 @@ public class TeamTest {
 
     @Test
     public void hashCode_differentTeams_differentHashCodes() {
-        Team team1 = new Team("Team1");
-        Team team2 = new Team("Team2");
+        Team team1 = new Team("F12-3");
+        Team team2 = new Team("W08-1");
         assertNotEquals(team1.hashCode(), team2.hashCode());
     }
 
     @Test
     public void toStringMethod() {
-        String expected = Team.class.getCanonicalName() + "{name=Team1, persons=" + team.getPersonList() + "}";
+        String expected = Team.class.getCanonicalName() + "{name=F12-3, persons=" + team.getPersonList() + "}";
         assertEquals(expected, team.toString());
     }
 }

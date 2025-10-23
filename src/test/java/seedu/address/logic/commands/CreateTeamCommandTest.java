@@ -25,60 +25,60 @@ public class CreateTeamCommandTest {
 
     @Test
     public void execute_teamCreated_success() throws CommandException {
-        CreateTeamCommand command = new CreateTeamCommand("Team1");
+        CreateTeamCommand command = new CreateTeamCommand("F12-3");
         CommandResult result = command.execute(model);
 
-        assertEquals(String.format(CreateTeamCommand.MESSAGE_CREATE_TEAM_SUCESS, "Team1"), result.getFeedbackToUser());
-        assertTrue(model.hasTeamWithName("Team1"));
+        assertEquals(String.format(CreateTeamCommand.MESSAGE_CREATE_TEAM_SUCESS, "F12-3"), result.getFeedbackToUser());
+        assertTrue(model.hasTeamWithName("F12-3"));
     }
 
     @Test
     public void execute_duplicateTeamName_throwsCommandException() throws CommandException {
         // Create first team
-        Team team1 = new Team("Team1");
+        Team team1 = new Team("F12-3");
         model.addTeam(team1);
 
-        CreateTeamCommand command = new CreateTeamCommand("Team1");
-        assertThrows(CommandException.class, "Team with name 'Team1' already exists", () -> command.execute(model));
+        CreateTeamCommand command = new CreateTeamCommand("F12-3");
+        assertThrows(CommandException.class, "Team with name 'F12-3' already exists", () -> command.execute(model));
     }
 
     @Test
     public void execute_multipleTeamsCreated_success() throws CommandException {
-        CreateTeamCommand command1 = new CreateTeamCommand("Team1");
-        CreateTeamCommand command2 = new CreateTeamCommand("Team2");
+        CreateTeamCommand command1 = new CreateTeamCommand("F12-3");
+        CreateTeamCommand command2 = new CreateTeamCommand("W08-1");
 
         command1.execute(model);
         command2.execute(model);
 
-        assertTrue(model.hasTeamWithName("Team1"));
-        assertTrue(model.hasTeamWithName("Team2"));
+        assertTrue(model.hasTeamWithName("F12-3"));
+        assertTrue(model.hasTeamWithName("W08-1"));
     }
 
     @Test
-    public void execute_teamWithSpacesInName_success() throws CommandException {
-        CreateTeamCommand command = new CreateTeamCommand("Team Alpha");
+    public void execute_teamWithValidFormat_success() throws CommandException {
+        CreateTeamCommand command = new CreateTeamCommand("T14-2");
         CommandResult result = command.execute(model);
 
-        assertEquals(String.format(CreateTeamCommand.MESSAGE_CREATE_TEAM_SUCESS, "Team Alpha"),
+        assertEquals(String.format(CreateTeamCommand.MESSAGE_CREATE_TEAM_SUCESS, "T14-2"),
                 result.getFeedbackToUser());
-        assertTrue(model.hasTeamWithName("Team Alpha"));
+        assertTrue(model.hasTeamWithName("T14-2"));
     }
 
     @Test
-    public void execute_teamWithNumbersInName_success() throws CommandException {
-        CreateTeamCommand command = new CreateTeamCommand("Team123");
+    public void execute_teamWithDifferentFormat_success() throws CommandException {
+        CreateTeamCommand command = new CreateTeamCommand("M09-4");
         CommandResult result = command.execute(model);
 
-        assertEquals(String.format(CreateTeamCommand.MESSAGE_CREATE_TEAM_SUCESS, "Team123"),
+        assertEquals(String.format(CreateTeamCommand.MESSAGE_CREATE_TEAM_SUCESS, "M09-4"),
                 result.getFeedbackToUser());
-        assertTrue(model.hasTeamWithName("Team123"));
+        assertTrue(model.hasTeamWithName("M09-4"));
     }
 
     @Test
     public void equals() {
-        CreateTeamCommand command1 = new CreateTeamCommand("Team1");
-        CreateTeamCommand command2 = new CreateTeamCommand("Team1");
-        CreateTeamCommand command3 = new CreateTeamCommand("Team2");
+        CreateTeamCommand command1 = new CreateTeamCommand("F12-3");
+        CreateTeamCommand command2 = new CreateTeamCommand("F12-3");
+        CreateTeamCommand command3 = new CreateTeamCommand("W08-1");
 
         // same object -> returns true
         assertTrue(command1.equals(command1));
@@ -98,8 +98,8 @@ public class CreateTeamCommandTest {
 
     @Test
     public void toStringMethod() {
-        CreateTeamCommand command = new CreateTeamCommand("Team1");
-        String expected = CreateTeamCommand.class.getCanonicalName() + "{teamName=Team1}";
+        CreateTeamCommand command = new CreateTeamCommand("F12-3");
+        String expected = CreateTeamCommand.class.getCanonicalName() + "{teamName=F12-3}";
         assertEquals(expected, command.toString());
     }
 }

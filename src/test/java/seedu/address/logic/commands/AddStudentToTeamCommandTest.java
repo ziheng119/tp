@@ -37,9 +37,9 @@ public class AddStudentToTeamCommandTest {
 
     @Test
     public void execute_invalidIndex_throwsCommandException() {
-        AddStudentToTeamCommand command = new AddStudentToTeamCommand(Index.fromOneBased(999), "Team1");
+        AddStudentToTeamCommand command = new AddStudentToTeamCommand(Index.fromOneBased(999), "F12-3");
         // Create team first
-        Team team = new Team("Team1");
+        Team team = new Team("F12-3");
         model.addTeam(team);
         assertThrows(CommandException.class, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX, ()
                 -> command.execute(model));
@@ -48,26 +48,26 @@ public class AddStudentToTeamCommandTest {
     @Test
     public void execute_teamNotFound_throwsCommandException() {
         AddStudentToTeamCommand command = new AddStudentToTeamCommand(Index.fromOneBased(1),
-                "NonExistentTeam");
+                "M09-4");
         assertThrows(CommandException.class, String.format(AddStudentToTeamCommand.MESSAGE_TEAM_NOT_FOUND,
-                "NonExistentTeam"), () -> command.execute(model));
+                "M09-4"), () -> command.execute(model));
     }
 
     @Test
     public void execute_personAlreadyInTeam_throwsCommandException() throws CommandException {
         // Create team and add person
-        Team team = new Team("Team1");
+        Team team = new Team("F12-3");
         model.addTeam(team);
         model.addPersonToTeam(ALICE, team);
-        AddStudentToTeamCommand command = new AddStudentToTeamCommand(Index.fromOneBased(1), "Team1");
+        AddStudentToTeamCommand command = new AddStudentToTeamCommand(Index.fromOneBased(1), "F12-3");
         assertThrows(CommandException.class, String.format(AddStudentToTeamCommand.MESSAGE_PERSON_ALREADY_IN_TEAM,
-                Messages.format(ALICE), "Team1"), () -> command.execute(model));
+                Messages.format(ALICE), "F12-3"), () -> command.execute(model));
     }
 
     @Test
     public void execute_teamAtMaxCapacity_throwsCommandException() throws CommandException {
         // Create team and fill it to capacity
-        Team team = new Team("Team1");
+        Team team = new Team("F12-3");
         model.addTeam(team);
         // Add 5 people to reach max capacity
         for (int i = 0; i < 5; i++) {
@@ -76,30 +76,30 @@ public class AddStudentToTeamCommandTest {
             model.addPerson(person);
             model.addPersonToTeam(person, team);
         }
-        AddStudentToTeamCommand command = new AddStudentToTeamCommand(Index.fromOneBased(1), "Team1");
+        AddStudentToTeamCommand command = new AddStudentToTeamCommand(Index.fromOneBased(1), "F12-3");
         assertThrows(CommandException.class, String.format(AddStudentToTeamCommand.MESSAGE_TEAM_FULL,
-                "Team1"), () -> command.execute(model));
+                "F12-3"), () -> command.execute(model));
     }
 
     @Test
     public void execute_validInput_success() throws CommandException {
-        Team team = new Team("Team1");
+        Team team = new Team("F12-3");
         model.addTeam(team);
-        AddStudentToTeamCommand command = new AddStudentToTeamCommand(Index.fromOneBased(1), "Team1");
+        AddStudentToTeamCommand command = new AddStudentToTeamCommand(Index.fromOneBased(1), "F12-3");
         CommandResult result = command.execute(model);
-        assertEquals(String.format(AddStudentToTeamCommand.MESSAGE_SUCCESS, Messages.format(ALICE), "Team1"),
+        assertEquals(String.format(AddStudentToTeamCommand.MESSAGE_SUCCESS, Messages.format(ALICE), "F12-3"),
                 result.getFeedbackToUser());
         assertTrue(team.hasPerson(ALICE));
     }
 
     @Test
     public void execute_secondPersonInList_success() throws CommandException {
-        Team team = new Team("Team1");
+        Team team = new Team("F12-3");
         model.addTeam(team);
         // Use index 2 to add BOB (second person in the list)
-        AddStudentToTeamCommand command = new AddStudentToTeamCommand(Index.fromOneBased(2), "Team1");
+        AddStudentToTeamCommand command = new AddStudentToTeamCommand(Index.fromOneBased(2), "F12-3");
         CommandResult result = command.execute(model);
-        assertEquals(String.format(AddStudentToTeamCommand.MESSAGE_SUCCESS, Messages.format(BOB), "Team1"),
+        assertEquals(String.format(AddStudentToTeamCommand.MESSAGE_SUCCESS, Messages.format(BOB), "F12-3"),
                 result.getFeedbackToUser());
         assertTrue(team.hasPerson(BOB));
     }

@@ -8,7 +8,6 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Github;
 import seedu.address.model.person.Name;
@@ -18,7 +17,7 @@ import seedu.address.model.team.Team;
 
 public class JsonAdaptedTeamTest {
 
-    private static final String VALID_TEAM_NAME = "TeamAlpha";
+    private static final String VALID_TEAM_NAME = "F12-3";
     private static final Team VALID_TEAM = new Team(VALID_TEAM_NAME);
 
     private static final Name ALICE_NAME = new Name("Alice");
@@ -49,9 +48,8 @@ public class JsonAdaptedTeamTest {
     @Test
     public void toModelType_missingTeamName_throwsIllegalValueException() {
         List<Email> memberEmails = List.of(ALICE_EMAIL);
-        JsonAdaptedTeam jsonTeam = new JsonAdaptedTeam(null, memberEmails);
 
-        assertThrows(IllegalValueException.class, () -> jsonTeam.toModelType());
+        assertThrows(AssertionError.class, () -> new JsonAdaptedTeam(null, memberEmails));
     }
 
     @Test
