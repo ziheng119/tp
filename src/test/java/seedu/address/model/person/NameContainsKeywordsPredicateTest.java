@@ -66,22 +66,22 @@ public class NameContainsKeywordsPredicateTest {
     public void test_teamContainsKeywords_returnsTrue() {
         // team-only search should match when team keyword present
         NameContainsKeywordsPredicate predicate = new NameContainsKeywordsPredicate(Collections.emptyList(),
-                Collections.singletonList("Team1"));
-        assertTrue(predicate.test(new PersonBuilder().withName("Someone").withTeam(new Team("Team1")).build()));
+                Collections.singletonList("F12-3"));
+        assertTrue(predicate.test(new PersonBuilder().withName("Someone").withTeam(new Team("F12-3")).build()));
 
         // multiple team keywords
-        predicate = new NameContainsKeywordsPredicate(Collections.emptyList(), Arrays.asList("Team1", "Team2"));
-        assertTrue(predicate.test(new PersonBuilder().withName("Someone").withTeam(new Team("Team2")).build()));
+        predicate = new NameContainsKeywordsPredicate(Collections.emptyList(), Arrays.asList("F12-3", "W08-1"));
+        assertTrue(predicate.test(new PersonBuilder().withName("Someone").withTeam(new Team("W08-1")).build()));
     }
 
     @Test
     public void test_nameAndTeamCombined_returnsTrueOrFalse() {
         // both provided: both must match
         NameContainsKeywordsPredicate predicate = new NameContainsKeywordsPredicate(Collections.singletonList("Alice"),
-                Collections.singletonList("Team1"));
-        assertTrue(predicate.test(new PersonBuilder().withName("Alice").withTeam(new Team("Team1")).build()));
-        assertFalse(predicate.test(new PersonBuilder().withName("Alice").withTeam(new Team("Other")).build()));
-        assertFalse(predicate.test(new PersonBuilder().withName("Bob").withTeam(new Team("Team1")).build()));
+                Collections.singletonList("F12-3"));
+        assertTrue(predicate.test(new PersonBuilder().withName("Alice").withTeam(new Team("F12-3")).build()));
+        assertFalse(predicate.test(new PersonBuilder().withName("Alice").withTeam(new Team("T14-2")).build()));
+        assertFalse(predicate.test(new PersonBuilder().withName("Bob").withTeam(new Team("F12-3")).build()));
     }
 
     @Test
