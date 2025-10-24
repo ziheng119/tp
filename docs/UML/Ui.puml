@@ -1,0 +1,53 @@
+@startuml
+hide circle
+hide members
+
+skinparam componentStyle rectangle
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+    BackgroundColor<<interface>> LightGreen
+    BackgroundColor<<abstract>> LightGreen
+    BackgroundColor LightGreen
+    BorderColor DarkGreen
+}
+
+package Logic {
+}
+
+package Model {
+}
+
+package UI {
+    interface Ui
+    class UiManager
+    class MainWindow
+    class StatusBarFooter
+    class ResultDisplay
+    class CommandBox
+    class HelpWindow
+    class PersonListPanel
+    class PersonCard
+    abstract class UiPart
+
+    Ui <|-- UiManager
+    UiManager -[#darkgreen]-> "Logic"
+    UiManager -[#darkgreen]-> "MainWindow"
+    MainWindow -[#darkgreen]-> "Logic"
+    PersonCard ..[#darkgreen]-> "Model"
+
+    MainWindow *-- "1" StatusBarFooter
+    MainWindow *-- "1" ResultDisplay
+    MainWindow *-- "1" CommandBox
+    MainWindow *-- "0..1" HelpWindow
+    MainWindow *-- "1" PersonListPanel
+    PersonListPanel *-- "*" PersonCard
+
+    StatusBarFooter --|> UiPart
+    ResultDisplay --|> UiPart
+    CommandBox --|> UiPart
+    HelpWindow --|> UiPart
+    PersonListPanel --|> UiPart
+}
+
+@enduml
