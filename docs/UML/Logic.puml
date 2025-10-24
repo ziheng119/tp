@@ -1,3 +1,5 @@
+@startuml
+
 package "Logic Layer" as Logic {
     interface Logic {
         +execute(commandText)
@@ -67,3 +69,5 @@ CreateTeamCommand --|> Command
 AddStudentToTeamCommand --|> Command
 RemoveFromTeamCommand --|> Command
 DeleteCommand --|> Command
+
+@enduml

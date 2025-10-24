@@ -1,0 +1,35 @@
+@startuml
+
+package "Storage Layer" as Storage{
+
+    interface AddressBookStorage
+    interface UserPrefsStorage
+    interface Storage
+
+    class JsonAddressBookStorage
+    class JsonUserPrefsStorage
+    class StorageManager
+
+    class JsonSerializableAddressBook
+    class JsonAdaptedPerson
+    class JsonAdaptedTeam
+
+    ' ===== Relationships =====
+
+    StorageManager ..> AddressBookStorage : uses
+    StorageManager ..> UserPrefsStorage : uses
+
+    AddressBookStorage <|.. JsonAddressBookStorage
+    UserPrefsStorage <|.. JsonUserPrefsStorage
+    Storage <|.. StorageManager
+
+    JsonAddressBookStorage --> JsonSerializableAddressBook
+    JsonSerializableAddressBook --> JsonAdaptedPerson
+    JsonSerializableAddressBook --> JsonAdaptedTeam
+
+    JsonAdaptedPerson --> "Team"
+    JsonAdaptedPerson --> "Person"
+    JsonAdaptedTeam --> "Team"
+}
+
+@enduml

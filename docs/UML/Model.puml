@@ -1,3 +1,5 @@
+@startuml
+
 package "Model Layer" as Model {
     interface Model {
         +addPerson(person)
@@ -91,3 +93,4 @@ package "Model Layer" as Model {
     Person --> Team
     Team *-- UniquePersonList
 }
+@enduml
