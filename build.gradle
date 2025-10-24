@@ -25,6 +25,10 @@ test {
     finalizedBy jacocoTestReport
 }
 
+run {
+    jvmArgs '-ea'
+}
+
 task coverage(type: JacocoReport) {
     sourceDirectories.from files(sourceSets.main.allSource.srcDirs)
     classDirectories.from files(sourceSets.main.output)
