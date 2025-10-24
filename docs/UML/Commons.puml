@@ -1,18 +1,5 @@
-!theme plain
+@startuml
 hide circle
-skinparam classAttribute {
-    iconVisibility false
-}
-skinparam class {
-    AttributeIconSize 0
-}
-
-skinparam classAttribute {
-    iconPublic +
-    iconPrivate -
-    iconProtected #
-    iconPackage ~
-}
 
 package "Commons Layer" as Commons {
     package "Core" as Core {
@@ -123,3 +110,5 @@ Index *-- int
 
 DataLoadingException --|> Exception
 IllegalValueException --|> Exception
+
+@enduml
