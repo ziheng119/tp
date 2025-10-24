@@ -1,0 +1,129 @@
+@startuml
+
+!theme plain
+hide circle
+skinparam classAttribute {
+    iconVisibility false
+}
+skinparam class {
+    AttributeIconSize 0
+}
+
+skinparam classAttribute {
+    iconPublic +
+    iconPrivate -
+    iconProtected #
+    iconPackage ~
+}
+
+package "Commons Layer" as Commons {
+    package "Core" as Core {
+        class Config {
+            -Level logLevel
+            -Path userPrefsFilePath
+            +getLogLevel()
+            +setLogLevel(level)
+            +getUserPrefsFilePath()
+            +setUserPrefsFilePath(path)
+        }
+
+        class GuiSettings {
+            -double windowWidth
+            -double windowHeight
+            -Point windowCoordinates
+            +getWindowWidth()
+            +getWindowHeight()
+            +getWindowCoordinates()
+        }
+
+        class LogsCenter {
+            -Logger baseLogger
+            -Level currentLogLevel
+            +init(config)
+            +getLogger(name)
+            +getLogger(clazz)
+        }
+
+        class Version {
+            +VERSION
+        }
+
+        package "Index" as IndexPackage {
+            class Index {
+                -int zeroBasedIndex
+                +getZeroBased()
+                +getOneBased()
+                +equals(other)
+            }
+        }
+    }
+
+    package "Util" as Util {
+        class AppUtil {
+            +getImage(imagePath)
+            +checkArgument(condition)
+            +checkArgument(condition, errorMessage)
+        }
+
+        class CollectionUtil {
+            +requireAllNonNull(items...)
+            +requireAllNonNull(collection)
+            +isAnyNonNull(items...)
+        }
+
+        class ConfigUtil {
+            +readConfigFile(configFilePath)
+            +saveConfigFile(config, configFilePath)
+        }
+
+        class FileUtil {
+            +isValidPath(path)
+            +isFileExists(path)
+            +createIfMissing(path)
+        }
+
+        class JsonUtil {
+            +readJsonFile(filePath, classOfObjectToDeserialize)
+            +saveJsonFile(jsonFile, filePath)
+        }
+
+        class StringUtil {
+            +containsWordIgnoreCase(sentence, word)
+            +getDetails(ex)
+        }
+
+        class ToStringBuilder {
+            -StringBuilder stringBuilder
+            -boolean hasField
+            +add(fieldName, fieldValue)
+            +toString()
+        }
+    }
+
+    package "Exceptions" as Exceptions {
+        class DataLoadingException {
+            +DataLoadingException(cause)
+        }
+
+        class IllegalValueException {
+            +IllegalValueException(message)
+            +IllegalValueException(message, cause)
+        }
+    }
+}
+
+' Relationships
+LogsCenter --> Config : uses
+Config --> ToStringBuilder : uses
+GuiSettings --> ToStringBuilder : uses
+
+' Core relationships
+Config *-- Path
+GuiSettings *-- Point
+LogsCenter *-- Logger
+Index *-- int
+
+DataLoadingException --|> Exception
+IllegalValueException --|> Exception
+
+@enduml
