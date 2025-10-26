@@ -51,7 +51,7 @@ public class CreateTeamCommand extends Command {
     }
 
     /**
-     * Generates a command execution success message with team name
+     * Generates a command execution success message with team name.
      */
     private String generateSuccessMessage(String teamName) {
         return String.format(MESSAGE_CREATE_TEAM_SUCESS, teamName);
