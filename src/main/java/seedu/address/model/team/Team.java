@@ -16,16 +16,16 @@ import seedu.address.model.team.exceptions.TeamMaxCapacityException;
  */
 public class Team {
 
-    public static final String MESSAGE_CONSTRAINTS =
-            "Team names should follow the format: [M|W|T|F][08|09|10|11|12|13|14|15|16|17]-[1|2|3|4] "
-            + "(e.g., F12-3, W08-1, T02-4)";
-
     /*
      * Team name format: [M|W|T|F][08|09|10|11|12|13|14|15|16|17]-[1|2|3|4]
      * Examples: F12-3, W08-1, T02-4
      */
     public static final String VALIDATION_REGEX = "^[MWTF](08|09|10|11|12|13|14|15|16|17)-[1-4]$";
+    public static final String MESSAGE_CONSTRAINTS =
+            " the format: [M|W|T|F][08|09|10|11|12|13|14|15|16|17]-[1|2|3|4] "
+            + "(e.g., F12-3, W08-1, T02-4)";
     public static final Team NONE = new Team();
+
     private static final int MAX_CAPACITY = 5;
 
     private final String name;
@@ -42,7 +42,12 @@ public class Team {
         persons = new UniquePersonList();
     }
 
-    // Private constructor for NONE
+    /**
+     * Constructs a {@code Team}.
+     * For private construction of the {@code Team.NONE} singleton
+     *
+     * @param name A valid name.
+     */
     private Team() {
         this.name = "";
     }
