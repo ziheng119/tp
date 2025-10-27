@@ -38,6 +38,15 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /**
+     * Returns true if the list contains a person with the same GitHub username as the given argument.
+     */
+    public boolean hasPersonWithGithub(String githubUsername) {
+        requireNonNull(githubUsername);
+        return internalList.stream().anyMatch(person ->
+            person.getGithub().value.equals(githubUsername));
+    }
+
+    /**
      * Adds a person to the list.
      * The person must not already exist in the list.
      */
