@@ -15,10 +15,11 @@ public class FindCommand extends Command {
 
     public static final String COMMAND_WORD = "find";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose names contain any of "
-            + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
-            + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
-            + "Example: " + COMMAND_WORD + " alice bob charlie";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds students whose names contain any "
+            + "of the specified keywords or who belong in any of the specified teams (case-insensitive) "
+            + "and displays them as a list with index numbers.\n"
+            + "Parameters: n/[NAMES] t/[TEAM_NAMES]\n"
+            + "Example: " + COMMAND_WORD + " n/Alice Bobby t/F12-3";
 
     private final NameContainsKeywordsPredicate predicate;
 
