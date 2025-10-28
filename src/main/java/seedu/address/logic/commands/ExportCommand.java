@@ -5,6 +5,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_FILE;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -29,43 +30,42 @@ public class ExportCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Address book successfully exported to: %1$s";
     public static final String MESSAGE_FAILURE = "Failed to export data: %1$s";
 
-    private final Path exportPath;
+    private final String filePath;
 
     /**
      * Creates an ExportCommand to export data to the specified file path.
      */
     public ExportCommand(String filePath) {
         requireNonNull(filePath);
-        Path path = Paths.get(filePath);
-        if (!path.isAbsolute()) {
-            path = path.toAbsolutePath();
-        }
-        this.exportPath = path;
+        this.filePath = filePath;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-
         try {
-            Path targetPath = exportPath;
+            Path exportPath = Paths.get(filePath);
+
+            if (!exportPath.isAbsolute()) {
+                exportPath = exportPath.toAbsolutePath();
+            }
 
             // Ensure parent directories exist
             if (exportPath.getParent() != null) {
                 Files.createDirectories(exportPath.getParent());
             }
             if (Files.exists(exportPath) && Files.isDirectory(exportPath)) {
-                targetPath = exportPath.resolve("exported_addressbook.json");
+                exportPath = exportPath.resolve("exported_addressbook.json");
             } else if (!exportPath.toString().toLowerCase().endsWith(".json")) {
                 // If it's a file but missing .json, append extension
-                targetPath = Paths.get(exportPath.toString() + ".json");
+                exportPath = Paths.get(exportPath.toString() + ".json");
             }
 
             // Write JSON data
-            Files.copy(model.getAddressBookFilePath(), targetPath, java.nio.file.StandardCopyOption.REPLACE_EXISTING);
-            return new CommandResult(String.format(MESSAGE_SUCCESS, exportPath));
+            Files.copy(model.getAddressBookFilePath(), exportPath, java.nio.file.StandardCopyOption.REPLACE_EXISTING);
+            return new CommandResult(String.format(MESSAGE_SUCCESS, exportPath.toString()));
 
-        } catch (IOException e) {
+        } catch (IOException | InvalidPathException e) {
             throw new CommandException(String.format(MESSAGE_FAILURE, e.getMessage()));
         }
     }
@@ -82,6 +82,6 @@ public class ExportCommand extends Command {
         }
 
         ExportCommand otherCommand = (ExportCommand) other;
-        return exportPath.equals(otherCommand.exportPath);
+        return filePath.equals(otherCommand.filePath);
     }
 }
