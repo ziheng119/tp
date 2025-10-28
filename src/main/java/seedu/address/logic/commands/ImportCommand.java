@@ -43,10 +43,10 @@ public class ImportCommand extends Command {
         requireNonNull(model);
 
         try {
-        Path importPath = Paths.get(filePath);
-        if (!importPath.isAbsolute()) {
-            importPath = importPath.toAbsolutePath();
-        }
+            Path importPath = Paths.get(filePath);
+            if (!importPath.isAbsolute()) {
+                importPath = importPath.toAbsolutePath();
+            }
             // Check if source file exists
             if (!Files.exists(importPath) || Files.isDirectory(importPath)) {
                 throw new CommandException("The specified file does not exist or is a directory: " + importPath);
