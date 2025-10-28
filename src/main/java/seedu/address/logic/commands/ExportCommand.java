@@ -23,7 +23,7 @@ public class ExportCommand extends Command {
             + "Parameters: "
             + PREFIX_FILE + "FILE_PATH\n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_FILE + "C:\\Users\\User\\Documents\\my_export.json";
+            + PREFIX_FILE + "my_export.json";
 
     public static final String MESSAGE_SUCCESS = "Address book successfully exported to: %1$s";
     public static final String MESSAGE_FAILURE = "Failed to export data: %1$s";
