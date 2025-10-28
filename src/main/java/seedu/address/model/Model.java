@@ -64,6 +64,8 @@ public interface Model {
      * Returns true if a person with the given phone number exists in the address book.
      */
     boolean hasPersonWithPhone(Phone phone);
+
+    /**
      * Returns true if a person with the same GitHub username as {@code githubUsername} exists in the address book.
      */
     boolean hasPersonWithGithub(String githubUsername);

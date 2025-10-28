@@ -100,6 +100,9 @@ public class ModelManager implements Model {
     public boolean hasPersonWithPhone(Phone phone) {
         requireNonNull(phone);
         return addressBook.hasPersonWithPhone(phone);
+    }
+
+    @Override
     public boolean hasPersonWithGithub(String githubUsername) {
         requireNonNull(githubUsername);
         return addressBook.hasPersonWithGithub(githubUsername);
