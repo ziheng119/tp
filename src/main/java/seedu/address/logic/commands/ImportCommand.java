@@ -5,8 +5,10 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_FILE;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -40,12 +42,11 @@ public class ImportCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
+        try {
         Path importPath = Paths.get(filePath);
         if (!importPath.isAbsolute()) {
             importPath = importPath.toAbsolutePath();
         }
-
-        try {
             // Check if source file exists
             if (!Files.exists(importPath) || Files.isDirectory(importPath)) {
                 throw new CommandException("The specified file does not exist or is a directory: " + importPath);
@@ -58,11 +59,11 @@ public class ImportCommand extends Command {
             }
 
             // Copy the file into data/addressbook.json
-            Files.copy(importPath, targetPath, java.nio.file.StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(importPath, targetPath, StandardCopyOption.REPLACE_EXISTING);
 
             return new CommandResult(String.format(MESSAGE_SUCCESS, importPath));
 
-        } catch (IOException e) {
+        } catch (IOException | InvalidPathException e) {
             throw new CommandException(String.format(MESSAGE_FAILURE, e.getMessage()));
         }
     }
