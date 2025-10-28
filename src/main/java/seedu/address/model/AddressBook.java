@@ -92,6 +92,11 @@ public class AddressBook implements ReadOnlyAddressBook {
             }
         }
         return false;
+     * Returns true if a person with the same GitHub username as {@code githubUsername} exists in the address book.
+     */
+    public boolean hasPersonWithGithub(String githubUsername) {
+        requireNonNull(githubUsername);
+        return persons.hasPersonWithGithub(githubUsername);
     }
 
     /**

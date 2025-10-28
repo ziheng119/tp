@@ -1,6 +1,7 @@
 package seedu.address.model;
 
 import java.nio.file.Path;
+import java.util.List;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
@@ -63,6 +64,9 @@ public interface Model {
      * Returns true if a person with the given phone number exists in the address book.
      */
     boolean hasPersonWithPhone(Phone phone);
+     * Returns true if a person with the same GitHub username as {@code githubUsername} exists in the address book.
+     */
+    boolean hasPersonWithGithub(String githubUsername);
 
     /**
      * Deletes the given person.
@@ -139,6 +143,11 @@ public interface Model {
      * The person and team must exist in the address book.
      */
     void removePersonFromTeam(Person person, Team team);
+
+    /**
+     * Sets the Team of all person in {@code persons} to {@code Team.NONE}
+     */
+    void setPersonsTeamToNone(List<Person> persons);
 
     /**
      * Returns the team that contains the given person.
