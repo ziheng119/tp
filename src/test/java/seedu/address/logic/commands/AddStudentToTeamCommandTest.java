@@ -73,7 +73,8 @@ public class AddStudentToTeamCommandTest {
         for (int i = 0; i < 5; i++) {
             Person person = new PersonBuilder().withName("Person" + i)
                     .withEmail("testtest" + i + "@example.com")
-                    .withPhone("9999999" + i).build();
+                    .withPhone("9999999" + i)
+                    .withGithub("testuser" + i).build();
             model.addPerson(person);
             model.addPersonToTeam(person, team);
         }
