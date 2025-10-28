@@ -96,6 +96,12 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public boolean hasPersonWithGithub(String githubUsername) {
+        requireNonNull(githubUsername);
+        return addressBook.hasPersonWithGithub(githubUsername);
+    }
+
+    @Override
     public void deletePerson(Person target) {
         addressBook.removePerson(target);
     }

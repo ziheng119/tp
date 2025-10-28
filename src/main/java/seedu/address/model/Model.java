@@ -60,6 +60,11 @@ public interface Model {
     boolean hasPerson(Person person);
 
     /**
+     * Returns true if a person with the same GitHub username as {@code githubUsername} exists in the address book.
+     */
+    boolean hasPersonWithGithub(String githubUsername);
+
+    /**
      * Deletes the given person.
      * The person must exist in the address book.
      */
