@@ -27,11 +27,7 @@ public class AddStudentCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "New person added: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON =
-            "This person already exists in the system.";
-    public static final String MESSAGE_DUPLICATE_PHONE =
-            "A student with this phone number already exists in the system.";
-    public static final String MESSAGE_DUPLICATE_EMAIL =
-            "A student with this email already exists in the system.";
+            "A student with this email or phone number already exists in the system.";
 
     private final Person toAdd;
 
@@ -49,10 +45,6 @@ public class AddStudentCommand extends Command {
 
         if (model.hasPerson(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
-        }
-
-        if (model.hasPersonWithPhone(toAdd.getPhone())) {
-            throw new CommandException(MESSAGE_DUPLICATE_PHONE);
         }
 
         model.addPerson(toAdd);
