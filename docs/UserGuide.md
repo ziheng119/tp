@@ -5,7 +5,7 @@ title: User Guide
 
 SWEatless is a desktop application for **teaching staff who favour CLI usage** and want to **access and manage student and team information efficiently**.
 
-- Table of Contents
+* Table of Contents
   {:toc}
 
 ---
@@ -213,31 +213,29 @@ Examples:
 
 - `remove_from_team 1 t/T11-4`
 
-### Locating persons by name: `find`
+### Locating persons by name or team: `find`
 
-Finds students whose names contain any of the given keywords or who belong in teams provided
+Finds students whose names contain any of the specified keywords or who belong in any of the specified teams (case-insensitive) and displays them as a list with index numbers.
 
 Format: `find n/[MORE_NAMES] t/[MORE_TEAM_NAMES]`
-`find n/[MORE_NAMES]`
-`find t/[MORE_TEAM_NAMES]`
 
+- At least one of the optional fields must be provided.
 - The search is case-insensitive. e.g `hans` will match `Hans`
-- The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-- Only the name and/or team is searched.
+- The order of the keywords does not matter.
+- Only the name and/or team name is searched.
 - Only full words will be matched e.g. `Han` will not match `Hans`
-- Students matching at least one name keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
-- Students matching at least one team keyword will be returned (i.e. `OR` search).
-  e.g. `F12-3 T11-2` will return all students from `F12-3` and `T11-2`
 
 Examples:
 
 - `find n/John` returns `john` and `John Doe`
 - `find n/alex david` returns `Alex Yeoh`, `David Li`<br>
+  *Students matching at least one name keyword will be returned (i.e. `OR` search)*
   ![result for 'find n/alex david'](images/findAlexDavidResult.png)
 - `find t/F12-3` returns all students from team `F12-3`
-- `find t/F12-3 T11-2` returns all students from team `F12-3` and `T11-2`
-- `find n/alex david t/F12-3 T11-2` returns all students from team `F12-3` and `T11-2` with names `Alex` or `David`
+- `find t/F12-3 T11-2` returns all students from team `F12-3` and `T11-2`<br>
+  *Students matching at least one team keyword will be returned (i.e. `OR` search)*
+- `find n/alex david t/F12-3 T11-2` returns all students from team `F12-3` and `T11-2` with names `Alex` or `David`<br>
+  *If both `n/` and `/t` tags are used, students with the queried names in the specified teams will be returned (i.e. `AND` search)*
 
 ### Listing all students : `list`
 
