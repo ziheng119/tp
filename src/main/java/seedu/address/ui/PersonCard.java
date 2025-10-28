@@ -6,6 +6,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
@@ -15,6 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Person;
 import seedu.address.model.team.Team;
 
@@ -24,6 +26,8 @@ import seedu.address.model.team.Team;
 public class PersonCard extends UiPart<Region> {
 
     private static final String FXML = "PersonListCard.fxml";
+    private static final String GITHUB_ICON_PATH = "/images/github_icon.png";
+    private static final Logger logger = LogsCenter.getLogger(PersonCard.class);
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX. As
@@ -65,22 +69,14 @@ public class PersonCard extends UiPart<Region> {
         this.person = person;
         id.setText(displayedIndex + ". ");
         name.setText(person.getName().fullName);
+
         if (person.getTeam() != Team.NONE) {
             String teamName = person.getTeamName();
             Hyperlink teamLink = new Hyperlink(teamName);
             teamLink.setOnAction(event -> openTeamUrl(teamName));
             teamGithubBox.getChildren().add(teamLink);
-            try {
-                Image icon = new Image(getClass().getResourceAsStream("/images/github_icon.png"));
-                if (githubIcon1 != null) {
-                    githubIcon1.setImage(icon);
-                    githubIcon1.setFitWidth(16);
-                    githubIcon1.setFitHeight(16);
-                    githubIcon1.setPreserveRatio(true);
-                }
-            } catch (Exception e) {
-                // ignore missing image in tests; icon is decorative
-            }
+            addGithubIconToImageView(githubIcon1);
+
             teamGithubBox.setVisible(true);
             teamGithubBox.setManaged(true);
         } else {
@@ -90,18 +86,9 @@ public class PersonCard extends UiPart<Region> {
 
         phone.setText(person.getPhone().value);
         email.setText(person.getEmail().value);
+
+        addGithubIconToImageView(githubIcon2);
         github.setText(person.getGithub().value);
-        try {
-            Image icon = new Image(getClass().getResourceAsStream("/images/github_icon.png"));
-            if (githubIcon2 != null) {
-                githubIcon2.setImage(icon);
-                githubIcon2.setFitWidth(16);
-                githubIcon2.setFitHeight(16);
-                githubIcon2.setPreserveRatio(true);
-            }
-        } catch (Exception e) {
-            // ignore missing image in tests; icon is decorative
-        }
         github.setOnAction(event -> {
             try {
                 String url = "https://github.com/" + person.getGithub().value;
@@ -110,6 +97,22 @@ public class PersonCard extends UiPart<Region> {
                 e.printStackTrace();
             }
         });
+    }
+
+    private void addGithubIconToImageView(ImageView imageView) {
+        try {
+            Image icon = new Image(getClass().getResourceAsStream(GITHUB_ICON_PATH));
+            if (imageView != null) {
+                imageView.setImage(icon);
+                imageView.setFitWidth(16);
+                imageView.setFitHeight(16);
+                imageView.setPreserveRatio(true);
+                logger.info("Successfully loaded Github icon.");
+            }
+        } catch (Exception e) {
+            // ignore missing image in tests; icon is decorative
+            logger.warning("Issues loading Github icon. Path: " + GITHUB_ICON_PATH);
+        }
     }
 
     /**

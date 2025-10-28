@@ -46,10 +46,10 @@ public class DeleteTeamCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         assert teamName != null : "Ensure target team name is not null";
-
         logger.info("Executing " + this.getClass().getSimpleName() + "...");
 
         Team targetTeam = model.getTeamByName(teamName);
+
         if (targetTeam == null) {
             logger.warning("Error finding team with name " + teamName);
             throw new CommandException(String.format(MESSAGE_TEAM_NOT_FOUND, teamName));
@@ -61,16 +61,7 @@ public class DeleteTeamCommand extends Command {
 
         assert persons != null : "Ensure that persons found is not null (can still be empty)";
 
-        for (Person targetPerson : persons) {
-            Person updatedPerson = new Person(
-                    targetPerson.getName(),
-                    targetPerson.getPhone(),
-                    targetPerson.getEmail(),
-                    targetPerson.getGithub(),
-                    Team.NONE);
-            model.setPerson(targetPerson, updatedPerson);
-        }
-
+        model.setPersonsTeamToNone(persons);
         model.deleteTeam(targetTeam);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
 

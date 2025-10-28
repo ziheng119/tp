@@ -20,7 +20,10 @@ public class CreateTeamCommandParser implements Parser<CreateTeamCommand> {
         requireNonNull(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_TEAM);
 
-        if (!argMultimap.getValue(PREFIX_TEAM).isPresent() || !argMultimap.getPreamble().isEmpty()) {
+        boolean isInvalidCommandFormat = !argMultimap.getValue(PREFIX_TEAM).isPresent()
+                || !argMultimap.getPreamble().isEmpty();
+
+        if (isInvalidCommandFormat) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, CreateTeamCommand.MESSAGE_USAGE));
         }
 
