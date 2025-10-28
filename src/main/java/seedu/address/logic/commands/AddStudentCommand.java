@@ -48,7 +48,7 @@ public class AddStudentCommand extends Command {
         requireNonNull(model);
 
         if (model.hasPerson(toAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_EMAIL);
+            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         }
 
         if (model.hasPersonWithPhone(toAdd.getPhone())) {
