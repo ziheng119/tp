@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -114,6 +115,7 @@ public class ModelManager implements Model {
     @Override
     public void setPerson(Person target, Person editedPerson) {
         requireAllNonNull(target, editedPerson);
+
         addressBook.setPerson(target, editedPerson);
     }
 
@@ -183,6 +185,19 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void setPersonsTeamToNone(List<Person> persons) {
+        for (Person targetPerson : persons) {
+            Person updatedPerson = new Person(
+                    targetPerson.getName(),
+                    targetPerson.getPhone(),
+                    targetPerson.getEmail(),
+                    targetPerson.getGithub(),
+                    Team.NONE);
+            setPerson(targetPerson, updatedPerson);
+        }
+    }
+
+    @Override
     public Team getTeamContainingPerson(Person person) {
         requireNonNull(person);
         return addressBook.getTeamContainingPerson(person);
@@ -204,5 +219,4 @@ public class ModelManager implements Model {
                 && userPrefs.equals(otherModelManager.userPrefs)
                 && filteredPersons.equals(otherModelManager.filteredPersons);
     }
-
 }

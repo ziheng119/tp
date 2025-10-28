@@ -103,7 +103,9 @@ class JsonAdaptedPerson {
             throw new IllegalValueException(
                     String.format(MISSING_FIELD_MESSAGE_FORMAT, Team.class.getSimpleName()));
         }
-        if (!Team.isValidName(teamName) && !Team.isNoneTeamName(teamName)) {
+
+        boolean isInvalidTeamNameOrNone = !Team.isValidName(teamName) && !Team.isNoneTeamName(teamName);
+        if (isInvalidTeamNameOrNone) {
             throw new IllegalValueException(Team.MESSAGE_CONSTRAINTS);
         }
         final Team modelTeam = teamMap.get(teamName);

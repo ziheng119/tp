@@ -22,8 +22,11 @@ public class DeleteTeamCommandParser implements Parser<DeleteTeamCommand> {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_TEAM);
 
         String teamName;
-        if (!argMultimap.getValue(PREFIX_TEAM).isPresent()
-                || !argMultimap.getPreamble().isEmpty()) {
+
+        boolean isInvalidCommandFormat = !argMultimap.getValue(PREFIX_TEAM).isPresent()
+                || !argMultimap.getPreamble().isEmpty();
+
+        if (isInvalidCommandFormat) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteTeamCommand.MESSAGE_USAGE));
         }

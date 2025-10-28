@@ -68,20 +68,25 @@ class JsonSerializableAddressBook {
      */
     public AddressBook toModelType() throws IllegalValueException {
         AddressBook addressBook = new AddressBook();
+
         Map<String, Team> teamMap = new HashMap<>();
         Map<String, List<Email>> teamMemberMap = new HashMap<>();
 
+        // Populate addressbook with Teams (without persons) and populates {@code teamMap} and {@code teamMemberMap}
         for (JsonAdaptedTeam jsonAdaptedTeam : teams) {
             Team team = jsonAdaptedTeam.toModelType();
             if (addressBook.hasTeam(team)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_TEAM);
             }
-            teamMap.put(team.getName(), team);
-            teamMemberMap.put(team.getName(), jsonAdaptedTeam.getMemberEmail());
             addressBook.addTeam(team);
+
+            // Will use teamName as a key to obtain the list of emails of members
+            teamMemberMap.put(team.getName(), jsonAdaptedTeam.getMemberEmail());
+            teamMap.put(team.getName(), team);
         }
         teamMap.put("", Team.NONE);
 
+        // Populate addressbook with Persons
         for (JsonAdaptedPerson jsonAdaptedPerson : persons) {
             Person person = jsonAdaptedPerson.toModelType(teamMap);
             if (addressBook.hasPerson(person)) {
@@ -90,6 +95,7 @@ class JsonSerializableAddressBook {
             addressBook.addPerson(person);
         }
 
+        // Populate Teams with Persons according to the email map
         for (String teamName : teamMemberMap.keySet()) {
             Team team = teamMap.get(teamName);
             List<Email> emailList = teamMemberMap.get(teamName);
