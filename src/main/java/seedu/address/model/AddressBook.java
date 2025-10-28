@@ -7,7 +7,6 @@ import java.util.List;
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.person.Person;
-import seedu.address.model.person.Phone;
 import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.team.Team;
 import seedu.address.model.team.UniqueTeamList;
@@ -75,23 +74,11 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /**
      * Returns true if a person with the same identity as {@code person} exists in the address book.
+     * A person is considered the same if they have the same email or phone number.
      */
     public boolean hasPerson(Person person) {
         requireNonNull(person);
         return persons.contains(person);
-    }
-
-    /**
-     * Returns true if a person with the given phone number exists in the address book.
-     */
-    public boolean hasPersonWithPhone(Phone phone) {
-        requireNonNull(phone);
-        for (Person person : persons) {
-            if (person.getPhone().equals(phone)) {
-                return true;
-            }
-        }
-        return false;
     }
 
     /**
