@@ -6,7 +6,7 @@ title: User Guide
 SWEatless is a desktop application for **teaching staff who favour CLI usage** and want to **access and manage student and team information efficiently**.
 
 * Table of Contents
-  {:toc}
+{:toc}
 
 ---
 
