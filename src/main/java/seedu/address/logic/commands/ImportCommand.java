@@ -47,7 +47,7 @@ public class ImportCommand extends Command {
         this.filePath = filePath;
     }
 
-    private Path prepareFilePath() throws CommandException{
+    private Path prepareFilePath() throws CommandException {
         Path importPath = Paths.get(filePath);
         if (!importPath.isAbsolute()) {
             importPath = importPath.toAbsolutePath();
@@ -83,8 +83,9 @@ public class ImportCommand extends Command {
             Files.copy(importPath, targetPath, StandardCopyOption.REPLACE_EXISTING);
             JsonAddressBookStorage storage = new JsonAddressBookStorage(targetPath);
             Optional<ReadOnlyAddressBook> optionalNewData = storage.readAddressBook();
-            ReadOnlyAddressBook newData = optionalNewData.orElseThrow(
-                    () -> new CommandException(String.format(MESSAGE_LOADING_FAILURE, filePath)));
+            ReadOnlyAddressBook newData = optionalNewData.orElseThrow(() ->
+                    new CommandException(String.format(MESSAGE_LOADING_FAILURE, filePath))
+            );
 
             // Update the model
             model.setAddressBook(newData);
@@ -94,7 +95,7 @@ public class ImportCommand extends Command {
             throw new CommandException(String.format(MESSAGE_IO_FAILURE, filePath));
         } catch (InvalidPathException e) {
             throw new CommandException(String.format(MESSAGE_PATH_FAILURE, filePath));
-        }  catch (DataLoadingException e) {
+        } catch (DataLoadingException e) {
             throw new CommandException(String.format(MESSAGE_LOADING_FAILURE, filePath));
         }
     }

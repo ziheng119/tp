@@ -42,7 +42,7 @@ public class ExportCommand extends Command {
         this.filePath = filePath;
     }
 
-    private Path preparePath() throws CommandException{
+    private Path preparePath() throws CommandException {
         Path exportPath = Paths.get(filePath);
         if (!exportPath.isAbsolute()) {
             exportPath = exportPath.toAbsolutePath();
@@ -101,8 +101,8 @@ public class ExportCommand extends Command {
 
     @Override
     public String toString() {
-        return "ExportCommand{" +
-                "filePath='" + filePath + '\'' +
-                '}';
+        return "ExportCommand{"
+                + "filePath='" + filePath + '\''
+                + '}';
     }
 }
