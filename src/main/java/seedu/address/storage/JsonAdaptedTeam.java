@@ -17,7 +17,9 @@ import seedu.address.model.team.Team;
  */
 class JsonAdaptedTeam {
 
-    public static final String MISSING_FIELD_MESSAGE_FORMAT = "Team's Name field is missing!";
+    public static final String NULL_TEAM_MESSAGE_FORMAT = "Team is null!";
+    public static final String MISSING_NAME_MESSAGE_FORMAT = "Team's Name field is missing!";
+    public static final String MISSING_EMAIL_MESSAGE_FORMAT = "Team's Email field is missing!";
 
     private final String name;
     private final List<Email> members = new ArrayList<>();
@@ -28,10 +30,10 @@ class JsonAdaptedTeam {
     @JsonCreator
     public JsonAdaptedTeam(@JsonProperty("name") String name,
                 @JsonProperty("members") List<Email> members) {
-        assert name != null : "Ensure name is not null";
+        assert name != null : MISSING_NAME_MESSAGE_FORMAT;
         this.name = name;
         if (members != null) {
-            assert !members.contains(null) : "Member email list should not contain null values";
+            assert !members.contains(null) : MISSING_EMAIL_MESSAGE_FORMAT;
             this.members.addAll(members);
         }
     }
@@ -40,12 +42,12 @@ class JsonAdaptedTeam {
      * Converts a given {@code Team} into this class for Jackson use.
      */
     public JsonAdaptedTeam(Team source) {
-        assert source != null : "Source Team must not be null";
+        assert source != null : NULL_TEAM_MESSAGE_FORMAT;
         name = source.getName();
         members.addAll(source.getPersonList().stream()
                 .map(Person::getEmail)
                 .collect(Collectors.toList()));
-        assert !members.contains(null) : "Serialized team should not contain null member emails";
+        assert !members.contains(null) : MISSING_EMAIL_MESSAGE_FORMAT;
     }
 
     /**
@@ -53,25 +55,15 @@ class JsonAdaptedTeam {
      * Needs all persons to match email and link correct person object
      */
     public Team toModelType() throws IllegalValueException {
-        assert name != null : "Team name should not be null before validation";
-        if (name == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT));
-        }
-
-        if (name == "") {
-            return Team.NONE;
-        }
-
+        assert name != null : MISSING_NAME_MESSAGE_FORMAT;
         if (!Team.isValidName(name)) {
             throw new IllegalValueException(Team.MESSAGE_CONSTRAINTS);
         }
-
         return new Team(name);
     }
 
     public List<Email> getMemberEmail() {
-
-        assert !members.contains(null) : "Member email list contains nulls unexpectedly";
+        assert !members.contains(null) : MISSING_EMAIL_MESSAGE_FORMAT;
         return members;
     }
 

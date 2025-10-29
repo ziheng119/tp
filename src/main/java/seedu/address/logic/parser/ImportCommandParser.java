@@ -2,6 +2,9 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_FILE;
+
+import java.util.Optional;
 
 import seedu.address.logic.commands.ImportCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -21,17 +24,16 @@ public class ImportCommandParser implements Parser<ImportCommand> {
     public ImportCommand parse(String args) throws ParseException {
         requireNonNull(args);
 
-        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, CliSyntax.PREFIX_FILE);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_FILE);
+        Optional<String> filePath = argMultimap.getValue(PREFIX_FILE);
 
-        if (!argMultimap.getValue(CliSyntax.PREFIX_FILE).isPresent()
+        if (filePath.isEmpty()
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, ImportCommand.MESSAGE_USAGE));
         }
 
-        // Get file path string
-        String filePath = argMultimap.getValue(CliSyntax.PREFIX_FILE).get();
-
-        return new ImportCommand(filePath);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_FILE);
+        return new ImportCommand(filePath.get());
     }
 }
