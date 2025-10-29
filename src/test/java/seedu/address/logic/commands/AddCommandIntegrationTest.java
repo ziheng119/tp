@@ -45,4 +45,35 @@ public class AddCommandIntegrationTest {
                 AddStudentCommand.MESSAGE_DUPLICATE_PERSON);
     }
 
+    @Test
+    public void execute_duplicateEmailCaseInsensitive_throwsCommandException() {
+        // Add a person with uppercase email
+        Person personWithUppercaseEmail = new PersonBuilder()
+                .withName("Cavan Lee")
+                .withEmail("CAVAN@GMAIL.COM")
+                .withPhone("12345678")
+                .withGithub("cavanlee")
+                .build();
+
+        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        expectedModel.addPerson(personWithUppercaseEmail);
+
+        // Add the person with uppercase email - should succeed
+        assertCommandSuccess(new AddStudentCommand(personWithUppercaseEmail), model,
+                String.format(AddStudentCommand.MESSAGE_SUCCESS, Messages.format(personWithUppercaseEmail)),
+                expectedModel);
+
+        // Try to add another person with the same email but in lowercase - should fail
+        // because emails are normalized to lowercase and treated as duplicates
+        Person personWithLowercaseEmail = new PersonBuilder()
+                .withName("Different Name")
+                .withEmail("cavan@gmail.com")
+                .withPhone("87654321")
+                .withGithub("differentuser")
+                .build();
+
+        assertCommandFailure(new AddStudentCommand(personWithLowercaseEmail), model,
+                AddStudentCommand.MESSAGE_DUPLICATE_PERSON);
+    }
+
 }
