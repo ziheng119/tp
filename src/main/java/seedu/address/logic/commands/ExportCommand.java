@@ -20,8 +20,6 @@ import seedu.address.model.Model;
  */
 public class ExportCommand extends Command {
 
-    private static final Logger logger = LogsCenter.getLogger(ExportCommand.class);
-
     public static final String COMMAND_WORD = "export";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Exports the current address book data to a JSON file. "
@@ -36,6 +34,7 @@ public class ExportCommand extends Command {
 
     public static final String DEFAULT_FILE = "exported_addressbook.json";
 
+    private static final Logger logger = LogsCenter.getLogger(ExportCommand.class);
     private final String filePath;
 
     /**
@@ -49,6 +48,7 @@ public class ExportCommand extends Command {
     private Path preparePath() throws CommandException {
         Path exportPath = Paths.get(filePath);
         if (!exportPath.isAbsolute()) {
+            exportPath = Paths.get("data").resolve(exportPath);
             exportPath = exportPath.toAbsolutePath();
         }
         // Ensure parent directories exist

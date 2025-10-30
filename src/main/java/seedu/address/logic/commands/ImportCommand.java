@@ -24,8 +24,6 @@ import seedu.address.storage.JsonAddressBookStorage;
  */
 public class ImportCommand extends Command {
 
-    private static final Logger logger = LogsCenter.getLogger(ImportCommand.class);
-
     public static final String COMMAND_WORD = "import";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Imports an address book JSON file. "
@@ -40,6 +38,7 @@ public class ImportCommand extends Command {
     public static final String MESSAGE_PATH_FAILURE = "The specified file path is invalid: %1$s";
     public static final String MESSAGE_LOADING_FAILURE = "Failed to read the address book from the file: %1$s";
 
+    private static final Logger logger = LogsCenter.getLogger(ImportCommand.class);
     private final String filePath;
 
     /**
@@ -53,6 +52,7 @@ public class ImportCommand extends Command {
     private Path prepareFilePath() throws CommandException {
         Path importPath = Paths.get(filePath);
         if (!importPath.isAbsolute()) {
+            importPath = Paths.get("data").resolve(importPath);
             importPath = importPath.toAbsolutePath();
         }
         // Check if source file exists
@@ -82,11 +82,12 @@ public class ImportCommand extends Command {
             logger.severe("Model has null address book file path.");
             throw new CommandException("Internal error: model does not have a valid address book file path.");
         }
-        Path importPath;
         Path targetPath;
+        Path importPath;
         try {
-            importPath = prepareFilePath();
+            // Prepare target path first to ensure data folder
             targetPath = prepareTargetPath(model);
+            importPath = prepareFilePath();
 
             // Copy the file into data/addressbook.json
             Files.copy(importPath, targetPath, StandardCopyOption.REPLACE_EXISTING);

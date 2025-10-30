@@ -42,14 +42,7 @@ public class LogicManager implements Logic {
         addressBookParser = new AddressBookParser();
     }
 
-    @Override
-    public CommandResult execute(String commandText) throws CommandException, ParseException {
-        logger.info("----------------[USER COMMAND][" + commandText + "]");
-
-        CommandResult commandResult;
-        Command command = addressBookParser.parseCommand(commandText);
-        commandResult = command.execute(model);
-
+    private void saveModel() throws CommandException {
         try {
             storage.saveAddressBook(model.getAddressBook());
         } catch (AccessDeniedException e) {
@@ -57,6 +50,19 @@ public class LogicManager implements Logic {
         } catch (IOException ioe) {
             throw new CommandException(String.format(FILE_OPS_ERROR_FORMAT, ioe.getMessage()), ioe);
         }
+    }
+
+    @Override
+    public CommandResult execute(String commandText) throws CommandException, ParseException {
+        logger.info("----------------[USER COMMAND][" + commandText + "]");
+
+        saveModel();
+
+        CommandResult commandResult;
+        Command command = addressBookParser.parseCommand(commandText);
+        commandResult = command.execute(model);
+
+        saveModel();
 
         return commandResult;
     }
