@@ -157,6 +157,8 @@ Inavlid Examples: 0 (is not non-zero), -1 (is not positive), abc (contains non-n
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
 - If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
+
+- Any parameter constraints for the commands can be found [here](#constraints)
 </div>
 
 ### Creating a student: `create_student`
@@ -169,6 +171,11 @@ Examples:
 
 - `create_student n/John Doe p/98765432 e/johnd@example.com g/johnd`
 - `create_student n/Betsy Crowe e/betsycrowe@example.com p/97121323 g/betsycrowe`
+
+Multiple students can have the same Name. However, Phone number, Email and Github username must be unique.
+No students can share the same Phone number, Email or Github username.
+
+If a typo was made when creating a student, refer to the [Editing a student](#editing-a-student-edit_student) command to rectify the mistake.
 
 ### Deleting a student : `delete_student`
 
@@ -222,6 +229,44 @@ Hence, if an edit was incorrectly performed, the affected fields will need to be
 <br>
 Therefore, edit the student details only if you are confident that you are updating it correctly.
 </div>
+
+### Locating persons by name or team: `find`
+
+Finds students whose names contain any of the specified keywords or who belong in any of the specified teams (case-insensitive) and displays them as a list with index numbers.
+
+Format: `find n/[MORE_NAMES] t/[MORE_TEAM_NAMES]`
+
+- At least one of the optional fields must be provided.
+- The search is case-insensitive. e.g `hans` will match `Hans`
+- The order of the keywords does not matter.
+- Only the name and/or team name is searched.
+- Only full words will be matched e.g. `Han` will not match `Hans`
+
+Examples:
+
+- `find n/John` returns `john` and `John Doe`
+- `find n/alex david` returns `Alex Yeoh`, `David Li`<br>
+  *Students matching at least one name keyword will be returned (i.e. `OR` search)*
+  ![result for 'find n/alex david'](images/findAlexDavidResult.png)
+- `find t/F12-3` returns all students from team `F12-3`
+- `find t/F12-3 T11-2` returns all students from team `F12-3` and `T11-2`<br>
+  *Students matching at least one team keyword will be returned (i.e. `OR` search)*
+- `find n/alex david t/F12-3 T11-2` returns all students from team `F12-3` and `T11-2` with names `Alex` or `David`<br>
+  *If both `n/` and `/t` tags are used, students with the queried names in the specified teams will be returned (i.e. `AND` search)*
+
+To remove filters on the display, please refer to [Listing all students](#listing-all-students--list)
+
+### Listing all students : `list`
+
+Shows a list of all students in SWEatless.
+
+Format: `list`
+
+Examples:
+
+- `list` followed by `delete_student 2` deletes the 2nd student in SWEatless.
+- `find n/Betsy` followed by `delete_student 1` deletes the 1st student in the results of the `find` command.
+- `delete_student e/betsy@example.com` deletes the student with the email `betsy@example.com`.
 
 ### Creating a team: `create_team`
 
@@ -277,31 +322,7 @@ Examples:
 
 - `remove_from_team 1 t/T11-4`
 
-### Locating persons by name or team: `find`
-
-Finds students whose names contain any of the specified keywords or who belong in any of the specified teams (case-insensitive) and displays them as a list with index numbers.
-
-Format: `find n/[MORE_NAMES] t/[MORE_TEAM_NAMES]`
-
-- At least one of the optional fields must be provided.
-- The search is case-insensitive. e.g `hans` will match `Hans`
-- The order of the keywords does not matter.
-- Only the name and/or team name is searched.
-- Only full words will be matched e.g. `Han` will not match `Hans`
-
-Examples:
-
-- `find n/John` returns `john` and `John Doe`
-- `find n/alex david` returns `Alex Yeoh`, `David Li`<br>
-  *Students matching at least one name keyword will be returned (i.e. `OR` search)*
-  ![result for 'find n/alex david'](images/findAlexDavidResult.png)
-- `find t/F12-3` returns all students from team `F12-3`
-- `find t/F12-3 T11-2` returns all students from team `F12-3` and `T11-2`<br>
-  *Students matching at least one team keyword will be returned (i.e. `OR` search)*
-- `find n/alex david t/F12-3 T11-2` returns all students from team `F12-3` and `T11-2` with names `Alex` or `David`<br>
-  *If both `n/` and `/t` tags are used, students with the queried names in the specified teams will be returned (i.e. `AND` search)*
-
-### Importing data files
+### Importing data files: `import`
 
 Imports data from a JSON file. Allows users to directly get information from a file without manually editing `sweatless_storage.json`.
 
@@ -316,7 +337,7 @@ Example:
 - `import f/folder/export.json` will import `..\data\folder\export.json`.
 - `import f/folder\export.json` will import `..\data\folder\export.json`.
 
-### Exporting data files
+### Exporting data files: `export`
 
 Exports data to a JSON file. Allows users to capture data at a point of time prior to making further edits.
 
@@ -333,18 +354,6 @@ Examples:
   When the `f/` tag is specified, the file will be exported to the specified `FILE_PATH` with respect to the application's `\data` directory.
 - `export f/folder/export.json` will export to `..\data\folder\export.json`.
 - `export f/folder\export.json` will export to `..\data\folder\export.json`.
-
-### Listing all students : `list`
-
-Shows a list of all students in SWEatless.
-
-Format: `list`
-
-Examples:
-
-- `list` followed by `delete_student 2` deletes the 2nd student in SWEatless.
-- `find n/Betsy` followed by `delete_student 1` deletes the 1st student in the results of the `find` command.
-- `delete_student e/betsy@example.com` deletes the student with the email `betsy@example.com`.
 
 ### Clearing all entries : `clear`
 
