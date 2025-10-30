@@ -52,6 +52,7 @@ The quick-start guide is the step-by-step instruction to get SWEatless running o
    - `create_student n/John Doe p/98765432 e/johnd@example.com g/johnd` : Adds a contact named `John Doe` to SWEatless.
 
    - `delete_student 3` : Deletes the 3rd contact shown in the current list.
+
    - `delete_student e/johnd@example.com` : Deletes the contact with the specified email.
 
    - `clear` : Deletes all contacts.
@@ -347,9 +348,12 @@ Examples:
 
 - `export` will export to `..\Downloads\exported_sweatless_storage.json`.
   The default behaviour is to export the file as `exported_sweatless_storage.json` to the user's `\Downloads` directory.
+
 - `export f/export.json` will export to `..\data\export.json`.
   When the `f/` tag is specified, the file will be exported to the specified `FILE_PATH` with respect to the application's `\data` directory.
+
 - `export f/folder/export.json` will export to `..\data\folder\export.json`.
+
 - `export f/folder\export.json` will export to `..\data\folder\export.json`.
 
 ### Importing data files
@@ -364,7 +368,9 @@ Format: `import f/FILE_PATH`
 Example:
 
 - `import f/export.json` will import `..\data\export.json`.
+
 - `import f/folder/export.json` will import `..\data\folder\export.json`.
+
 - `import f/folder\export.json` will import `..\data\folder\export.json`.
 
 ### Editing the data file
@@ -372,9 +378,11 @@ Example:
 SWEatless data are saved automatically as a JSON file `[JAR file location]/data/sweatless.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-
+<br>
+<br>
 If your changes to the data file makes its format invalid, SWEatless will **1. save the invalid JSON as `sweatless_storage_corrupted_TIMESTAMP`** and **2. discard all data and start with an empty data file at the next run.**
-
+<br>
+<br>
 Certain edits can cause the SWEatless to behave in unexpected ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </div>
 
