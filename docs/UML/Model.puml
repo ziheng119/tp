@@ -2,7 +2,7 @@
 hide circle
 
 package "Model Layer" as Model {
-    interface Model {
+    interface Model <<interface>> {
         +addPerson(person)
         +deletePerson(person)
         +setPerson(target, editedPerson)
