@@ -24,8 +24,9 @@ public class DeleteTeamCommandParser implements Parser<DeleteTeamCommand> {
 
         String teamName;
 
-        boolean isInvalidCommandFormat = !argMultimap.getValue(PREFIX_TEAM).isPresent()
-                || !argMultimap.getPreamble().isEmpty();
+        boolean isTeamEmpty = !argMultimap.getValue(PREFIX_TEAM).isPresent();
+        boolean isPreamblePresent = !argMultimap.getPreamble().isEmpty();
+        boolean isInvalidCommandFormat = isTeamEmpty || isPreamblePresent;
 
         if (isInvalidCommandFormat) {
             throw new ParseException(
