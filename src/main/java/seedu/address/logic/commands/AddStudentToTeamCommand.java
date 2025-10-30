@@ -3,12 +3,11 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
-import java.util.List;
-
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.commands.util.TeamCommandUtil;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 import seedu.address.model.team.Team;
@@ -58,19 +57,8 @@ public class AddStudentToTeamCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        List<Person> lastShownList = model.getFilteredPersonList();
-
-        if (studentIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
-        }
-
-        Person targetPerson = lastShownList.get(studentIndex.getZeroBased());
-
-        // Find the team by name
-        Team targetTeam = model.getTeamByName(teamName);
-        if (targetTeam == null) {
-            throw new CommandException(String.format(MESSAGE_TEAM_NOT_FOUND, teamName));
-        }
+        Person targetPerson = TeamCommandUtil.getTargetPerson(model, studentIndex);
+        Team targetTeam = TeamCommandUtil.validateTeamExists(model, teamName);
 
         // Disallow adding to the NONE team (sentinel)
         if (Team.isNoneTeamName(teamName) || targetTeam.equals(Team.NONE)) {

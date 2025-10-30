@@ -3,12 +3,11 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
-import java.util.List;
-
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.commands.util.TeamCommandUtil;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 import seedu.address.model.team.Team;
@@ -54,29 +53,16 @@ public class RemoveFromTeamCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        List<Person> lastShownList = model.getFilteredPersonList();
+        Person targetPerson = TeamCommandUtil.getTargetPerson(model, personIndex);
+        Team targetTeam = TeamCommandUtil.validateTeamExists(model, teamName);
 
-        if (personIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
-        }
-
-        Person targetPerson = lastShownList.get(personIndex.getZeroBased());
-
-        // Find the team by name
-        Team targetTeam = model.getTeamByName(teamName);
-        if (targetTeam == null) {
-            throw new CommandException(String.format(MESSAGE_TEAM_NOT_FOUND, teamName));
-        }
-        // Disallow removing from the NONE team (sentinel team)
+        // Disallow removing from the NONE sentinel team
         if (Team.isNoneTeamName(teamName) || targetTeam.equals(Team.NONE)) {
             throw new CommandException(MESSAGE_CANNOT_REMOVE_FROM_NONE);
         }
 
         // Check if person is in the team
-        if (!targetTeam.hasPerson(targetPerson)) {
-            throw new CommandException(String.format(MESSAGE_PERSON_NOT_IN_TEAM,
-                Messages.format(targetPerson), teamName));
-        }
+        TeamCommandUtil.validatePersonMembership(targetTeam, targetPerson, MESSAGE_PERSON_NOT_IN_TEAM);
 
         // Remove person from team
         model.removePersonFromTeam(targetPerson, targetTeam);
