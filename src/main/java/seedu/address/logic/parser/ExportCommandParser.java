@@ -34,7 +34,7 @@ public class ExportCommandParser implements Parser<ExportCommand> {
             return new ExportCommand(downloadsPath.toString());
         }
 
-        // Case 2: prefixed argument (must use file/)
+        // Case 2: prefixed argument (must use f/)
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_FILE);
         Optional<String> filePath = argMultimap.getValue(PREFIX_FILE);
 
