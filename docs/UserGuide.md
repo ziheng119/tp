@@ -64,7 +64,7 @@ The quick-start guide is the step-by-step instruction to get SWEatless running o
 
 ## Constraints
 
-### Name Constraints
+### Name
 
 - Format: Names should only contain alphanumeric characters and spaces, and should not be blank
 - Rules:
@@ -76,7 +76,7 @@ The quick-start guide is the step-by-step instruction to get SWEatless running o
 Valid Examples: John Doe, Alice123, Mary Jane Smith  
 Invalid Examples: John (starts with space), John@Doe (special character), empty string
 
-### Phone Number Constraints
+### Phone Number
 
 - Format: Phone numbers should only contain numbers, and should be at least 3 digits long
 - Rules:
@@ -87,7 +87,7 @@ Invalid Examples: John (starts with space), John@Doe (special character), empty 
 Valid Examples: 123, 1234567890, 999  
 Invalid Examples: 12 (too short), 123-456-7890 (contains dashes), abc123 (contains letters)
 
-### Email Constraints
+### Email
 
 - Format: Emails should be of the format local-part@domain and adhere to specific constraints
 - Rules:
@@ -103,9 +103,9 @@ Invalid Examples: 12 (too short), 123-456-7890 (contains dashes), abc123 (contai
 Valid Examples: user@example.com, test.email+tag@domain.co.uk, user123@sub.domain.org  
 Invalid Examples: user@domain (no TLD), .user@domain.com (starts with dot), user@.domain.com (starts with dot)
 
-### GitHub Username Constraints
+### Github
 
-- Format: GitHub usernames must be 1-39 characters, alphanumeric or hyphens, cannot start or end with a hyphen, and cannot have consecutive hyphens
+- Format: Github usernames must be 1-39 characters, alphanumeric or hyphens, cannot start or end with a hyphen, and cannot have consecutive hyphens
 - Rules:
   - Must be 1-39 characters long
   - Can contain letters (a-z, A-Z), numbers (0-9), and hyphens (-)
@@ -187,7 +187,10 @@ Examples:
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
 The current version does not support undoing operations.
 <br>
-Hence, if a delete was incorrectly performed, the affected student will need to be added back manually. To avoid accidental data loss, you can perform `export` to save the current state.<br>
+<br>
+Hence, if a delete was incorrectly performed, the affected student will need to be added back manually. To avoid accidental data loss, you can perform `export` to save the current state.
+<br>
+<br>
 Therefore, only delete students if you are confident that you are deleting it correctly.
 </div>
 
@@ -210,7 +213,10 @@ Examples:
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
 The current version does not support undoing operations.
 <br>
-Hence, if an edit was incorrectly performed, the affected fields will need to be manually edited to the original values. To avoid accidental data loss, you can perform `export` to save the current state.<br>
+<br>
+Hence, if an edit was incorrectly performed, the affected fields will need to be manually edited to the original values. To avoid accidental data loss, you can perform `export` to save the current state.
+<br>
+<br>
 Therefore, edit the student details only if you are confident that you are updating it correctly.
 </div>
 
@@ -237,7 +243,10 @@ Examples:
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
 The current version does not support undoing operations.
 <br>
-Hence, if a delete was incorrectly performed, the affected team (and students in that team) will need to be added back manually. To avoid accidental data loss, you can perform `export` to save the current state.<br>
+<br>
+Hence, if a delete was incorrectly performed, the affected team (and students in that team) will need to be added back manually. To avoid accidental data loss, you can perform `export` to save the current state.
+<br>
+<br>
 Therefore, only delete students if you are confident that you are deleting it correctly.
 </div>
 
@@ -323,15 +332,16 @@ Format: `help`
 
 ### Saving the data
 
-SWEatless data are saved in `\data\sweatless_storage.json` automatically after any command that changes the data. There is no need to save manually.
+SWEatless data are saved in `..\data\sweatless_storage.json` automatically after any command that changes the data. There is no need to save manually.
 
 ### Exporting data files
 
-Exports data from `sweatless_storage.json`. Allows users to capture data at a point of time prior to making further edits.
+Exports data to a JSON file. Allows users to capture data at a point of time prior to making further edits.
 
 Format: `export [f/FILE_PATH]`
 
 - Either `/` or `\` can be used to specify directories.
+- `[f/FILE_PATH]` may be omitted to save to the user's `\Downloads` directory.
 
 Examples:
 
@@ -344,7 +354,7 @@ Examples:
 
 ### Importing data files
 
-Imports data from a `.json` file. Allows users to directly get information from a file without manually editing `sweatless_storage.json`.
+Imports data from a JSON file. Allows users to directly get information from a file without manually editing `sweatless_storage.json`.
 
 Format: `import f/FILE_PATH`
 
@@ -362,7 +372,11 @@ Example:
 SWEatless data are saved automatically as a JSON file `[JAR file location]/data/sweatless.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-If your changes to the data file makes its format invalid, SWEatless will **1. save the invalid JSON as `sweatless_storage_corrupted_TIMESTAMP`** and **2. discard all data and start with an empty data file at the next run.** <br>
+<br>
+<br>
+If your changes to the data file makes its format invalid, SWEatless will **1. save the invalid JSON as `sweatless_storage_corrupted_TIMESTAMP`** and **2. discard all data and start with an empty data file at the next run.**
+<br>
+<br>
 Certain edits can cause the SWEatless to behave in unexpected ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </div>
 
