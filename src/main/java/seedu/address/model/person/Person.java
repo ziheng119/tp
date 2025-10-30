@@ -59,7 +59,7 @@ public class Person {
     }
 
     /**
-     * Returns true if both persons have the same email or phone number.
+     * Returns true if both persons have the same email, phone number, or GitHub username.
      * This defines a weaker notion of equality between two persons.
      */
     public boolean isSamePerson(Person otherPerson) {
@@ -68,7 +68,9 @@ public class Person {
         }
 
         return otherPerson != null
-                && (otherPerson.getEmail().equals(getEmail()) || otherPerson.getPhone().equals(getPhone()));
+                && (otherPerson.getEmail().equals(getEmail())
+                    || otherPerson.getPhone().equals(getPhone())
+                    || otherPerson.getGithub().equals(getGithub()));
     }
 
     /**

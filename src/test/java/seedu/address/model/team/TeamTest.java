@@ -91,14 +91,16 @@ public class TeamTest {
         for (int i = 0; i < 5; i++) {
             Person person = new PersonBuilder().withName("Person" + i)
                     .withEmail("testtest" + i + "@example.com")
-                    .withPhone("9999999" + i).build();
+                    .withPhone("9999999" + i)
+                    .withGithub("testuser" + i).build();
             team.addPerson(person);
         }
 
         // Try to add one more person
         Person extraPerson = new PersonBuilder().withName("Extra Person")
                 .withEmail("extra@example.com")
-                .withPhone("99999995").build();
+                .withPhone("99999995")
+                .withGithub("extrauser").build();
         assertThrows(TeamMaxCapacityException.class, () -> team.addPerson(extraPerson));
     }
 
