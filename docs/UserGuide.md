@@ -197,6 +197,10 @@ Examples:
 
 Adds the specificed student to the specified team in SWEatless.
 
+Each team can only have 5 students.
+
+Each student can only be added to 1 team at a time.
+
 Format: `add_to_team INDEX t/TEAM_NAME`
 
 Examples:
