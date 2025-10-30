@@ -27,6 +27,7 @@ class JsonSerializableAddressBook {
     public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
     public static final String MESSAGE_DUPLICATE_TEAM = "Teams list contains duplicate team(s).";
     public static final String MISSING_PERSON_MESSAGE_FORMAT = "Member %s not found in address book!";
+    private static final String NO_TEAM_KEY = ""; // Key used to represent no team (Team.NONE)
 
     private final List<JsonAdaptedPerson> persons = new ArrayList<>();
     private final List<JsonAdaptedTeam> teams = new ArrayList<>();
@@ -108,7 +109,7 @@ class JsonSerializableAddressBook {
             teamMemberMap.put(team.getName(), jsonAdaptedTeam.getMemberEmail());
             teamMap.put(team.getName(), team);
         }
-        teamMap.put("", Team.NONE);
+        teamMap.put(NO_TEAM_KEY, Team.NONE);
 
         return new TeamParsing(teamMap, teamMemberMap);
     }
