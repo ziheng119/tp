@@ -15,7 +15,7 @@ SWEatless is a desktop application for **teaching staff who favour CLI usage** a
 | Action               | Format, Examples                                                                                                                                    |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Create Student**   | `create_student n/NAME p/PHONE_NUMBER e/EMAIL g/GITHUB_USERNAME​` <br> e.g., `create_student n/James Ho p/22224444 e/jamesho@example.com g/jamesho` |
-| **Delete Student**   | `delete_student INDEX`<br> e.g., `delete 3`                                                                                                         |
+| **Delete Student**   | `delete_student INDEX` or `delete_student e/EMAIL`<br> e.g., `delete_student 3` or `delete_student e/johndoe@example.com`                         |
 | **Edit Student**     | `edit_student INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [g/GITHUB_USERNAME]​`<br> e.g.,`edit_student 2 n/James Lee e/jameslee@example.com`          |
 | **Create Team**      | `create_team t/TEAM_NAME` <br> e.g., `create_team F12-3`                                                                                            |
 | **Delete Team**      | `delete_team t/TEAM_NAME`<br> e.g., `delete_team F12-3`                                                                                             |
@@ -45,9 +45,10 @@ SWEatless is a desktop application for **teaching staff who favour CLI usage** a
 
    - `list` : Lists all contacts.
 
-   - `add n/John Doe p/98765432 e/johnd@example.com g/johnd` : Adds a contact named `John Doe` to SWEatless.
+   - `create_student n/John Doe p/98765432 e/johnd@example.com g/johnd` : Adds a contact named `John Doe` to SWEatless.
 
-   - `delete 3` : Deletes the 3rd contact shown in the current list.
+   - `delete_student 3` : Deletes the 3rd contact shown in the current list.
+   - `delete_student e/johnd@example.com` : Deletes the contact with the specified email.
 
    - `clear` : Deletes all contacts.
 
@@ -127,6 +128,28 @@ Invalid Examples: user@domain (no TLD), .user@domain.com (starts with dot), user
 Valid Examples: john-doe, alice123, user-name, a (single character)  
 Invalid Examples: -username (starts with hyphen), username- (ends with hyphen), user--name (consecutive hyphens), empty string
 
+### Team Name Constraints
+
+- Format: Team names should adhere to specific constraints
+- Rules:
+  - First character (day): M, W, T, F
+  - Second and third character (time): 08, 09, 10, 11, 12, 13, 14, 15, 16, 17
+  - Fourth character (hyphen): -
+  - Fifth character (team number): 1, 2, 3, 4
+
+Valid Examples: F12-3, T11-1, M08-4, W17-2
+Invalid Example: S12-3 (invalid day), M11-6 (invalid team number), T01-2 (invalid time)
+
+### Index Constraints
+
+- Format: Index should only contain numbers
+- Rules:
+  - One-based indexing is used
+  - Must be a non-zero positive integer
+
+Valid Examples: 1, 2, 5, 90
+Inavlid Examples: 0 (is not non-zero), -1 (is not positive), abc (contains non-numeric characters)
+
 ### Creating a student: `create_student`
 
 Creates a student to add to SWEatless.
@@ -142,15 +165,18 @@ Examples:
 
 Deletes the specified student from the address book.
 
-Format: `delete_student INDEX`
+Format: `delete_student INDEX` OR `delete_student e/EMAIL`
 
-- Deletes the student at the specified `INDEX`.
+- Deletes the student at the specified `INDEX` OR the student with the matching `EMAIL`.
 - The index refers to the index number shown in the displayed student list.
 - The index **must be a positive integer** 1, 2, 3, …​
+- The email matching is **case-insensitive** (e.g., `JohnDoe@Example.com` will match `johndoe@example.com`).
+- Only one method (index or email) can be used at a time.
 
 Examples:
 
-- `delete_student 1` Deletes the 1st student.
+- `delete_student 1` Deletes the 1st student in the list.
+- `delete_student e/johndoe@example.com` Deletes the student with email `johndoe@example.com`.
 
 ### Editing a student : `edit_student`
 
@@ -158,7 +184,8 @@ Edits an existing student in SWEatless.
 
 Format: `edit_student INDEX [n/NAME] [p/PHONE] [e/EMAIL] [g/GITHUB_USERNAME]`
 
-- Edits the student at the specified `INDEX`. The index refers to the index number shown in the displayed student list. The index **must be a positive integer** 1, 2, 3, …​
+- Edits the student at the specified `INDEX`. 
+- The index refers to the index number shown in the displayed student list.
 - At least one of the optional fields must be provided.
 - Existing values will be updated to the input values.
 
@@ -172,12 +199,6 @@ Examples:
 Creates a team to add to SWEatless.
 
 Format: `create_team t/TEAM_NAME`
-
-- `TEAM_NAME` must follow the following format:
-  - First character (day): `M`, `W`, `T`, `F`
-  - Second and third character (time): `08`, `09`, `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`
-  - Fourth character (hyphen): `-`
-  - Fifth character (team number): `1`, `2`, `3`, `4`
 
 Examples:
 
@@ -196,6 +217,10 @@ Examples:
 ### Adding a student to a team: `add_to_team`
 
 Adds the specificed student to the specified team in SWEatless.
+
+Each team can only have 5 students.
+
+Each student can only be added to 1 team at a time.
 
 Format: `add_to_team INDEX t/TEAM_NAME`
 
@@ -245,8 +270,9 @@ Format: `list`
 
 Examples:
 
-- `list` followed by `delete 2` deletes the 2nd student in SWEatless.
-- `find Betsy` followed by `delete 1` deletes the 1st student in the results of the `find` command.
+- `list` followed by `delete_student 2` deletes the 2nd student in SWEatless.
+- `find n/Betsy` followed by `delete_student 1` deletes the 1st student in the results of the `find` command.
+- `delete_student e/betsy@example.com` deletes the student with the email `betsy@example.com`.
 
 ### Clearing all entries : `clear`
 

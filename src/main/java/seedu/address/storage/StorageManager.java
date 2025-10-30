@@ -1,6 +1,7 @@
 package seedu.address.storage;
 
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Optional;
 import java.util.logging.Logger;
@@ -26,6 +27,38 @@ public class StorageManager implements Storage {
     public StorageManager(AddressBookStorage addressBookStorage, UserPrefsStorage userPrefsStorage) {
         this.addressBookStorage = addressBookStorage;
         this.userPrefsStorage = userPrefsStorage;
+    }
+
+    // ================ Storage methods ==============================
+    /**
+     * Creates a timestamped backup of the current address book file to prevent data loss
+     * in case the file is corrupted.
+     * <p>
+     * The backup file is created in the same directory as the original address book,
+     * with a filename format of:
+     * <pre>
+     * originalFileName_corrupted_yyyy-MM-ddTHH-mm-ss.json
+     * </pre>
+     * Colons in the timestamp are replaced with hyphens to ensure the filename is valid.
+     * <p>
+     * If an I/O error occurs during the backup process, a severe log message is recorded,
+     * but the method does not throw an exception.
+     */
+    public void backupFile() {
+        try {
+            Path corruptedFile = getAddressBookFilePath();
+            // Create a timestamped backup name inside the same folder
+            String timestamp = java.time.LocalDateTime.now()
+                    .toString()
+                    .replace(":", "-"); // avoid invalid filename chars
+            Path backupFile = corruptedFile.resolveSibling(
+                    corruptedFile.getFileName().toString().replace(".json", "")
+                            + "_corrupted_" + timestamp + ".json"
+            );
+            Files.copy(corruptedFile, backupFile);
+        } catch (IOException ioEx) {
+            logger.severe("Failed to back up corrupted data file: " + ioEx.getMessage());
+        }
     }
 
     // ================ UserPrefs methods ==============================

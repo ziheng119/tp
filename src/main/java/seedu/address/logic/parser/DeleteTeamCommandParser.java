@@ -20,6 +20,7 @@ public class DeleteTeamCommandParser implements Parser<DeleteTeamCommand> {
     public DeleteTeamCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_TEAM);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_TEAM);
 
         String teamName;
 

@@ -74,6 +74,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /**
      * Returns true if a person with the same identity as {@code person} exists in the address book.
+     * A person is considered the same if they have the same email, phone number, or GitHub username.
      */
     public boolean hasPerson(Person person) {
         requireNonNull(person);

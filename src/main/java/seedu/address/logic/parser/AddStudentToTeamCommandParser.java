@@ -21,6 +21,7 @@ public class AddStudentToTeamCommandParser implements Parser<AddStudentToTeamCom
     public AddStudentToTeamCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_TEAM);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_TEAM);
 
         Index studentIndex;
         String teamName;

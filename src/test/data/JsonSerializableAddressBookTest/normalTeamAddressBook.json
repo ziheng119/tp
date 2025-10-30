@@ -9,7 +9,7 @@
     },
     {
       "name": "John De",
-      "phone": "98765432",
+      "phone": "98765433",
       "email": "johnd@exmple.com",
       "github": "johnde",
       "teamName": "F12-3"
@@ -20,7 +20,9 @@
       "name": "F12-3",
       "members": [
         {
-          "value": "johnd@example.com",
+          "value": "johnd@example.com"
+        },
+        {
           "value": "johnd@exmple.com"
         }
       ]
