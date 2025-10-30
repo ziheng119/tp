@@ -12,8 +12,6 @@ package "Logic Layer" as Logic {
     }
 
     class LogicManager {
-        -Model model
-        -Storage storage
         -AddressBookParser addressBookParser
         +execute(String)
         -saveModel()
@@ -70,11 +68,16 @@ package "Logic Layer" as Logic {
     }
 }
 
-LogicManager .up.|> Logic
+Logic.LogicManager ..|> Logic.Logic
 LogicManager "1" --> "1" AddressBookParser
 LogicManager "1" --> "1" Model
 LogicManager "1" --> "1" Storage
 AddressBookParser "1" --> "0..*" Command : parses to
+
+
+note bottom
+  Other classes/subclasses are omitted for brevity.
+end note
 FindCommand --|> Command
 AddStudentCommand --|> Command
 CreateTeamCommand --|> Command
