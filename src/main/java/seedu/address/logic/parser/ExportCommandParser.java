@@ -38,7 +38,7 @@ public class ExportCommandParser implements Parser<ExportCommand> {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_FILE);
         Optional<String> filePath = argMultimap.getValue(PREFIX_FILE);
 
-        boolean isPathEmpty =  filePath.isEmpty();
+        boolean isPathEmpty = filePath.isEmpty();
         boolean isPreambleEmpty = argMultimap.getPreamble().isEmpty();
         if (isPathEmpty || !isPreambleEmpty) {
             throw new ParseException(String.format(
