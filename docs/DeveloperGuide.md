@@ -103,7 +103,7 @@ The `UI` component,
 
 Here's a (partial) class diagram of the `Logic` component:
 
-<img src="images/LogicClassDiagram.png" width="550"/>
+<img src="images/LogicClassDiagram.png" width="750"/>
 
 The sequence diagram below illustrates the interactions within the `Logic` component, taking `execute("delete 1")` API call as an example.
 
