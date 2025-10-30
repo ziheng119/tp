@@ -56,6 +56,11 @@ public class RemoveFromTeamCommand extends Command {
         Person targetPerson = TeamCommandUtil.getTargetPerson(model, personIndex);
         Team targetTeam = TeamCommandUtil.validateTeamExists(model, teamName);
 
+        // Disallow removing from the NONE sentinel team
+        if (Team.isNoneTeamName(teamName) || targetTeam.equals(Team.NONE)) {
+            throw new CommandException(MESSAGE_CANNOT_REMOVE_FROM_NONE);
+        }
+
         // Check if person is in the team
         TeamCommandUtil.validatePersonMembership(targetTeam, targetPerson, MESSAGE_PERSON_NOT_IN_TEAM);
 
