@@ -184,6 +184,13 @@ Examples:
 - `delete_student 1` Deletes the 1st student in the list.
 - `delete_student e/johndoe@example.com` Deletes the student with email `johndoe@example.com`.
 
+<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
+The current version does not support undoing operations.
+<br>
+Hence, if a delete was incorrectly performed, the affected student will need to be added back manually. To avoid accidental data loss, you can perform `export` to save the current state.<br>
+Therefore, only delete students if you are confident that you are deleting it correctly.
+</div>
+
 ### Editing a student : `edit_student`
 
 Edits an existing student in SWEatless.
@@ -199,6 +206,13 @@ Examples:
 
 - `edit_student 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st student to be `91234567` and `johndoe@example.com` respectively.
 - `edit_student 2 n/Betsy Crower` Edits the name of the 2nd student to be `Betsy Crower`
+
+<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
+The current version does not support undoing operations.
+<br>
+Hence, if an edit was incorrectly performed, the affected fields will need to be manually edited to the original values. To avoid accidental data loss, you can perform `export` to save the current state.<br>
+Therefore, edit the student details only if you are confident that you are updating it correctly.
+</div>
 
 ### Creating a team: `create_team`
 
@@ -219,6 +233,13 @@ Format: `delete_team t/TEAM_NAME`
 Examples:
 
 - `delete_team t/F12-3`
+
+<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
+The current version does not support undoing operations.
+<br>
+Hence, if a delete was incorrectly performed, the affected team (and students in that team) will need to be added back manually. To avoid accidental data loss, you can perform `export` to save the current state.<br>
+Therefore, only delete students if you are confident that you are deleting it correctly.
+</div>
 
 ### Adding a student to a team: `add_to_team`
 
