@@ -302,7 +302,39 @@ Format: `help`
 
 ### Saving the data
 
-SWEatless data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+SWEatless data are saved in `\data\sweatless_storage.json` automatically after any command that changes the data. There is no need to save manually.
+
+### Exporting data files
+
+Exports data from `sweatless_storage.json`. Allows users to capture data at a point of time prior to making further edits.
+
+Format: `export [f/FILE_PATH]`
+
+- Either `/` or `\` can be used to specify directories.
+
+Examples:
+
+- `export` will export to `..\Downloads\exported_sweatless_storage.json`.
+  The default behaviour is to export the file as `exported_sweatless_storage.json` to the user's `\Downloads` directory.
+- `export f/export.json` will export to `..\data\export.json`.
+  When the `f/` tag is specified, the file will be exported to the specified `FILE_PATH` with respect to the application's `\data` directory.
+- `export f/folder/export.json` will export to `..\data\folder\export.json`.
+- `export f/folder\export.json` will export to `..\data\folder\export.json`.
+
+### Importing data files
+
+Imports data from a `.json` file. Allows users to directly get information from a file without manually editing `sweatless_storage.json`.
+
+Format: `import f/FILE_PATH`
+
+- Either `/` or `\` can be used to specify directories.
+- `FILE_PATH` is the file path with respect to the application's `\data` directory.
+
+Example:
+
+- `import f/export.json` will import `..\data\export.json`.
+- `import f/folder/export.json` will import `..\data\folder\export.json`.
+- `import f/folder\export.json` will import `..\data\folder\export.json`.
 
 ### Editing the data file
 
