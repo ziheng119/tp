@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
+import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
@@ -118,6 +119,33 @@ public class DeleteCommandTest {
         expectedModel.deletePerson(personToDelete);
 
         assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
+    }
+
+
+    @Test
+    public void execute_deleteRemovesFromTeam_success() throws Exception {
+        // Person at first index belongs to a team in TypicalPersons
+        Person personToDelete = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_PERSON);
+
+        // Execute and then assert the person is removed from any team
+        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS,
+                Messages.format(personToDelete));
+        Model expectedModel = new ModelManager(new seedu.address.model.AddressBook(model.getAddressBook()),
+                new UserPrefs());
+        expectedModel.deletePerson(personToDelete);
+
+        assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
+
+        // Additional assertion on actual model state: no team should contain the deleted person
+        ModelManager actualModel = (ModelManager) model;
+        org.junit.jupiter.api.Assertions.assertNull(actualModel.getTeamContainingPerson(personToDelete));
+    }
+
+    @Test
+    public void execute_nullModel_throwsNullPointerException() {
+        DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_PERSON);
+        assertThrows(NullPointerException.class, () -> deleteCommand.execute(null));
     }
 
     @Test

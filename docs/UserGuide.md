@@ -54,6 +54,7 @@ The quick-start guide is the step-by-step instruction to get SWEatless running o
    - `create_student n/John Doe p/98765432 e/johnd@example.com g/johnd` : Adds a contact named `John Doe` to SWEatless.
 
    - `delete_student 3` : Deletes the 3rd contact shown in the current list.
+
    - `delete_student e/johnd@example.com` : Deletes the contact with the specified email.
 
    - `clear` : Deletes all contacts.
@@ -377,6 +378,7 @@ SWEatless data are saved automatically as a JSON file `[JAR file location]/data/
 <br>
 <br>
 If your changes to the data file makes its format invalid, SWEatless will **1. save the invalid JSON as `sweatless_storage_corrupted_TIMESTAMP`** and **2. discard all data and start with an empty data file at the next run.**
+<br>
 <br>
 Certain edits can cause the SWEatless to behave in unexpected ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </div>

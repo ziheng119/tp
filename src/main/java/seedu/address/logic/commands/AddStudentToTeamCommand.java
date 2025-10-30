@@ -27,6 +27,7 @@ public class AddStudentToTeamCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Person %s added to team %s";
     public static final String MESSAGE_TEAM_NOT_FOUND = "Team with name '%s' not found";
+    public static final String MESSAGE_TEAM_INVALID_NONE = "Cannot add a person to the NONE team";
     public static final String MESSAGE_PERSON_ALREADY_IN_TEAM = "Person %s is already in team %s";
     public static final String MESSAGE_PERSON_IN_ANOTHER_TEAM = "Person %s is already in team %s. "
             + "Remove them from their current team before adding to a new team";
@@ -71,6 +72,11 @@ public class AddStudentToTeamCommand extends Command {
             throw new CommandException(String.format(MESSAGE_TEAM_NOT_FOUND, teamName));
         }
 
+        // Disallow adding to the NONE team (sentinel)
+        if (Team.isNoneTeamName(teamName) || targetTeam.equals(Team.NONE)) {
+            throw new CommandException(MESSAGE_TEAM_INVALID_NONE);
+        }
+
         // Check if person is already in any team
         Team existingTeam = model.getTeamContainingPerson(targetPerson);
         if (existingTeam != null) {
@@ -98,7 +104,7 @@ public class AddStudentToTeamCommand extends Command {
             model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
 
             return new CommandResult(String.format(MESSAGE_SUCCESS,
-                    Messages.format(targetPerson), teamName));
+                    Messages.format(updatedPerson), teamName));
         } catch (TeamMaxCapacityException e) {
             throw new CommandException(String.format(MESSAGE_TEAM_FULL, teamName));
         }

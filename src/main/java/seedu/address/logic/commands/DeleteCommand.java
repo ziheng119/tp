@@ -36,6 +36,7 @@ public class DeleteCommand extends Command {
      * Creates a DeleteCommand to delete the person at the specified {@code targetIndex}.
      */
     public DeleteCommand(Index targetIndex) {
+        requireNonNull(targetIndex);
         this.targetIndex = targetIndex;
         this.targetEmail = null;
     }
@@ -44,6 +45,7 @@ public class DeleteCommand extends Command {
      * Creates a DeleteCommand to delete the person with the specified {@code targetEmail}.
      */
     public DeleteCommand(Email targetEmail) {
+        requireNonNull(targetEmail);
         this.targetIndex = null;
         this.targetEmail = targetEmail;
     }
