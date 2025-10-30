@@ -3,7 +3,11 @@ layout: page
 title: User Guide
 ---
 
-SWEatless is a desktop application for **teaching staff who favour CLI usage** and want to **access and manage student and team information efficiently**.
+SWEatless is a desktop application for **CS2103/T teaching staff who favour CLI usage** and want to **access and manage student and team information efficiently**. Since many CS2103/T projects use CLI, teaching staff should be familiar with it, and may see value in integrating it with their student and team management.
+
+SWEatless allows for intuitive student-team management using easy-to-remember commands. Furthermore, it supports direct access to the Github accounts of both students and teams, allowing you keep track of progress with a single click!
+
+The quick-start guide is the step-by-step instruction to get SWEatless running on your device. It is important to understand the constraints on each field before referring to the feature list. FAQs and known issues are documented at the bottom of the user guide.
 
 * Table of Contents
 {:toc}
@@ -32,7 +36,7 @@ SWEatless is a desktop application for **teaching staff who favour CLI usage** a
 1. Ensure you have Java `17` or above installed in your Computer.<br>
    **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
 
-1. Download the latest `.jar` file from [here](https://github.com/se-edu/addressbook-level3/releases).
+1. Download the latest `.jar` file from [here](https://github.com/AY2526S1-CS2103T-F12-3/tp/releases).
 
 1. Copy the file to the folder you want to use as the _home folder_ for SWEatless.
 
@@ -58,23 +62,7 @@ SWEatless is a desktop application for **teaching staff who favour CLI usage** a
 
 ---
 
-## Features
-
-<div markdown="block" class="alert alert-info">
-
-**:information_source: Notes about the command format:**<br>
-
-- Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
-
-- Parameters can be in any order.<br>
-  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
-
-- Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
-  e.g. if the command specifies `help 123`, it will be interpreted as `help`.
-
-- If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
-</div>
+## Constraints
 
 ### Name Constraints
 
@@ -150,6 +138,24 @@ Invalid Example: S12-3 (invalid day), M11-6 (invalid team number), T01-2 (invali
 Valid Examples: 1, 2, 5, 90
 Inavlid Examples: 0 (is not non-zero), -1 (is not positive), abc (contains non-numeric characters)
 
+## Features
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Notes about the command format:**<br>
+
+- Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
+  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
+
+- Parameters can be in any order.<br>
+  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
+
+- Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
+  e.g. if the command specifies `help 123`, it will be interpreted as `help`.
+
+- If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
+</div>
+
 ### Creating a student: `create_student`
 
 Creates a student to add to SWEatless.
@@ -163,7 +169,7 @@ Examples:
 
 ### Deleting a student : `delete_student`
 
-Deletes the specified student from the address book.
+Deletes the specified student from SWEatless.
 
 Format: `delete_student INDEX` OR `delete_student e/EMAIL`
 
@@ -177,6 +183,13 @@ Examples:
 
 - `delete_student 1` Deletes the 1st student in the list.
 - `delete_student e/johndoe@example.com` Deletes the student with email `johndoe@example.com`.
+
+<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
+The current version does not support undoing operations.
+<br>
+Hence, if a delete was incorrectly performed, the affected student will need to be added back manually. To avoid accidental data loss, you can perform `export` to save the current state.<br>
+Therefore, only delete students if you are confident that you are deleting it correctly.
+</div>
 
 ### Editing a student : `edit_student`
 
@@ -193,6 +206,13 @@ Examples:
 
 - `edit_student 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st student to be `91234567` and `johndoe@example.com` respectively.
 - `edit_student 2 n/Betsy Crower` Edits the name of the 2nd student to be `Betsy Crower`
+
+<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
+The current version does not support undoing operations.
+<br>
+Hence, if an edit was incorrectly performed, the affected fields will need to be manually edited to the original values. To avoid accidental data loss, you can perform `export` to save the current state.<br>
+Therefore, edit the student details only if you are confident that you are updating it correctly.
+</div>
 
 ### Creating a team: `create_team`
 
@@ -213,6 +233,13 @@ Format: `delete_team t/TEAM_NAME`
 Examples:
 
 - `delete_team t/F12-3`
+
+<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
+The current version does not support undoing operations.
+<br>
+Hence, if a delete was incorrectly performed, the affected team (and students in that team) will need to be added back manually. To avoid accidental data loss, you can perform `export` to save the current state.<br>
+Therefore, only delete students if you are confident that you are deleting it correctly.
+</div>
 
 ### Adding a student to a team: `add_to_team`
 
@@ -296,15 +323,47 @@ Format: `help`
 
 ### Saving the data
 
-SWEatless data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+SWEatless data are saved in `\data\sweatless_storage.json` automatically after any command that changes the data. There is no need to save manually.
+
+### Exporting data files
+
+Exports data from `sweatless_storage.json`. Allows users to capture data at a point of time prior to making further edits.
+
+Format: `export [f/FILE_PATH]`
+
+- Either `/` or `\` can be used to specify directories.
+
+Examples:
+
+- `export` will export to `..\Downloads\exported_sweatless_storage.json`.
+  The default behaviour is to export the file as `exported_sweatless_storage.json` to the user's `\Downloads` directory.
+- `export f/export.json` will export to `..\data\export.json`.
+  When the `f/` tag is specified, the file will be exported to the specified `FILE_PATH` with respect to the application's `\data` directory.
+- `export f/folder/export.json` will export to `..\data\folder\export.json`.
+- `export f/folder\export.json` will export to `..\data\folder\export.json`.
+
+### Importing data files
+
+Imports data from a `.json` file. Allows users to directly get information from a file without manually editing `sweatless_storage.json`.
+
+Format: `import f/FILE_PATH`
+
+- Either `/` or `\` can be used to specify directories.
+- `FILE_PATH` is the file path with respect to the application's `\data` directory.
+
+Example:
+
+- `import f/export.json` will import `..\data\export.json`.
+- `import f/folder/export.json` will import `..\data\folder\export.json`.
+- `import f/folder\export.json` will import `..\data\folder\export.json`.
 
 ### Editing the data file
 
-SWEatless data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
+SWEatless data are saved automatically as a JSON file `[JAR file location]/data/sweatless.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-If your changes to the data file makes its format invalid, SWEatless will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
-Furthermore, certain edits can cause the SWEatless to behave in unexpected ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
+If your changes to the data file makes its format invalid, SWEatless will **1. save the invalid JSON as `sweatless_storage_corrupted_TIMESTAMP`** and **2. discard all data and start with an empty data file at the next run.** <br>
+Certain edits can cause the SWEatless to behave in unexpected ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </div>
 
 ---

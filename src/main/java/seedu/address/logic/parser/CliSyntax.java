@@ -11,6 +11,6 @@ public class CliSyntax {
     public static final Prefix PREFIX_EMAIL = new Prefix("e/");
     public static final Prefix PREFIX_TEAM = new Prefix("t/");
     public static final Prefix PREFIX_GITHUB = new Prefix("g/");
-    public static final Prefix PREFIX_FILE = new Prefix("file/");
+    public static final Prefix PREFIX_FILE = new Prefix("fs/");
 
 }

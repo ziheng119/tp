@@ -89,7 +89,7 @@ public class ImportCommand extends Command {
             targetPath = prepareTargetPath(model);
             importPath = prepareFilePath();
 
-            // Copy the file into data/addressbook.json
+            // Copy the file into data/sweatless_storage.json
             Files.copy(importPath, targetPath, StandardCopyOption.REPLACE_EXISTING);
             JsonAddressBookStorage storage = new JsonAddressBookStorage(targetPath);
             Optional<ReadOnlyAddressBook> optionalNewData = storage.readAddressBook();
