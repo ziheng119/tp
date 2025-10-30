@@ -148,7 +148,7 @@ Format: `delete_student INDEX` OR `delete_student e/EMAIL`
 - Deletes the student at the specified `INDEX` OR the student with the matching `EMAIL`.
 - The index refers to the index number shown in the displayed student list.
 - The index **must be a positive integer** 1, 2, 3, …​
-- The email matching is **case-sensitive** (e.g., `JohnDoe@Example.com` will match `johndoe@example.com`).
+- The email matching is **case-insensitive** (e.g., `JohnDoe@Example.com` will match `johndoe@example.com`).
 - Only one method (index or email) can be used at a time.
 
 Examples:
