@@ -10,7 +10,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Optional;
+import java.util.logging.Logger;
 
+import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -36,7 +38,7 @@ public class ImportCommand extends Command {
     public static final String MESSAGE_PATH_FAILURE = "The specified file path is invalid: %1$s";
     public static final String MESSAGE_LOADING_FAILURE = "Failed to read the address book from the file: %1$s";
 
-
+    private static final Logger logger = LogsCenter.getLogger(ImportCommand.class);
     private final String filePath;
 
     /**
@@ -50,10 +52,12 @@ public class ImportCommand extends Command {
     private Path prepareFilePath() throws CommandException {
         Path importPath = Paths.get(filePath);
         if (!importPath.isAbsolute()) {
+            importPath = Paths.get("data").resolve(importPath);
             importPath = importPath.toAbsolutePath();
         }
         // Check if source file exists
         if (!Files.exists(importPath) || Files.isDirectory(importPath)) {
+            logger.warning("Import failed: file not found or is directory at " + importPath);
             throw new CommandException(String.format(MESSAGE_FOUND_FAILURE, importPath));
         }
         return importPath;
@@ -67,35 +71,45 @@ public class ImportCommand extends Command {
             }
             return targetPath;
         } catch (IOException e) {
+            logger.warning("Failed to prepare target directory: " + e.getMessage());
             throw new CommandException(String.format(MESSAGE_IO_TARGET_FAILURE, filePath));
         }
     }
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        Path importPath;
+        if (model.getAddressBookFilePath() == null) {
+            logger.severe("Model has null address book file path.");
+            throw new CommandException("Internal error: model does not have a valid address book file path.");
+        }
         Path targetPath;
+        Path importPath;
         try {
-            importPath = prepareFilePath();
+            // Prepare target path first to ensure data folder
             targetPath = prepareTargetPath(model);
+            importPath = prepareFilePath();
 
             // Copy the file into data/addressbook.json
             Files.copy(importPath, targetPath, StandardCopyOption.REPLACE_EXISTING);
             JsonAddressBookStorage storage = new JsonAddressBookStorage(targetPath);
             Optional<ReadOnlyAddressBook> optionalNewData = storage.readAddressBook();
-            ReadOnlyAddressBook newData = optionalNewData.orElseThrow(() ->
-                    new CommandException(String.format(MESSAGE_LOADING_FAILURE, filePath))
-            );
+            ReadOnlyAddressBook newData = optionalNewData.orElseThrow(() -> {
+                logger.warning("Failed to load address book data from file: " + filePath);
+                return new CommandException(String.format(MESSAGE_LOADING_FAILURE, filePath));
+            });
 
             // Update the model
             model.setAddressBook(newData);
             return new CommandResult(String.format(MESSAGE_SUCCESS, importPath));
 
         } catch (IOException e) {
+            logger.warning("I/O exception during import: " + e.getMessage());
             throw new CommandException(String.format(MESSAGE_IO_FAILURE, filePath));
         } catch (InvalidPathException e) {
+            logger.warning("Data loading exception: " + e.getMessage());
             throw new CommandException(String.format(MESSAGE_PATH_FAILURE, filePath));
         } catch (DataLoadingException e) {
+            logger.severe("Unexpected exception: " + e.getMessage());
             throw new CommandException(String.format(MESSAGE_LOADING_FAILURE, filePath));
         }
     }
