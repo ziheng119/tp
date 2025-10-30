@@ -27,7 +27,7 @@ public class AddStudentCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "New person added: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON =
-            "This person already exists in the system.";
+            "A student with this email or phone number already exists in the system.";
 
     private final Person toAdd;
 

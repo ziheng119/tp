@@ -56,6 +56,7 @@ public interface Model {
 
     /**
      * Returns true if a person with the same identity as {@code person} exists in the address book.
+     * A person is considered the same if they have the same email or phone number.
      */
     boolean hasPerson(Person person);
 
