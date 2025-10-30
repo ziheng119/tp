@@ -21,8 +21,9 @@ public class CreateTeamCommandParser implements Parser<CreateTeamCommand> {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_TEAM);
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_TEAM);
 
-        boolean isInvalidCommandFormat = !argMultimap.getValue(PREFIX_TEAM).isPresent()
-                || !argMultimap.getPreamble().isEmpty();
+        boolean isTeamEmpty = !argMultimap.getValue(PREFIX_TEAM).isPresent();
+        boolean isPreamblePresent = !argMultimap.getPreamble().isEmpty();
+        boolean isInvalidCommandFormat = isTeamEmpty || isPreamblePresent;
 
         if (isInvalidCommandFormat) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, CreateTeamCommand.MESSAGE_USAGE));
