@@ -32,21 +32,6 @@ class JsonSerializableAddressBook {
     private final List<JsonAdaptedTeam> teams = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonSerializableAddressBook} with the given persons.
-     */
-    @JsonCreator
-    public JsonSerializableAddressBook(
-            @JsonProperty("persons") List<JsonAdaptedPerson> persons,
-            @JsonProperty("teams") List<JsonAdaptedTeam> teams) {
-        if (persons != null) {
-            this.persons.addAll(persons);
-        }
-        if (teams != null) {
-            this.teams.addAll(teams);
-        }
-    }
-
-    /**
      * Converts a given {@code ReadOnlyAddressBook} into this class for Jackson use.
      *
      * @param source future changes to this will not affect the created {@code JsonSerializableAddressBook}.
@@ -62,6 +47,21 @@ class JsonSerializableAddressBook {
     }
 
     /**
+     * Constructs a {@code JsonSerializableAddressBook} with the given persons.
+     */
+    @JsonCreator
+    public JsonSerializableAddressBook(
+            @JsonProperty("persons") List<JsonAdaptedPerson> persons,
+            @JsonProperty("teams") List<JsonAdaptedTeam> teams) {
+        if (persons != null) {
+            this.persons.addAll(persons);
+        }
+        if (teams != null) {
+            this.teams.addAll(teams);
+        }
+    }
+
+    /**
      * Converts this address book into the model's {@code AddressBook} object.
      *
      * @throws IllegalValueException if there were any data constraints violated.
@@ -69,39 +69,9 @@ class JsonSerializableAddressBook {
     public AddressBook toModelType() throws IllegalValueException {
         AddressBook addressBook = new AddressBook();
 
-        Map<String, Team> teamMap = new HashMap<>();
-        Map<String, List<Email>> teamMemberMap = new HashMap<>();
-
-        // Populate addressbook with Teams (without persons) and populates {@code teamMap} and {@code teamMemberMap}
-        for (JsonAdaptedTeam jsonAdaptedTeam : teams) {
-            Team team = jsonAdaptedTeam.toModelType();
-            if (addressBook.hasTeam(team)) {
-                throw new IllegalValueException(MESSAGE_DUPLICATE_TEAM);
-            }
-            addressBook.addTeam(team);
-
-            // Will use teamName as a key to obtain the list of emails of members
-            teamMemberMap.put(team.getName(), jsonAdaptedTeam.getMemberEmail());
-            teamMap.put(team.getName(), team);
-        }
-        teamMap.put("", Team.NONE);
-
-        // Populate addressbook with Persons
-        for (JsonAdaptedPerson jsonAdaptedPerson : persons) {
-            Person person = jsonAdaptedPerson.toModelType(teamMap);
-            if (addressBook.hasPerson(person)) {
-                throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
-            }
-            addressBook.addPerson(person);
-        }
-
-        // Populate Teams with Persons according to the email map
-        for (String teamName : teamMemberMap.keySet()) {
-            Team team = teamMap.get(teamName);
-            List<Email> emailList = teamMemberMap.get(teamName);
-            List<Person> teamPersonList = getPersonList(emailList, addressBook.getPersonList());
-            team.setPersons(teamPersonList);
-        }
+        TeamParsing teamParsing = parseTeams(addressBook);
+        addPersons(addressBook, teamParsing.teamMap);
+        populateTeamsFromMembers(addressBook, teamParsing.teamMap, teamParsing.teamMemberMap);
 
         return addressBook;
     }
@@ -121,5 +91,91 @@ class JsonSerializableAddressBook {
         }
 
         return memberList;
+    }
+
+    /**
+     * Parses teams from JSON into the address book, returning maps used for wiring memberships later.
+     */
+    private TeamParsing parseTeams(AddressBook addressBook) throws IllegalValueException {
+        Map<String, Team> teamMap = new HashMap<>();
+        Map<String, List<Email>> teamMemberMap = new HashMap<>();
+
+        for (JsonAdaptedTeam jsonAdaptedTeam : teams) {
+            Team team = jsonAdaptedTeam.toModelType();
+            throwIfDuplicateTeam(addressBook, team);
+            addressBook.addTeam(team);
+
+            teamMemberMap.put(team.getName(), jsonAdaptedTeam.getMemberEmail());
+            teamMap.put(team.getName(), team);
+        }
+        teamMap.put("", Team.NONE);
+
+        return new TeamParsing(teamMap, teamMemberMap);
+    }
+
+
+    /**
+     * Adds persons to the address book after converting them from their JSON form.
+     */
+    private void addPersons(AddressBook addressBook, Map<String, Team> teamMap) throws IllegalValueException {
+        for (JsonAdaptedPerson jsonAdaptedPerson : persons) {
+            Person person = jsonAdaptedPerson.toModelType(teamMap);
+            throwIfDuplicatePerson(addressBook, person);
+            addressBook.addPerson(person);
+        }
+    }
+    /**
+     * Wires team memberships using the previously captured email lists per team.
+     */
+    private void populateTeamsFromMembers(AddressBook addressBook, Map<String, Team> teamMap,
+            Map<String, List<Email>> teamMemberMap) throws IllegalValueException {
+        for (Map.Entry<String, List<Email>> entry : teamMemberMap.entrySet()) {
+            Team team = teamMap.get(entry.getKey());
+            List<Email> emailList = entry.getValue();
+            List<Person> teamPersonList = resolvePersonsByEmail(emailList, addressBook.getPersonList());
+            team.setPersons(teamPersonList);
+        }
+    }
+
+    /** Resolves a list of persons by their emails; fails if any email is missing. */
+    private static List<Person> resolvePersonsByEmail(List<Email> emailList, ObservableList<Person> allPersons)
+            throws IllegalValueException {
+        List<Person> memberList = new ArrayList<>();
+        for (Email email : emailList) {
+            Person found = allPersons.stream()
+                    .filter(person -> person.getEmail().equals(email))
+                    .findFirst()
+                    .orElse(null);
+            if (found == null) {
+                throw new IllegalValueException(String.format(MISSING_PERSON_MESSAGE_FORMAT, email));
+            }
+            memberList.add(found);
+        }
+        return memberList;
+    }
+
+    /** Throws if the given team already exists in the address book. */
+    private static void throwIfDuplicateTeam(AddressBook addressBook, Team team) throws IllegalValueException {
+        if (addressBook.hasTeam(team)) {
+            throw new IllegalValueException(MESSAGE_DUPLICATE_TEAM);
+        }
+    }
+
+    /** Throws if the given person already exists in the address book (identity-based). */
+    private static void throwIfDuplicatePerson(AddressBook addressBook, Person person) throws IllegalValueException {
+        if (addressBook.hasPerson(person)) {
+            throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
+        }
+    }
+
+    /** Simple container for team parsing artifacts. */
+    private static class TeamParsing {
+        private final Map<String, Team> teamMap;
+        private final Map<String, List<Email>> teamMemberMap;
+
+        private TeamParsing(Map<String, Team> teamMap, Map<String, List<Email>> teamMemberMap) {
+            this.teamMap = teamMap;
+            this.teamMemberMap = teamMemberMap;
+        }
     }
 }
