@@ -95,6 +95,34 @@ public class AddStudentToTeamCommandTest {
     }
 
     @Test
+    public void execute_addToNoneTeam_throwsCommandException() {
+        // Add the sentinel NONE team explicitly into the model
+        model.addTeam(Team.NONE);
+        AddStudentToTeamCommand command = new AddStudentToTeamCommand(Index.fromOneBased(1), "");
+        assertThrows(CommandException.class, AddStudentToTeamCommand
+            .MESSAGE_TEAM_INVALID_NONE, () -> command.execute(model));
+    }
+
+    @Test
+    public void execute_personInAnotherTeam_throwsCommandException() throws CommandException {
+        // Create two teams
+        Team teamA = new Team("F12-3");
+        Team teamB = new Team("M09-4");
+        model.addTeam(teamA);
+        model.addTeam(teamB);
+
+        // Put ALICE into teamA
+        model.addPersonToTeam(ALICE, teamA);
+
+        // Attempt to add ALICE (index 1) to teamB
+        AddStudentToTeamCommand command = new AddStudentToTeamCommand(Index.fromOneBased(1), "M09-4");
+
+        assertThrows(CommandException.class,
+                String.format(AddStudentToTeamCommand.MESSAGE_PERSON_IN_ANOTHER_TEAM, Messages.format(ALICE),
+                        teamA.getName()), () -> command.execute(model));
+    }
+
+    @Test
     public void execute_secondPersonInList_success() throws CommandException {
         Team team = new Team("F12-3");
         model.addTeam(team);
