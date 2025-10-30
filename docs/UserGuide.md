@@ -21,12 +21,14 @@ The quick-start guide is the step-by-step instruction to get SWEatless running o
 | **Create Student**   | `create_student n/NAME p/PHONE_NUMBER e/EMAIL g/GITHUB_USERNAME​` <br> e.g., `create_student n/James Ho p/22224444 e/jamesho@example.com g/jamesho` |
 | **Delete Student**   | `delete_student INDEX` or `delete_student e/EMAIL`<br> e.g., `delete_student 3` or `delete_student e/johndoe@example.com`                         |
 | **Edit Student**     | `edit_student INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [g/GITHUB_USERNAME]​`<br> e.g.,`edit_student 2 n/James Lee e/jameslee@example.com`          |
+| **Find**             | `find n/[MORE_NAMES] t/[MORE_TEAM_NAMES]`<br> e.g., `find n/James Jake t/F12-3`                                                                     |
+| **List**             | `list`                                                                                                                                              |
 | **Create Team**      | `create_team t/TEAM_NAME` <br> e.g., `create_team F12-3`                                                                                            |
 | **Delete Team**      | `delete_team t/TEAM_NAME`<br> e.g., `delete_team F12-3`                                                                                             |
 | **Add To Team**      | `add_to_team INDEX t/TEAM_NAME` <br> e.g., `add_to_team 1 t/F12-3`                                                                                  |
 | **Remove from Team** | `remove_from_team INDEX t/TEAM_NAME`<br> e.g., `remove_from_team 3 t/F12-3`                                                                         |
-| **Find**             | `find n/[MORE_NAMES] t/[MORE_TEAM_NAMES]`<br> e.g., `find n/James Jake t/F12-3`                                                                     |
-| **List**             | `list`                                                                                                                                              |
+| **Import**           | `import f/FILE_NAME`                                                                                                                                |
+| **Export**           | `export [f/FILE_NAME]`                                                                                                                              |
 | **Clear**            | `clear`                                                                                                                                             |
 | **Exit**             | `exit`                                                                                                                                              |
 | **Help**             | `help`                                                                                                                                              |
@@ -298,6 +300,39 @@ Examples:
 - `find n/alex david t/F12-3 T11-2` returns all students from team `F12-3` and `T11-2` with names `Alex` or `David`<br>
   *If both `n/` and `/t` tags are used, students with the queried names in the specified teams will be returned (i.e. `AND` search)*
 
+### Importing data files
+
+Imports data from a JSON file. Allows users to directly get information from a file without manually editing `sweatless_storage.json`.
+
+Format: `import f/FILE_PATH`
+
+- Either `/` or `\` can be used to specify directories.
+- `FILE_PATH` is the file path with respect to the application's `\data` directory.
+
+Example:
+
+- `import f/export.json` will import `..\data\export.json`.
+- `import f/folder/export.json` will import `..\data\folder\export.json`.
+- `import f/folder\export.json` will import `..\data\folder\export.json`.
+
+### Exporting data files
+
+Exports data to a JSON file. Allows users to capture data at a point of time prior to making further edits.
+
+Format: `export [f/FILE_PATH]`
+
+- Either `/` or `\` can be used to specify directories.
+- `[f/FILE_PATH]` may be omitted to save to the user's `\Downloads` directory.
+
+Examples:
+
+- `export` will export to `..\Downloads\exported_sweatless_storage.json`.
+  The default behaviour is to export the file as `exported_sweatless_storage.json` to the user's `\Downloads` directory.
+- `export f/export.json` will export to `..\data\export.json`.
+  When the `f/` tag is specified, the file will be exported to the specified `FILE_PATH` with respect to the application's `\data` directory.
+- `export f/folder/export.json` will export to `..\data\folder\export.json`.
+- `export f/folder\export.json` will export to `..\data\folder\export.json`.
+
 ### Listing all students : `list`
 
 Shows a list of all students in SWEatless.
@@ -333,39 +368,6 @@ Format: `help`
 ### Saving the data
 
 SWEatless data are saved in `..\data\sweatless_storage.json` automatically after any command that changes the data. There is no need to save manually.
-
-### Exporting data files
-
-Exports data to a JSON file. Allows users to capture data at a point of time prior to making further edits.
-
-Format: `export [f/FILE_PATH]`
-
-- Either `/` or `\` can be used to specify directories.
-- `[f/FILE_PATH]` may be omitted to save to the user's `\Downloads` directory.
-
-Examples:
-
-- `export` will export to `..\Downloads\exported_sweatless_storage.json`.
-  The default behaviour is to export the file as `exported_sweatless_storage.json` to the user's `\Downloads` directory.
-- `export f/export.json` will export to `..\data\export.json`.
-  When the `f/` tag is specified, the file will be exported to the specified `FILE_PATH` with respect to the application's `\data` directory.
-- `export f/folder/export.json` will export to `..\data\folder\export.json`.
-- `export f/folder\export.json` will export to `..\data\folder\export.json`.
-
-### Importing data files
-
-Imports data from a JSON file. Allows users to directly get information from a file without manually editing `sweatless_storage.json`.
-
-Format: `import f/FILE_PATH`
-
-- Either `/` or `\` can be used to specify directories.
-- `FILE_PATH` is the file path with respect to the application's `\data` directory.
-
-Example:
-
-- `import f/export.json` will import `..\data\export.json`.
-- `import f/folder/export.json` will import `..\data\folder\export.json`.
-- `import f/folder\export.json` will import `..\data\folder\export.json`.
 
 ### Editing the data file
 

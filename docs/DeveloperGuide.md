@@ -187,18 +187,18 @@ The application currently supports the following commands:
 **Student Management:**
 
 - `create_student n/NAME p/PHONE e/EMAIL g/GITHUB_USERNAME` - Create a new student
-- `edit_student INDEX n/NAME p/PHONE e/EMAIL g/GITHUB` - Edit student details
 - `delete_student INDEX` - Delete a student by index
 - `delete_student e/EMAIL` - Delete a student by email (case-insensitive)
+- `edit_student INDEX n/NAME p/PHONE e/EMAIL g/GITHUB` - Edit student details
 - `find n/NAME t/TEAM_NAME` - Find students by name or team name
 - `list` - List all students
 
 **Team Management:**
 
 - `create_team t/TEAM_NAME` - Create a new team
+- `delete_team t/TEAM_NAME` - Delete an existing team
 - `add_to_team INDEX t/TEAM_NAME` - Add student to team
 - `remove_from_team INDEX t/TEAM_NAME` - Remove student from team
-- `delete_team t/TEAM_NAME` - Delete an existing team
 
 **Storage Management:**
 
@@ -210,91 +210,6 @@ The application currently supports the following commands:
 - `clear` - Clear all data
 - `help` - Show help information
 - `exit` - Exit the application
-
-### \[Proposed\] Undo/redo feature
-
-#### Proposed Implementation
-
-The proposed undo/redo mechanism is facilitated by `VersionedAddressBook`. It extends `AddressBook` with an undo/redo history, stored internally as an `addressBookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
-
-- `VersionedAddressBook#commit()` — Saves the current address book state in its history.
-- `VersionedAddressBook#undo()` — Restores the previous address book state from its history.
-- `VersionedAddressBook#redo()` — Restores a previously undone address book state from its history.
-
-These operations are exposed in the `Model` interface as `Model#commitAddressBook()`, `Model#undoAddressBook()` and `Model#redoAddressBook()` respectively.
-
-Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
-
-Step 1. The user launches the application for the first time. The `VersionedAddressBook` will be initialized with the initial address book state, and the `currentStatePointer` pointing to that single address book state.
-
-![UndoRedoState0](images/UndoRedoState0.png)
-
-Step 2. The user executes `delete 5` command to delete the 5th person in the address book. The `delete` command calls `Model#commitAddressBook()`, causing the modified state of the address book after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted address book state.
-
-![UndoRedoState1](images/UndoRedoState1.png)
-
-Step 3. The user executes `add n/David …​` to add a new person. The `add` command also calls `Model#commitAddressBook()`, causing another modified address book state to be saved into the `addressBookStateList`.
-
-![UndoRedoState2](images/UndoRedoState2.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#commitAddressBook()`, so the address book state will not be saved into the `addressBookStateList`.
-
-</div>
-
-Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous address book state, and restores the address book to that state.
-
-![UndoRedoState3](images/UndoRedoState3.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial AddressBook state, then there are no previous AddressBook states to restore. The `undo` command uses `Model#canUndoAddressBook()` to check if this is the case. If so, it will return an error to the user rather
-than attempting to perform the undo.
-
-</div>
-
-The following sequence diagram shows how an undo operation goes through the `Logic` component:
-
-![UndoSequenceDiagram](images/UndoSequenceDiagram-Logic.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `UndoCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-
-</div>
-
-Similarly, how an undo operation goes through the `Model` component is shown below:
-
-![UndoSequenceDiagram](images/UndoSequenceDiagram-Model.png)
-
-The `redo` command does the opposite — it calls `Model#redoAddressBook()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the address book to that state.
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index `addressBookStateList.size() - 1`, pointing to the latest address book state, then there are no undone AddressBook states to restore. The `redo` command uses `Model#canRedoAddressBook()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-
-</div>
-
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the address book, such as `list`, will usually not call `Model#commitAddressBook()`, `Model#undoAddressBook()` or `Model#redoAddressBook()`. Thus, the `addressBookStateList` remains unchanged.
-
-![UndoRedoState4](images/UndoRedoState4.png)
-
-Step 6. The user executes `clear`, which calls `Model#commitAddressBook()`. Since the `currentStatePointer` is not pointing at the end of the `addressBookStateList`, all address book states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
-
-![UndoRedoState5](images/UndoRedoState5.png)
-
-The following activity diagram summarizes what happens when a user executes a new command:
-
-<img src="images/CommitActivityDiagram.png" width="250" />
-
-#### Design considerations:
-
-**Aspect: How undo & redo executes:**
-
-- **Alternative 1 (current choice):** Saves the entire address book.
-
-  - Pros: Easy to implement.
-  - Cons: May have performance issues in terms of memory usage.
-
-- **Alternative 2:** Individual command knows how to undo/redo by
-  itself.
-  - Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
-  - Cons: We must ensure that the implementation of each individual command are correct.
-
-_{more aspects and alternatives to be added}_
 
 ### Team Management Feature
 
@@ -332,7 +247,7 @@ Teams follow a specific naming convention enforced by `VALIDATION_REGEX`:
 
 #### Identity and Equality
 
-- `Person#isSamePerson(Person)` defines student identity by email. Two students are considered the same student if their emails or Github usernames are equal.
+- `Person#isSamePerson(Person)` defines student identity by email. Two students are considered the same person if their emails or Github usernames are equal.
 - `UniquePersonList` enforces uniqueness using `isSamePerson` when adding or updating entries.
 
 #### Field Validation
@@ -347,19 +262,19 @@ Teams follow a specific naming convention enforced by `VALIDATION_REGEX`:
 - Add student: prevented by `Model#hasPerson`/`AddressBook#hasPerson` (email-identity based).
 - Edit student: editing to an email that would duplicate another student is blocked. Editing Github to an existing Github username is also blocked.
 
-### Edit Student Behavior and Filtering
-
-- After a successful `edit_student`, the model resets the filtered list to show all students (via `updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS)`), ensuring the edited entry remains visible even if the previous view was filtered.
-
-### Delete Student Behavior
+#### Delete Student Behavior
 
 - `delete_student INDEX` deletes the student at the given one-based index of the current filtered list view.
 - `delete_student e/EMAIL` deletes the student whose email matches (case-insensitive). This lookup searches the current filtered view.
 - When a student is deleted, they are also removed from any team memberships maintained by the model.
 
+#### Edit Student Behavior and Filtering
+
+- After a successful `edit_student`, the model resets the filtered list to show all students (via `updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS)`), ensuring the edited entry remains visible even if the previous view was filtered.
+
 ### Model API Notes
 
-- `Model#hasPersonWithGithub(String githubUsername)` provides a fast check for Github-username uniqueness used by `EditCommand`.
+- `Model#hasPersonWithGithub(String githubUsername)` provides a fast check for Github-username uniqueness, used by `EditCommand`.
 
 **Command Flow:**
 
@@ -376,7 +291,25 @@ Teams follow a specific naming convention enforced by `VALIDATION_REGEX`:
 
 ### \[Proposed\] Data archiving
 
-_{Explain here how the data archiving feature will be implemented}_
+The data archiving feature allows for safely storing historical snapshots of student and team data, 
+ensuring that deleted or modified entries can be restored or audited later. This is particularly 
+useful for compliance,recovery, or analytics.
+
+The proposed data archiving mechanism is facilitated by `ArchiveStorage`. This is an interface that is
+implemented by `JsonArchiveStorage`, which stores archived data internally in a JSON file `archive.json`.
+This will also follow the same pattern as `JsonAddressBookStorage`, using `JsonSerializableAddressBook`.
+
+At given "Trigger Points", SWEatless will archive data to ensure that no important data is lost accidentaly.
+These trigger points are:
+- call to `delete_student`
+- call to `remove_from_team`
+- call to `delete_team`
+- Periodic snapshot (Every ~50 edits)
+
+The following are the steps for archiving a deleted student:
+- Retrieve Person and current Team.
+- Append the record to ArchiveStorage.
+- Delete the student from AddressBook as usual.
 
 ---
 
@@ -639,24 +572,33 @@ testers are expected to do more *exploratory* testing.
    1. Re-launch the app by double-clicking the jar file.<br>
       Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
-
 ### Deleting a person
 
 1. Deleting a person while all persons are being shown
 
    1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+   1. Test case: `delete_student 1`<br>
+      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message.
 
-   1. Test case: `delete 0`<br>
+   1. Test case: `delete_student 0`<br>
       Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+   1. Other incorrect delete commands to try: `delete_student`, `delete_student x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
-1. _{ more test cases …​ }_
+1. Deleting a person while some persons are being shown
+   1. Prerequisites: Filter out the person list using the `find` command. (e.g. `find t/W08-1`)
+
+   1. Test case: `delete_student 1`<br>
+       Expected: First contact is deleted from the filtered list. Behaviour similar to (1ii) from above
+
+   1. Test case: `delete_student x` (where x is greater than filtered list) <br>
+        Expected: No person is deleted. Behaviour similar to (1iii) from above.
+1. Deleting a person according to their email
+   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+   1. Test case: `delete_student e/EMAIL`<br>
+          Expected: Student matching the email is deleted. Details of the deleted contact shown in the status message. No 2 students should have the same email.
 
 ### Team Management
 
@@ -670,6 +612,8 @@ testers are expected to do more *exploratory* testing.
 
    1. Test case: `create_team t/F12-3` (duplicate)<br>
       Expected: Error message shown. Team already exists.
+   
+   2. Incorrect delete commands to try: `create_team F12-3`, `create_team t/t/` <br>
 
 1. Adding a student to a team
 
@@ -678,8 +622,11 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `add_to_team 1 t/F12-3`<br>
       Expected: John Doe is added to team F12-3. Success message displayed.
 
-   1. Test case: `add_to_team 1 t/NonExistentTeam`<br>
+   1. Test case: `add_to_team 1 t/F12-4` (team not added)<br>
       Expected: Error message shown. Team not found.
+
+   1. Test case: `add_to_team 1 t/NonExistentTeam`<br>
+      Expected: Error message shown. Team name does not follow format.
 
    1. Test case: `add_to_team 1 t/F12-3` (duplicate)<br>
       Expected: Error message shown. Student already in team.
@@ -691,8 +638,11 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `remove_from_team 1 t/F12-3`<br>
       Expected: Student is removed from team F12-3. Success message displayed.
 
-   1. Test case: `remove_from_team 1 t/NonExistentTeam`<br>
+   1. Test case: `remove_from_team 1 t/F12-4` (team not added)<br>
       Expected: Error message shown. Team not found.
+   2. 
+   1. Test case: `remove_from_team 1 t/NonExistentTeam`<br>
+      Expected: Error message shown. Team name does not follow format.
 
    1. Test case: `remove_from_team 1 t/F12-3` (student not in team)<br>
       Expected: Error message shown. Student not in team.

@@ -1,36 +1,35 @@
 @startuml
 hide circle
 
-package "Storage Layer" as Storage{
+package "Storage" as S{
+    interface Storage <<interface>>
 
-    interface AddressBookStorage
-    interface UserPrefsStorage
-    interface Storage
-
+package "AddressBookStorage" as ABS{
+    interface AddressBookStorage <<interface>>
     class JsonAddressBookStorage
-    class JsonUserPrefsStorage
-    class StorageManager
 
     class JsonSerializableAddressBook
     class JsonAdaptedPerson
     class JsonAdaptedTeam
-
+}
+    class StorageManager
+package "UserPrefsStorage" as UPS {
+    interface UserPrefsStorage <<interface>>
+    class JsonUserPrefsStorage
+}
     ' ===== Relationships =====
 
-    StorageManager ..> AddressBookStorage : uses
-    StorageManager ..> UserPrefsStorage : uses
+    AddressBookStorage <- StorageManager : 1
+    StorageManager -> UserPrefsStorage : 1
 
+    Storage <|.. StorageManager
+    Storage --|> AddressBookStorage
+    Storage --|> UserPrefsStorage
     AddressBookStorage <|.. JsonAddressBookStorage
     UserPrefsStorage <|.. JsonUserPrefsStorage
-    Storage <|.. StorageManager
 
-    JsonAddressBookStorage --> JsonSerializableAddressBook
+    JsonAddressBookStorage ..> JsonSerializableAddressBook
     JsonSerializableAddressBook --> JsonAdaptedPerson
     JsonSerializableAddressBook --> JsonAdaptedTeam
-
-    JsonAdaptedPerson --> "Team"
-    JsonAdaptedPerson --> "Person"
-    JsonAdaptedTeam --> "Team"
 }
-
 @enduml

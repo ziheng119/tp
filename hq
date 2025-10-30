@@ -1,0 +1,1839 @@
+[33m93bfd17b[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mbranch-add-ug[m[33m)[m Add import and export to UG
+[33m3bf22d5a[m[33m ([m[1;31mupstream/master[m[33m, [m[1;31mupstream/HEAD[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m, [m[1;32mbranch-backup-file[m[33m)[m Merge pull request #181 from ziheng119/alpha-bug-Update-DG
+[33m92a7a45d[m Update DeveloperGuide.md
+[33m1318a13e[m Merge pull request #178 from lihloway/branch-backup-file
+[33mfa2ada2a[m Merge pull request #179 from lihloway/branch-code-quality
+[33m86b24a0e[m Merge pull request #175 from Cavannn/Delete_student_UG
+[33m151b2704[m Merge branch 'master' into Delete_student_UG
+[33mac516d7c[m Update error in UG
+[33m644052a3[m Merge pull request #174 from ctrf03/v1.5-OneBasedIndex
+[33m6337c595[m Merge pull request #173 from Cavannn/Duplicate_github
+[33mf2dbf4a3[m Merge pull request #172 from ctrf03/v1.5-UpdateUg
+[33mdc444d63[m Merge pull request #171 from Cavannn/Duplicate_phone
+[33mf6a4e553[m Merge pull request #168 from bacenl/fix-command-duplicate-tags
+[33m5a84d1ac[m[33m ([m[1;31morigin/branch-backup-file[m[33m)[m Add auto-saving corrupted file
+[33m16010c7b[m[33m ([m[1;31morigin/branch-code-quality[m[33m, [m[1;32mbranch-code-quality[m[33m)[m Fix file saving execution order
+[33m93da2882[m Add logging
+[33mbbff7ed0[m[33m ([m[1;32mbranch-update-ug[m[33m)[m Merge pull request #170 from lihloway/branch-import-command
+[33m6966f3e8[m Update UG
+[33mb22078e9[m[33m ([m[1;31morigin/branch-import-command[m[33m)[m Fix checkstyle
+[33md64ea8b4[m Fix code quality
+[33me7c3562a[m Update UG to include constrains of parameters
+[33m10904662[m Update all index based commands to show one-based indexing
+[33mb38dd337[m Update checkstyle
+[33m5aab88e1[m Add duplicate github username check when creating new student
+[33m20700da0[m Update logic
+[33mded568bf[m Updated logic to use isSamePerson
+[33mb3f7d40e[m Update UserGuide.md
+[33m17a6b34e[m Fixed test cases and checkstyle
+[33m270b0095[m Fixed merge issues
+[33m0d19e881[m Merge branch 'master' into Duplicate_phone
+[33m685a32d8[m Add duplicate phone number check when creating new student
+[33m90901fd5[m Fix Checkstyle
+[33m30a83ec7[m Fix Checkstyle
+[33m7e61be75[m Fix Checkstyle
+[33m1b67d1ae[m Add Test files
+[33m134325ad[m Merge pull request #169 from bacenl/fix-ug-toc
+[33m858f22b6[m Merge pull request #160 from lihloway/branch-export-command
+[33m7ccb5aba[m Add duplicate tag check to all Parsers that require tags
+[33me2439e7d[m Fix UserGuide.md table of contents
+[33mf87b4adc[m add import command
+[33m3b946860[m Merge pull request #162 from bacenl/alpha-fixes-find
+[33m4af7bdaf[m Update UG and fix FindCommand MESSAGE_USAGE
+[33m21c5bd01[m[33m ([m[1;31morigin/branch-export-command[m[33m, [m[1;32mbranch-export-command[m[33m)[m Revert gradle.yml
+[33mab85d362[m Fix testcase
+[33m946fe869[m Merge pull request #145 from ziheng119/alpha-bug-update-UG
+[33m4955cf0e[m Merge pull request #144 from ziheng119/alpha-bug-fix-github-username
+[33md0015e05[m Merge branch 'master' into alpha-bug-fix-github-username
+[33mebc111f3[m Merge pull request #141 from ziheng119/alpha-bug-Error-Message
+[33m36717af1[m Merge pull request #130 from bacenl/update-code-quality
+[33m9c1a2a24[m Fix checkstyle
+[33mb5a1ace3[m add Export Command testcases
+[33mf9ae1564[m add Export Command
+[33m22514f44[m Update UserGuide.md
+[33m70ff6df9[m Prevent duplicated Github usernames
+[33mba4ad1ac[m Update EditCommand.java
+[33meb8a71c9[m Update DeveloperGuide.md
+[33m3520508e[m Update JsonAdaptedPerson and JsonSerializableAddressBook code quality
+[33me36cda54[m Update Team code quality
+[33m5e9138f2[m Update PersonCard code quality
+[33me09c2034[m Update DeleteTeamCommand code quality (new methods in Model)
+[33m0071e3f9[m Update CreateTeamCommand and CreateTeamCommandParser code quality
+[33me2e7b26c[m Merge pull request #127 from Cavannn/Commons_UML
+[33m56aff626[m Remove redundant
+[33maef518e1[m Update Checkstyle
+[33md321c8cb[m Merge pull request #128 from bacenl/ui-puml
+[33mf3edf6c9[m Merge pull request #125 from lihloway/branch-storage-uml
+[33m5b220162[m Create Ui.puml
+[33m541c16d5[m Add Commons UML Diagram
+[33m7272821d[m[33m ([m[1;31morigin/branch-storage-uml[m[33m, [m[1;32mbranch-storage-uml[m[33m)[m Remove redundant
+[33mb0576bfa[m Add Storage uml
+[33m9ea09acd[m Merge pull request #123 from ctrf03/v1.5-EnableAsseertions
+[33m4ec38ef2[m Enable Assertions
+[33m0417e642[m[33m ([m[1;32mbranch-enable-assertions[m[33m)[m enable assertions in build.gradle
+[33mb75e0818[m Merge pull request #120 from bacenl/fix-ui
+[33md43324d3[m Merge pull request #121 from ctrf03/v1.4-ConsistentCommands
+[33m7286961e[m Make commands consistent
+[33m9ec16f9a[m Fix checkstyle
+[33m85a4cfd8[m Merge branch 'master' of https://github.com/AY2526S1-CS2103T-F12-3/tp into fix-ui
+[33mf2d3c220[m Merge pull request #119 from lihloway/branch-fix-teamname
+[33mc9e8ed03[m Update UI
+[33m9503225d[m Merge pull request #109 from ziheng119/v1.4-Update-DG
+[33m4cf017f6[m[33m ([m[1;31morigin/branch-fix-teamname[m[33m, [m[1;32mbranch-fix-teamname[m[33m)[m Fix small bug with team names in test case
+[33m738c4110[m Merge pull request #113 from ctrf03/v1.4-ModelUml
+[33mc38d9dc0[m Merge pull request #108 from ctrf03/v1.4-FindCommandUg
+[33m356cb4f2[m Merge pull request #105 from ctrf03/v1.4-FindCommand
+[33me74e877a[m Merge pull request #115 from ziheng119/v1.4-Update-Create-Team-Command
+[33ma91bbaba[m Merge pull request #100 from bacenl/delete-team-command
+[33mb04eb842[m Update tests according to review
+[33mf4d98ba8[m Add test case
+[33m4ff3f49a[m Update CreateTeamCommandParserTest.java
+[33m0b468bf2[m Merge branch 'master' into v1.4-Update-Create-Team-Command
+[33m0fc6360c[m Update create_team command
+[33m3df2fb81[m Update Tests for t/ tag and other parsers
+[33m72019bd6[m Create Model.puml
+[33mfface93f[m Merge pull request #112 from ziheng119/v1.4-Logic-UML
+[33m9a899d6a[m Update Logic.puml
+[33maf028b20[m Update Logic.puml
+[33mbf111f5b[m Merge pull request #107 from Cavannn/clickable_github
+[33mcae9bbf2[m Create Logic.puml
+[33m732e4acf[m Update DeveloperGuide.md
+[33m0a730051[m Merge branch 'master' into clickable_github
+[33m42084950[m Add tags to create and delete command in UG
+[33ma6758e9c[m Update DeleteTeamCommandTest.java
+[33mab19bcdc[m Add Assertions and Logging to DeleteTeamCommand
+[33m0a887dba[m Merge branch 'master' of https://github.com/AY2526S1-CS2103T-F12-3/tp into delete-team-command
+[33mc3caf8f5[m Merge pull request #103 from ctrf03/v1.4-TeamUrl
+[33mfc784268[m Merge pull request #95 from ziheng119/v1.4-Manage-Valid-Team-Names
+[33m82c79e24[m Update DeveloperGuide.md
+[33m2afc9099[m Merge pull request #97 from lihloway/branch-add-assertions
+[33m36051370[m Merge pull request #96 from lihloway/branch-fix-addremovebug
+[33m4b5d5e09[m Add clickable Github usernames for teammates
+[33m3b674202[m Add new find command onto UG
+[33m1c0c90a4[m Update NameContainsKeywordsPredicate.java
+[33m3aeb6f73[m Update NameContainsKeywordsPredicate.java
+[33m2d86ff36[m Fix trailing whitespace
+[33m62bc0a2d[m Fix test cases
+[33m172223a7[m Fix long line
+[33m5dffe829[m Fix import order and seperation
+[33m45baa4a8[m Trailing whitespaces
+[33mcfdc34cb[m Update test files
+[33m266fabcb[m Allow find to search by team
+[33m8888125a[m Change naming for checkstyle
+[33m9a611c06[m Import order change
+[33m9073312f[m Change UI Team tag to URL
+[33m8417088d[m Update TeamNamePredicate.java
+[33me57ba245[m Update TeamNamePredicate.java
+[33m7ef1aae0[m Merge pull request #101 from ctrf03/v1.4-UG
+[33ma37c368a[m[33m ([m[1;31morigin/branch-add-assertions[m[33m, [m[1;32mbranch-add-assertions[m[33m)[m Change for checkstyle
+[33m839c86a4[m Finish up features of UG
+[33m605ce508[m Change testcase to check assertionerror
+[33m3a5a82a9[m Change assertion
+[33m3178a7c3[m Merge pull request #93 from bacenl/update-ug
+[33m2c5c1ae9[m Update TeamNamePredicate.java
+[33m8f43d3df[m Remove 1 redundant assertion
+[33m5b3b081f[m Add Tests
+[33m513dbd9b[m Update RemoveFromTeamCommand.java
+[33mc25782d2[m Fix DeleteTeamCommand.java
+[33mb0081e57[m Merge branch 'master' of https://github.com/AY2526S1-CS2103T-F12-3/tp into delete-team-command
+[33mf595cc86[m Merge pull request #88 from lihloway/branch-person-equality
+[33m0acbca01[m[33m ([m[1;31morigin/branch-person-equality[m[33m, [m[1;32mbranch-person-equality[m[33m)[m Change references to isSameTeam to isSameTeamName
+[33m7dab5f6c[m Debug testcase 5
+[33mfa7f3e6a[m Add Assertions to JsonAdaptedTeam for defensive coding
+[33mfefa4d54[m[33m ([m[1;31morigin/branch-fix-addremovebug[m[33m, [m[1;32mbranch-fix-addremovebug[m[33m)[m Fix add_to_team and remove_from_team bug
+[33m3ceb5c5c[m Handle valid team names
+[33m81b244a4[m Debug testcase 4
+[33ma170b3bc[m Debug testcase 3
+[33m7e5762dd[m Debug testcase 2
+[33m95cee0c3[m Add DeleteCommand.java and DeleteCommandParser.java
+[33m4d75135a[m Debug testcase 1
+[33m1edf6106[m Update UserGuide.md
+[33m0e16c82b[m Fix testcase by using hash for better performance
+[33m64dfdc41[m Fix addressbook
+[33m913d34b8[m Fix testcase on typical team again
+[33md616ffa9[m Fix testcase on typical team
+[33m6b95dbc1[m Fix trailing whitespace
+[33m4ae47894[m Fix javadoc
+[33m2ba7c539[m Fix person and team equality methods
+[33m8df666d4[m Merge pull request #87 from ctrf03/v1.3-MvpRelease
+[33m7aeb3b70[m Update version number for MVP release
+[33m94b51ba8[m Merge pull request #86 from ziheng119/v1.3-Update-Remove-From-Team
+[33m5b83c5ff[m Standardise team naming
+[33m7be708e3[m Fix trailing whitespace
+[33mf9c91b42[m Update RemoveFromTeamCommand.java
+[33md6e7a629[m Merge pull request #78 from bacenl/team-ui
+[33m0528247f[m Update `team/` flag to `t/`
+[33m8726ba02[m Resolve merge conflict
+[33m9da1af10[m Merge branch 'master' of https://github.com/AY2526S1-CS2103T-F12-3/tp into team-ui
+[33m9374f75a[m Merge pull request #80 from Cavannn/index_unique_identifier
+[33mf4339436[m Set Team `equals` to not check internalList
+[33meed7eb79[m Merge pull request #82 from lihloway/branch-team-abstraction
+[33m260de3f7[m Fix Checkstyle
+[33mf3a0ca1e[m Update Tests
+[33mfa2a82fd[m Merge branch 'master' into index_unique_identifier
+[33mba75bac9[m Merge pull request #76 from ziheng119/v1.3-Standardise-Commands
+[33mc0332ca4[m Merge pull request #74 from ziheng119/v1.3-Prevent-Multiple-Teams
+[33me3b062ed[m Merge pull request #77 from ctrf03/v1.3-CreateTeamBugFix
+[33mb6f881ac[m[33m ([m[1;31morigin/branch-team-abstraction[m[33m, [m[1;32mbranch-team-abstraction[m[33m)[m Add javadoc
+[33m235bcd96[m Add abstraction to Team.java with isSameTeam
+[33me13a3ae9[m Fix checkstyle errors
+[33m68656b4b[m Update test cases
+[33m475aa5c5[m Update team command prefix for consistency
+[33m1a9588c2[m Update index as unique identifier for add/remove from team commands
+[33m0cacab34[m Fix circular dependence issue in deserialization
+[33m2f0b512f[m Import statement in lexicographical order
+[33m87634b34[m Test coverage for ParserUtil and CreateTeamCommandParserTest
+[33m93071375[m Wrap IllegalArguementException from teamName to ParserException
+[33m47b04a34[m Update tests
+[33mc0fc293f[m Update CliSyntax.java
+[33m63d9e618[m Add `team` field to `Person` and updated relevant json handling
+[33m991a297a[m Update `PersonCard` with temp text
+[33m7dfa03f6[m Prevent student from having more than one team
+[33m95c63075[m Delete ReadOnlyTeam.java
+[33mb5ac9825[m Merge pull request #71 from bacenl/fix-dg-toc
+[33m711805e3[m Merge pull request #68 from lihloway/branch-save-team
+[33m9e07e01d[m Fix DG Table of Contents
+[33m18012c7f[m Merge pull request #66 from ziheng119/v1.3-Add-Coverage
+[33m3037c37a[m[33m ([m[1;31morigin/branch-save-team[m[33m, [m[1;32mbranch-save-team[m[33m)[m Fix EVEN MORE test cases
+[33mefb5997d[m Fix small issues with eof
+[33m5898129c[m Add JsonAdaptedTeamTest.java to test new class
+[33m6f29cf53[m Fix testcases for coverage
+[33med4c4ede[m Fix checkstyle
+[33m7712eb8d[m Fix teamcases to fit new implementation
+[33m7eae4857[m Add function of saving team to json
+[33m2de85c00[m Change duplicate person rule
+[33mefcaa417[m Update DeleteCommandTest.java
+[33m65f304d3[m Add test cases
+[33m0a580792[m Merge pull request #64 from ctrf03/v1.3-MvpDocumentation
+[33mb2e219c4[m Update UserGuide to reflect SWEatless
+[33mee7371a0[m Merge pull request #60 from Cavannn/addstudenttoteam
+[33m0cdf6599[m Update style checks
+[33mc1e187e9[m Merge branch 'master' of https://github.com/AY2526S1-CS2103T-F12-3/tp into addstudenttoteam
+[33m33b438a0[m Update AddressBookParser
+[33mf1a81304[m Merge pull request #57 from ziheng119/v1.2-DeleteByEmail
+[33mf5a7688a[m Merge upstream/master into addstudenttoteam
+[33ma672ba56[m Update DeleteCommand.java
+[33mc95ac85a[m Update DeleteCommand.java
+[33m13a258ba[m Merge pull request #55 from ctrf03/v1.1-AddStudentCommand
+[33md99c7f37[m Fix bug on JsonSerializableAddressBook test case
+[33mca54a482[m Fix bug on JsonSerializableAddressBook test case
+[33m15a57fd6[m Fix bug on JsonSerializableAddressBook test case
+[33m9f816c22[m Fix bug on JsonSerializableAddressBook test case
+[33ma5e05ea3[m Merge pull request #58 from lihloway/branch-team-UI
+[33ma4f28e8e[m Add and Update Test Cases
+[33m652bfb6f[m[33m ([m[1;31morigin/branch-team-UI[m[33m, [m[1;32mbranch-team-UI[m[33m)[m Fix whitespace2
+[33m8570aff6[m Fix whitespace
+[33mb749089a[m Update test data files with new Person attributes
+[33m728b1829[m Fix bugs in test cases
+[33m70c07f6d[m Update test files based on new Person attributes
+[33m94a1cdc9[m Add Add_To_Team and Remove_From_Team Commands
+[33m39933493[m Update Style on SampleDataUtil.java
+[33md4154d5c[m Add new line to usage messages of AddStudentCommand and EditCommand
+[33m9a2ac330[m Update AddStudentCommandParser.java
+[33m0bdcd037[m Cleanup .css files
+[33m13cd92b0[m Align logic with codebase
+[33m97ec93a6[m Fix trailing whitespace
+[33mbc27b20f[m Make emails case-insensitive
+[33medeb6ce4[m Add test cases for deletion via email
+[33md2636e1a[m Add dropdown css to DarkTheme.css
+[33m6a680eea[m Checkstyle update
+[33m34c2cd51[m Align logic with Delete by Index
+[33m8925520a[m Delete person via email
+[33mecaa28eb[m Fix trailing whitespaces
+[33m71e66289[m Fix remaining attribute bugs
+[33m2334830a[m Update EditCommand.java with new Person attributes
+[33m0d3ed7a4[m Revert "Fix unsaved changed in EditCommand.java"
+[33ma9575c45[m Revert "Save unsaved changes"
+[33mc779ef0b[m Save unsaved changes
+[33m4fa603e9[m Fix unsaved changed in EditCommand.java
+[33mffdb8118[m Fix remaining bugs containing address and tags
+[33mb8f3d33b[m Update PersonListCard.fxml with new attributes
+[33m229b8814[m Update PersonCard.java with new attributes
+[33mfc310f47[m Update JsonAdaptedPerson.java to include github and exclude tags and address
+[33m3c11351c[m Update AddStudentCommand.java constructor
+[33mc63a5ec1[m Remove tags from AddStudentCommandParser.java
+[33m0659bda0[m Update Person.java to remove tags and address and add github username
+[33mdc874a1a[m Change AddCommandParser.java to AddStudentCommand.java
+[33m8f7db9ca[m Change AddCommand.java to AddStudentCommand.java
+[33ma3ac0a0a[m Add "g/" prefix to CLISyntax.java
+[33m388cc96e[m Add Github.java
+[33m4adaffd9[m Merge pull request #52 from bacenl/create-team-command
+[33m1ab02733[m Add team creation in execute()
+[33mfe8d9d42[m Fix Checkstyle
+[33me9f43d8d[m Add CreateTeamCommand and CreateTeamCommandParser
+[33mac05112c[m Add team and relevant classes and add size() to UniquePersonList
+[33m72ac3791[m[33m ([m[1;32mUI-acknowledgements[m[33m)[m Merge pull request #46 from ctrf03/v1.1-UpdateREADMEWithProject
+[33mfe21d3e8[m Fix typo in README
+[33m70847993[m Update TOC in DevelpoerGuide.md
+[33m7b0b15d9[m Update README.md
+[33m2c4769d8[m Merge pull request #42 from bacenl/fix-dg
+[33mfa522668[m Fix table of contents
+[33m491cd651[m Merge pull request #41 from lihloway/UI-acknowledgements
+[33m4f685e55[m[33m ([m[1;31morigin/UI-acknowledgements[m[33m)[m Fixes README.md
+[33mb4146623[m Add UI.png, edit README.md
+[33m865d59d2[m Merge pull request #37 from lihloway/user-stories-DG
+[33m4011c0ea[m[33m ([m[1;31morigin/user-stories-DG[m[33m, [m[1;32muser-stories-DG[m[33m)[m Fix User Stories, remove Module Coordinator
+[33m05bb2a50[m Merge pull request #38 from bacenl/update-navbar
+[33m1b29ac2b[m Merge pull request #36 from ziheng119/v1.1-Update-DG
+[33m3d4697e0[m Update AB3 to SWEatless in NavBar
+[33ma36cf80b[m Add User Stories to DG
+[33m5fe610d2[m Merge pull request #33 from Cavannn/update-glossary
+[33m8937a425[m Merge branch 'master' into update-glossary
+[33mef3075c9[m Update DeveloperGuide.md
+[33mcbf29419[m Update Glossary
+[33mcd2253c5[m Merge pull request #32 from ctrf03/v1.1-UpdateREADME
+[33m35f4ba18[m Update Github actions status badge link
+[33m17eb1445[m Merge pull request #26 from ctrf03/v1.1-DGNFR
+[33mf6b66005[m Merge pull request #29 from ziheng119/v1.1-Update-README
+[33m959ae50b[m Update AboutUs.md
+[33m96c5054c[m Merge pull request #27 from ziheng119/v1.1-Update-README
+[33m2c4054ec[m Merge branch 'AY2526S1-CS2103T-F12-3:master' into v1.1-Update-README
+[33m722f2f80[m Merge pull request #16 from lihloway/update-page
+[33m2f8d4410[m[33m ([m[1;31morigin/update-page[m[33m)[m Merge branch 'master' into update-page
+[33md65db03c[m Merge pull request #12 from Cavannn/about-us
+[33mc5fc456f[m Merge pull request #14 from lihloway/branch-add-photo
+[33m133a5282[m Merge pull request #21 from bacenl/update-about-us
+[33m65ce1a5e[m Merge branch 'master' into update-about-us
+[33m8e24410e[m Merge branch 'master' into about-us
+[33m16ce79af[m Merge pull request #20 from bacenl/add-photo
+[33mb75b9027[m Merge pull request #10 from Cavannn/add-photo
+[33me266aeea[m Merge pull request #4 from ctrf03/v1.1-UpdateAboutUsPage
+[33m2c09a7ae[m Merge pull request #6 from ziheng119/branch-add-photo
+[33m21a45b3d[m Merge pull request #2 from ctrf03/v1.1-WorkFlowPractice
+[33maf43b155[m Add NFRs to DeveloperGuide.md
+[33mbe68fb88[m Update README.md
+[33m6026e234[m Update AboutUs.md to include name
+[33mb1f8fecc[m Add Ethan's Photo
+[33maff44fe3[m[33m ([m[1;32mupdate-page[m[33m)[m Update AboutUs.md to include Cole Lin
+[33mf5ba876e[m[33m ([m[1;31morigin/branch-add-photo[m[33m, [m[1;32mbranch-add-photo[m[33m)[m Add Cole Lin's photo
+[33m1048fe59[m Update AboutUs page
+[33m9f7cb735[m Add Cavan's photo
+[33m545eb301[m Add image
+[33m73f38e2c[m Merge pull request #1 from ziheng119/branch-Photo
+[33m0e8ce70a[m Delete ziheng119.png
+[33m0c897ab1[m Remove personal photo
+[33m588dba3e[m Add personal photo
+[33m963f449b[m Update AboutUs.md
+[33m2feff902[m Add ctrf03.png
+[33mdfcdeca9[m Check for Codecov coverage
+[33mbd6718b2[m Update Checkstyle version to 11.0.0
+[33m8133099f[m Bump nokogiri from 1.16.5 to 1.18.8 in /docs
+[33md8f4cf53[m DeveloperGuide.md: Add missing 'are'
+[33m982921c4[m UserGuide.md: Fix typo explaning -> explaining
+[33mc6b37cab[m DevOps.md: Fix typo creat -> create
+[33m9b277513[m Bump webrick from 1.8.1 to 1.8.2 in /docs (#226)
+[33mff4daccd[m Bump rexml from 3.3.6 to 3.3.9 in /docs (#224)
+[33m16df06bc[m SettingUp.md: Fixed links to AB3 tutorials on SE-EDU/guides
+[33m849c7d0b[m UG: Advise Mac users to install a specific JDK
+[33m4eb130f3[m Bump rexml from 3.3.3 to 3.3.6 in /docs
+[33m2b1e60be[m Add 'if any' to log message on ‘unsupported JavaFX config’
+[33m49859dc3[m Bump rexml from 3.2.8 to 3.3.3 in /docs
+[33m93e00db7[m Update Codecov Action to v4
+[33m4209f9c5[m Update setup-java action to v4
+[33m6f002728[m Update Gradle Wrapper Validation Action to v3
+[33m351d006f[m README.md: Fix typo in SE-EDU link
+[33m885a5abb[m Remove AB3 tutorials
+[33m5af1c6d1[m UG: Add help window known issue
+[33m3da04ac9[m UserGuide.md: Make JAR download step generic (#28)
+[33m82598c13[m Revert TLS workaround after upgrading to JDK17
+[33m87a13195[m AboutUs.md: Change http -> https
+[33m934f7408[m MainApp.java: Fix typo Address Book -> AddressBook
+[33ma736a752[m DG: Fix typo addressbook.commons -> address.commons
+[33mfe805d85[m Migrate to Java 17
+[33md925b35c[m Fix double-space between index and name
+[33m6c19411c[m Bump rexml from 3.2.5 to 3.2.8 in /docs
+[33mbb3a1737[m Bump nokogiri from 1.16.2 to 1.16.5 in /docs
+[33mb896eb01[m Merge branch 'master' of https://github.com/se-edu/addressbook-level3
+[33mb68489d2[m Bump nokogiri from 1.15.2 to 1.16.2 in /docs
+[33mf0c164d5[m UG: Caution user about incorrect updates to the data file
+[33m3d77cc45[m DG: Split sequence diagram of undo feature
+[33m5dd21a60[m DG: Tweak object names in delete-person sequence diagram
+[33m80e11028[m DG: Replace OS-X -> MacOS
+[33meb2953d0[m DG: Mention simplification in delete-person sequence diagram
+[33m59f927d2[m DG: Tweak phrasing 'reaches' -> 'continues till'
+[33m1d257529[m DG Logic class diagram: Show Parser classes as a box
+[33ma281d2f4[m DG: Use <<keyword>> notation for dependencies
+[33m517b7857[m Add puml files for tutorial class diagrams
+[33m07778d9f[m Limit Codecov upload to Linux only
+[33m7cd044b7[m Update gradle.yml to use Codecov action@v3
+[33meb0af9cc[m UG: Add a 'Known issues' section
+[33macfcef7d[m UG: Caution users to backup data file before editing it
+[33mafed9405[m Tweak the DG's design details for readability
+[33m32039966[m Bump activesupport from 7.0.5 to 7.0.7.2 in /docs
+[33mdc554766[m Adjust log initialization position in MainApp
+[33mcd47f1a5[m Add examples of lower-level log messages
+[33m04e25f16[m Update version to v0.2.2ea
+[33m08fe6e3f[m Bump commonmarker from 0.23.9 to 0.23.10 in /docs
+[33m83b10b01[m Upgrade JavaFX to ver 17
+[33m3dbe70e9[m Exempt main method from javadoc requirement
+[33me9f1ca7d[m PersonCard: remove #equals(object)
+[33m15b62ac8[m Add tests for #equals(Object) implementations
+[33m136b5776[m Standardize #equals(Object) implementations
+[33m38922aa8[m Remove unused PlantUML diagrams
+[33mef75f680[m Update UML diagrams to resolve rendering issues
+[33ma976ec98[m Remove support for repeated parameters in commands
+[33m45923632[m Fix loggers not following config.json
+[33mbd48d597[m Improve logs msg for command related exception
+[33mc07fb9e7[m Improve error message if no write permission
+[33md98c36e1[m Move Messages class into the logic package
+[33mc9c95125[m UG: Caution users about copying multi-line commands
+[33m0a8d2fb9[m Refactor client code handling IOException
+[33m0e18ef41[m Rename DataConversionException -> DataLoadingException
+[33m9356ae9b[m Prefix#toString(): annotate with `@Override`
+[33m8e5261bb[m UniquePersonList: implement toString()
+[33m6f584bf2[m Messages: add format(Person) for formatting a Person for display
+[33mb1c0a303[m Adopt a uniform toString() format for value classes
+[33mf0e90698[m Fix Jekyll server crash on newer versions of Ruby (#185)
+[33m2215c938[m Bump JavaFx to 11.0.2 to prevent crashing on Linux (#177)
+[33m481a3d92[m Add a null check to LogCenter.getLogger(Class<T>)
+[33mb5812766[m Git ignore crash logs generated by the JVM
+[33ma3f7c826[m Make file-related log messages more informative
+[33m4acffdd8[m Make file-creation logs not resemble errors
+[33m1e05fef5[m JsonAdaptedPerson: Change JSON property name tagged -> tags
+[33md547e3c1[m JsonAdaptedPerson: Change variable name tagged -> tags
+[33mf0c68612[m Bump nokogiri from 1.13.10 to 1.14.3 in /docs (#161)
+[33m4cb27310[m Bump activesupport from 6.0.6 to 6.0.6.1 in /docs (#155)
+[33m928f1466[m Allow CI to pass if Codecov fails
+[33m412b5ed0[m DevOps.md: Mention how to relax Codecov requirement
+[33m3fbaeab6[m DevOps.md: Remove extra '<'
+[33me7d4e825[m DG: Remove incorrect composition symbol
+[33m94538d81[m UG: Make example commands formatting PDF-friendly
+[33ma7a59d9a[m UG: Ask to run the jar file using the command line
+[33m76022eec[m Bump nokogiri from 1.13.9 to 1.13.10 in /docs (#151)
+[33m2dbe1e43[m Fix typo in custom-styles.scss order -> border (#150)
+[33mcf6359b8[m Bump nokogiri from 1.13.6 to 1.13.9 in /docs (#146)
+[33mecf75ba6[m Fix typo in DevOps guide testes -> tests (#144)
+[33m77a32bf6[m Bump tzinfo from 1.2.7 to 1.2.10 in /docs (#141)
+[33ma464dde6[m Update Checkstyle checks
+[33ma7c730f3[m Update check comments
+[33me726a5b2[m Update coding standard link and description
+[33m538483c1[m Upgrade Checkstyle to 10.2
+[33m1fde5d71[m Upgrade to Gradle 7.4.2
+[33m45a4e35e[m Upgrade to Gradle 6.9.2
+[33m0f842d88[m Upgrade Codecov GitHub Action to v2 (#128)
+[33m43064650[m Delete legacy Travis scripts (#132)
+[33m1e8df7c1[m Bump nokogiri from 1.12.5 to 1.13.6 in /docs (#136)
+[33m865de625[m CommandParserTestUtil: Replace raw type in method signatures (#121)
+[33m4f7660a2[m DevOps.md: Add more details on CodeCov set up
+[33m8d5b66e1[m Revert "Fix font issue on M1 Mac Big Sur (#106)" (#119)
+[33med013616[m Update class diagrams to use non-italics for <<interfaces>> (#115)
+[33m0f5f6543[m Update Ui of Help Window to dark theme (#116)
+[33mb54745ec[m Fix inaccurate links in Tutorial: Adding a command (#117)
+[33mde8d71e4[m Bump nokogiri from 1.11.5 to 1.12.5 in /docs (#113)
+[33mc09fcae5[m Remove unnecessary super() calls in *Manager classes (#118)
+[33mba53b8ce[m DevOps.md: Fix typo shadow -> shadowJar
+[33m15a51085[m Update version number to v0.2.0ea
+[33m9a46153d[m Fix font issue on M1 Mac Big Sur (#106)
+[33md41caad2[m docs/tutorials/RemovingFields.md: Tweak text
+[33mdad46cb5[m docs/tutorials/AddRemark.md: Tweak text
+[33m38ba1999[m SettingUp.md: Change the tutorial order
+[33m798ab641[m Tweak the 'Tracing code' tutorial
+[33mabacbe80[m Merge branch 'tweak-dg'
+[33me1445f35[m DG: Tweak the explanation of the proposed undo/redo feature
+[33m5fba3c5d[m DG: Tweak the 'Storage component' section
+[33mda7aca00[m DG: Tweak the 'Model component' section
+[33mb8eccd59[m DG: Tweak the 'Logic component' section
+[33mff572e97[m DG: Tweak the 'UI component' section
+[33m087a766a[m DG: Tweak the 'Architecture' section
+[33md6fb70ef[m Docmentation.md: Mention soft-wrapping when using Intellij
+[33m4018a430[m Documentation.md: Give more info on adapting to a different project
+[33m895fbbe6[m johndoe.md: Lower the heading level
+[33m7522abc4[m DG: Add an Acknowledgements section
+[33m97941aad[m Document the dependency from Storage to Model (#103)
+[33m1de4e803[m Improve validity check of email addresses #71 (#78)
+[33m3da28664[m Bump addressable from 2.7.0 to 2.8.0 in /docs (#104)
+[33m013bcea1[m DG: show Storage --> Model dependency (#102)
+[33m4b892b5e[m Bump nokogiri from 1.11.2 to 1.11.5 in /docs (#101)
+[33m07a9c198[m Bump nokogiri from 1.10.9 to 1.11.2 in /docs (#87)
+[33m092c3955[m  DG: Storage class diagram: change dependencies to associations (#95)
+[33m16e139d2[m DG: Model class diagram: add <<interface>> to ReadOnlyUserPrefs (#97)
+[33meccb717d[m DG: Add missing inheritances in Storage class diagram (#91)
+[33mf741ba43[m DG: Update Storage component class diagram to fix typos (#88)
+[33m571faba8[m DG: Add Logic-->Storage arrow in Logic class diagram (#85)
+[33mc36220c2[m UG: Add 'Details coming soon' for future features
+[33med34e35a[m UG: Document how users can edit the data file
+[33m063450a5[m UG: Explain the behavior for repeated parameters in a command
+[33ma8e72f51[m UG: Document the behavior of ignoring extra parameters (#82)
+[33mb0cee534[m Model class diagram: show 'filtered list' as an association role (#64)
+[33m4ecc39b4[m Omit the top navigation menu when a page is printed
+[33ma41235f7[m Prevent page breaks cutting through content when converting to PDF (#76)
+[33m1fe37e19[m Update isSamePerson() equality for Person class
+[33m96954ffe[m Remove outdated references in test case comments (#63)
+[33me077bd6d[m AddRemark.md: Fix typo an -> a
+[33m1eb3f613[m CommitActivityDiagram.puml: Fix typo redunant -> redundant
+[33m9a69a056[m Update Checkout action default branch
+[33mfb67d1f4[m Person: Remove 'Tags: ' if there are no tags
+[33m18889bb5[m Person: Add delimiters to result message
+[33m1644999a[m CommandBox: update handleCommandEntered() for empty strings
+[33mb3e3b78b[m docs/SettingUp.md: Rectify link to IDEA guide (#50)
+[33m6389d855[m Add Codecov support
+[33m292f90ab[m Docs: Add GitHub link to top navbar (#48)
+[33m86f65cc7[m Add tutorial about adding a new command
+[33m4eafb67e[m docs/DevOps.md: Document repo-wide checks
+[33m81e0ef29[m Set <title> in documentation pages (#45)
+[33m74995c8c[m Documentation.md: Add link to PlantUML guide
+[33mb68ee5b1[m Documentation.md: Move setting-up info to the top
+[33m4e89cece[m AboutUs.md: Add a generic contact email
+[33mc5272f69[m AboutUs.md: Use a placeholder image instead of real photos
+[33me90e56a0[m Reintroduce repo-wide checks (#42)
+[33m53a4c2de[m Logging.md: Refer to se-edu/guides for logging level definitions
+[33med764e87[m DG: Extract Configuration guide into a separate page
+[33m75b0edb6[m DG: Simplify documentation guide by referring to se-edu/guides
+[33m2cf2b452[m Use sentence case for headings
+[33m5408a75a[m DG: extract logging as a separate page
+[33m435b91aa[m DeveloperGuide.md: adjust diagrams size to match main text
+[33m46785ad9[m Fix broken links to se-edu/guides pages
+[33mb2cd30d8[m SettingUp.md: simplify by reusing se-edu/guides references
+[33me6c2dc46[m Update checkstyle version to v8.32 (#41)
+[33m4886f81a[m DeveloperGuide.md: fix typo: over => to
+[33m54a184aa[m Remove docs/UsingNetlify.md
+[33m882b35f5[m Remove docs/UsingPlantUml.md
+[33md7e33ec7[m build.gradle: generate JAR into the default destination
+[33m1d02f780[m Simplify UsingGradle.md to reduce duplication
+[33m3248876e[m Remove docs/UsingCheckstyle.md
+[33m1299a7a0[m Delete orphaned images and scripts (#39)
+[33mda264c4e[m Add missing return arrow to the ArchitectureSequenceDiagram (#33)
+[33m0be83b24[m Migrate to Jekyll, GitHub Actions
+[33medad5526[m Merge pull request #22 from j-lum/tutorial-remove-address
+[33m540ffb24[m Add tutorial on how to remove a field
+[33m4f268d81[m Merge pull request #28 from j-lum/fix-help-window
+[33mf77cfc99[m Prevent HelpWindow from maximizing
+[33m3c4a75e0[m Merge pull request #23 from j-lum/tutorial-code-trace
+[33m6202ca3b[m Add tutorial on tracing code
+[33mf594ed06[m Merge pull request #27 from j-lum/remove-webview
+[33mebbb7131[m Remove dependencies on WebView
+[33m9acaf048[m Merge AB-4 "Migrate to PlantUML from PowerPoint"
+[33m5272d589[m Migrate to PlantUML from PowerPoint
+[33m7b674c7a[m Merge AB-4 'Developer Guide: Remove GetStartedProgramming'
+[33m4a8e46c3[m Developer Guide: Remove GetStartedProgramming
+[33m9aaee4db[m Merge AB-4 'Fix regressions caused by PR #1018'
+[33ma391d823[m Fix regressions caused by PR #1018 (#1019)
+[33m9ba6eefc[m Developer Guide: Remove anchor for Testing
+[33mac47d7cf[m Developer Guide: Optimize reading experience
+[33ma6d2b4b9[m Developer Guide: Specify the label for inter-document xref
+[33meebddcb8[m Developer Guide: Fix broken link
+[33m3ae36799[m Merge AB-4 'Refactor documentation to make it easier for students to maintain'
+[33m22f1ee92[m  Refactor documentation to make it easier for students to maintain (#1018)
+[33m02f0a599[m Extract section on dev ops into a separate document
+[33m0a29ea77[m Extract section on testing into a separate document
+[33me80a0b64[m Extract section on documentation into a separate document
+[33m9ab83e3b[m Extract section on setting up into a separate document
+[33mb4538d6e[m Convert this repo into AB-3 (#19)
+[33mfd6d7224[m Replace all references to AB3.5 with AB3
+[33mad9a7059[m template header: replace AB-3's nav item with AB-3.5
+[33mbd5b3a28[m Update Ui.png to match the current UI
+[33mc2b43e9a[m docs: tell readers that the screenshots are meant for AB-4
+[33m8db6e88d[m Merge AB-4 'Change travis build to use OpenJDK instead of Oracle'
+[33mbd81b7f8[m Change travis build to use OpenJDK instead of Oracle
+[33me870cad1[m LO-OCP: update to match the current codebase
+[33m540e7858[m LO-DI: update to match the current codebase
+[33mb8950fb5[m LO-DIP: update to match the current codebase
+[33m9f9e651f[m LO-CouplingCohesion: update to match the current codebase
+[33m8e49110a[m LO-Interfaces: update to match the current codebase
+[33m31490c30[m ModelClassDiagram/ModelClassBetterOopDiagram: remove `VersionedAddressBook`
+[33mf8626919[m DeveloperGuide: remove all references to `BrowserPanel`
+[33m1f66697b[m Import the original AB-3 LearningOutcomes
+[33m76568550[m LogicClassDiagram: remove "CommandHistory"
+[33m24515f8c[m Architecture diagram: remove "Web"
+[33m4811c537[m Merge AB-4 'diagrams: rename .pptx files to match their .png files'
+[33mc2ba346d[m diagrams: rename .pptx files to match their .png files
+[33m2dd60f4b[m Merge AB-4 '.gitignore: standardize and specify entries'
+[33m5e9042f5[m .gitignore: standardize and specify entries
+[33m8d578ec7[m Merge AB-4 'Fix improper usage of `an`'
+[33md4ea3b6f[m Fix improper usage of `an`
+[33me27c81bb[m Merge AB-4 'Migrate to JDK 11+'
+[33m10586cb7[m Migrate to JDK 11+ #961
+[33m0364a89d[m Upgrade to JDK 11
+[33m09837d98[m Workaround coveralls upload failure on Travis CI
+[33m4773ae89[m Workaround headless test failure on Windows OS
+[33mcd8ff78b[m build.gradle: add javafx runtime dependency for all platforms
+[33m259dc309[m Merge AB-4 'Migrate from JUnit 4 to JUnit 5'
+[33m8f86a0b2[m Merge AB-4 'build.gradle: Remove TestFX-JUnit dependency'
+[33m740418c4[m Merge AB-4 'Tests: standardize the way we check for thrown exceptions'
+[33m2db8f6e7[m Merge AB-4 'TestApp: code quality cleanups'
+[33maaf21e3f[m Merge AB-4 'VersionTest, VersionedAddressBookTest: Use 8-spaces indent for parameter lists'
+[33m31b8429a[m Merge AB-4 'DeveloperGuide: update "Troubleshooting Testing" section'
+[33m212e9449[m Merge AB-4 'UiPartTest: remove unused ExpectedException'
+[33m7f5c552e[m Merge AB-4 'StringUtilTest: Remove Hamcrest String matcher'
+[33m02344124[m Merge AB-4 'ConfigTest: Remove unused ExpectedException'
+[33m8fb78561[m Merge AB-4 'StringUtilTest: rename isUnsignedPositiveInteger() to isNonZeroUnsignedInteger()'
+[33m89eea94f[m Merge AB-4 'Edit the addresses of DTD files used for checkstyle'
+[33mb2342dc1[m Merge AB-4 'build.gradle: upgrade TestFX dependency to 4.0.15-alpha'
+[33m32f1114d[m Merge AB-4 'Upgrade to Gradle 5.2.1 (addressbook-level4#980)'
+[33m3a5fef05[m Merge AB-4 'diagrams: restore original LogicComponentSequenceDiagram.pptx'
+[33mb9409940[m Merge AB-4 'Remove Guava dependency (addressbook-level4#972)'
+[33mad26cda0[m Revert "Revert "Move back to JDK 8""
+[33m12bb9190[m Change the entry point of addressbook
+[33mfc3f65db[m build.gradle: add platform-specific javafx runtime dependencies
+[33mfde08f01[m build.gradle: fix checkstyle plugin failure
+[33m12ab4e02[m Migrate from JUnit 4 to JUnit 5 (#959)
+[33mcc738290[m Build.gradle: Remove JUnit 4 libraries
+[33m14f8749a[m Checkstyle: Remove exceptions for JUnit 4 annotations
+[33m4efa033d[m ClockRule: Migrate to ClockExtension
+[33m78912f93[m UiTest: Migrate StageRule to StageExtension and UiPartRule to UiPartExtension
+[33mfb7dfce0[m TemporaryFolder: Migrate to JUnit 5 TempDir API
+[33m03c5617d[m JUnit: Migrate to use JUnit 5 test runner
+[33m9697f772[m JUnit: Upgrade to JUnit 5.4.0
+[33m0943b0b0[m JUnit Assert: Migrate to JUnit 5 API
+[33m1c7f2fc5[m Assert: Use JUnit 5 Assert#assertThrows
+[33m3e2ddd98[m CheckStyle: Allow exceptions for JUnit 5 test annotations
+[33m4808530a[m build.gradle: Remove TestFX-JUnit dependency
+[33m3b75e325[m Tests: standardize the way we check for thrown exceptions (#1007)
+[33m5cabb37a[m Thrown exception checking: Migrate to use AssertThrows
+[33me4fcd3fe[m LogicManagerTest: Split assertCommandBehavior into assertCommandSuccess and assertCommandFailure
+[33m3a50d8f2[m Standardize Assert#assertThrows(...) calls to use static import
+[33m2f1fff74[m TestApp: code quality cleanups (#1006)
+[33m52eb022d[m VersionTest, VersionedAddressBookTest: Use 8-spaces indent for parameter lists
+[33maf537154[m TestApp: Remove null supplier for initialDataSupplier
+[33me4f1a9db[m TestApp: Change visibility of initialDataSupplier to private
+[33m0250b191[m TestApp: Remove unused default constructor
+[33md57f6e38[m TestApp: Move DEFAULT_PREF_LOCATION_FOR_TESTING into AddressBookSystemTest
+[33ma8bb10f2[m TestApp: Move SAVE_LOCATION_FOR_TESTING into AddressBookSystemTest
+[33m18c09b49[m DeveloperGuide: update "Troubleshooting Testing" section
+[33mdb84a6cc[m UiPartTest: remove unused ExpectedException
+[33m1cb12c69[m StringUtilTest: Remove Hamcrest String matcher
+[33m7c2e9530[m ConfigTest: Remove unused ExpectedException
+[33m148e3018[m StringUtilTest: rename isUnsignedPositiveInteger() to isNonZeroUnsignedInteger()
+[33me09826ed[m Edit the addresses of DTD files used for checkstyle
+[33meeaea811[m build.gradle: upgrade TestFX dependency to 4.0.15-alpha
+[33m0645e97f[m Upgrade to Gradle 5.2.1 (#980)
+[33m0c30f82a[m build.gradle: update deprecated code in coverage plugin
+[33mef5a2377[m Gradle wrapper: upgrade to Gradle 5.2.1
+[33mf2077188[m build.gradle: upgrade shadow plugin to 4.0.4
+[33m121b1351[m build.gradle: remove wrapper task
+[33m5509159e[m diagrams: restore original LogicComponentSequenceDiagram.pptx
+[33m3a8f0b7d[m Remove Guava dependency (#972)
+[33m4fbf55bf[m README: fix typo: TextFX -> TestFX
+[33mc2a5e9c5[m build.gradle: remove Guava dependency
+[33m86fb5499[m PersonCard: display tags in sorted order
+[33md76f502e[m Revert "Move back to JDK 8"
+[33m88c67f10[m Remove use of invalidation listeners
+[33m7d858cf0[m Remove undo/redo
+[33mede6e42e[m Remove history command
+[33m1e8e8dfc[m Remove BrowserPanel
+[33m401cbf52[m Remove `select` command
+[33m54f2279d[m Revert back to using JUnit 4
+[33m0eb11d5d[m Remove Guava dependency
+[33mcc1ea194[m Remove GUI testing
+[33m9a6aca13[m README.adoc: remove section on "what's different from AB-3"
+[33m74def11e[m Replace all references to AB4 with AB3.5
+[33m921e61f8[m Update BrowserPanel#SEARCH_PAGE_URL
+[33m3605c4d4[m Move back to JDK 8
+[33mf7c0be28[m Remove EventsCenter (#941)
+[33m9665d7fc[m Remove EventsCenter
+[33m89ec0382[m Address book storage: migrate away from EventsCenter
+[33m9c767d92[m StatusBarFooter: migrate away from EventsCenter
+[33m9582d6ac[m AddressBook: make Observable
+[33macc45631[m BrowserPanel/PersonListPanel: migrate away from EventsCenter
+[33m49e22717[m ExitCommand: use CommandResult to signal MainWindow to exit
+[33m5ca9ce08[m HelpCommand: use CommandResult to signal MainWindow to show help
+[33m902fb178[m ResultDisplay: migrate away from EventsCenter
+[33m573f325b[m ui: move command execution responsibility from CommandBox to MainWindow
+[33m6d8c2fa6[m Keep a strong reference to created unmodifiableObservableLists
+[33m8b8fc6ec[m BrowserPanel#DEFAULT_PAGE: provide full URL
+[33m8e0633e5[m MainApp: don't forcefully terminate the application on exit
+[33m372a8293[m MainWindowCloseTest: remove unnecessary stage.setScene(...)
+[33m91e96b3e[m Logic: expose command history as an ObservableList
+[33m5b1af5a3[m CommandResult: encapsulate feedbackToUser
+[33mf7fd686c[m docs: remove DummySearchPage
+[33m95113727[m MainWindow: remove config field
+[33m86d543a0[m ci: do not retry on test failures
+[33m617b606d[m BrowserPanel: remove freeResources()
+[33mb12aee92[m Remove ControlsFX dependency
+[33med799215[m Config: remove appTitle
+[33m264109c8[m Make UserPrefs truly a part of Model (#932)
+[33m2da8c954[m ModelManager: keep its own copy of UserPrefs
+[33mf088bb59[m MainApp: only access UserPrefs via the model
+[33me23f96e8[m ui: only access UserPrefs through logic
+[33mcb9b8805[m model: make UserPrefs part of model state
+[33m0c2f33da[m model: introduce ReadOnlyUserPrefs
+[33m1132e8eb[m Model: rename resetData(...) to setAddressBook(...)
+[33m49ef65ba[m UserPrefs#toString(): remove unnecessary toString() call
+[33mbf305e39[m UserPrefs: enforce addressBookFilePath non-nullable invariant
+[33m76883188[m UserPrefs: make guiSettings non-nullable
+[33m21e9aa4a[m UserPrefs: remove setGuiSettings(double, double, int, int)
+[33m3239bc1a[m UserPrefs: use default GuiSettings values
+[33m78f4e998[m GuiSettings#equals(...): fix NPE when windowCoordinates is null
+[33m19546dd6[m GuiSettings: make deeply immutable
+[33m2fb5d7e6[m GuiSettings: use `double` instead of `Double`
+[33m57aedc18[m UserPrefs: rename updateLastUsedGuiSetting(...) to setGuiSettings(...)
+[33md5174cfa[m ModelClassBetterOopDiagram: simplify to its bare essentials
+[33mf877e71d[m  Migrate to Jackson for address book storage (#933)
+[33mdb1dc2e0[m JSON storage adapters: make package-private
+[33m77ef0a2e[m Remove all JAXB/XML-related code from the codebase
+[33m801f4073[m Use JSON as the address book serialization format
+[33m62629ca7[m storage: implement JsonAddressBookStorage and related classes
+[33m3e987ff0[m PersonListPanelTest: remove `manyPersons.xml` file creation
+[33mdd2c3b70[m TestApp: don't use internal storage classes for XML writing
+[33m39138b1b[m DeveloperGuide: fix erroneous statement about Jackson
+[33md0a271cd[m Model: rename updatePerson(...) to setPerson(...)
+[33m668692fb[m AddressBook: rename updatePerson(...) to setPerson(...)
+[33mdbb73f01[m PersonListPanelTest#createXmlFileWithPersons(): Fix incorrect path
+[33m2e746018[m Shorten names of constants of Person's attributes
+[33m5383298a[m DeveloperGuide: update "Setting up" section
+[33m4bc8fdce[m HelpWindowTest: fix bogus "focus on another stage" code
+[33m83699f1e[m checkstyle: add SingleSpaceSeparator
+[33m385809b3[m AddCommandSystemTest: remove outdated comment
+[33m5fedf269[m ModelManager: remove synchronization from methods
+[33m618e597f[m [#856] Remove unnecessary uses of `this` (#903)
+[33md655a2eb[m XmlAdaptedPerson#toModelType(): remove shadowing of fields
+[33m4e0d1821[m Remove unnecessary uses of `this`
+[33md96c9451[m [#829] Update TestUtil to use filteredList (#900)
+[33mc3a54065[m Update SelectCommandSystemTest to use methods from TestUtil
+[33m9fbc8c49[m Update TestUtil to use filteredList
+[33m407a283e[m XmlSerializableAddressBook: check for duplicate person(s)
+[33m8a474ab8[m Combine Command#setData(...) and Command#execute() together (#898)
+[33md5ab4fd1[m Command: combine setData(...) and execute() together
+[33me41c8001[m Command tests: verify CommandHistory as well
+[33m1971ea7a[m HelpCommandTest: verify model state as well
+[33m2595aa50[m FindCommandTest: verify entire model state
+[33mc109251e[m SelectCommandTest: verify model state as well
+[33ma2fe5658[m UserPrefs: remove addressBookName
+[33mdb126b99[m model: convert checked exceptions to runtime exceptions (#896)
+[33mb2875e00[m UniquePersonListTest: add some more tests
+[33m8e370e41[m UniquePersonListTest: move to `seedu.address.model.person` package
+[33me7473900[m UniquePersonList: check for null arguments more thoroughly
+[33mbc1b0686[m commons: remove DuplicateDataException
+[33m1c39319f[m AddressBookSystemTest: remove unnecessary catch block
+[33m73693de3[m model: make PersonNotFoundException a RuntimeException
+[33m6817bd35[m model: make DuplicatePersonException a RuntimeException
+[33me66d31c4[m EditCommand: explicitly perform duplicate person check
+[33m5e14e423[m AddCommand: explicitly perform duplicate person check
+[33mac42c32f[m model: expose hasPerson(Person) functionality
+[33m000dbd16[m Remove redundant throws clauses
+[33mc9b222cb[m ClearCommandTest: fix tautological tests
+[33m6ae95915[m ParserUtil: remove `Optional` variants of parse methods
+[33me186102b[m Replace uses of `org.junit.Assert.fail` with `throw new AssertionError(...)`
+[33m9bc3b33e[m parsers: throw ParseException consistently (#893)
+[33m69728c1f[m Use chained exceptions consistently throughout the code base
+[33md7b3f1cc[m Remove use of `junit.framework` package
+[33mc348aa96[m parsers: remove unnecessary catch-throws of ParseExceptions
+[33m2ae8dddb[m ParserUtil methods: throw ParseExceptions on invalid input
+[33m6632b4e3[m ParserUtil: remove unused field MESSAGE_INSUFFICIENT_PARTS
+[33mb410fcaf[m .gitattributes: treat all *.pdf files as binary
+[33mac37d6e2[m [#855] Refactor PersonBuilder constructor to use TypicalPersons as argument (#889)
+[33m73765025[m Shorten calls to PersonBuilder
+[33mc47a1e39[m Decouple UndoableCommand from ReadOnlyAddressBook (#861)
+[33md9467665[m DeveloperGuide: update section on UndoRedoStack to VersionedAddressBook
+[33m8fb3f9af[m Remove UndoableCommand class
+[33m19751871[m Remove UndoRedoStack class
+[33mece049f7[m Add VersionedAddressBook Class
+[33m8a80e587[m System Tests: remove model verification checks
+[33ma1b29c20[m Add se-edu branding + navigation bar to website (#888)
+[33m047b2c07[m Site navbar: add "Learning Outcomes" as an SE-EDU specific item
+[33m8fde696d[m docs/templates/_footer: horizontally center footer text in page
+[33m5a974c6e[m gh-pages.css: override some asciidoctor.css rules
+[33ma83ed0b4[m docs: add SE-EDU navigation bar
+[33m9cdc224f[m HelpWindow: don't show site navigation bar
+[33mfdb06097[m Site navbar: add a "View on GitHub" link
+[33m5f5b6ed4[m docs: add site navigation bar
+[33m011fd6dc[m docs/templates/_footer: fix condition for emitting <br>
+[33m4eabe89c[m docs/templates: remind devs to restart the gradle daemon
+[33m87e56274[m docs/templates/helpers.rb: remove unused code
+[33mcd9ea3a6[m docs/templates: import asciidoctor reference template
+[33m88726111[m build.gradle: asciidoctor: specify template_dirs
+[33m686ec9ac[m Allow running tests through Gradle on JDK 10 (#885)
+[33m544d89bf[m Warn developers against using JDK 10 on Windows
+[33m0ea25fb4[m Gradle wrapper: upgrade to Gradle 4.8.1
+[33ma42ededd[m Fix stalling HelpWindowTest
+[33m8d2322b4[m HelpWindowTest: fix failing test in non-headless mode (#880)
+[33mfc69d109[m build.gradle: enable logging of skipped tests
+[33m2cf5b981[m HelpWindowTest: skip test with buggy behavior in headless mode
+[33m1c6071fa[m HelpWindowTest: fix failing test in non-headless mode
+[33me968a297[m [#750] Use java.nio.file for file/path handling (#866)
+[33m50771f42[m ConfigUtilTest: use platform-independent path for preferences
+[33m2afeb5eb[m FileUtil: remove unused methods
+[33mc539921c[m FileUtil: use void for the return type of FileUtil#createFile(Path)
+[33m9eac635d[m Refactor codebase to use java.nio.file for file/path handling
+[33m0bd4b85c[m MainApp: extract handling of application parameters into AppParameters
+[33m75fdb9bb[m Replace use of java.io.File with java.nio.file.Path
+[33mc8f40d86[m [#742] Add different levels of comparison to equality methods of Person class (#844)
+[33m71b993a7[m Person: add an equality check for tags
+[33m695a2d8b[m CollectionUtil: remove CollectionUtil#elementsAreUnique(Collection<?>)
+[33ma72d1b33[m Person: add equality method for identity fields
+[33m69b40e4b[m [#706] Tidy up build.gradle (#860)
+[33m21ab01fc[m Replace all usages of: /* comments */ with // comments
+[33m8351f7c4[m build.gradle: standardize String objects to be enclosed by single quotes
+[33m41f78739[m build.gradle: remove unused headless system property
+[33mb8837082[m build.gradle: remove unused dependency
+[33m2fc6e822[m build.gradle: replace Task#leftShift(Closure) with Task#doLast(Action)
+[33me537a833[m build.gradle: upgrade Shadow plugin
+[33mfd8ea4a8[m build.gradle: replace deprecated configurations
+[33m59c8526b[m build.gradle: remove usage of allprojects
+[33m1479c25c[m build.gradle: make String concatenation more explicit
+[33meb1cb71c[m build.gradle: simplify setting of system properties
+[33me3e6aa30[m build.gradle: update ambiguous method call
+[33mf81e01c9[m build.gradle: remove semi-colons
+[33m4393e1f6[m build.gradle: replace deprecated API
+[33m6f1004b6[m build.gradle: update link to user guide
+[33m87f50bea[m Clean up "d.FirstTimers" issues (#870)
+[33m94a5a195[m UsingCheckstyle.adoc: update documentation to include clicking `Apply`
+[33mdf114b1c[m README.adoc: update JUnit4 to JUnit5 in Acknowledgements
+[33m1b4a6a71[m DarkTheme.css: update styleClass to stack-pane
+[33mc677ee03[m FindCommand: update messages to specify that it is case-insensitive
+[33mdf8d631a[m UniquePersonList#asObservableList(): update method name
+[33m171a6969[m CommandBoxHandle#run(String): update return type
+[33mfb86c791[m Rename CommandBox#handleCommandInputChanged()
+[33m66048cd2[m Inline Command#getMessageForPersonListShownSummary(int)
+[33mbe78a692[m CollectionUtilTest: remove usage of deprecated API
+[33md184604b[m TestDocument: remove file
+[33m29a66a96[m Phone: standardize field constraints error message
+[33m9e02f06d[m Person's field classes: remove the word "Person" from comments
+[33m2b5ef7e4[m Person's field classes: remove the word "Person" from error messages
+[33m32ae2405[m Rename 'lastShownList' and 'last person listing' to level 4 equivalent
+[33m691a53fc[m typicalPersonsAddressBook.xml: remove @code tag for header comment
+[33m0ab9d43f[m build.gradle: remove field with default value
+[33mae383756[m PersonListPanelTest: fix flaky test (#863)
+[33m0f999220[m PersonListPanelTest#performanceTest(): update header comment
+[33m5a6eafd7[m Simplify PersonListPanelTest#createBackingList(int)
+[33m33fbcabf[m Simplify PersonListPanelTest#performanceTest()
+[33m285f0a1b[m [#753] AddressBook: remove master tag list (#825)
+[33m760ee337[m [#685] TypicalPersons: Unintuitive interaction with PersonBuilder (#845)
+[33meac78e4c[m PersonBuilder: remove default tag
+[33mea5662c0[m PersonUtil: add getEditPersonDescriptorDetails(EditPersonDescriptor)
+[33mfd5c6ff6[m Developer guide: update model component section
+[33mf5d6eade[m UniqueTagList: remove UniqueTagList class
+[33mbc08b422[m XmlSerializableAddressBook: remove tags list
+[33md51894a8[m AddressBook: remove master tag list
+[33m435849cc[m Gradle: upgrade to JUnit5
+[33mcd082fb5[m [#819] HelpWindow: multiple help windows can be opened (#850)
+[33me2e5da3f[m MainWindow: focus on helpWindow if already open
+[33m1ae40e07[m MainWindow: add new helpWindow field
+[33ma4ef5229[m [#796] PersonListPanel#personListView: revert type change (#818)
+[33m0e9b9d0d[m Gradle: remove EasyBind dependency
+[33m4ec52448[m PersonListPanel#personListView: revert type change
+[33m02b83a0b[m PersonListPanelHandle#navigateToCard(Person): update logic
+[33md0b0734b[m [#374] build.gradle: update to build project using Java 9 (#837)
+[33m889a1051[m build.gradle: upgrade to use Java 9
+[33me4ddf534[m build.gradle: upgrade to newest version
+[33m2f4405c7[m [#830] UniquePersonList, AddressBook: update return type for remove and removePerson (#836)
+[33m088db25e[m MainWindow.fxml: update onCloseRequest event to call handleExit()
+[33mf0900903[m UniquePersonList#remove(Person): update return type
+[33m0cc5f399[m AddressBook#removePerson(Person): update return type
+[33m529d75ff[m [#634] Replace all verbose loops with lambda expression (#805)
+[33mee0cc820[m Add documentation to set up and use Netlify
+[33m3f0c7a11[m [#725] XmlAdaptedPerson#toModelType(): Enforce checking of required parameters (#806)
+[33m4578b2c6[m [#784] Rebase PRs used in suggested programming tasks (#789)
+[33m1a171114[m XmlAdaptedPerson#toModelType: add non-null check for parameters
+[33m972ac545[m XmlAdaptedPerson: update equals(Object) method
+[33meaf27da4[m Assert: add overloaded method assertThrows(Class, String, VoidCallable)
+[33mfd9745e7[m DeveloperGuide: Add scenarios to suggested programming tasks
+[33m152c0a96[m DeveloperGuide: Update 'remark' suggested programming task
+[33m53fe6910[m DeveloperGuide: Update 'storage' suggested programming task
+[33m67485c6f[m DeveloperGuide: Update 'ui' StatusBar suggested programming task
+[33m39a277c0[m DeveloperGuide: Update 'ui' ResultDisplay suggested programming task
+[33mb5495cc8[m DeveloperGuide: Update the images for 'ui' tags task
+[33mcb350e89[m DeveloperGuide: Update 'ui' tags suggested programming task
+[33m7414339c[m DeveloperGuide: Update 'model' suggested programming task
+[33mce82a961[m DeveloperGuide: Update 'logic' suggested programming task
+[33m465b9241[m README.adoc: add Gitter badge
+[33m433390f0[m HelpWindow: modify HelpWindow#show() to use Stage#show()
+[33mad1931da[m [#737] Issue with undo/redo and modifications to filtered lists (#792)
+[33m4be7dd7d[m EditCommandTest: add integration tests with Undo/RedoCommand
+[33mea2d584d[m DeleteCommandTest: add integration tests with Undo/RedoCommand
+[33m3563cea0[m EditCommand#preprocessUndoableCommand(): find and store personToEdit
+[33md840c89c[m DeleteCommand#preprocessUndoableCommand(): find store personToDelete
+[33m3825b992[m CommandTestUtil: update showFirstPersonOnly(Model)
+[33m5c9b14d7[m UndoableCommand: add preprocessUndoableCommand() method
+[33meaa0cfbe[m [#733] BrowserPanel: load dummy page (#793)
+[33mfa58ce52[m Email: modify email regex to accept RFC 5322 permitted characters
+[33m3d99555b[m BrowserPanel: load placeholder page instead of Google search page
+[33m29b02b49[m docs: add DummySearchPage.html
+[33m2e7f092c[m Tests: replace java assert with JUnit assert
+[33m95611eb4[m [#749] Storage layer needs proper error handling (#816)
+[33m8846a3e9[m XmlSerializableAddressBook: override equals(Object) method
+[33m9ddcf41d[m XmlSerializableAddressBook: remove ReadOnlyAddressBook implementation
+[33m913cf5b1[m XmlAddressBookStorage: call XmlSerializableAddressBook#toModelType()
+[33m4bf6aebe[m XmlSerializableAddressBook: add toModelType() method
+[33m30857444[m Checkstyle: remove unnecessary properties with default values
+[33ma36b6375[m DeveloperGuide.adoc: fix broken hyperlink to coding standard
+[33ma9a9c33b[m LogicManager: remove unnecessary `this` in constructor
+[33me8de4c16[m UiManager: delete duplicate code
+[33mcf8761d3[m UniquePersonList#setPersons(List<Person>): refactor verbose loop
+[33mf5be0202[m Replace verbose loops with lambda expressions
+[33me7f43d3f[m [#795] EditPersonDescriptor: update methods to perform defensive copy
+[33m5928ea9f[m [#751] Edit Make Person immutable (#765)
+[33m82596b7b[m Person: Remove copy constructor
+[33m765b316c[m Remove UniquePersonList#mappedList
+[33m345d05f6[m Remove ReadOnlyPerson
+[33mc4758e18[m Person: Inline ReadOnlyPerson’s methods
+[33mb2eeb18b[m Person: Make immutable
+[33m937ae158[m PersonBuilder: Update methods to not use Person’s setter methods
+[33m4ef1b8eb[m AddressBook#resetData(ReadOnlyAddressBook): Reorder logic
+[33m9589b269[m EditPersonDescriptor#getTags(): return unmodifiable set
+[33m28ff2e4d[m EditPersonDescriptor: update copy constructor to use setter methods
+[33m3575eaa2[m EditPersonDescriptor#setTags(Set<Tag>): perform defensive copy
+[33m0ea0ec44[m Add documentation on how to set up and use Coveralls
+[33m1bee16fe[m [#415] Ui: fix default PersonListPanel background color (#791)
+[33m6b8ea09e[m [#264] Replace use of `assert false` with `throw new AssertionError()` (#788)
+[33m659e5c2c[m Replace use of `assert false` with `throw new AssertionError()`
+[33m3a228ef6[m [#775] Developer Guide: specify target user profile and value proposition (#776)
+[33m775c9961[m [#766] Developer Guide: Update Undo/Redo numbering (#766)
+[33mba819b25[m [#781] README: acknowledge use of third-party libraries (#782)
+[33mac5f832a[m [#779] User Guide: add an introduction (#780)
+[33m78efa6a8[m [#777] Developer Guide: add instructions for manual testing #777 (#778)
+[33mee1720b8[m [#773] Developer Guide: tweak undo/redo diagrams (#774)
+[33m3c0a29c9[m [#771] Restructure sample Project Portfolio Page for easier reading (#772)
+[33m73b2c0fe[m Use italics for 'notes to students'
+[33m5c6a8588[m Developer Guide: Remove horizonal lines in undo/redo explanation
+[33m7c11978b[m Restructure sample Project Portfolio Page
+[33m04dca829[m Add 'proposed' features to User Guide and Developer Guide
+[33mab7a0601[m build.gradle: teach test tasks to work together
+[33m4a412474[m Improve separation of concerns between parser/storage layer and model layer (#667)
+[33m43b33c61[m EditPersonDescriptorBuilder: simplify code by using model constructors
+[33mdfa1ef15[m Remove unnecessary IllegalValueException catches and throws in code base
+[33m019496c7[m Move Tag validation step from model to parser and storage layers
+[33m0b4671d5[m Move string trimming responsibility from Tag to ParserUtil#parseTag(String)
+[33m5084fae6[m Move Email validation step from model to parser and storage layers
+[33m2a6d0993[m Move string trimming responsibility from Email to ParserUtil#parseEmail(String)
+[33m3c9fd61c[m Move Address validation step from model to parser and storage layers
+[33m01e764b7[m Move string trimming responsibility from Address to ParserUtil#parseAddress(String)
+[33mcbee10bb[m Move Phone validation step from model to parser and storage layers
+[33m31792dfb[m Move string trimming responsibility from Phone to ParserUtil#parsePhone(String)
+[33mc7e3d37d[m Move Name validation step from model to the parser and storage layers
+[33ma190aa6e[m Move string trimming responsibility from Name to ParserUtil#parseName(String)
+[33m0094d8ad[m XmlAdaptedPersonTest: add tests for #toModelType()
+[33mfd65824e[m NameTest, PhoneTest, EmailTest, AddressTest, TagTest: add missing null tests
+[33m21a1955a[m TestUtil#assertThrows(...): support checked exceptions
+[33meb1fbb8c[m [#738] AddCommandParser accepts invalid command format (#763)
+[33maffa9d72[m AddCommandParser: add check to ensure preamble is empty
+[33m47aa0ab0[m AddCommandParserTest: remove use of AddCommand.COMMAND_WORD
+[33ma3c88b17[m Correctly model the scene graph hierarchy of MainWindow and HelpWindow (#747)
+[33m5276c73a[m FxViewUtil: remove #setStageIcon(Stage, String)
+[33m787de47a[m HelpWindow: move title, maximized, icon definitions to its FXML file
+[33m3148428e[m HelpWindow: make its Stage the root object
+[33m6bb16fe6[m UiPart: remove createDialogStage(...)
+[33m72a32249[m HelpWindow: remove unneeded call to createDialogStage(...)
+[33m37dd247b[m MainWindow: move icon, minHeight, minWidth definitions into the FXML file
+[33mf710fcd6[m MainWindow: make the primary Stage the root object
+[33m8bad9c25[m SystemTestSetupHelper: use a new primary stage for each application
+[33ma9fe3926[m UiPart: allow callers to specify the scenegraph root
+[33me14293d8[m docs: use full xrefstyle and figure auto-numbering (#760)
+[33m8628533e[m DeveloperGuide: use proper syntax for figure captions
+[33m230a27ee[m DeveloperGuide, UserGuide: use cross references instead of manual links
+[33m442ec5d4[m DeveloperGuide, UserGuide: use full xrefstyle
+[33m0ade250e[m [#752] Simplify build.gradle file (#754)
+[33m63a82f55[m docs: remove env-github outfilesuffix boilerplate
+[33mc205d6f7[m build.gradle: remove `forkEvery = 1`
+[33m50aeccd8[m build.gradle: remove project.ext block
+[33m01176630[m build.gradle: inline $checkstyleVersion project property
+[33md557cc07[m build.gradle: standardize dependency specifications code style
+[33mc4be70dc[m build.gradle: remove redundant sourceSets definition
+[33m387d522f[m build.gradle: remove unused repositories
+[33md916a19d[m build.gradle: remove `idea` plugin
+[33m984888e5[m build.gradle: remove `allprojects` block
+[33m3f0a1c1d[m DeveloperGuide: use labeled list for glossary
+[33md63190e9[m ListElementPointer(List<String>): Update code to tally with comments
+[33medc42f0e[m check-eof-newline: handle filenames with spaces
+[33me7db399f[m [#684] Guitests: Move tests to other packages (#692)
+[33m74354ad8[m Clean up AddCommandSystemTest (#688)
+[33mbb6fd974[m Update UsingGradle
+[33mb5fb6f52[m Delete AddressBookGuiTest
+[33mc3f5a023[m SampleDataTest: Move to systemtests
+[33m3b366b64[m ErrorDialogGuiTest: Move to systemtests
+[33mba119b62[m HelpWindowTest: Move to systemtests
+[33m06e0fd4e[m AddCommandSystemTest: Correct typo
+[33m7ea4a363[m Remove StatusBarFooterTest
+[33m1b818141[m AddressBookSystemTest: Extract common test helper methods
+[33m06581c6c[m AddCommandSystemTest: Segment test cases
+[33m81524e70[m AddCommandSystemTest: Update test verification method comments
+[33m18b18a7e[m Clean up SelectCommandSystemTest (#690)
+[33me8931698[m SelectCommandSystemTest: Replace assert with Assert
+[33m6f2a017f[m SelectCommandSystemTest: Update test verification method comments
+[33mb8da08ce[m SelectCommandSystemTest: Segment test cases
+[33mc1bb12da[m build.gradle: upgrade TestFX to 4.0.7-alpha
+[33mdd162d54[m [#698] Update User Guide (#703)
+[33me0183859[m UserGuide: Update broken link
+[33m73c179f7[m UserGuide: Fix typo
+[33m9cbbf8a9[m UserGuide: Update find command example
+[33m1390523c[m UserGuide: Update Command Format
+[33m2a4e8fd7[m UserGuide: Improve clarity and readability
+[33mcfcebedb[m UserGuide: Update command headers
+[33mf1e11184[m UserGuide: Add EditCommand to Command Summary
+[33m71dceb20[m Update Developer Docs #700
+[33mdc7d5f7d[m DeveloperGuide: Update outdated information
+[33mc142d9f4[m docs: restructure dev docs
+[33m921211be[m Update LearningOutcomes.adoc (#699)
+[33m1488051e[m [#672] DeveloperGuide: Update instructions on setting up (#691)
+[33m2e608f0b[m LearningOutcomes: Update System Tests
+[33m3f8b0ee3[m LearningOutcomes: Update LogicManagerTest
+[33me1bff8fe[m LearningOutcomes: Fix method reference in documentation
+[33m57e71f48[m LearningOutcomes: Fix typo
+[33m46780564[m LearningOutComes: Remove redundant instructions
+[33mc2de0d49[m LearningOutComes: Add hyperlink to EventsCenter
+[33mae25c161[m LearningOutcomes.adoc: tweak to refer to se-book
+[33m8b11b6b8[m [#680] HelpWindowTest: Write header comments concerning possible test failure (#694)
+[33m56949f20[m [#319] Checkstyle: enforce one variable declaration per line (#671)
+[33m1b9b5c38[m [#675] GuiUnitTest: Clears subscribers from EventsCenter after each test (#697)
+[33md1ede942[m DeveloperGuide: Update converting docs instructions to use local files (#676)
+[33m5ef9d78d[m DeveloperGuide: modify converting docs instructions to use local files
+[33m41e8df9b[m DeveloperGuide: update figure number
+[33mc56aa3f9[m Documentation: Update instructions on deploying to GitHub Pages (#673)
+[33m48237d00[m DeveloperGuide: update Publishing Documentation
+[33m46d34e00[m UsingTravis: add Deploying GitHub Pages section
+[33mb090f07e[m Remove UsingGithubPages.adoc
+[33m0608f618[m DeleteCommandSystemTest: Replace Assume with Assert (#693)
+[33m26ed50f9[m DeleteCommandSystemTest: Replace Assume with Assert
+[33m726daedb[m [#678] SampleDataTest: Fix buggy implementation of getDataFileLocation() (#679)
+[33m9d0d80c2[m EditCommandSystemTest: Replace assert with junit.Assert (#689)
+[33mbaaaffeb[m SampleDataTest: Fix buggy implementation of getDataFileLocation()
+[33m8bc11d6f[m EditCommandSystemTest: Replace assert with junit.Assert
+[33m705f37c3[m [#677] Gradle configuration: Fix nonGuiTests (#666)
+[33mf44a524b[m DeleteCommandSystemTest: Replace assert with Assume
+[33m4334a642[m AddressBookSystemTest: Extract common test helper methods
+[33m11f1e7c2[m AddressBookSystemTest: Remove getTestApp()
+[33m44b7dcda[m DeleteCommandSystemTest: Remove String#valueOf(int) call
+[33me57cdf56[m DeleteCommandSystemTest: Segment test cases
+[33m48abf5a3[m DeleteCommandSystemTest: Update test verification method comments
+[33m31efee10[m DeleteCommandSystemTest: Rename variable commandToRun to command
+[33m3e4e6c86[m [#660] Update AboutUs.adoc (#661)
+[33m8c158106[m Update AboutUs.adoc
+[33m66d24fc7[m [#319] Checkstyle: enforce single statement per line (#669)
+[33mba255942[m [#608] Developer Guide: Fix formatting errors in the use case (#662)
+[33m3a347a81[m DeveloperGuide: Fix formatting errors in the use case
+[33ma0fda2db[m [#461] Developer Guide: Fix unintended quote marks (#656)
+[33mf8b29a62[m Developer Guide: Fix unintended quote marks
+[33m135f5d73[m [#551] Convert EditCommandTest to EditCommandSystemTest (#655)
+[33mc07e1463[m Convert EditCommandTest to EditCommandSystemTest
+[33m8e7dc863[m [#641] DeleteCommandSystemTest: Add missing test case (#657)
+[33mbfaee145[m [#649] Remove UnmodifiableObservableList (#652)
+[33md33ffaf0[m Delete UnmodifiableObservableList
+[33m40bf2a16[m Update classes to not use UnmodifiableObservableList
+[33mc1df3f4d[m UniquePersonList: Update asObservableList() return type
+[33m3b27d410[m DeleteCommand and SelectCommand: Don’t use UnmodifiableObservableList
+[33m8915a7d7[m DeleteCommandSystemTest: Add missing test cases
+[33mad591fb5[m DeleteCommandSystemTest: Add overload assertCommandSuccess(Index)
+[33m030f8621[m DeleteCommandSystemTest: Update the use of expectedModel
+[33mdbaeba16[m DeleteCommandSystemTest: Update creation of ModelManager
+[33me3f161f0[m [#603] Developer Guide: Document previewing of .adoc files (#654)
+[33md8a4602a[m Developer Guide: Document previewing of .adoc files
+[33mb2a141a9[m [#551] Convert AddCommandTest to a system test (#640)
+[33m90778a66[m AddCommandSystemTest: Add additional tests
+[33m75fd8630[m AddressBook#addPerson(ReadOnlyPerson): Document bug
+[33mc587a050[m Convert AddCommandTest to AddCommandSystemTest
+[33m7476e465[m [#551] Convert ClearCommandTest to a system test (#639)
+[33m559383f2[m ClearCommandSystemTest: Add additional tests
+[33m1c8fbf24[m Convert ClearCommandTest to ClearCommandSystemTest
+[33m9ec39d08[m [#551] Convert FindCommandTest to a system test (#638)
+[33ma3c1fbcc[m FindCommandSystemTest: Add tests involving card selection
+[33m3a33cc50[m FindCommandSystemTest: Add additional tests
+[33m530bf362[m Convert FindCommandTest to FindCommandSystemTest
+[33m8ae4284e[m [#551] Convert SelectCommandTest to a system test (#636)
+[33m8f4bb16d[m DeleteCommandSystemTest: Update assertCommandFailure(...)
+[33mbd9035de[m SelectCommandSystemTest: Add tests involving filtering
+[33m003bac5e[m SelectCommandSystemTest: Add additional tests
+[33m3263209f[m Convert SelectCommandTest to SelectCommandSystemTest
+[33m2415b605[m AddressBookSystemTest: Rename command box verification methods
+[33m62263f70[m [#568] Tests: Update helper methods to throw unchecked Exceptions (#628)
+[33m1f60054e[m Tests: Update helper methods to throw unchecked Exceptions
+[33meab2f641[m [#644] Tidy up System Tests (#645)
+[33m553a75bb[m AddressBookSystemTest: Update application’s clock on command execution
+[33ma88eb6f9[m AddressBookSystemTest: Add missing wait for browser to load
+[33m5bdfdc9d[m AddressBookSystemTest: Wait for browser to load after command execution
+[33m4002c7ae[m TestApp#getModel(): Return actual model
+[33m2a110073[m AddressBookSystemTest: Update header comments
+[33md0036169[m (#319) Checkstyle: enforce header comments on classes and methods [#379]
+[33m7a04eecc[m Checkstyle: enforce header comments on classes and methods
+[33m2b03991c[m Main folder: add missing API header comments
+[33me32a1e79[m [#551] Improve system tests (#620)
+[33m92a3c9eb[m AddressBookSystemTest#getTestApp(): Update access modifier to protected
+[33me71aaf14[m AddressBookSystemTest: Remove typo
+[33md40057bc[m AddressBookSystemTest: Update verifyApplicationStartingStateIsCorrect()
+[33m89fcc522[m AddressBookSystemTest: Improve test verification
+[33m18b5566e[m DeleteCommandSystemTest: Remove assertDeleteCommandSuccess(...)
+[33m759b7b27[m AddressBookSystemTest: Add CommandBox’s style verification
+[33m752be46b[m AddressBookSystemTest: Add test execution and verification method
+[33m1df9e961[m AddressBookSystemTest: Add test verification helper method
+[33mab3df4f6[m Delete AppStateAsserts
+[33md7b44b25[m ClockRule: Improve verification
+[33m49694c67[m AddressBookSystemTest: Extract setup methods
+[33m114b560c[m DeleteCommandSystemTest: Add test verification methods
+[33mda1601d8[m [#598] EventsCenter: Remove registerHandler method return type (#630)
+[33m39b0b30c[m EventsCenter: change registerHandler method return type
+[33mddcea635[m [#623] Fix bugs in GUI related classes (#624)
+[33mdbb2a6af[m ResultDisplay: Fix GUI update not running on JavaFX thread
+[33me771b11a[m StatusBarFooter: Fix GUI update not running on JavaFX thread
+[33ma951b97f[m BrowserPanel: Fix GUI update not running on JavaFX thread
+[33mf01c17db[m PersonListPanelHandle: Fix logic error
+[33m7beb5c62[m [#625] AppStateAsserts: Ensure WebView loaded before verifying test #626
+[33mc4ea7e5a[m Remove WebViewLoadedEvent
+[33mc10a72a7[m AppStateAsserts: Resolve browser loading race condition
+[33m7ac8f04b[m [#519] Model: Remove updateFilteredListToShowAll() (#615)
+[33m60753179[m Model: Remove updateFilteredListToShowAll()
+[33mb755b2b9[m [#575] MainApp: Update version number (#622)
+[33m50d641d0[m MainApp: Update version number
+[33mdfe7c278[m [#571] Clean up TypicalPersons (#618)
+[33m0126a8a1[m TypicalPersons: Update getTypicalPersons()’s return type
+[33md53434c2[m TypicalPersons: Move Index constants to TypicalIndexes
+[33m49cc710c[m TypicalPersons: Remove defensive copy in getTypicalAddressBook()
+[33mb1eab198[m TypicalPersons: Write header comments
+[33mbd0b938e[m TypicalPersons: Remove loadAddressBookWithSampleData(AddressBook)
+[33mecdd485a[m [#621] UniquePersonList: Simplify logic of updatePerson(...) (#616)
+[33m895430f4[m Person: Remove resetData(ReadOnlyPerson)
+[33mdb3eeaba[m UniquePersonList: Rename updatePerson(...) to setPerson(...)
+[33ma5cb7900[m UniquePersonList: Simplify logic of updatePerson(...)
+[33mf357f1a7[m EditCommand: Update executeUndoableCommand() return value
+[33ma60d16b3[m [#559] Clean up GUI tests related classes (#617)
+[33mbfa08bd0[m PersonListPanelHandle: Update return type of getHandleToSelectedCard()
+[33m928eeef7[m PersonListPanelHandle: Add isAnyCardSelected()
+[33m910b15a5[m PersonListPanelHandle: Remove unused method
+[33md9cf8b22[m EventsUtil: Update method names
+[33m3c6ac6de[m AddressBookGuiTest: Move raise(BaseEvent) to EventsUtil
+[33m81fc057b[m AddressBookGuiTest: Move assertResultMessage(String) to GuiTestAssert
+[33m1619f955[m AddressBookGuiTest: Move assertListSize(int) to GuiTestAssert
+[33mc3ed55ac[m GuiRobot: Update visibility modifiers of constants
+[33me38f1550[m [#604] Upgrade Checkstyle to version 8.1 (#614)
+[33m78aaac49[m Upgrade Checkstyle to version 8.1
+[33me2b5e35d[m [#602] Fix tests failure (#613)
+[33m4492ae12[m BrowserPanelHandle: Post WebViewLoadedEvent when WebView is done loading
+[33m0a2533dc[m BrowserPanel: Update string constants
+[33m587fe529[m TypicalPersons: Update static constant to getter method
+[33mf6c7ee9c[m Nest EventsCollector in EventsCollectorRule
+[33m9615a54d[m Update tests to use EventsCollectorRule
+[33m62de04ad[m Add EventsCollectorRule
+[33mc9eeff4c[m AddressBookGuiTest: Shift EventsCenter#clearSubscribers()
+[33m816f07f9[m [#605] Dev Guide: Improve instructions for setting up checkstyle-IDEA (#612)
+[33m454a421d[m Developer Guide: Add troubleshooting section for Checkstyle-IDEA
+[33meec2a5f5[m Developer Guide: Clarify instructions for setting up Checkstyle-IDEA
+[33m20847316[m [#588] Developer Guide: Remove author names from sections (#611)
+[33m9fd50dff[m [#551] Convert DeleteCommandTest to a system test (#555)
+[33m4a756c13[m [#579] [#581] Developer Guide: Add 'Getting Started in Writing Code' section (#586)
+[33mb5d8fe3d[m johndoe.adoc: tweak formatting
+[33m2ddcdbd0[m Convert DeleteCommandTest to DeleteCommandSystemTest
+[33m422b4bcd[m TestUtil: Add model utility methods
+[33m8a2f9631[m Add AppStateAsserts
+[33mba49111a[m Add AddressBookSystemTest
+[33me3b40a6a[m PersonListPanelHandle: Add remember*() and is*Changed()
+[33m4fe218bc[m PersonListPanelHandle: Add select(int)
+[33mb1ffbc72[m StatusBarFooterHandle: Add remember*() and is*Changed()
+[33m990ba7e6[m BrowserPanelHandle: Add rememberUrl() and isUrlChanged()
+[33m87e69f3b[m TestApp: Add getModel()
+[33m6e749431[m TestApp: Add getStorageSaveLocation()
+[33m60c1d123[m TestApp: Add readStorageAddressBook()
+[33mba03f395[m Move johnDoe.adoc into 'team' sub-folder (#607)
+[33m38c90ab7[m johndoe.adoc: Move inside 'team' sub-folder
+[33m6c3fc91b[m docs: Manually specify stylesDir
+[33mcb030aba[m Move johndoe.adoc to the docs folder (#606)
+[33m06d9ac3c[m [#584] Add a sample portfolio page (#589)
+[33mc27ad03b[m [#582] Developer Guide: Explain undo and redo mechanism (#587)
+[33mf5ca8d64[m [#580] AboutUs page: rename profile photo files (#585)
+[33m08224fb1[m [#459] Clean up Handle classes (#573)
+[33m8ff14105[m [#379] Test folder: add missing API header comments (#518)
+[33ma671bf2f[m Tidy up header comments for *Handle classes
+[33mf273c676[m StageHandle#close(): Check that window is closed
+[33mc0a35764[m Clean up PersonCardHandle
+[33mbadd33a5[m AddressBookGuiTest: Remove assertCardMatchesPerson(...)
+[33m9fcf590e[m PersonCardHandle: Remove isSamePerson(...)
+[33m56137502[m PersonListPanelHandle: Change isListMatching() to assertListMatching()
+[33m688378ca[m PersonListPanelTest: Extract assertCardDisplaysPerson()
+[33m7f010593[m PersonCardHandle: Remove equals() method
+[33m92e04a99[m [#421] Migrate from Eclipse to IntelliJ (#427)
+[33m5d60018c[m [#390] Implement UndoCommand and RedoCommand (#547)
+[33m1f443384[m Update User Guide and Developer Guide
+[33md59c5dbb[m Teach AddressBookParser to parse UndoCommand and RedoCommand
+[33m19715700[m Add UndoCommand & RedoCommand
+[33m60b53368[m Command#setData(...): Add UndoRedoStack parameter
+[33m81ea6b54[m LogicManager: Add field UndoRedoStack
+[33mb7764413[m Add UndoRedoStack
+[33m6ab4a04a[m Add UndoableCommand and update some commands to extend it
+[33m57bf3965[m [#563] PersonListPanelHandle: No longer returns PersonCard (#567)
+[33m09f9afe6[m PersonListPanelHandle: Remove getCard(int)
+[33m04a675ff[m PersonListPanelHandle: Update getSelectedCard()
+[33mf1141e42[m PersonListPanelHandle: Update getPersonCardHandle(int) access modifier
+[33m08c681ac[m gitignore: Ignore 'out/' build directory (#576)
+[33m69e404a9[m Remove Eclipse files
+[33m5c33a5c9[m Update DeveloperGuide.adoc to use IntelliJ
+[33me3bdbaec[m [#569] TypicalPersons: Make all methods and fields static (#574)
+[33md975164a[m TypicalPersons: Add private constructor
+[33m1b977377[m TypicalPersons: Remove getTypicalPersons()
+[33mf9c27cf4[m TypicalPersons: Make all methods and fields static
+[33m48d5acc7[m [#459] Remove unnecessary pauses after pressing keys with GuiRobot (#572)
+[33m801bae82[m [#561] XCommandTest: Move showFirstPersonOnly(Model) (#566)
+[33m43ebcaf2[m [#295] Clean up TestUtil (#560)
+[33me068ad1a[m TestUtil: Move assertThrows(...) to Assert
+[33m8e89baa7[m TestUtil: update header comments for getFilePathInSandboxFolder(String)
+[33m286991ad[m TestUtil: Update access modifier of SANDBOX_FOLDER
+[33m4fd44ae9[m TestUtil: Extract createDataFileWithData(T, String) to TestApp
+[33mb4a85a20[m TestUtil: Inline compareCardAndPerson(...)
+[33mfebbaece[m TestUtil: Remove addPersonsToList(...)
+[33m38d97835[m TestUtil: Remove removePersonFromList(...)
+[33mf60bfca3[m TestUtil: Remove generateSamplePersonData()
+[33mda8d7d41[m TestUtil: Remove asList(T[])
+[33md532bbcb[m TestUtil: Remove unused methods
+[33ma0b042fa[m [#172] Add unit tests for GUI (#536)
+[33m0f8c7e33[m PersonCardTest: Add test case for subsequent changes to Person
+[33me19ba374[m WebViewUtil: Extract out getLoadedUrl()
+[33m2f17bcc2[m Add HelpWindowTest
+[33m63a124e8[m HelpWindowHandle: Add getLoadedUrl()
+[33mdd74ff21[m Add PersonListPanelTest
+[33m27c9d223[m Add StatusBarFooterTest
+[33m803e7d3a[m Add ResultDisplayTest
+[33m75616117[m Add CommandBoxTest
+[33mc76c12b6[m GuiUnitTest: Add getChildNode()
+[33mf02f14cd[m Add BrowserPanelTest
+[33md0ea397d[m BrowserPanel: Extract out magic string
+[33m1a9bd334[m BrowserPanelHandle: Add getLoadedUrl()
+[33ma5bca556[m PersonCardTest#assertCardDisplay(...): Change parameter order
+[33mdb2e4682[m PersonCardTest: Call pauseForHuman() in assertCardDisplay(...)
+[33m2a2e8904[m Add EventsUtil
+[33m31de8cab[m PersonCardTest: Extract guiRobot and uiPartRule to new GuiUnitTest class
+[33m466a0a1c[m [#292] Make ReadOnlyPerson observable (#552)
+[33mbaa5988d[m PersonListPanelHandle: Update methods
+[33m6f8c6536[m UniquePersonList: Remove unnecessary method call
+[33m75cbfa38[m PersonListPanel: Update ListView<ReadOnlyPerson> to ListView<PersonCard>
+[33m23fd697b[m Import EasyBind
+[33mb1c5e49f[m Teach Person and ReadOnlyPerson to be observable
+[33m84d6516f[m [#557] ParserUtil: Update header comments on Optional usage (#558)
+[33m52ec5260[m [#545] Clean XCommandParserTests (#546)
+[33mcbc65717[m Update DeveloperGuide
+[33m5266cc7c[m SelectCommandParserTest: Use helper methods in CommandParserTestUtil
+[33mb29fd969[m FindCommandParserTest: Use helper methods in CommandParserTestUtil
+[33m6eb4e3f7[m EditCommandParserTest: Use helper methods in CommandParserTestUtil
+[33ma7c50d6d[m DeleteCommandParserTest: Use helper methods in CommandParserTestUtil
+[33m4fe4e2b7[m AddCommandParserTest: Use helper methods in CommandParserTestUtil
+[33m7e4d4ec1[m Add CommandParserTestUtil
+[33m402bcb01[m Add Parser interface
+[33m054aa63a[m Rename Parser to AddressBookParser
+[33m24c4da05[m [#334] Model filtering not easily extensible (#431)
+[33m5b3b6c0c[m Add NameContainsKeywordsPredicateTest
+[33mdbf6c85d[m Use predicates in ModelManager
+[33m56e874d0[m [#459] Add NodeHandle and WindowHandle (#522)
+[33m6422e8f3[m [#545] Clean XCommandTests (#544)
+[33mddc6b98a[m [#539] Clean up UniqueTagList (#540)
+[33mc140840f[m Delete GuiHandle
+[33m0c0a8549[m Port StatusBarFooterHandle to NodeHandle
+[33mfce31fb8[m Port ResultDisplayHandle to NodeHandle
+[33m8f9c3421[m PersonListPanelHandle: Remove unnecessary pre-condition check
+[33mcb798b83[m Port PersonListPanelHandle to NodeHandle
+[33m5381e1c3[m Port PersonCardHandle to NodeHandle
+[33mff8c5259[m Port MainMenuHandle to NodeHandle
+[33mcbcfc41b[m Port HelpWindowHandle to StageHandle
+[33m52290b8f[m Port CommandBoxHandle to NodeHandle
+[33mb6305789[m Port BrowserPanelHandle to NodeHandle
+[33m644ab703[m Port AlertDialogHandle to StageHandle
+[33m36b55346[m Port MainWindowHandle to StageHandle
+[33m3295e1f3[m Add GuiRobot#getStage(String)
+[33m75061301[m EditCommandTest: Static import CommandTestUtil methods
+[33m09cc0379[m DeleteCommandTest: Static import CommandTestUtil methods
+[33m59fa7486[m ListCommandTest: Use CommandTestUtil#assertCommandSuccess(...)
+[33maa8aeaf0[m ClearCommandTest: Use CommandTestUtil#assertCommandSuccess(...)
+[33m9c6d8908[m AddCommandIntegrationTest: Use CommandTestUtil methods
+[33m2b7b8567[m AddressBookGuiTest: Add runCommand()
+[33m77395ccb[m AddressBookGuiTest#setup(): Deter initialization of MainWindowHandle
+[33m2ea6f055[m AddressBookGuiTest: Remove component handles
+[33m2d8edc56[m Add NodeHandle and StageHandle
+[33mfa654d96[m Combine both CommandTestUtil classes
+[33m0ea22876[m UniqueTagList: Remove setTags(Collection<Tag>)
+[33mffe36a8c[m AddressBook: Modify setTags(Collection<Tag>) to setTags(Set<Tag>)
+[33maa05ef5e[m UniqueTagList: Modify setTags(UniqueTagList) to setTags(Set<Tag>)
+[33m3e71299f[m UniqueTagList: Remove unused constructors (#542)
+[33m89539897[m DeveloperGuide.adoc: Add step for updating version number in MainApp (#543)
+[33mb30adb41[m Allow up and down buttons to get previous and next input respectively (#491)
+[33ma817b56d[m [#534] HistoryCommand: Returns previous commands in reverse chronological order (#537)
+[33m152302ea[m [#249] MainApp: Update version to 1.4 (#541)
+[33m05b883eb[m Add ParserTest #538
+[33m5421bbf7[m [#327] Clean LogicManagerTest (#495)
+[33m4e727c4a[m [#498] Shift event handling methods out of UiManager (#499)
+[33m877982f2[m [#459] Clean up ErrorDialogGuiTest (#531)
+[33m47a1661c[m Add unit tests for PersonCard class (#260)
+[33me03ce4f1[m Add ParserTest
+[33m8dc5b6e4[m PersonUtil: Update getPersonDetails(...) visibility modifier to public
+[33mb404fa40[m Update User Guide
+[33m8af0d06c[m CommandBoxTest: Update existing test case
+[33m5856b94e[m Allow up and down buttons to get previous and next input respectively
+[33m389b2a17[m Teach Logic component to return the user input history
+[33m175017dd[m Add ListElementPointer
+[33mbe4b7fbe[m Update BrowserPanel#loadPersonPage(…) visibility modifier to private
+[33md725516f[m Move UiManager#handlePersonPanelSelectionChangedEvent(…) to BrowserPanel
+[33m15cf4b14[m Update PersonListPanel#scrollTo(int) visibility modifier to private
+[33m481e58e9[m Move UiManager#handleJumpToListRequestEvent(…) to PersonListPanel
+[33m2a4b7aa1[m Move UiManager#handleShowHelpEvent(…) to MainWindow
+[33m89889b9a[m [#529] CommandBox: Reset style class upon keypress (#530)
+[33m1b6aa209[m Rename setStyleToIndicateCommandSuccess() to setStyleToDefault()
+[33mc2c9a65d[m AlertDialogHandle: Refactor out isMatching(String, String)
+[33mdef162d6[m AlertDialogHandle: Add getHeaderText() and getContentText()
+[33mdff17e04[m ErrorDialogGuiTest: Extract exception constant
+[33m8c6cdf03[m ErrorDialogGuiTest: Remove InterruptedException declaration
+[33m6c20a77f[m CommandBox: Reset style class upon editing text
+[33m93b6d48b[m ErrorDialogGuiTest: Use string constants in UiManager
+[33m928591ce[m UiManager: Extract out magic strings for file ops error dialog box
+[33m5a70b77b[m [#532] CommandHistory: Change userInputHistory implementation to LinkedList (#533)
+[33ma1604370[m [#459] Clean up AddressbookGuiTest (#520)
+[33m0b45e7e5[m [#327] Add FindCommandTest and FindCommandParserTest (#513)
+[33mdf5c210b[m build.gradle: Add 'seedu/address/ui/' as part of guiTests
+[33m3f9a4d2e[m Add PersonCardTest
+[33meb96cfb1[m Add UiPartRule
+[33m45bd1116[m Add StageRule
+[33m9956957a[m Add TestUtil#getTagsAsStringsList()
+[33m9475a8ee[m Add FindCommandParserTest
+[33m75aa3d92[m FindCommand: Add equals(Object)
+[33m665c5874[m Add FindCommandTest
+[33m50f20b28[m Update PersonCardHandle to include ID label
+[33m9c5882a2[m AddressBookGuiTest#assertMatching(...): Rename method
+[33m0e3422e7[m AddressBookGuiTest#cleanup(): Change throws declaration to Exception
+[33mbd39c0ae[m AddressBookGuiTest: Make assertMatching(...) and raise(...) protected
+[33m3c91ad3a[m AddressBookGuiTest#setupSpec(): Rename to setupOnce()
+[33m9987ec0a[m AddressBookGuiTest#raise(BaseEvent): Rename parameter from e to event
+[33m679de5d6[m AddressBookGuiTest: Add guiRobot
+[33mdc438344[m AddressBookGuiTest#setup(): Remove redundant wait for stage to show
+[33mdaddc428[m Update DeleteCommand & SelectCommand targetIndex visibility (#527)
+[33m8d486143[m Remove calls to guiRobot#targetWindow(Window) (#526)
+[33m681369a1[m [#459] Clean PersonListPanelHandle (#514)
+[33m398be6d6[m PersonCardHandle#getPersonCardHandle(ReadOnlyPerson): Fix logic
+[33m951ca32c[m Update visibility modifier of DeleteCommand & SelectCommand
+[33m16e31fc5[m Implement equals(Object) for DeleteCommand & SelectCommand
+[33ma1932368[m Simplify PersonListPanelHandle#getPersonCardHandle(ReadOnlyPerson)
+[33m80f0ec06[m PersonListPanelHandle: Change access modifier to private
+[33m84f91604[m PersonListPanelHandle#getPersonCardHandle(...): Add precondition
+[33mf55e4b9e[m PersonListPanelHandle#navigateToPerson(...): Remove return type
+[33md2d04cfa[m PersonListPanelHandle: Remove unused startPosition parameter
+[33m85e001d8[m PersonListPanelHandle#navigateToPerson(): Remove pauseForHuman() calls
+[33mb75943c9[m Remove PersonListPanelHandle#navigateToPerson(String)
+[33mae4a1284[m PersonListPanelHandle: Remove unused getPersonIndex(int)
+[33md49d89a4[m PersonListPanelHandle#navigateToPerson(...): Use Person instead of index
+[33m028b25c2[m PersonListPanelHandle#navigateToPerson(): Throw PersonNotFoundException
+[33m3a2c9adb[m PersonListPanelHandle#isListMatching(...): Retrieve list view once
+[33m359ca02c[m Remove PersonListPanelHandle#containsInOrder(...)
+[33m980c0364[m PersonListPanelHandle: Change getSelectedPersons()
+[33m2c981475[m [#327] Add AddCommandParserTest (#494)
+[33m3ef87448[m [#504] Use EventsCollector when testing commands (#507)
+[33m0e544cd8[m [#459] Clean up GuiHandle (#515)
+[33mfbdc4838[m EventsCollector: Remove get(int)
+[33m1bf9b4f4[m EventsCollector: Add isEmpty()
+[33m64fd5b9f[m SelectCommandTest: Use EventsCollector to receive events
+[33m21b0e337[m ExitCommandTest: Use EventsCollector to receive events
+[33m36edb522[m HelpCommandTest: Use EventsCollector to receive events
+[33m0fd010a8[m EventsCollector: Add getMostRecent()
+[33m943d1286[m EventsCollector: Add getSize()
+[33m98bab2b3[m Inline GuiHandle#getTextFromLabel(String, Node)
+[33mc2319a9a[m Inline GuiHandle#getTextFieldText(String)
+[33m99062b46[m Inline GuiHandle#setTextFieldText()
+[33m8eed4fc3[m GuiHandle: Move pressEnter() to CommandBoxHandle
+[33m39edc092[m GuiHandle: Remove primaryStage constructor parameter
+[33m35732578[m GuiHandle: Remove guiRobot from constructor parameters
+[33m8cfab29d[m [#502] Revamp sleep() for Gui tests (#503)
+[33m315ca9c8[m GuiRobot#waitForEvent(BooleanSupplier, int): Add default timeout value
+[33m46b19c02[m GuiRobot#pauseForHuman(int): Remove duration parameter
+[33maa969350[m ErrorDialogGuiTest: Implement smart wait for showErrorDialogs()
+[33mb1ab21f8[m Add tests for AddCommandParser
+[33mc4e0a604[m AddCommand: Implement equals(Object) method
+[33mcc2b06cd[m Extract constants from EditCommandParserTest to CommandTestUtil
+[33ma4bc9f8b[m Rename EditCommandTestUtil to CommandTestUtil
+[33me5ea5d71[m GuiRobot: Add pauseForHuman(int)
+[33md4dd4c25[m Add tests for DeleteCommand (#464)
+[33m276d47c2[m Add DeleteCommandTest
+[33m1e8bd97e[m EditCommandTest: Move assertCommandSuccess(...) to CommandTestUtil
+[33m9e2f9bd8[m EditCommandTest: Move assertCommandFailure(...) to CommandTestUtil
+[33m97653b7f[m [#448] ui: Remove bidirectional dependencies in UiParts (#497)
+[33m7414fb54[m [#459] Clean up MainGuiHandle (#511)
+[33m0e39f066[m ResultDisplay: Change AnchorPane to StackPane
+[33m32513851[m CommandBox: Change AnchorPane to StackPane
+[33m729eec99[m BrowserPanel: Change AnchorPane to StackPane
+[33m540862f6[m LogicManagerTest: Initialise object variables during declaration
+[33m2a932f5b[m LogicManagerTest: Merge LogicManagerTest#execute_verifyHistory_success()
+[33m81fc7600[m LogicManagerTest: Add successful test
+[33m99bfbcef[m LogicManagerTest: Add test for CommandException thrown
+[33m265c96ff[m LogicManagerTest: Rename test method
+[33m06a592ec[m LogicManagerTest: Place private methods after test methods
+[33m53038633[m LogicManagerTest: Remove unnecessary test
+[33m82b33c2d[m LogicManagerTest: Remove generic type name
+[33me05d7e14[m LogicManagerTest: Remove Storage component
+[33m920e3f5b[m LogicManagerTest: Remove unused methods
+[33mac351cfa[m LogicManagerTest: Remove repeated tests
+[33md511d69e[m MainWindow: Remove getXPlaceholder() methods
+[33m1d780e15[m BrowserPanel: Remove placeholder from constructor
+[33m9b45ac30[m PersonListPanel: Remove placeholder from constructor
+[33m7608a9c5[m PersonListPanel: Fix SplitPane.resizableWithParent not working
+[33md1bd1cd1[m PersonListPanel: Set SplitPane.resizableWithParent in .fxml
+[33mbaf00d32[m ResultDisplay: Remove placeholder from constructor
+[33mdac78051[m StatusBarFooter: Remove placeholder from constructor
+[33m4acbb6cd[m CommandBox: Remove placeholder from constructor
+[33mf7a5766a[m CommandBox: Remove call to SplitPane#setResizableWithParent()
+[33m48775e45[m [#480] Change EditPersonDescriptor’s parameters to be non-Optional (#482)
+[33mb7663dbf[m Rename MainGuiHandle to MainWindowHandle
+[33m94bfea96[m MainGuiHandle: Create handles only once
+[33m470f285a[m MainGuiHandle: Remove getAlertDialog(String)
+[33m425582ae[m Remove unused test methods (#508)
+[33mbafef4e8[m TestUtil: Remove scrub(KeyCodeCombination)
+[33me98aa4c2[m GuiRobot: Remove push(KeyCodeCombination)
+[33m5cc85fcf[m [#437] Remove unused parameter in LogicManager constructor (#493)
+[33m94149b9b[m [#327] Add AddCommandIntegrationTest (#488)
+[33m6ec9b681[m [#417] Make help documentation accessible offline (#420)
+[33m4fda0955[m [#327] Add tests for SelectCommandParser (#485)
+[33m54faa4d4[m [#327] Add SelectCommandTest (#487)
+[33m1bea354f[m [#327] Add tests for ListCommand (#473)
+[33mae3f81e3[m HelpWindow: Use offline version of user guide
+[33m591c4c52[m Create gradle task for generating offline user guide
+[33ma76a2a50[m [#467] Add Prefix "n/" for specifying names (#474)
+[33m27f8e004[m [#254] Add more tests for EditCommand (#393)
+[33m7290079e[m Add missing integration and hybrid tests
+[33m79bb60d0[m Move EditCommandTest#createEditPersonDescriptor(ReadOnlyPerson)
+[33m8d2ccd94[m Update EditCommandTest to check equality using Model directly
+[33mc7710969[m PersonBuilder constructor: Change Person to ReadOnlyPerson
+[33m9db18c3e[m [#327] Add tests for DeleteCommandParser (#472)
+[33m5719ad66[m [#476] Extract exceptions in UniquePersonList (#479)
+[33m8c3eb789[m docs: Add new Name prefix
+[33m3c729ecc[m Remove ParserUtil#split(String, int)
+[33m17aceb2e[m Add Prefix "n/" for specifying names
+[33m8e4f02b5[m [#327] Add tests for ClearCommand (#475)
+[33m2dacdc4e[m [#327] Add tests for HelpCommand (#477)
+[33m3cee7812[m [#327] Add tests for ExitCommand (#478)
+[33ma300eb7b[m [#468] Model#updatePerson(...): Change parameter from Index to ReadOnlyPerson (#471)
+[33m857090e4[m Remove IndexUtil#oneToZeroIndex(int) (#463)
+[33m3de3b34b[m [#469] Fix HelpWindow online user guide URL (#470)
+[33mdfe3b25e[m [#439] Allow user to see the command history (#440)
+[33mae548190[m DeveloperGuide: Include CommandHistory
+[33m554e26f9[m UserGuide: Add History command
+[33m567545ee[m Teach Parser to parse HistoryCommand
+[33mc184e735[m Create HistoryCommand
+[33m6ddeccc8[m Logic: Create CommandHistory
+[33m5ccd6d18[m [#401] Create unit tests for ParserUtil#splitPreamble() (#424)
+[33m55838d7d[m ParserUtil#split(): Add precondition for numOfParts < 2
+[33mb1ef8f30[m ParserUtil#split(String, int): Trim whitespace
+[33m84a9893b[m ParserUtil: Rename splitPreamble() to split()
+[33m6ca3d19b[m Add unit tests for ParserUtil#splitPreamble()
+[33md8b24e8a[m [#438] Create a new Index class (#447)
+[33m24622e28[m Update codebase to use Index instead of int
+[33m413275f9[m Create Index class
+[33m0352e6b6[m [#436] StringUtil#isUnsignedInteger(String): Fix unhandled NFE (#460)
+[33mf6fe1a01[m Tidy EditCommand related classes (#445)
+[33m46e57b8f[m EditCommandTest: Replace `Command command` w/ `EditCommand editCommand`
+[33m6685551a[m EditCommandTest: Remove unnecessary line breaks in header comments
+[33m8087b5dc[m EditCommandTest: Update PersonBuilder usage with more compact version
+[33m701cb3b9[m EditCommandTest: Construct EditCommand directly
+[33mf3eb596f[m EditCommandTest: Merge with EditCommandIntegrationTest
+[33m2f5b10f1[m [#239] Reduce unnecessary asserts (#414)
+[33m3e929d61[m [#271] Migrate documentation from markdown to asciidoc (#452)
+[33mb0c1794e[m [#456] Update tests to compare at Model level (#458)
+[33m8d4cd683[m Update tests to use assertEquals(Model, Model)
+[33mec980285[m Implement ModelManager#equals()
+[33m288a958a[m Update CollectionUtil#isAnyNull(Object...) to throw NPE
+[33m96cb99eb[m Remove numbered: true in build.gradle
+[33ma766c582[m Use absolute path for links to files in documentation
+[33m64b3abe4[m Migrate documentation from markdown to asciidoc
+[33m3520462d[m Modify DeveloperGuide.adoc to use appendix styles and list continuation
+[33m16e7ada8[m Add idseparator: '-' attribute to build.gradle
+[33ma37629cf[m Replace asserts with proper exceptions for parameter validation
+[33m44072296[m Modify DeveloperGuide.adoc to use smart links
+[33mcfc8ecc7[m [#305] Command parsers: use exceptions for error handling (#333)
+[33m3b626bba[m Remove IncorrectCommand
+[33m64eab5d8[m Change command parsers' parse(String) return type to be more specific
+[33m621ede40[m Modify all command parsers' parse(String) to throw ParseException
+[33m015b57d6[m [#401] Create unit tests for ParserUtil#parseIndex() (#423)
+[33mcebed732[m [#433] GuiHandle#setTextField(String, String) should call Gui methods on JavaFx threads (#434)
+[33m46e86ee6[m Migrate UserGuide.md from markdown to asciidoc (#435)
+[33m6af39336[m [#311] AddressBook#addPerson() does not copy the Person (#313)
+[33md0272c5c[m Fix broken links to Developer Guide in docs (#432)
+[33mcc22ed64[m [#319] Checkstyle: enforce operators' placement in line wraps (#382)
+[33ma74cc958[m [#401] Add unit tests for ParserUtil#parseX() (#425)
+[33me209ff6d[m [#254] Create Parser Tests for EditCommand (#394)
+[33m5b19eb46[m [#309] Use StackPanes for holding UiParts (#405)
+[33m1af6587f[m [#271] Migrate DeveloperGuide.md from markdown to asciidoc (#408)
+[33m93df19ad[m [#406] Teach Parser to enforce spaces between arguments (#409)
+[33m8045c62c[m [#428] Fix minor bug in EditCommandIntegrationTest (#429)
+[33m9e158dd1[m Change Model#addPerson(...) signature to ReadOnlyPerson
+[33m1d9a07fd[m Change AddressBook#addPerson(...) signature to ReadOnlyPerson
+[33mad970d90[m Change UniquePersonList#add(...) signature to ReadOnlyPerson
+[33mb918c91b[m Create tests for EditCommandParser
+[33m780ad50a[m Add EditCommand#equals(Object)
+[33mb98082bc[m Add EditPersonDescriptor#equals(Object)
+[33mef065537[m [#411] UniqueTagList: Add assertions to check all tags are unique (#412)
+[33mdbfa20f3[m Combine .anchor-pane-with-border and .stack-pane-with-border
+[33mcf98b045[m Remove FxViewUtil#applyAnchorBoundaryParameters()
+[33m54bff95d[m Change HelpWindow to use StackPane
+[33m6faf8cd4[m Change MainWindow's StatusBarFooter to use StackPane
+[33mc684e8a8[m Change MainWindow's ResultDisplay to use StackPane
+[33meb2ee417[m Change MainWindow's PersonListPanel to use StackPane
+[33m0a1c3a99[m Change MainWindow's CommandBox to use StackPane
+[33mb8c4d5b4[m Change MainWindow's BrowserPanel to use StackPane
+[33m0f2cb22b[m [#303] Modify ParserUtil#parseIndex(String) to throw IllegalValueException (#403)
+[33m05a67644[m [#172] Add unit tests for AddCommand (#273)
+[33m84ae299c[m [#376] Remove repeated usage of string literals (#377)
+[33md0cf1289[m Replace LogicManagerTest#generatePersonWithName() with PersonBuilder (#391)
+[33mad6d5bd7[m Replace repeated usage of string literals with CliSyntax constants
+[33mdb4541a8[m Prefix: add toString()
+[33m095c4198[m Replace repeated usage of string literals with COMMAND_WORD constants
+[33m8e4d306e[m [#270] Set up workflow for asciidocs (#302)
+[33ma5d9fcc4[m [#286] Update Phone's regex to reject numbers shorter than 3 digits (#383)
+[33mdc9fe96a[m [#319] Checkstyle: enforce separators' placement in line wraps (#368)
+[33mc730a680[m [#254] Add Integration Tests for EditCommand (#317)
+[33mb8be1a36[m Add EditCommandIntegrationTest
+[33m81ee71e8[m PersonUtil: add getEditCommand(int, Person)
+[33m3e7451ed[m [#319] Checkstyle: enforce final keyword or encapsulation for class variables (#364)
+[33mfa5b6d68[m [#293] Implement a IndexUtil#oneToZeroIndex() abstraction (#331)
+[33m2c3390b1[m [#319] Checkstyle: require default branch in switch statements (#378)
+[33m12c4294c[m [#319] Checkstyle: enforce @clause order (#365)
+[33m583d3085[m [#319] Checkstyle: prevent upper case abbreviations in names (#360)
+[33m6951a73c[m [#371] Remove uses of real domain names (#375)
+[33m8f4b6b4b[m [#319] Checkstyle: disallow single line conditional statements (#362)
+[33md010443e[m [#310] Remove TestPerson (#373)
+[33maa9b3b39[m [#319] Checkstyle: fix MethodName supplied expression (#366)
+[33m2b73f71f[m [#319] Checkstyle: add EmptyCatchBlock rule (#369)
+[33m3fd19d0d[m [#319] Checkstyle: add CommentsIndentation rule (#361)
+[33m22397f33[m [#231] Simplify FXML files (#356)
+[33mb91565e3[m Standardize height and width declarations in all FXML files
+[33m1796655b[m Standardize self closing tags in all FXML files
+[33m8f4b7a06[m Standardize declaration order of insets in all FXML files
+[33m098c151f[m PersonListCard.fxml: Remove unneeded child HBox
+[33m3c21984b[m StatusBarFooter.fxml: Remove unneeded attribute
+[33m1919a0ab[m MainWindow.fxml: Refactor to improve readability
+[33m38a3cb69[m Remove stylesheets imports in UiPart's FXML files
+[33m895f2526[m Remove unnecessary children tags in FXML files
+[33mf8ae1f0e[m Refactor imports in all FXML files
+[33m5bc7b615[m Change indentation to 2 spaces in all FXML files
+[33m07367fab[m [#319] Checkstyle: add DeclarationOrder rule (#367)
+[33m3ceb5895[m [#319] Checkstyle: add ArrayTypeStyle rule  (#363)
+[33m32916752[m [#306] Move all parsing from AddCommand to AddCommandParser (#315)
+[33ma61db1bf[m [#342] Travis CI: cache dependencies (#347)
+[33md79c47f6[m Move AddCommand's parsing responsibilities to AddCommandParser
+[33m6fd7e489[m Remove the use of exceptions for control flow in AddCommandParser
+[33m49075017[m [#291] Make ReadOnlyPerson truly read-only  (#326)
+[33m2d93a184[m [#312] ArgumentTokenizer: ensure tokenizing before getting values (#320)
+[33mb3baf264[m ArgumentTokenizer: make tokenize(...) static
+[33m0d2e7b28[m Update Logic class diagram with ArgumentMultimap class
+[33m96c1f622[m ArgumentTokenizer: extract getters into ArgumentMultimap class
+[33mcce7b1a7[m Extract Prefix class out of ArgumentTokenizer class
+[33m27cb4621[m [#351] Outdated prefixes in ArgumentTokenizer (#352)
+[33m25d03252[m [#336] Cannot add a label called `location` in person card (#339)
+[33mc85f70df[m AddCommand: Change constructor to use Set<Tag> instead of UniqueTagList
+[33m21b84ac4[m Person: Change constructor to take Set<Tag> instead of UniqueTagList
+[33m470957d1[m Person: Change setTags(UniqueTagList) to setTags(Set<Tag>)
+[33m270cff83[m Person: Change getTags() to return immutable tag set
+[33med1a39fe[m ReadOnlyPerson: Change ReadOnlyPerson#getTags() to return Set<Tag>
+[33m2749e851[m PersonBuilder: Fix withTags(...) modifying Person's UniqueTagList
+[33me1eafd11[m [#353] All gui tests are failing  (#354)
+[33m4c4e1ed7[m [#323] Index is cut off when names are too long for PersonCard (#338)
+[33md87cf6ba[m [#344] Fix typo in LogsCenter#getLogger(...) header comment (#345)
+[33mf5efb728[m [#340] HTML anchors in UserGuide.md DeveloperGuide.md all broken (#343)
+[33m4ca5e64a[m DeveloperGuide.md: add missing numbers to ToC links
+[33m98ad812f[m UserGuide.md: add missing numbers to ToC links
+[33m03ed0f65[m [#213] Allow updating addressBookPath and addressBookName at runtime (#214)
+[33m3a4617fc[m Move addressBookFilePath and addressBookName from Config to UserPrefs
+[33m535ed3a7[m StorageManager: remove constructor StorageManager(String, String)
+[33m1e370962[m UserPrefsStorage: introduce getUserPrefsFilePath()
+[33m1f784b06[m [#299] Make UI look-and-feel consistent (#314)
+[33m3ace38e7[m [#114] Update GUI tests to verify 'last updated' feature (#216)
+[33ma06749ce[m StatusBarFooter: add GUI test for last update feature
+[33m982200a8[m CommandBoxHandle#runCommand(...): return success status
+[33m58a9b653[m StatusBarFooter: extract sync status messages into constants
+[33m76be0b3f[m StatusBarFooter: enable dependency injection of a Clock
+[33m53e85de2[m Update screenshot of GUI in docs
+[33m79fb9c3f[m BrowserPanel: Load a default blank page
+[33m104fad3b[m Modify CSS files to better match the general dark theme
+[33m977f98ec[m StatusBarFooter: Align save location to the right
+[33m297506b8[m [#308] UrlUtil is unused (#325)
+[33mc3f8027f[m [#296] CommandBox stays red even after correct input is entered (#298)
+[33m65fdb481[m [#235] Parser and ArgumentTokenizer cleanups (#261)
+[33m2419c45d[m [#207] Add explicit reference to coding style guidelines in docs (#297)
+[33m17c1a61e[m [#301] Blank person cards should not have alternating colours (#304)
+[33mda90e68f[m FindCommandParser: remove unnecessary regex usage
+[33m1d46f717[m ParserUtil: remove unnecessary regex usage
+[33m21410adb[m ParserUtil: remove unnecessary toSet()
+[33m46497dc8[m ArgumentTokenizer: simplify getAllValues() return type
+[33m585b1cfc[m ArgumentTokenizer: simplify getPreamble() return type
+[33m0f027b45[m DeveloperGuide: Add link to coding standards
+[33mb87c361f[m Remove alternating coloring for blank PersonCard cells
+[33md741336a[m [#222] Remove unused code in TestUtil (#290)
+[33mf8824a36[m TestUtil: Remove unused methods
+[33m1eeb6fb0[m [#269] Add asciidoctor to Gradle (#274)
+[33mfae87009[m Add Asciidoctor Gradle plugin
+[33mf40ee42c[m LearningOutcomes.md: fix minor typos
+[33m3ba2795e[m [#287] Document how to save project docs as pdf files (#288)
+[33mb2b386cd[m DeveloperGuide: add guide to convert docs to PDF
+[33maaff772f[m [#137] Split Parser into command-specific classes (#272)
+[33m9af3aed3[m Update developer's documentation
+[33m2658dc4f[m Extract FindCommandParser from Parser class
+[33m03097866[m Extract SelectCommandParser from Parser class
+[33ma67ac737[m Extract DeleteCommandParser from Parser class
+[33md66527be[m Extract EditCommandParser from Parser class
+[33mb443d880[m Extract AddCommandParser from Parser class
+[33mf9cf9ade[m Extract common parser constants/methods to seperate classes
+[33m13e914d0[m  [#172] Add unit tests for person's fields classes (#253)
+[33m6f75b3dc[m Add unit tests for person's fields classes
+[33m4f04962a[m Fix Name accepting blank names (spaces)
+[33mfedb4f9c[m Fix Address accepting blank addresses (spaces)
+[33m2d4aa80e[m Revert "[#246] User/Dev Guide: ToC links broken"
+[33m1054d0d1[m [#246] User/Dev Guide: ToC links broken
+[33mbd3ab647[m Elevate heading level of 'Headless GUI Testing'
+[33m8976f44f[m Add missing blank line in dev guide
+[33m2221d24f[m [#205] Reposition caret after an incorrect command  (#215)
+[33m974a9081[m  [#276] checkstyle: fix module name error (#279)
+[33m821f5ad9[m Make Eclipse Checkstyle Plugin recognizes all existing modules
+[33m941d0afe[m [#230] checkstyle: ensure consistent ordering of imports (#257)
+[33m4de6efb2[m Add import order check in checkstyle
+[33ma6c0c981[m CollectionUtil: refactor assertNoNullElements -> isAnyNull(Collection) (#278)
+[33m54eb8b42[m  CollectionUtil: refactor assertNoNullElements -> isAnyNull(Collection)
+[33m49ec595a[m CollectionUtil: fix assertNoNullElements bug
+[33m9321a79e[m [#229] checkstyle: ensure overloaded methods are grouped together (#251)
+[33m79fd6d0b[m Check overloaded methods are grouped together in checkstyle
+[33mda4dc8e7[m [#252] checkstyle: check for unused import (#256)
+[33m0940bf94[m Add UnusedImports check in checkstyle
+[33mf74c40cb[m [#204] Make Travis CI output less verbose (#258)
+[33mcbcd7b39[m Make Travis CI output less verbose
+[33m6ea90ae4[m [#217] Update URL of help window (#259)
+[33m4545d8f2[m Modify HelpWindow.java to point to the HTML user guide
+[33m8164678f[m [#184] Simplify construction of UiParts (#237)
+[33m8711079d[m PersonListPanel: use FxViewUtil.applyAnchorBoundaryParameters()
+[33m88b4c9ab[m StatusBarFooter: rename addMainPane() to addToPlaceholder()
+[33m2cb1e4ef[m DeveloperGuide: update Ui component info
+[33mfa7dbdef[m UiPart: remove deprecated construction methods
+[33m0c7cc550[m MainWindow: migrate to use FXML loading constructor
+[33mdc69c618[m HelpWindow: migrate to use FXML loading constructor
+[33m67be0359[m CommandBox: migrate to use FXML loading constructor
+[33me78d245a[m StatusBarFooter: migrate to use FXML loading constructor
+[33m4b229e3a[m ResultDisplay: migrate to use FXML loading constructor
+[33m443d6fa0[m PersonCard: migrate to use FXML loading constructor
+[33m16ba2f9b[m PersonListPanel: migrate to use FXML loading constructor
+[33m1da3e359[m BrowserPanel: migrate to use FXML loading constructor
+[33m549e2ce6[m UiPart: implement FXML loading constructor
+[33m0dd249a0[m [#228] checkstyle: check for star imports (#250)
+[33m97c34f2b[m [#141] User can edit a person's details (#209)
+[33m2d65a0d3[m update User Guide to include Edit Command
+[33macc1c879[m create EditCommandTest
+[33ma791e885[m teach Parser to parse EditCommand
+[33ma56fcb0f[m create EditCommand
+[33m1eb8b138[m teach classes in Model to execute edit
+[33m6db34ed3[m create isAnyPresent() method in CollectionUtil
+[33m5b7c2449[m make Person mutable
+[33mbc2f5467[m [#60] Show some sample data when the app is run for the first time (#226)
+[33mf54a3564[m Add test for sample data
+[33m91b7c120[m Initialize AddressBook with sample data if file does not exist
+[33m32643f6b[m Add more info on using pptx files for diagrams
+[33m938adb3f[m [#223] Resolve Eclipse warnings (#227)
+[33mb97aa3e0[m Resolve Eclipse warnings
+[33md7828985[m [#195] Check for line endings in Travis CI (#238)
+[33m9c29f8ed[m Document Travis CI repository-wide checks
+[33m4e928d4d[m Implement Travis CI trailing whitespace check
+[33m8ee1731f[m Fix "trailing whitespace" errors
+[33m465cb6b6[m Implement Travis CI line ending checks
+[33m5318247b[m Fix "no newline at EOF" errors
+[33me1cc235f[m [#190] Make ReadOnlyAddressBook truly read-only (#199)
+[33mf48f9218[m [#221] Rework how TypicalTestPersons exposes its persons (#224)
+[33me280bbdd[m [#236] Reverse #161 (Include test code in coverage analysis)
+[33m15d91fd9[m [#233] Add unit test for CollectionUtil class (#234)
+[33mdf3e2ca0[m Set theme jekyll-theme-cayman
+[33m6ca9b477[m Fix GitHub page rendering in LearningOutcomes.md
+[33ma8493447[m Fix github page rendering in User Guide
+[33mb7cd36fb[m Fix GitHub page rendering of Dev Guide
+[33m7b1fc019[m Refine NFRs in Dev Guide
+[33mee34067f[m Add template for Dev Guide: Product Survey
+[33mcbf763bf[m Add authors to Dev Guide sections to be written individually
+[33m4bc46893[m Rephrase method header comments to follow the coding style
+[33m7195389d[m Add section numbers to the user guide
+[33meaf2f211[m Add captions for Dev Guide diagrams
+[33ma8198d59[m Add section numbers to dev guide
+[33md43d6cf8[m [#219] Make `GuiHandle::getNode()` return a `<T extends Node> T` (#225)
+[33mbd02cb89[m Add AppVeyor badge
+[33m04f0810c[m [#192] Set Up AppVeyor CI (#218)
+[33m311ab3c0[m Add additional info to LO-CodeCoverage
+[33mc557d20f[m [161] Include test code in coverage analysis
+[33m979e6809[m Add tip about using pptx files to create diagrams
+[33m6cab4c4b[m Set theme jekyll-theme-minimal
+[33mce4104b2[m Set theme jekyll-theme-tactile
+[33m0c529e61[m Set theme jekyll-theme-cayman
+[33md2d6c552[m [#149] Support F1 accelerator even when the focus is not in the list (#210)
+[33md1d17d8b[m [#173] Add background color to tags (#200)
+[33m38a52f5a[m Move page title to the top of README
+[33m845249d0[m [#186] Construct BrowserPanel in FXML (#208)
+[33me68f4529[m checkstyle: ensure curly brackets have whitespace around them #181 (#182)
+[33me088d3dd[m checkstyle: accept LF, CR or CRLF as line endings (#194)
+[33mba0900e8[m [188] Construct StatusBarFooter in FXML fully
+[33m8d9ff226[m Correct typos and grammatical errors in DG (#198)
+[33m7ff3ad82[m  checkstyle: check for trailing whitespace  #179 (#180)
+[33m6c99bdbd[m build.gradle: add `run` and `runShadow` tasks (#178)
+[33m4b99eb59[m [183] UiParts should not store a reference to the primaryStage
+[33m61b1f6fa[m Update Model class diagram to remove Person - - > Tag
+[33ma85d69c2[m Fixes #165 : AB comparison ignores order of tags
+[33md6ade39a[m [#156] Document checkstyle use (#157)
+[33m29ab5fdd[m [#163] fix typo in developer guide (#164)
+[33m067d8f3b[m Add examples to command summary
+[33mc2f456d3[m Move inner class to bottom
+[33mb4aded19[m Remove unused import
+[33m05e37767[m Fix typo in StorageManagerTest
+[33m16268498[m Fix typo in method name
+[33md8839ef9[m Move inner classes to the bottom
+[33m8402fb91[m Removed redundant default constructor
+[33m9f70ed17[m [#159] Remove non-static initializers
+[33ma6457927[m [#87] Increase encapsulation of UniquePersonList (#162)
+[33m11d6f54e[m Update LO-CodeReview
+[33m8e2cf2b2[m Add LO-CodeReview
+[33mb12de5a4[m Add missing link in LO ToC
+[33m38cfb097[m Add questions to LO-TestCaseDesignHeuristics
+[33m1bae855e[m Fix code style warnings by codacy
+[33m5c44a011[m Add codacy badge
+[33m428a0db8[m Fix more PMD warnings
+[33m62775f89[m Fix PMD warnings
+[33me2e64653[m Eliminate reassigning parameters
+[33m8fc301f9[m Remove unused constructors
+[33m2e214de6[m [155] Split Diagrams.pptx file
+[33mb3dd6334[m Add LO-StaticAnalysis
+[33m68425842[m Add LO-DesignPatterns
+[33mfe8f1373[m Add LO-AutomatedGuiTesting
+[33m0f92d5f9[m Add LO-SystemTesting
+[33mc73bd06b[m Fix checkstyle warning for Parser
+[33md9831a20[m Add LO-IntegrationTests
+[33ma28e9892[m [138] User can add email, address, tags in any order
+[33m2034f174[m [91] Separate CommandBox and ResultsDisplay
+[33m1927239e[m Fix link to StringUtil
+[33mba720507[m Refine LO-TestCaseDesignHeuristics
+[33mdaa496f6[m Fix broken link in LOs
+[33m9941eabb[m Add  LO-TestCaseDesignHeuristics
+[33m7b432582[m Fix checkstyle problems
+[33m8dd845ff[m Optimize StringUtil::containsWordIgnoreCase
+[33m38a5a4dd[m Add tests for StringUtil::containsWordIgnoreCase
+[33m5a6f6498[m [50] Set up check style
+[33m7359b0bc[m Add test case design info to StringUtilTest::isUnsignedPositiveInteger
+[33m831c819a[m [133] Add a GUI test to test the error dialog
+[33m4e2f1695[m Add LO-CodeCoverage
+[33m7c481930[m Fix broken link to LO-DefensiveCoding
+[33mef2543e1[m [95] Reduce duplication between ConfigUtil and JsonUserPrefsStorage
+[33m76463e67[m Fix broken link in Dev Guide ToC
+[33m386c3c10[m Add troubleshooting tips for tests
+[33m239bcc15[m Add troubleshooting help to DevGuide
+[33m0184f84e[m Remove extra spaces in LO-DefensiveCoding
+[33m30922671[m Add ToC to new LOs
+[33mb550d0b7[m Add LO-EventDriven etc.
+[33m1293b881[m Remove redundant comment lines in GuiTest
+[33mc31c5f5c[m [134] Increase test coverage in storage
+[33m75942c90[m [132] Add some missing util tests (#132)
+[33m3f7ea164[m Add SD for delete person within Logic
+[33m0c3fb87f[m Add missing dependency in Logic CD
+[33mb378db49[m Add missing line break to DevGuide
+[33m7c38bbd8[m Give more details about the command format
+[33mb69bf61f[m Fix typos in User Guide
+[33m10c2b39b[m Fix broken link to releases
+[33m22932cec[m Add releases link
+[33me2be60c9[m Fix typos in UsingGradle.md
+[33m2eaae083[m Add Build Automation heading
+[33mfd165514[m Add Dev Ops heading
+[33m05f8c18b[m Add missing # in Dev Guide
+[33m651d5635[m Fix typos in DevGuide
+[33me7b090ed[m Mention auto-changed settings files
+[33m1e5fe333[m [131] Code quality tweaks (#131)
+[33m3930af40[m [130] Tweak Gradle preferences file (#130)
+[33mf779f77d[m Added photo for Martin.
+[33mc65c6eca[m Warn that set up can take a long time.
+[33md3f05f52[m Increase photo display size
+[33m540f2d50[m Fix png -> jpg
+[33m914eaa6e[m Add dev photos
+[33m2bdfca48[m Fix typo in .gitignore /data/
+[33me85c3d76[m [103] Document that index must be a positive integer (#129)
+[33m6fc3b166[m [128] Tweak logging (#128)
+[33m0f217ae2[m Update DevGuide to match SD
+[33m36549e7f[m Update DeletePerson SD to show UI update
+[33m822552a7[m Updated badges
+[33m7875c84f[m [121] Increase test coverage
+[33med1b1285[m removed unused code
+[33m221d9962[m removed OsDetector and all related methods
+[33m241ca320[m [122, 126] Set rolling file for logging
+[33m4b091a40[m Fix switch indentation
+[33m1f1e9821[m [111] Create sandbox folder if it doesn't exist (#125)
+[33m91b1c0c2[m Add clarification about enabling assertions
+[33mee4cc483[m [112] Rename unitTests -> nonGuiTests (#124)
+[33me49a96ca[m Add ProductSurvey section
+[33mc5bbb3ec[m [118] Remove IncorrectCommandResult (#118)
+[33m1e199b60[m Add contributors Akshay and Sam
+[33m9744f5e3[m Start LearningOutcomes.md
+[33m9686528b[m [94] Fix compiler warnings (#117)
+[33mdaf5657b[m [115] Move event handler registration to child class
+[33m5f6299dc[m [98] Implement 'Last updates timestamp' feature (#113)
+[33mfeecceff[m [99] remove "(private)" in readonlyperson.java (#100)
+[33m177844fa[m [96] Fix typos and grammar in DeveloperGuide.md and UsingGradle.md (#97)
+[33meaf53399[m [101] remove [p] from add command help in the program (#104)
+[33m7ed69a79[m Fix typos in EventCenter description
+[33mc6530f90[m 10 KLoC -> 6 KLoC
+[33mfbdb5737[m Move AddressBook change event handling to Storage
+[33m8de0932e[m Update Logic CD
+[33mf046197d[m Correct activation bar in SD
+[33m3a99016d[m Update event handling SD
+[33md21db896[m [43] Add eclipse project files
+[33m32fde569[m Fix typo in Windows command
+[33m86f812bd[m [93] Add dev guide details
+[33m29ad56db[m Fix broken link in README.md
+[33m2d77ca44[m Add UI image
+[33mdf14561e[m Improve SLAP in MainApp
+[33mcc1974ef[m [90] Complete dev guide
+[33m51cefc33[m Remove GUI unit tests Fixes #66
+[33m58d8591d[m [89] Refine storage
+[33m814d758a[m [88] Refine commons
+[33m3bf30679[m [86] Refine model
+[33m92bc32b6[m [85] Refine logic and parser
+[33m0f49d497[m [24] Rename controller -> ui
+[33m3a7f6c98[m [70] Add GUI test for help window
+[33m979d2f8e[m [83] Cleanup utils and merge with commons
+[33m3625a1a9[m [81] Add a Logic class
+[33m64e4fba5[m [80] Refine browser to be a UiPart
+[33mcf8eb864[m [79] Further cleanups to UI
+[33m57c151cc[m [73] Cleanup UI
+[33mc6799bfa[m [39][76][77][78] Bring logic tests from level 3 (PR #74)
+[33m843d0c69[m update .gitignore
+[33madde2fc4[m [71] Cleanup gui tests
+[33m3eeda193[m [65] Clean up build.gradle
+[33mb9e4c32c[m [72] updated UserGuide.md
+[33mfc1c3bb8[m [11] UserGuide now loads in the help window
+[33m295e974c[m [68] Flatten doc structure
+[33mf060198b[m [46] support select command
+[33m362af075[m implemented select command
+[33m010d72d6[m [53] GUI tests: use setText instead of write
+[33md1e4d36b[m [41] Search substring will return incorrect feedback message
+[33m6544d4b7[m [62] Gradle is not running unit tests
+[33m377cfc16[m Add build status badge to README.md
+[33mac705059[m [56] ListAll and clear command tests
+[33m9bf69ec9[m Fix to alignment in travis documentation.
+[33m96fa3d57[m Added missing documentation images.
+[33m71272410[m [49] Setup CI and ensure tests are passing
+[33m95055c85[m Changed result display to text area element instead to allow for scrolling if text is too long.
+[33m4653f0e3[m [48] Tweak GUI to emphasize active components
+[33m126d62a4[m fixed COMMAND_INPUT_FIELD_ID for guitests
+[33mc9f22204[m [37] clear command box after executing command
+[33mb60fc021[m cleared command box after successfully executing command
+[33m5e630cf5[m [23] Extract CommandBox as a separate UI component
+[33m7eb03772[m [25] Increase height of StatusBarHeader
+[33m623480bb[m [33] Implement FindPersonsByWordsInNameCommand GuiTest
+[33m9f503e08[m Fixed logger output to log file not using the specified custom level.
+[33m03849f2c[m Removed unnecessary status bar and added promptText for command text field.
+[33m6d8c91f0[m [26] Use util.logging's logger and update logging documentation
+[33m62fa3685[m [22] support Help command
+[33m23e53fb4[m implemented help command
+[33m355209cf[m [31] Delete command GUI tests
+[33m129fd977[m Rename delete test cases
+[33m106dc15a[m remove test prefix
+[33m3346f95f[m Add gui tests for delete command
+[33mb4e81348[m Add AddPersonCommand test cases (#30)
+[33m6fb2658e[m Fix test case failure
+[33md1691eb3[m [7] Add gradle-related documentation
+[33mf2559db2[m Minor refactoring and corrections.
+[33mdc6b7378[m Updated documentation for building the jar file.
+[33m750b8287[m Added shadowjar dependency and task to compile the application into a standalone JAR.
+[33m28a1efe9[m Minor refactoring and removal of outdated testing documentation.
+[33mb7740394[m Some refactoring and moving of instructions to more appropriate places.
+[33m2c03b8ff[m Extracted managing dependencies into a separate markdown and linked the intro markdown to them.
+[33m6a9ed284[m Added pictures to explain how to see the status of the travis build. Moved travis configuration into a separate folder since it is not part of gradle.
+[33m53fe17af[m Added back coveralls task and plugin.
+[33m6fe47b34[m Some documentation about learning basics of gradle.
+[33m386dffdf[m prevent key binding from being triggered
+[33me5b34067[m [18] Implement FindPersonsByWordsInNameCommand
+[33ma9b45254[m [15] Implement DeleteCommand
+[33m2137a96c[m Add displayed index to list cell card
+[33mb8ed0900[m Implement delete command
+[33m7ccc4a77[m minor bug fixes. Show person tags and ClearAddressBookCommand Implementation
+[33m9ffcef4d[m added .DS_Store to gitignore
+[33mbf265bd3[m [8] Integrate parts from level 2.
+[33ma2660a0f[m Some refactoring and cleanup in the ui classes.
+[33m57c1f8fa[m [5] Change to code sample GUI
+[33mb69d2df9[m Minor refactoring and renaming of css file.
+[33me3187d22[m Fixed padding for horizontal scroll bar.
+[33mf79d2f23[m Slight tweak to scroll bar padding.
+[33m98ab07df[m Removed the navigation arrows and customised the thickens of the scroll bar.
+[33me8e19d05[m Revert back to dark theme with a couple of changes and improvements to the GUI.
+[33m174b1d01[m Changed to blue theme and other GUI optimizations.
+[33m70068b1a[m Fixed default webpage width being too small after change in layout.
+[33mbba8f409[m Updated GUI to the code sample colour and layout. Some minor tweaks will be required to make it nicer.
+[33m80183799[m Fixed browser not loading profile page after ui restructure.
+[33md9669483[m [3] Restructure ui to reflect physical ui
+[33mdf1119c3[m Removed filtering and filter parsers altogether.
+[33mc940c8f6[m Removed unused FileUtil methods.
+[33m0414e21d[m Added coverage task back.
+[33m5ce58c4e[m Rename into seedu.address Clean up gradle build remove launcher
+[33m7916322f[m address book level 4 draft
+[33m9db82906[m Initial commit
