@@ -61,7 +61,7 @@ package "Logic Layer" as Logic {
     class CommandResult {
         -String feedbackToUser
         -boolean showHelp
-        -boolean exit 
+        -boolean exit
         +getFeedbackToUser()
         +isShowHelp()
         +isExit()
