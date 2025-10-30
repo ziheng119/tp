@@ -175,7 +175,7 @@ Examples:
 Multiple students can have the same Name. However, Phone number, Email and Github username must be unique.
 No students can share the same Phone number, Email or Github username.
 
-If a typo was made when creating a student, refer to the [Editing a student](#editing-a-student-edit_student) command to rectify the mistake.
+If a typo was made when creating a student, refer to the [Editing a student](#editing-a-student--edit_student) command to rectify the mistake.
 
 ### Deleting a student : `delete_student`
 
@@ -254,7 +254,7 @@ Examples:
 - `find n/alex david t/F12-3 T11-2` returns all students from team `F12-3` and `T11-2` with names `Alex` or `David`<br>
   *If both `n/` and `/t` tags are used, students with the queried names in the specified teams will be returned (i.e. `AND` search)*
 
-To remove filters on the display, please refer to [Listing all students](#listing-all-students--list)
+To remove filters on the display, please refer to [Listing all students](#listing-all-students--list).
 
 ### Listing all students : `list`
 
@@ -329,7 +329,7 @@ Imports data from a JSON file. Allows users to directly get information from a f
 Format: `import f/FILE_PATH`
 
 - Either `/` or `\` can be used to specify directories.
-- `FILE_PATH` is the file path with respect to the application's `\data` directory.
+- `FILE_PATH` is the file path with respect to the application's `..\data` directory.
 
 Example:
 
@@ -344,14 +344,14 @@ Exports data to a JSON file. Allows users to capture data at a point of time pri
 Format: `export [f/FILE_PATH]`
 
 - Either `/` or `\` can be used to specify directories.
-- `[f/FILE_PATH]` may be omitted to save to the user's `\Downloads` directory.
+- `[f/FILE_PATH]` may be omitted to save to the user's `..\Downloads` directory.
 
 Examples:
 
 - `export` will export to `..\Downloads\exported_sweatless_storage.json`.
-  The default behaviour is to export the file as `exported_sweatless_storage.json` to the user's `\Downloads` directory.
+  The default behaviour is to export the file as `exported_sweatless_storage.json` to the user's `..\Downloads` directory.
 - `export f/export.json` will export to `..\data\export.json`.
-  When the `f/` tag is specified, the file will be exported to the specified `FILE_PATH` with respect to the application's `\data` directory.
+  When the `f/` tag is specified, the file will be exported to the specified `FILE_PATH` with respect to the application's `..\data` directory.
 - `export f/folder/export.json` will export to `..\data\folder\export.json`.
 - `export f/folder\export.json` will export to `..\data\folder\export.json`.
 
