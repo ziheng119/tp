@@ -1,24 +1,13 @@
 @startuml
 hide circle
-hide members
 
-skinparam componentStyle rectangle
-skinparam classAttributeIconSize 0
-skinparam linetype ortho
-skinparam class {
-    BackgroundColor<<interface>> LightGreen
-    BackgroundColor<<abstract>> LightGreen
-    BackgroundColor LightGreen
-    BorderColor DarkGreen
+package "Logic Layer" as Logic {
 }
 
-package Logic {
+package "Model Layer" as Model {
 }
 
-package Model {
-}
-
-package UI {
+package "UI Layer" as UI {
     interface Ui
     class UiManager
     class MainWindow
@@ -31,10 +20,10 @@ package UI {
     abstract class UiPart
 
     Ui <|-- UiManager
-    UiManager -[#darkgreen]-> "Logic"
-    UiManager -[#darkgreen]-> "MainWindow"
-    MainWindow -[#darkgreen]-> "Logic"
-    PersonCard ..[#darkgreen]-> "Model"
+    UiManager --> Logic
+    UiManager --> MainWindow
+    MainWindow --> Logic
+    PersonCard ..> Model
 
     MainWindow *-- "1" StatusBarFooter
     MainWindow *-- "1" ResultDisplay

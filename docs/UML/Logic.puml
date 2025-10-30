@@ -1,8 +1,9 @@
 @startuml
 hide circle
+skinparam classAttributeIconSize 0
 
 package "Logic Layer" as Logic {
-    interface Logic {
+    interface Logic <<interface>> {
         +execute(String)
         +getAddressBook()
         +getFilteredPersonList()
