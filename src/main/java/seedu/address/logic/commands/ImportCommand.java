@@ -56,7 +56,9 @@ public class ImportCommand extends Command {
             importPath = importPath.toAbsolutePath();
         }
         // Check if source file exists
-        if (!Files.exists(importPath) || Files.isDirectory(importPath)) {
+        boolean fileExists = Files.exists(importPath);
+        boolean fileIsDirectory = Files.isDirectory(importPath);
+        if (!fileExists || fileIsDirectory) {
             logger.warning("Import failed: file not found or is directory at " + importPath);
             throw new CommandException(String.format(MESSAGE_FOUND_FAILURE, importPath));
         }
@@ -75,6 +77,7 @@ public class ImportCommand extends Command {
             throw new CommandException(String.format(MESSAGE_IO_TARGET_FAILURE, filePath));
         }
     }
+
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -82,12 +85,10 @@ public class ImportCommand extends Command {
             logger.severe("Model has null address book file path.");
             throw new CommandException("Internal error: model does not have a valid address book file path.");
         }
-        Path targetPath;
-        Path importPath;
         try {
             // Prepare target path first to ensure data folder
-            targetPath = prepareTargetPath(model);
-            importPath = prepareFilePath();
+            Path targetPath = prepareTargetPath(model);
+            Path importPath = prepareFilePath();
 
             // Copy the file into data/sweatless_storage.json
             Files.copy(importPath, targetPath, StandardCopyOption.REPLACE_EXISTING);

@@ -27,8 +27,9 @@ public class ImportCommandParser implements Parser<ImportCommand> {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_FILE);
         Optional<String> filePath = argMultimap.getValue(PREFIX_FILE);
 
-        if (filePath.isEmpty()
-                || !argMultimap.getPreamble().isEmpty()) {
+        boolean isPathEmpty =  filePath.isEmpty();
+        boolean isPreambleEmpty = argMultimap.getPreamble().isEmpty();
+        if (isPathEmpty || !isPreambleEmpty) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, ImportCommand.MESSAGE_USAGE));
         }

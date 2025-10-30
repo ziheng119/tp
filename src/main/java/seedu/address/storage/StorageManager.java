@@ -49,12 +49,11 @@ public class StorageManager implements Storage {
             Path corruptedFile = getAddressBookFilePath();
             // Create a timestamped backup name inside the same folder
             String timestamp = java.time.LocalDateTime.now()
-                    .toString()
-                    .replace(":", "-"); // avoid invalid filename chars
+                                .toString()
+                                .replace(":", "-"); // avoid invalid filename chars
+            String backupFilename = corruptedFile.getFileName().toString().replace(".json", "");
             Path backupFile = corruptedFile.resolveSibling(
-                    corruptedFile.getFileName().toString().replace(".json", "")
-                            + "_corrupted_" + timestamp + ".json"
-            );
+                        backupFilename + "_corrupted_" + timestamp + ".json");
             Files.copy(corruptedFile, backupFile);
         } catch (IOException ioEx) {
             logger.severe("Failed to back up corrupted data file: " + ioEx.getMessage());

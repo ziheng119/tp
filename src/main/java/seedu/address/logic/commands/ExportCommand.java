@@ -45,12 +45,13 @@ public class ExportCommand extends Command {
         this.filePath = filePath;
     }
 
-    private Path preparePath() throws CommandException {
+    private Path prepareParentPath() throws CommandException {
         Path exportPath = Paths.get(filePath);
         if (!exportPath.isAbsolute()) {
             exportPath = Paths.get("data").resolve(exportPath);
             exportPath = exportPath.toAbsolutePath();
         }
+
         // Ensure parent directories exist
         if (exportPath.getParent() != null) {
             try {
@@ -59,13 +60,23 @@ public class ExportCommand extends Command {
                 throw new CommandException(String.format(MESSAGE_IO_FAILURE, exportPath));
             }
         }
+        return exportPath;
+    }
 
-        // Add DEFAULT_FILE or .json if required
+    private Path appendPath(Path exportPath) throws CommandException {
+        // Add DEFAULT_FILE if required
         if (Files.isDirectory(exportPath)) {
             exportPath = exportPath.resolve(DEFAULT_FILE);
-        } else if (!exportPath.toString().toLowerCase().endsWith(".json")) {
-            exportPath = Paths.get(exportPath + ".json");
+            return exportPath;
         }
+
+        // If there is no '.json' at the end
+        if (!exportPath.toString().toLowerCase().endsWith(".json")) {
+            exportPath = Paths.get(exportPath + ".json");
+            return exportPath;
+        }
+
+        // If there is no change to be made
         return exportPath;
     }
 
@@ -74,7 +85,8 @@ public class ExportCommand extends Command {
         requireNonNull(model);
         Path exportPath = null;
         try {
-            exportPath = preparePath();
+            exportPath = prepareParentPath();
+            exportPath = appendPath(exportPath);
             // Write JSON data
             Files.copy(model.getAddressBookFilePath(), exportPath,
                     StandardCopyOption.REPLACE_EXISTING);
@@ -101,7 +113,6 @@ public class ExportCommand extends Command {
         if (!(other instanceof ExportCommand)) {
             return false;
         }
-
         if (other == this) {
             return true;
         }
