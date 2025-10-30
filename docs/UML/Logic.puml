@@ -3,24 +3,26 @@ hide circle
 
 package "Logic Layer" as Logic {
     interface Logic {
-        +execute(commandText)
+        +execute(String)
         +getAddressBook()
         +getFilteredPersonList()
+        +getAddressBookFilePath()
+        +getGuiSettings()
+        +setGuiSettings(GuiSettings)
     }
 
     class LogicManager {
-        -Model model
-        -Storage storage
-        -AddressBookParser parser
-        +execute(commandText)
+        -AddressBookParser addressBookParser
+        +execute(String)
+        -saveModel()
     }
 
     class AddressBookParser {
-        +parseCommand(commandText)
+        +parseCommand(String)
     }
 
     abstract class Command {
-        +execute(model)
+        +execute(Model)
     }
 
     class FindCommand {
@@ -58,12 +60,24 @@ package "Logic Layer" as Logic {
 
     class CommandResult {
         -String feedbackToUser
+        -boolean showHelp
+        -boolean exit
         +getFeedbackToUser()
+        +isShowHelp()
+        +isExit()
     }
 }
 
-LogicManager .up.|> Logic
-AddressBookParser --> Command : creates
+Logic.LogicManager ..|> Logic.Logic
+LogicManager "1" --> "1" AddressBookParser
+LogicManager "1" --> "1" Model
+LogicManager "1" --> "1" Storage
+AddressBookParser "1" --> "0..*" Command : parses to
+
+
+note bottom
+  Other classes/subclasses are omitted for brevity.
+end note
 FindCommand --|> Command
 AddStudentCommand --|> Command
 CreateTeamCommand --|> Command
