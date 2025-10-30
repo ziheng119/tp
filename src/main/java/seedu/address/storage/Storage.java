@@ -14,6 +14,8 @@ import seedu.address.model.UserPrefs;
  */
 public interface Storage extends AddressBookStorage, UserPrefsStorage {
 
+    void backupFile();
+
     @Override
     Optional<UserPrefs> readUserPrefs() throws DataLoadingException;
 
