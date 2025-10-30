@@ -7,6 +7,8 @@ SWEatless is a desktop application for **CS2103/T teaching staff who favour CLI 
 
 SWEatless allows for intuitive student-team management using easy-to-remember commands. Furthermore, it supports direct access to the Github accounts of both students and teams, allowing you keep track of progress with a single click!
 
+The quick-start guide is the step-by-step instruction to get SWEatless running on your device. It is important to understand the constraints on each field before referring to the feature list. FAQs and known issues are documented at the bottom of the user guide.
+
 * Table of Contents
 {:toc}
 
