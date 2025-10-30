@@ -102,6 +102,32 @@ public class RemoveFromTeamCommandTest {
     }
 
     @Test
+    public void execute_removeFromNoneTeam_throwsCommandException() {
+        // Add the sentinel NONE team explicitly into the model
+        model.addTeam(Team.NONE);
+        RemoveFromTeamCommand command = new RemoveFromTeamCommand(Index.fromOneBased(1), "");
+        assertThrows(CommandException.class, RemoveFromTeamCommand
+            .MESSAGE_CANNOT_REMOVE_FROM_NONE, () -> command.execute(model));
+    }
+
+    @Test
+    public void execute_personInDifferentTeam_throwsCommandException() throws CommandException {
+        // Create two teams
+        Team teamA = new Team("F12-3");
+        Team teamB = new Team("M09-4");
+        model.addTeam(teamA);
+        model.addTeam(teamB);
+
+        // Put ALICE into teamA
+        model.addPersonToTeam(ALICE, teamA);
+
+        // Attempt to remove ALICE from teamB
+        RemoveFromTeamCommand command = new RemoveFromTeamCommand(Index.fromOneBased(1), "M09-4");
+        assertThrows(CommandException.class, String.format(RemoveFromTeamCommand.MESSAGE_PERSON_NOT_IN_TEAM,
+                Messages.format(ALICE), "M09-4"), () -> command.execute(model));
+    }
+
+    @Test
     public void equals() {
         RemoveFromTeamCommand command1 = new RemoveFromTeamCommand(Index.fromOneBased(1), "F12-3");
         RemoveFromTeamCommand command2 = new RemoveFromTeamCommand(Index.fromOneBased(1), "F12-3");
