@@ -21,7 +21,7 @@ public class DeleteCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the person identified by the index number or email.\n"
-            + "Parameters: INDEX (must be a positive integer) OR e/EMAIL\n"
+            + "Parameters: INDEX(one-based positive integer) OR e/EMAIL\n"
             + "Examples:\n"
             + COMMAND_WORD + " 1\n"
             + COMMAND_WORD + " e/johndoe@example.com";

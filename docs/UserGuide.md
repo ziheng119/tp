@@ -127,6 +127,28 @@ Invalid Examples: user@domain (no TLD), .user@domain.com (starts with dot), user
 Valid Examples: john-doe, alice123, user-name, a (single character)  
 Invalid Examples: -username (starts with hyphen), username- (ends with hyphen), user--name (consecutive hyphens), empty string
 
+### Team Name Constraints
+
+- Format: Team names should adhere to specific constraints
+- Rules:
+  - First character (day): M, W, T, F
+  - Second and third character (time): 08, 09, 10, 11, 12, 13, 14, 15, 16, 17
+  - Fourth character (hyphen): -
+  - Fifth character (team number): 1, 2, 3, 4
+
+Valid Examples: F12-3, T11-1, M08-4, W17-2
+Invalid Example: S12-3 (invalid day), M11-6 (invalid team number), T01-2 (invalid time)
+
+### Index Constraints
+
+- Format: Index should only contain numbers
+- Rules:
+  - One-based indexing is used
+  - Must be a non-zero positive integer
+
+Valid Examples: 1, 2, 5, 90
+Inavlid Examples: 0 (is not non-zero), -1 (is not positive), abc (contains non-numeric characters)
+
 ### Creating a student: `create_student`
 
 Creates a student to add to SWEatless.
@@ -146,7 +168,6 @@ Format: `delete_student INDEX`
 
 - Deletes the student at the specified `INDEX`.
 - The index refers to the index number shown in the displayed student list.
-- The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
 
@@ -158,7 +179,8 @@ Edits an existing student in SWEatless.
 
 Format: `edit_student INDEX [n/NAME] [p/PHONE] [e/EMAIL] [g/GITHUB_USERNAME]`
 
-- Edits the student at the specified `INDEX`. The index refers to the index number shown in the displayed student list. The index **must be a positive integer** 1, 2, 3, …​
+- Edits the student at the specified `INDEX`. 
+- The index refers to the index number shown in the displayed student list.
 - At least one of the optional fields must be provided.
 - Existing values will be updated to the input values.
 
@@ -172,12 +194,6 @@ Examples:
 Creates a team to add to SWEatless.
 
 Format: `create_team t/TEAM_NAME`
-
-- `TEAM_NAME` must follow the following format:
-  - First character (day): `M`, `W`, `T`, `F`
-  - Second and third character (time): `08`, `09`, `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`
-  - Fourth character (hyphen): `-`
-  - Fifth character (team number): `1`, `2`, `3`, `4`
 
 Examples:
 
