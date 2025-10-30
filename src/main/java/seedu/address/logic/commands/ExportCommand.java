@@ -32,7 +32,7 @@ public class ExportCommand extends Command {
     public static final String MESSAGE_IO_FAILURE = "Failed to export data: %1$s";
     public static final String MESSAGE_PATH_FAILURE = "Failed to find path: %1$s";
 
-    public static final String DEFAULT_FILE = "exported_addressbook.json";
+    public static final String DEFAULT_FILE = "exported_sweatless_storage.json";
 
     private static final Logger logger = LogsCenter.getLogger(ExportCommand.class);
     private final String filePath;

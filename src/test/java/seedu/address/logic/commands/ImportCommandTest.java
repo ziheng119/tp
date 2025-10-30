@@ -37,7 +37,7 @@ public class ImportCommandTest {
         Files.writeString(importFile, "{\"persons\":[]}", StandardOpenOption.CREATE);
 
         // Simulate the real data directory
-        destinationFile = Path.of("data", "addressbook.json");
+        destinationFile = Path.of("data", "sweatless_storage.json");
         Files.createDirectories(destinationFile.getParent());
 
         model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
