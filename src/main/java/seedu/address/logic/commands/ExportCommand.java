@@ -9,7 +9,9 @@ import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.logging.Logger;
 
+import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 
@@ -17,6 +19,8 @@ import seedu.address.model.Model;
  * Exports the address book data to a specified JSON file.
  */
 public class ExportCommand extends Command {
+
+    private static final Logger logger = LogsCenter.getLogger(ExportCommand.class);
 
     public static final String COMMAND_WORD = "export";
 
@@ -77,9 +81,15 @@ public class ExportCommand extends Command {
             return new CommandResult(String.format(MESSAGE_SUCCESS, exportPath));
 
         } catch (IOException e) {
+            logger.warning("I/O exception during export: " + e.getMessage());
             throw new CommandException(String.format(MESSAGE_IO_FAILURE, exportPath));
         } catch (InvalidPathException e) {
+            logger.warning("Invalid path specified for export: " + e.getMessage());
             throw new CommandException(String.format(MESSAGE_PATH_FAILURE, filePath));
+        } catch (Exception e) {
+            // This should not happen
+            logger.warning("Unexpected error during export command: " + e.getMessage());
+            throw new CommandException("Unexpected error occurred during export.");
         }
     }
 
