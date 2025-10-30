@@ -26,6 +26,7 @@ public class RemoveFromTeamCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Person %s removed from team %s";
     public static final String MESSAGE_TEAM_NOT_FOUND = "Team with name '%s' not found";
     public static final String MESSAGE_PERSON_NOT_IN_TEAM = "Person %s is not in team %s";
+    public static final String MESSAGE_CANNOT_REMOVE_FROM_NONE = "Cannot remove from the NONE team.";
 
     private final Index personIndex;
     private final String teamName;
@@ -73,7 +74,7 @@ public class RemoveFromTeamCommand extends Command {
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
 
         return new CommandResult(String.format(MESSAGE_SUCCESS,
-                Messages.format(targetPerson), teamName));
+                Messages.format(updatedPerson), teamName));
     }
 
     @Override
