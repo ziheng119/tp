@@ -3,8 +3,8 @@ layout: page
 title: Developer Guide
 ---
 
-* Table of Contents
-{:toc}
+- Table of Contents
+  {:toc}
 
 ---
 
@@ -170,6 +170,7 @@ The application currently supports the following commands:
 - `create_student n/NAME p/PHONE e/EMAIL g/GITHUB_USERNAME` - Create a new student
 - `edit_student INDEX n/NAME p/PHONE e/EMAIL g/GITHUB` - Edit student details
 - `delete_student INDEX` - Delete a student by index
+- `delete_student e/EMAIL` - Delete a student by email (case-insensitive)
 - `find n/NAME t/TEAM_NAME` - Find students by name or team name
 - `list` - List all students
 
@@ -302,6 +303,39 @@ Teams follow a specific naming convention enforced by `VALIDATION_REGEX`:
 - Each student can belong to only one team at a time
 - Students not in any team are assigned to `Team.NONE`
 - Team assignment updates the student's team field in the `Person` object
+
+### Student Identity, Validation and Duplicate Handling
+
+#### Identity and Equality
+
+- `Person#isSamePerson(Person)` defines student identity by email. Two students are considered the same student if their emails or Github usernames are equal.
+- `UniquePersonList` enforces uniqueness using `isSamePerson` when adding or updating entries.
+
+#### Field Validation
+
+- Name: Alphanumeric and spaces only, must not be blank, must not start with whitespace.
+- Phone: Digits only, minimum 3 digits.
+- Email: Must follow `local-part@domain` with standard constraints (alphanumeric with `+_.-` in local part; domain labels alphanumeric with optional hyphens, final label at least 2 chars).
+- GitHub: 1–39 characters, alphanumeric or hyphen, cannot start/end with hyphen, no consecutive hyphens.
+
+#### Duplicate Prevention
+
+- Add student: prevented by `Model#hasPerson`/`AddressBook#hasPerson` (email-identity based).
+- Edit student: editing to an email that would duplicate another student is blocked. Editing GitHub to an existing GitHub username is also blocked.
+
+### Edit Student Behavior and Filtering
+
+- After a successful `edit_student`, the model resets the filtered list to show all students (via `updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS)`), ensuring the edited entry remains visible even if the previous view was filtered.
+
+### Delete Student Behavior
+
+- `delete_student INDEX` deletes the student at the given one-based index of the current filtered list view.
+- `delete_student e/EMAIL` deletes the student whose email matches (case-insensitive). This lookup searches the current filtered view.
+- When a student is deleted, they are also removed from any team memberships maintained by the model.
+
+### Model API Notes
+
+- `Model#hasPersonWithGithub(String githubUsername)` provides a fast check for GitHub-username uniqueness used by `EditCommand`.
 
 **Command Flow:**
 
