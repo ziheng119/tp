@@ -38,14 +38,16 @@ public class Email {
 
     /**
      * Constructs an {@code Email}.
+     * The email is normalized to lowercase to ensure case-insensitive comparison.
      *
-     * @param email A valid email address.
+     * @param email A valid email address (will be converted to lowercase).
      */
     @JsonCreator
     public Email(@JsonProperty("value") String email) {
         requireNonNull(email);
-        checkArgument(isValidEmail(email), MESSAGE_CONSTRAINTS);
-        value = email;
+        String normalizedEmail = email.toLowerCase();
+        checkArgument(isValidEmail(normalizedEmail), MESSAGE_CONSTRAINTS);
+        value = normalizedEmail;
     }
 
     /**

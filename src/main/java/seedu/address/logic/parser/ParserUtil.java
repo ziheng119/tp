@@ -79,17 +79,18 @@ public class ParserUtil {
 
     /**
      * Parses a {@code String email} into an {@code Email}. Leading and trailing whitespaces will be
-     * trimmed.
+     * trimmed. The email will be converted to lowercase to ensure case-insensitive comparison.
      *
      * @throws ParseException if the given {@code email} is invalid.
      */
     public static Email parseEmail(String email) throws ParseException {
         requireNonNull(email);
         String trimmedEmail = email.trim();
-        if (!Email.isValidEmail(trimmedEmail)) {
+        String normalizedEmail = trimmedEmail.toLowerCase();
+        if (!Email.isValidEmail(normalizedEmail)) {
             throw new ParseException(Email.MESSAGE_CONSTRAINTS);
         }
-        return new Email(trimmedEmail);
+        return new Email(normalizedEmail);
     }
 
     /**
