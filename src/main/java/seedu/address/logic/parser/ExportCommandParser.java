@@ -25,8 +25,10 @@ public class ExportCommandParser implements Parser<ExportCommand> {
     public ExportCommand parse(String args) throws ParseException {
         String trimmedArgs = args.trim();
 
+        // Find User's default download file
         String userHome = System.getProperty("user.home");
         Path downloadsPath = Paths.get(userHome, "Downloads");
+
         // Case 1: no arguments — use default export path
         if (trimmedArgs.isEmpty()) {
             return new ExportCommand(downloadsPath.toString());
@@ -36,7 +38,7 @@ public class ExportCommandParser implements Parser<ExportCommand> {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_FILE);
         Optional<String> filePath = argMultimap.getValue(PREFIX_FILE);
 
-        if (!filePath.isPresent() || !argMultimap.getPreamble().isEmpty()) {
+        if (filePath.isEmpty() || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(
                     MESSAGE_INVALID_COMMAND_FORMAT, ExportCommand.MESSAGE_USAGE));
         }
@@ -45,13 +47,4 @@ public class ExportCommandParser implements Parser<ExportCommand> {
         return new ExportCommand(filePath.get());
     }
 
-    /*
-    /**
-     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
-     * {@code ArgumentMultimap}.
-
-    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
-        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
-    }
-    */
 }

@@ -24,6 +24,7 @@ public class FindCommandParser implements Parser<FindCommand> {
      */
     public FindCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_TEAM);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_TEAM);
 
         List<String> nameKeywords = argMultimap.getAllValues(PREFIX_NAME).stream()
                 .flatMap(s -> Arrays.stream(s.trim().split("\\s+")))
