@@ -34,7 +34,7 @@ SWEatless allows for intuitive student-team management using easy-to-remember co
 1. Ensure you have Java `17` or above installed in your Computer.<br>
    **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
 
-1. Download the latest `.jar` file from [here](https://github.com/se-edu/addressbook-level3/releases).
+1. Download the latest `.jar` file from [here](https://github.com/AY2526S1-CS2103T-F12-3/tp/releases).
 
 1. Copy the file to the folder you want to use as the _home folder_ for SWEatless.
 
@@ -165,7 +165,7 @@ Examples:
 
 ### Deleting a student : `delete_student`
 
-Deletes the specified student from the address book.
+Deletes the specified student from SWEatless.
 
 Format: `delete_student INDEX` OR `delete_student e/EMAIL`
 
@@ -302,7 +302,7 @@ SWEatless data are saved in the hard disk automatically after any command that c
 
 ### Editing the data file
 
-SWEatless data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
+SWEatless data are saved automatically as a JSON file `[JAR file location]/data/sweatless.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
 If your changes to the data file makes its format invalid, SWEatless will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
