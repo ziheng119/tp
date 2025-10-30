@@ -116,7 +116,7 @@ Invalid Examples: user@domain (no TLD), .user@domain.com (starts with dot), user
 Valid Examples: john-doe, alice123, user-name, a (single character)  
 Invalid Examples: -username (starts with hyphen), username- (ends with hyphen), user--name (consecutive hyphens), empty string
 
-### Team Name Constraints
+### Team Name
 
 - Format: Team names should adhere to specific constraints
 - Rules:
@@ -128,7 +128,7 @@ Invalid Examples: -username (starts with hyphen), username- (ends with hyphen), 
 Valid Examples: F12-3, T11-1, M08-4, W17-2
 Invalid Example: S12-3 (invalid day), M11-6 (invalid team number), T01-2 (invalid time)
 
-### Index Constraints
+### Index
 
 - Format: Index should only contain numbers
 - Rules:
@@ -375,7 +375,6 @@ SWEatless data are saved automatically as a JSON file `[JAR file location]/data/
 <br>
 <br>
 If your changes to the data file makes its format invalid, SWEatless will **1. save the invalid JSON as `sweatless_storage_corrupted_TIMESTAMP`** and **2. discard all data and start with an empty data file at the next run.**
-<br>
 <br>
 Certain edits can cause the SWEatless to behave in unexpected ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </div>
