@@ -10,7 +10,7 @@ title: Developer Guide
 
 ## **Acknowledgements**
 
-- {list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
+- This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org/)
 
 ---
 
@@ -21,12 +21,6 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 ---
 
 ## **Design**
-
-<div markdown="span" class="alert alert-primary">
-
-:bulb: **Tip:** The `.puml` files used to create diagrams are in this document `docs/diagrams` folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
-
-</div>
 
 ### Architecture
 
@@ -86,6 +80,23 @@ The `UI` component,
 - keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
 - depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
 
+#### Implemented UI Features
+
+- Main window composed of:
+  - `CommandBox` for entering commands
+  - `ResultDisplay` for feedback messages (errors highlighted)
+  - `PersonListPanel` that renders a scrollable list of students (`PersonCard` per student)
+  - `StatusBarFooter` (e.g., file path and sync time)
+- Live list updates: `PersonListPanel` is bound to `model.getFilteredPersonList()`, so `find`/filters update the view immediately.
+- Indexed actions: Commands that take an index (e.g., `edit_student`, `delete_student`, team commands) refer to indices shown in the current list.
+- Team-aware cards: Each `PersonCard` displays key fields (name, phone, email, Github, team), reflecting the current model state.
+- Filter behavior:
+  - `find` updates the current predicate; `list` resets to show all students
+  - `edit_student` resets to show all to ensure the edited entry is visible
+- Clickable fields:
+  - Student Github username is rendered as a hyperlink that opens the user's Github profile in the system browser
+  - Team name is rendered as a hyperlink that opens the corresponding team page/resource in the system browser
+
 ### Logic component
 
 **API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
@@ -115,8 +126,15 @@ Here are the other classes in `Logic` (omitted from the class diagram above) tha
 
 How the parsing works:
 
-- When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `AddressBookParser` returns back as a `Command` object.
-- All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
+- The `AddressBookParser` is the entry point. It splits the raw input into the command word and the argument string, then dispatches to a specific `XYZCommandParser` based on the command word (e.g., `EditCommandParser`, `DeleteCommandParser`, `FindCommandParser`, `CreateTeamCommandParser`).
+- Each `XYZCommandParser` tokenizes arguments using prefixes from `CliSyntax` (e.g., `n/`, `p/`, `e/`, `g/`, `t/`). It validates required/optional fields and converts strings into value objects (`Name`, `Phone`, `Email`, `Github`, team name) which enforce constraints on construction.
+- A fully-constructed `Command` is returned (e.g., `new EditCommand(index, descriptor)`), without mutating model state.
+- Error handling:
+  - Invalid syntax/format → `ParseException` from the parser.
+  - Valid syntax but invalid model state during execution (e.g., duplicate) → `CommandException` in `Command#execute`.
+- Index-based commands resolve targets from `model.getFilteredPersonList()` during `execute`, so indices always refer to what the user currently sees.
+- Filtering commands (e.g., `find`) build predicates (e.g., name/team predicates) and apply them via `model.updateFilteredPersonList(...)`; they do not change stored data.
+- All `XYZCommandParser` classes inherit from the common `Parser` abstraction, allowing uniform testing and extension.
 
 ### Model component
 
@@ -126,12 +144,13 @@ How the parsing works:
 
 The `Model` component,
 
-- stores the address book data i.e., all `Person` objects (which are contained in a `UniquePersonList` object).
-- stores team data i.e., all `Team` objects (which are contained in a `UniqueTeamList` object).
-- stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
-- stores a `UserPref` object that represents the user's preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
-- manages team-student relationships, allowing students to be assigned to teams with validation for team capacity and duplicate assignments.
-- does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
+- stores the address book data i.e., all `Person` objects (backed by `UniquePersonList`).
+- stores team data i.e., all `Team` objects (backed by `UniqueTeamList`).
+- exposes a _filtered_ list of persons (`ObservableList<Person>`) via `getFilteredPersonList()`. The UI binds to this list so changes to the filter predicate are reflected immediately.
+- updates the filtered view via `updateFilteredPersonList(Predicate<Person>)` (e.g., used by `find`). Some commands (e.g., `list`, `edit_student`) deliberately reset the filter to show all.
+- enforces student identity and duplicates: `UniquePersonList` uses `Person#isSamePerson` (email and Github username based) to prevent duplicate students on add/edit. Additionally, `Model#hasPersonWithGithub(String)` is used (e.g., by `EditCommand`) to prevent duplicate Github usernames at edit time.
+- manages team–student relationships: `addPersonToTeam` / `removePersonFromTeam` keep a student's team and the team's membership consistent; deleting a person removes them from their team.
+- does not depend on the other three components (data entities should make sense on their own).
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>
 
@@ -180,6 +199,11 @@ The application currently supports the following commands:
 - `add_to_team INDEX t/TEAM_NAME` - Add student to team
 - `remove_from_team INDEX t/TEAM_NAME` - Remove student from team
 - `delete_team t/TEAM_NAME` - Delete an existing team
+
+**Storage Management:**
+
+- `import f/FILE_NAME` - Import a file
+- `export f/FILE_NAME` - Export a file
 
 **System Commands:**
 
@@ -316,12 +340,12 @@ Teams follow a specific naming convention enforced by `VALIDATION_REGEX`:
 - Name: Alphanumeric and spaces only, must not be blank, must not start with whitespace.
 - Phone: Digits only, minimum 3 digits.
 - Email: Must follow `local-part@domain` with standard constraints (alphanumeric with `+_.-` in local part; domain labels alphanumeric with optional hyphens, final label at least 2 chars).
-- GitHub: 1–39 characters, alphanumeric or hyphen, cannot start/end with hyphen, no consecutive hyphens.
+- Github: 1–39 characters, alphanumeric or hyphen, cannot start/end with hyphen, no consecutive hyphens.
 
 #### Duplicate Prevention
 
 - Add student: prevented by `Model#hasPerson`/`AddressBook#hasPerson` (email-identity based).
-- Edit student: editing to an email that would duplicate another student is blocked. Editing GitHub to an existing GitHub username is also blocked.
+- Edit student: editing to an email that would duplicate another student is blocked. Editing Github to an existing Github username is also blocked.
 
 ### Edit Student Behavior and Filtering
 
@@ -335,7 +359,7 @@ Teams follow a specific naming convention enforced by `VALIDATION_REGEX`:
 
 ### Model API Notes
 
-- `Model#hasPersonWithGithub(String githubUsername)` provides a fast check for GitHub-username uniqueness used by `EditCommand`.
+- `Model#hasPersonWithGithub(String githubUsername)` provides a fast check for Github-username uniqueness used by `EditCommand`.
 
 **Command Flow:**
 
@@ -400,10 +424,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | -------- | -------------------- | --------------------------------------------- | ---------------------------------------------------------------- |
 | `* *`    | Instructor           | assign teams to designated tutors             | each tutor knows which teams they are responsible for monitoring |
 | `* *`    | Instructor           | edit a student’s contact details              | student records are kept up to date                              |
-| `* *`    | Instructor           | view teammates’ GitHub links or repositories  | submissions can be easily checked                                |
+| `* *`    | Instructor           | view teammates’ Github links or repositories  | submissions can be easily checked                                |
 | `* *`    | Instructor           | search for a student by name, ID, or team     | quickly locate student information                               |
 | `* *`    | Instructor           | see which students belong to each team        | monitor team formation and collaboration                         |
-| `* *`    | Instructor           | attach GitHub repo links or project files     | keep all relevant information in one place                       |
+| `* *`    | Instructor           | attach Github repo links or project files     | keep all relevant information in one place                       |
 | `* *`    | Instructor           | store Zoom links for team meetings            | ensure all teams can access the correct meeting easily           |
 | `* *`    | Instructor           | filter students/teams by submission or status | quickly find relevant groups                                     |
 | `* *`    | Instructor           | assign teams to specific tutorial groups      | align team activities with tutorial sessions                     |
@@ -562,7 +586,7 @@ _{More to be added}_
 
 * **Instructor**: Teaching staff who manage course delivery and teams. Can assign students to teams, view rosters, and monitor projects
 
-* **Student**: A learner enrolled in a course, whose details (name, email, phone, GitHub) are managed in SWEatless
+* **Student**: A learner enrolled in a course, whose details (name, email, phone, Github) are managed in SWEatless
 
 * **Team**: A group of students working together on a project. Identified by a Team ID (e.g., F12-3)
 
@@ -573,9 +597,9 @@ _{More to be added}_
 3. GroupNumber: one digit number representing the group (from 1 to 4)
 4. Example: 12-1 (Class 12, Group 1)
 
-- **GitHub Username**: The student’s GitHub handle (1–39 characters, alphanumeric and hyphen only). Used for linking project repositories
+- **Github Username**: The student’s Github handle (1–39 characters, alphanumeric and hyphen only). Used for linking project repositories
 
-- **GitHub Repository (Repo)**: A storage space for a team’s project files hosted on GitHub. SWEatless may store these links for instructors to monitor progress
+- **Github Repository (Repo)**: A storage space for a team’s project files hosted on Github. SWEatless may store these links for instructors to monitor progress
 
 - **Roster**: A list of students enrolled in a course. Maintained by the Administrator, accessible by Instructors.
 
@@ -585,7 +609,7 @@ _{More to be added}_
 
 - **Duplicate Handling**: The rules SWEatless uses to prevent duplicate entries (e.g., duplicate students identified by email/phone)
 
-- **Validation Rule**: A defined rule that ensures inputs (e.g., email, phone, GitHub username) are valid before being stored in the system
+- **Validation Rule**: A defined rule that ensures inputs (e.g., email, phone, Github username) are valid before being stored in the system
 
 - **Error Message**: A system response shown when invalid input or actions occur (e.g., “Invalid email format.”)
 
