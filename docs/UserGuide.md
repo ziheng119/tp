@@ -5,7 +5,7 @@ title: User Guide
 
 SWEatless is a desktop application for **CS2103/T teaching staff who favour CLI usage** and want to **access and manage student and team information efficiently**. Since many CS2103/T projects use CLI, teaching staff should be familiar with it, and may see value in integrating it with their student and team management.
 
-SWEatless allows for intuitive student-team management using easy-to-remember commands. Furthermore, it supports direct access to the Github accounts of both students and teams, allowing you keep track of progress with a single click!
+SWEatless allows for intuitive student-team management using easy-to-remember commands. Furthermore, it supports direct access to the Github accounts of both students and teams, allowing you to keep track of progress with a single click!
 
 The quick-start guide is the step-by-step instruction to get SWEatless running on your device. It is important to understand the constraints on each field before referring to the feature list. FAQs and known issues are documented at the bottom of the user guide.
 
@@ -300,7 +300,7 @@ Therefore, only delete students if you are confident that you are deleting it co
 
 ### Adding a student to a team: `add_to_team`
 
-Adds the specificed student to the specified team in SWEatless.
+Adds the specified student to the specified team in SWEatless.
 
 Each team can only have 5 students.
 
