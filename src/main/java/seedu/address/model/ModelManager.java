@@ -102,6 +102,13 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public boolean hasPersonExcluding(Person person, Person personToExclude) {
+        requireNonNull(person);
+        requireNonNull(personToExclude);
+        return addressBook.hasPersonExcluding(person, personToExclude);
+    }
+
+    @Override
     public void deletePerson(Person target) {
         addressBook.removePerson(target);
     }

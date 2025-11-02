@@ -43,9 +43,7 @@ public class EditCommand extends Command {
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_PERSON =
-            "This email / person already exists in the address book.";
-    public static final String MESSAGE_DUPLICATE_GITHUB =
-            "This GitHub username already exists in the address book.";
+            "You cannot provide a duplicate email, phone number, or Github username.";
 
     private final Index index;
     private final EditPersonDescriptor editPersonDescriptor;
@@ -74,19 +72,12 @@ public class EditCommand extends Command {
         Person personToEdit = lastShownList.get(index.getZeroBased());
         Person editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
 
-        if (!personToEdit.isSamePerson(editedPerson) && model.hasPerson(editedPerson)) {
+        if (model.hasPersonExcluding(editedPerson, personToEdit)) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         }
 
-        // Check for GitHub duplicate if GitHub is being edited
-        if (editPersonDescriptor.getGithub().isPresent()) {
-            String newGithubUsername = editedPerson.getGithub().value;
-            if (model.hasPersonWithGithub(newGithubUsername)) {
-                throw new CommandException(MESSAGE_DUPLICATE_GITHUB);
-            }
-        }
-
         model.setPerson(personToEdit, editedPerson);
+
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         return new CommandResult(
                 String.format(MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson)));

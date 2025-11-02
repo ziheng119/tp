@@ -90,6 +90,16 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Returns true if a person with the same identity as {@code person} exists in the address book,
+     * excluding the specified {@code personToExclude}.
+     */
+    public boolean hasPersonExcluding(Person person, Person personToExclude) {
+        requireNonNull(person);
+        requireNonNull(personToExclude);
+        return persons.containsExcluding(person, personToExclude);
+    }
+
+    /**
      * Adds a person to the address book.
      * The person must not already exist in the address book.
      */
@@ -105,6 +115,11 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void setPerson(Person target, Person editedPerson) {
         requireNonNull(editedPerson);
         persons.setPerson(target, editedPerson);
+        for (Team team : teams) {
+            if (team.hasPerson(target)) {
+                team.setPerson(target, editedPerson);
+            }
+        }
     }
 
     /**
