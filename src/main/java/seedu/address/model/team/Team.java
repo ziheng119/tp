@@ -79,7 +79,7 @@ public class Team {
      * Replaces the contents of the person list with {@code persons}.
      * {@code persons} must not contain duplicate persons.
      */
-    public void setPersons(List<Person> persons) {
+    public void setPersons(List<Person> persons) throws TeamMaxCapacityException {
         if (persons.size() > MAX_CAPACITY) {
             throw new TeamMaxCapacityException();
         }
