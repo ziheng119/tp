@@ -44,7 +44,7 @@ public class Github {
 
     @Override
     public boolean equals(Object other) {
-        return other == this || (other instanceof Github && value.equals(((Github) other).value));
+        return other == this || (other instanceof Github && value.equalsIgnoreCase(((Github) other).value));
     }
 
     @Override
