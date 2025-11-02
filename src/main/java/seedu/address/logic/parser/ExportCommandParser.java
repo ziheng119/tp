@@ -1,10 +1,9 @@
 package seedu.address.logic.parser;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_FILE;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Optional;
 
 import seedu.address.logic.commands.ExportCommand;
@@ -23,18 +22,8 @@ public class ExportCommandParser implements Parser<ExportCommand> {
      */
     @Override
     public ExportCommand parse(String args) throws ParseException {
-        String trimmedArgs = args.trim();
+        requireNonNull(args);
 
-        // Find User's default download file
-        String userHome = System.getProperty("user.home");
-        Path downloadsPath = Paths.get(userHome, "Downloads");
-
-        // Case 1: no arguments — use default export path
-        if (trimmedArgs.isEmpty()) {
-            return new ExportCommand(downloadsPath.toString());
-        }
-
-        // Case 2: prefixed argument (must use f/)
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_FILE);
         Optional<String> filePath = argMultimap.getValue(PREFIX_FILE);
 
@@ -46,7 +35,11 @@ public class ExportCommandParser implements Parser<ExportCommand> {
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_FILE);
-        return new ExportCommand(filePath.get());
+        String path = filePath.get().trim();
+        if (!path.matches("^[a-zA-Z0-9](?:[a-zA-Z0-9 ._-]*[a-zA-Z0-9])?\\.json$")) {
+            throw new ParseException(ExportCommand.MESSAGE_INVALID_FILENAME);
+        }
+        return new ExportCommand(path);
     }
 
 }

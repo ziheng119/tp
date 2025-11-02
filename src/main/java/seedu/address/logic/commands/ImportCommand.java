@@ -32,11 +32,12 @@ public class ImportCommand extends Command {
             + PREFIX_FILE + "my_import.json";
 
     public static final String MESSAGE_SUCCESS = "Address book successfully imported from: %1$s";
-    public static final String MESSAGE_FOUND_FAILURE = "The specified file does not exist or is a directory: %1$s";
+    public static final String MESSAGE_FOUND_FAILURE = "The specified file does not exist: %1$s";
     public static final String MESSAGE_IO_FAILURE = "I/O error occurred while importing the file: %1$s";
     public static final String MESSAGE_IO_TARGET_FAILURE = "I/O error occurred while preparing target file: %1$s";
     public static final String MESSAGE_PATH_FAILURE = "The specified file path is invalid: %1$s";
-    public static final String MESSAGE_LOADING_FAILURE = "Failed to read the address book from the file: %1$s";
+    public static final String MESSAGE_LOADING_FAILURE = "Failed to read the address book from the file: %1$s (potentially corrupted)";
+    public static final String MESSAGE_INVALID_FILENAME = "Invalid file name. Please provide a JSON file name (e.g. data.json).";
 
     private static final Logger logger = LogsCenter.getLogger(ImportCommand.class);
     private final String filePath;
@@ -91,8 +92,7 @@ public class ImportCommand extends Command {
             Path importPath = prepareFilePath();
 
             // Copy the file into data/sweatless_storage.json
-            Files.copy(importPath, targetPath, StandardCopyOption.REPLACE_EXISTING);
-            JsonAddressBookStorage storage = new JsonAddressBookStorage(targetPath);
+            JsonAddressBookStorage storage = new JsonAddressBookStorage(importPath);
             Optional<ReadOnlyAddressBook> optionalNewData = storage.readAddressBook();
             ReadOnlyAddressBook newData = optionalNewData.orElseThrow(() -> {
                 logger.warning("Failed to load address book data from file: " + filePath);
@@ -101,6 +101,8 @@ public class ImportCommand extends Command {
 
             // Update the model
             model.setAddressBook(newData);
+            model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
+            Files.copy(importPath, targetPath, StandardCopyOption.REPLACE_EXISTING);
             return new CommandResult(String.format(MESSAGE_SUCCESS, importPath));
 
         } catch (IOException e) {
