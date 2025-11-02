@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataLoadingException;
+import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
@@ -43,10 +44,11 @@ public class StorageManager implements Storage {
      * <p>
      * If an I/O error occurs during the backup process, a severe log message is recorded,
      * but the method does not throw an exception.
+     * After backing up, the corrupted file is replaced with an empty address book file.
      */
     public void backupFile() {
+        Path corruptedFile = addressBookStorage.getAddressBookFilePath();
         try {
-            Path corruptedFile = getAddressBookFilePath();
             // Create a timestamped backup name inside the same folder
             String timestamp = java.time.LocalDateTime.now()
                                 .toString()
@@ -58,6 +60,14 @@ public class StorageManager implements Storage {
         } catch (IOException ioEx) {
             logger.severe("Failed to back up corrupted data file: " + ioEx.getMessage());
         }
+
+        try {
+                ReadOnlyAddressBook empty = new AddressBook();
+                addressBookStorage.saveAddressBook(empty, corruptedFile);
+                logger.info("Replaced corrupted data file with empty data file at: " + corruptedFile);
+            } catch (IOException ioe) {
+                logger.severe("Failed to recreate empty data file at " + corruptedFile + ": " + ioe.getMessage());
+            }
     }
 
     // ================ UserPrefs methods ==============================
