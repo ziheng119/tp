@@ -148,6 +148,12 @@ public class AddCommandTest {
         }
 
         @Override
+        public boolean hasPersonExcluding(seedu.address.model.person.Person person,
+                seedu.address.model.person.Person personToExclude) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void deletePerson(Person target) {
             throw new AssertionError("This method should not be called.");
         }
