@@ -62,12 +62,12 @@ public class StorageManager implements Storage {
         }
 
         try {
-                ReadOnlyAddressBook empty = new AddressBook();
-                addressBookStorage.saveAddressBook(empty, corruptedFile);
-                logger.info("Replaced corrupted data file with empty data file at: " + corruptedFile);
-            } catch (IOException ioe) {
-                logger.severe("Failed to recreate empty data file at " + corruptedFile + ": " + ioe.getMessage());
-            }
+            ReadOnlyAddressBook empty = new AddressBook();
+            addressBookStorage.saveAddressBook(empty, corruptedFile);
+            logger.info("Replaced corrupted data file with empty data file at: " + corruptedFile);
+        } catch (IOException ioe) {
+            logger.severe("Failed to recreate empty data file at " + corruptedFile + ": " + ioe.getMessage());
+        }
     }
 
     // ================ UserPrefs methods ==============================
