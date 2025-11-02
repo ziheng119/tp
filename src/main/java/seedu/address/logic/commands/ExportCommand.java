@@ -31,8 +31,8 @@ public class ExportCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Address book successfully exported to: %1$s";
     public static final String MESSAGE_IO_FAILURE = "Failed to export data: %1$s";
     public static final String MESSAGE_PATH_FAILURE = "Failed to find path: %1$s";
-    public static final String MESSAGE_INVALID_FILENAME = "Invalid file name. " +
-                                                "Please provide a JSON file name (e.g. data.json).";
+    public static final String MESSAGE_INVALID_FILENAME = "Invalid file name. "
+                                        + "Please provide a JSON file name (e.g. data.json).";
 
     public static final String DEFAULT_FILE = "exported_sweatless_storage.json";
 
