@@ -36,8 +36,10 @@ public class ImportCommand extends Command {
     public static final String MESSAGE_IO_FAILURE = "I/O error occurred while importing the file: %1$s";
     public static final String MESSAGE_IO_TARGET_FAILURE = "I/O error occurred while preparing target file: %1$s";
     public static final String MESSAGE_PATH_FAILURE = "The specified file path is invalid: %1$s";
-    public static final String MESSAGE_LOADING_FAILURE = "Failed to read the address book from the file: %1$s (potentially corrupted)";
-    public static final String MESSAGE_INVALID_FILENAME = "Invalid file name. Please provide a JSON file name (e.g. data.json).";
+    public static final String MESSAGE_LOADING_FAILURE =
+            "Failed to read the address book from the file: %1$s(potentially corrupted)";
+    public static final String MESSAGE_INVALID_FILENAME =
+            "Invalid file name. Please provide a JSON file name (e.g. data.json).";
 
     private static final Logger logger = LogsCenter.getLogger(ImportCommand.class);
     private final String filePath;

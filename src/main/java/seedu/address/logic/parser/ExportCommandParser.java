@@ -40,7 +40,7 @@ public class ExportCommandParser implements Parser<ExportCommand> {
             path = path + ".json";
         }
         String validJsonFilenameRegex = "^[a-zA-Z0-9](?:[a-zA-Z0-9 ._-]*[a-zA-Z0-9])?\\.json$";
-        if (!path.matches(validJsonFilenameRegex)) { // Basename starts and ends with alphanumeric, filename ends with json
+        if (!path.matches(validJsonFilenameRegex)) {
             throw new ParseException(ExportCommand.MESSAGE_INVALID_FILENAME);
         }
         return new ExportCommand(path);
