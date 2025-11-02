@@ -89,7 +89,7 @@ public class TeamTest {
     public void addPerson_teamAtMaxCapacity_throwsTeamMaxCapacityException() {
         // Add 5 people to reach max capacity
         for (int i = 0; i < 5; i++) {
-            Person person = new PersonBuilder().withName("Person" + i)
+            Person person = new PersonBuilder().withName("Person" + (char) ('A' + i))
                     .withEmail("testtest" + i + "@example.com")
                     .withPhone("9999999" + i)
                     .withGithub("testuser" + i).build();
@@ -130,12 +130,12 @@ public class TeamTest {
     public void setPersons_listExceedsMaxCapacity_throwsTeamMaxCapacityException() {
         // Create a list with 6 people (exceeds max capacity of 5)
         List<Person> tooManyPersons = Arrays.asList(
-            new PersonBuilder().withName("Person1").build(),
-            new PersonBuilder().withName("Person2").build(),
-            new PersonBuilder().withName("Person3").build(),
-            new PersonBuilder().withName("Person4").build(),
-            new PersonBuilder().withName("Person5").build(),
-            new PersonBuilder().withName("Person6").build()
+            new PersonBuilder().withName("PersonA").build(),
+            new PersonBuilder().withName("PersonB").build(),
+            new PersonBuilder().withName("PersonC").build(),
+            new PersonBuilder().withName("PersonD").build(),
+            new PersonBuilder().withName("PersonE").build(),
+            new PersonBuilder().withName("PersonF").build()
         );
         assertThrows(TeamMaxCapacityException.class, () -> team.setPersons(tooManyPersons));
     }
