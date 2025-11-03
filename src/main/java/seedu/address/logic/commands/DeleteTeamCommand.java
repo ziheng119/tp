@@ -20,7 +20,7 @@ import seedu.address.model.team.Team;
 public class DeleteTeamCommand extends Command {
 
 
-    public static final String COMMAND_WORD = "delete_team";
+    public static final String COMMAND_WORD = "delete-t";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes a team.\n"
