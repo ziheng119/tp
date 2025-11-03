@@ -25,7 +25,7 @@ public class RemoveFromTeamCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Person %s removed from team %s";
     public static final String MESSAGE_PERSON_NOT_IN_TEAM = "Person %s is not in team %s";
-    public static final String MESSAGE_CANNOT_REMOVE_FROM_NONE = "Cannot remove from the NONE team.";
+    public static final String MESSAGE_CANNOT_REMOVE_FROM_NONE = "Person is currently not in a team";
 
     private final Index personIndex;
 
