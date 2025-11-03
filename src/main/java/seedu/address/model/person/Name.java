@@ -10,8 +10,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Name {
 
     public static final String MESSAGE_CONSTRAINTS =
-        "Names should only contain alphabetic characters, spaces and '/', must not be blank, "
-        + "and must be at most 100 characters long";
+        "Names should only contain alphabetic characters, spaces and '/', must not be blank "
+        + "or start with /, and must be at most 100 characters long";
 
     public static final String VALIDATION_REGEX = "[A-Za-z][A-Za-z/ ]{0,99}";
 
