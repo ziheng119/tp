@@ -10,7 +10,7 @@ SWEatless allows for intuitive student-team management using easy-to-remember co
 The quick-start guide is the step-by-step instruction to get SWEatless running on your device. It is important to understand the constraints on each field before referring to the feature list. FAQs and known issues are documented at the bottom of the user guide.
 
 * Table of Contents
-  {:toc}
+{:toc}
 
 ---
 
