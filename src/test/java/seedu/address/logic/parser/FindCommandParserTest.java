@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
+import seedu.address.model.team.Team;
 
 public class FindCommandParserTest {
 
@@ -30,6 +31,21 @@ public class FindCommandParserTest {
 
         // multiple whitespaces between keywords
         assertParseSuccess(parser, " \n n/Alice \n \t Bob \t", expectedFindCommand);
+    }
+
+    @Test
+    public void parse_invalidTeamName_throwsParseException() {
+        String invalidTeamName = "dog";
+        String expectedMessage = String.format("%s is not a valid team name. %s",
+            invalidTeamName, Team.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, " t/dog", expectedMessage);
+    }
+
+    @Test
+    public void parse_validTeamName_returnsFindCommand() {
+        FindCommand expectedFindCommand =
+            new FindCommand(new NameContainsKeywordsPredicate(Collections.emptyList(), Arrays.asList("F12-3")));
+        assertParseSuccess(parser, " t/F12-3", expectedFindCommand);
     }
 
 }
