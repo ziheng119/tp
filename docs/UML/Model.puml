@@ -38,15 +38,13 @@ package "Model Layer" as Model {
         -Email email
         -Github github
         -Team team
-        +getName()
-        +getTeam()
-        +getTeamName()
         +isSamePerson(other)
     }
 
     class Team {
         -String name
         -UniquePersonList persons
+        {static} - int MAX_CAPACITY = 5
         +getName()
         +addPerson(person)
         +removePerson(person)
@@ -92,7 +90,7 @@ package "Model Layer" as Model {
     Person *-- Phone
     Person *-- Email
     Person *-- Github
-    Person --> Team
+    ' Person --> Team
     Team *-- UniquePersonList
 }
 @enduml
