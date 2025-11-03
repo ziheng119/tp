@@ -22,7 +22,7 @@ public class EmailTest {
     @Test
     public void isValidEmail() {
         // null email
-        assertThrows(NullPointerException.class, () -> Email.isValidEmail(null));
+        assertFalse(Email.isValidEmail(null)); // null returns false
 
         // blank email
         assertFalse(Email.isValidEmail("")); // empty string
@@ -54,6 +54,14 @@ public class EmailTest {
         assertFalse(Email.isValidEmail("peterjack@-example.com")); // domain name starts with a hyphen
         assertFalse(Email.isValidEmail("peterjack@example.com-")); // domain name ends with a hyphen
         assertFalse(Email.isValidEmail("peterjack@example.c")); // top level domain has less than two chars
+
+        // email too long (exceeds 255 characters)
+        String longEmail256 = "a".repeat(244) + "@example.com"; // 256 characters (244 + 12)
+        assertFalse(Email.isValidEmail(longEmail256));
+        String longEmail300 = "a".repeat(288) + "@example.com"; // 300 characters
+        assertFalse(Email.isValidEmail(longEmail300));
+        String exactMaxLength = "a".repeat(243) + "@example.com"; // exactly 255 characters (244 + 12)
+        assertTrue(Email.isValidEmail(exactMaxLength));
 
         // valid email
         assertTrue(Email.isValidEmail("PeterJack_1190@example.com")); // underscore in local part
