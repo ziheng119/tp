@@ -99,8 +99,8 @@ public class AddStudentToTeamCommandTest {
         // Add the sentinel NONE team explicitly into the model
         model.addTeam(Team.NONE);
         AddStudentToTeamCommand command = new AddStudentToTeamCommand(Index.fromOneBased(1), "");
-        assertThrows(CommandException.class, AddStudentToTeamCommand
-            .MESSAGE_TEAM_INVALID_NONE, () -> command.execute(model));
+        assertThrows(CommandException.class,
+                Team.MESSAGE_CONSTRAINTS, () -> command.execute(model));
     }
 
     @Test
