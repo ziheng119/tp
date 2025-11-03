@@ -26,7 +26,6 @@ public class AddStudentToTeamCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Person %s added to team %s";
     public static final String MESSAGE_TEAM_NOT_FOUND = "Team with name '%s' not found";
-    public static final String MESSAGE_TEAM_INVALID_NONE = "Cannot add a person to the NONE team";
     public static final String MESSAGE_PERSON_ALREADY_IN_TEAM = "Person %s is already in team %s";
     public static final String MESSAGE_PERSON_IN_ANOTHER_TEAM = "Person %s is already in team %s. "
             + "Remove them from their current team before adding to a new team";
@@ -62,7 +61,7 @@ public class AddStudentToTeamCommand extends Command {
 
         // Disallow adding to the NONE team (sentinel)
         if (Team.isNoneTeamName(teamName) || targetTeam.equals(Team.NONE)) {
-            throw new CommandException(MESSAGE_TEAM_INVALID_NONE);
+            throw new CommandException(Team.MESSAGE_CONSTRAINTS);
         }
 
         // Check if person is already in any team
