@@ -230,7 +230,7 @@ The team management feature allows instructors to create teams, assign students 
 **Team Name Validation:**
 Teams follow a specific naming convention enforced by `VALIDATION_REGEX`:
 
-- Format: `[W|T|F][08|09|10|11|12|13|14|15|16|17][a|b|]-[1|2|3|4]`
+- Format: `[W|T|F][08|09|10|11|12|13|14|15|16|17][a|b|<none>]-[1|2|3|4]`
 - Examples: `F12-3` (Friday, 12pm, Group 3), `F08a-3` (Friday, 8am Subgroup A, Group 3)
 
 **Team Capacity Management:**
@@ -474,7 +474,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1.  Instructor chooses to create a team.
 2.  SWEatless requests team name.
-3.  Instructor provides team name following format [W|T|F][08-17][a|b|]-[1-4].
+3.  Instructor provides team name following format [W|T|F][08-17][a|b|<none>]-[1-4].
 4.  SWEatless validates team name format.
 5.  SWEatless creates the team.
 6.  SWEatless displays confirmation.
