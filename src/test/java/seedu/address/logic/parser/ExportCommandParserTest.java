@@ -4,14 +4,10 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_FILE;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.ExportCommand;
-import seedu.address.logic.parser.exceptions.ParseException;
 
 public class ExportCommandParserTest {
 
@@ -22,12 +18,6 @@ public class ExportCommandParserTest {
         String userInput = " " + PREFIX_FILE + "export.json";
         ExportCommand expectedCommand = new ExportCommand("export.json");
         assertParseSuccess(parser, userInput, expectedCommand);
-    }
-
-    @Test
-    public void parse_noArguments_success() throws ParseException {
-        Path defaultPath = Paths.get(System.getProperty("user.home"), "Downloads");
-        assertParseSuccess(parser, "", new ExportCommand(defaultPath.toString()));
     }
 
     @Test

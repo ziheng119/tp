@@ -15,15 +15,15 @@ public class ImportCommandParserTest {
 
     @Test
     public void parse_validFilePath_success() throws Exception {
-        String userInput = " " + PREFIX_FILE + "C:/Users/Test/Documents/sample.json";
-        ImportCommand command = new ImportCommand("C:/Users/Test/Documents/sample.json");
+        String userInput = " " + PREFIX_FILE + "sample.json";
+        ImportCommand command = new ImportCommand("sample.json");
         assertParseSuccess(parser, userInput, command);
     }
 
     @Test
     public void parse_pathWithSpaces_success() throws Exception {
-        String userInput = " " + PREFIX_FILE + "C:/Users/Test/My Folder/sample.json";
-        ImportCommand command = new ImportCommand("C:/Users/Test/My Folder/sample.json");
+        String userInput = " " + PREFIX_FILE + "sa mple.json";
+        ImportCommand command = new ImportCommand("sa mple.json");
         assertParseSuccess(parser, userInput, command);
     }
 

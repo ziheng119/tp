@@ -35,6 +35,14 @@ public class ImportCommandParser implements Parser<ImportCommand> {
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_FILE);
-        return new ImportCommand(filePath.get());
+        String path = filePath.get().trim();
+        if (!path.toLowerCase().endsWith(".json")) {
+            path = path + ".json";
+        }
+        String validJsonFilenameRegex = "^[a-zA-Z0-9](?:[a-zA-Z0-9 ._-]*[a-zA-Z0-9])?\\.json$";
+        if (!path.matches(validJsonFilenameRegex)) {
+            throw new ParseException(ImportCommand.MESSAGE_INVALID_FILENAME);
+        }
+        return new ImportCommand(path);
     }
 }
