@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
+import seedu.address.model.team.Team;
 
 /**
  * Parses input arguments and creates a new FindCommand object
@@ -35,6 +36,13 @@ public class FindCommandParser implements Parser<FindCommand> {
                 .flatMap(s -> Arrays.stream(s.trim().split("\\s+")))
                 .filter(s -> !s.isEmpty())
                 .collect(Collectors.toList());
+
+        for (String teamKeyword : teamKeywords) {
+            if (!Team.isValidName(teamKeyword)) {
+                throw new ParseException(String.format("%s is not a valid team name. %s",
+                        teamKeyword, Team.MESSAGE_CONSTRAINTS));
+            }
+        }
 
         if (nameKeywords.isEmpty() && teamKeywords.isEmpty()) {
             throw new ParseException(
