@@ -17,6 +17,7 @@ import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Person;
 import seedu.address.model.team.Team;
+import seedu.address.model.team.exceptions.TeamMaxCapacityException;
 
 /**
  * An Immutable AddressBook that is serializable to JSON format.
@@ -27,6 +28,7 @@ class JsonSerializableAddressBook {
     public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
     public static final String MESSAGE_DUPLICATE_TEAM = "Teams list contains duplicate team(s).";
     public static final String MISSING_PERSON_MESSAGE_FORMAT = "Member %s not found in address book!";
+    public static final String EXCEED_TEAM_CAPACITY_MESSAGE_FORMAT = "There are more than 5 members in team %s";
     private static final String NO_TEAM_KEY = ""; // Key used to represent no team (Team.NONE)
 
     private final List<JsonAdaptedPerson> persons = new ArrayList<>();
@@ -134,7 +136,11 @@ class JsonSerializableAddressBook {
             Team team = teamMap.get(entry.getKey());
             List<Email> emailList = entry.getValue();
             List<Person> teamPersonList = resolvePersonsByEmail(emailList, addressBook.getPersonList());
-            team.setPersons(teamPersonList);
+            try {
+                team.setPersons(teamPersonList);
+            } catch (TeamMaxCapacityException e) {
+                throw new IllegalValueException(String.format(EXCEED_TEAM_CAPACITY_MESSAGE_FORMAT, team.getName()));
+            }
         }
     }
 

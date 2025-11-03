@@ -20,33 +20,25 @@ public class RemoveFromTeamCommand extends Command {
     public static final String COMMAND_WORD = "remove_from_team";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Removes a person from a team. "
-            + "Parameters: INDEX(one-based positive integer) t/TEAM_NAME\n"
-            + "Example: " + COMMAND_WORD + " 1 t/Team1";
+            + "Parameters: INDEX(one-based positive integer)\n"
+            + "Example: " + COMMAND_WORD;
 
     public static final String MESSAGE_SUCCESS = "Person %s removed from team %s";
-    public static final String MESSAGE_TEAM_NOT_FOUND = "Team with name '%s' not found";
     public static final String MESSAGE_PERSON_NOT_IN_TEAM = "Person %s is not in team %s";
     public static final String MESSAGE_CANNOT_REMOVE_FROM_NONE = "Cannot remove from the NONE team.";
 
     private final Index personIndex;
-    private final String teamName;
 
     /**
      * Creates a RemoveFromTeamCommand to remove the specified person from the team.
      */
-    public RemoveFromTeamCommand(Index personIndex, String teamName) {
+    public RemoveFromTeamCommand(Index personIndex) {
         requireNonNull(personIndex);
-        requireNonNull(teamName);
         this.personIndex = personIndex;
-        this.teamName = teamName;
     }
 
     public Index getPersonIndex() {
         return personIndex;
-    }
-
-    public String getTeamName() {
-        return teamName;
     }
 
     @Override
@@ -54,12 +46,13 @@ public class RemoveFromTeamCommand extends Command {
         requireNonNull(model);
 
         Person targetPerson = TeamCommandUtil.getTargetPerson(model, personIndex);
-        Team targetTeam = TeamCommandUtil.validateTeamExists(model, teamName);
+        String teamName = targetPerson.getTeamName();
 
         // Disallow removing from the NONE sentinel team
-        if (Team.isNoneTeamName(teamName) || targetTeam.equals(Team.NONE)) {
+        if (Team.isNoneTeamName(teamName)) {
             throw new CommandException(MESSAGE_CANNOT_REMOVE_FROM_NONE);
         }
+        Team targetTeam = TeamCommandUtil.validateTeamExists(model, teamName);
 
         // Check if person is in the team
         TeamCommandUtil.validatePersonMembership(targetTeam, targetPerson, MESSAGE_PERSON_NOT_IN_TEAM);
@@ -94,15 +87,13 @@ public class RemoveFromTeamCommand extends Command {
         }
 
         RemoveFromTeamCommand otherRemoveFromTeamCommand = (RemoveFromTeamCommand) other;
-        return personIndex.equals(otherRemoveFromTeamCommand.personIndex)
-                && teamName.equals(otherRemoveFromTeamCommand.teamName);
+        return personIndex.equals(otherRemoveFromTeamCommand.personIndex);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .add("personIndex", personIndex)
-                .add("teamName", teamName)
                 .toString();
     }
 }

@@ -87,8 +87,8 @@ public class AddStudentToTeamCommand extends Command {
                     targetPerson.getGithub(),
                     targetTeam);
 
-            model.setPerson(targetPerson, updatedPerson);
             model.addPersonToTeam(updatedPerson, targetTeam);
+            model.setPerson(targetPerson, updatedPerson);
             model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
 
             return new CommandResult(String.format(MESSAGE_SUCCESS,
