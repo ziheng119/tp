@@ -107,7 +107,7 @@ public class AddStudentToTeamCommandTest {
     public void execute_personInAnotherTeam_throwsCommandException() throws CommandException {
         // Create two teams
         Team teamA = new Team("F12-3");
-        Team teamB = new Team("M09-4");
+        Team teamB = new Team("T09-4");
         model.addTeam(teamA);
         model.addTeam(teamB);
 
@@ -115,7 +115,7 @@ public class AddStudentToTeamCommandTest {
         model.addPersonToTeam(ALICE, teamA);
 
         // Attempt to add ALICE (index 1) to teamB
-        AddStudentToTeamCommand command = new AddStudentToTeamCommand(Index.fromOneBased(1), "M09-4");
+        AddStudentToTeamCommand command = new AddStudentToTeamCommand(Index.fromOneBased(1), "T09-4");
 
         assertThrows(CommandException.class,
                 String.format(AddStudentToTeamCommand.MESSAGE_PERSON_IN_ANOTHER_TEAM, Messages.format(ALICE),
