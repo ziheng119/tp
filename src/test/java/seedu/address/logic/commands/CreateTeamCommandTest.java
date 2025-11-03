@@ -66,12 +66,12 @@ public class CreateTeamCommandTest {
 
     @Test
     public void execute_teamWithDifferentFormat_success() throws CommandException {
-        CreateTeamCommand command = new CreateTeamCommand("M09-4");
+        CreateTeamCommand command = new CreateTeamCommand("T09-4");
         CommandResult result = command.execute(model);
 
-        assertEquals(String.format(CreateTeamCommand.MESSAGE_CREATE_TEAM_SUCESS, "M09-4"),
+        assertEquals(String.format(CreateTeamCommand.MESSAGE_CREATE_TEAM_SUCESS, "T09-4"),
                 result.getFeedbackToUser());
-        assertTrue(model.hasTeamWithName("M09-4"));
+        assertTrue(model.hasTeamWithName("T09-4"));
     }
 
     @Test

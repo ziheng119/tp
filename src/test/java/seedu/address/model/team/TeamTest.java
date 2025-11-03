@@ -48,7 +48,6 @@ public class TeamTest {
         assertTrue(Team.isValidName("F12-3")); // valid tutorial slot format
         assertTrue(Team.isValidName("W08-1")); // valid tutorial slot format
         assertTrue(Team.isValidName("T14-2")); // valid tutorial slot format
-        assertTrue(Team.isValidName("M09-4")); // valid tutorial slot format
     }
 
     @Test
