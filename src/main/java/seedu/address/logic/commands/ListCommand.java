@@ -2,6 +2,9 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+import static seedu.address.model.team.Team.NONE;
+
+import java.util.stream.Collectors;
 
 import seedu.address.model.Model;
 
@@ -19,6 +22,14 @@ public class ListCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        return new CommandResult(MESSAGE_SUCCESS);
+        String teamsList = model.getAddressBook().getTeamList().stream()
+                .filter(team -> !team.equals(NONE))
+                .map(team -> team.getName())
+                .collect(Collectors.joining(", "));
+        String message = MESSAGE_SUCCESS;
+        if (!teamsList.isEmpty()) {
+            message += "\nTeams created so far: " + teamsList;
+        }
+        return new CommandResult(message);
     }
 }
