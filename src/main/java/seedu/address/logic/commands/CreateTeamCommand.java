@@ -13,7 +13,7 @@ import seedu.address.model.team.Team;
  */
 public class CreateTeamCommand extends Command {
 
-    public static final String COMMAND_WORD = "create_team";
+    public static final String COMMAND_WORD = "create-t";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Creates a team with a name specified by the input.\n"
             + "Parameters: t/TEAM_NAME (must be a valid team name) "

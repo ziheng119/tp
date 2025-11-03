@@ -18,7 +18,7 @@ import seedu.address.model.team.exceptions.TeamMaxCapacityException;
  */
 public class AddStudentToTeamCommand extends Command {
 
-    public static final String COMMAND_WORD = "add_to_team";
+    public static final String COMMAND_WORD = "team-add";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a person to a team. "
             + "Parameters: INDEX(one-based positive integer) t/TEAM_NAME\n"
