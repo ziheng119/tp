@@ -36,7 +36,7 @@ public class FindCommandParserTest {
     @Test
     public void parse_invalidTeamName_throwsParseException() {
         String invalidTeamName = "dog";
-        String expectedMessage = String.format("%s is not a valid team name. %s",
+        String expectedMessage = String.format("The following team name(s) are not valid: %s.%n%s",
             invalidTeamName, Team.MESSAGE_CONSTRAINTS);
         assertParseFailure(parser, " t/dog", expectedMessage);
     }
