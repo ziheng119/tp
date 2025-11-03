@@ -52,7 +52,7 @@ Command word is case-insensitive. (i.e. `list` is equivalent to `LiSt`)
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
-    - `list` : Lists all contacts and all created teams.
+    - `list` : Lists all persons and all created teams.
 
     - `create-s n/John Doe p/98765432 e/johnd@example.com g/johnd` : Adds a contact named `John Doe` to SWEatless.
 
@@ -421,7 +421,7 @@ Format: `help`
 
 ### Saving the data
 
-SWEatless data are saved in `..\data\sweatless_storage.json` automatically after any command that changes the data. There is no need to save manually.
+SWEatless data are saved in `./data/sweatless_storage.json` automatically after any command. There is no need to save manually.
 
 ### Editing the data file
 

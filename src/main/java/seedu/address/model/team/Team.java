@@ -22,7 +22,7 @@ public class Team {
      */
     public static final String VALIDATION_REGEX = "^[WTF](08|09|10|11|12|13|14|15|16|17)[ab]?-[1-4]$";
     public static final String MESSAGE_CONSTRAINTS = "Team names should follow the format: "
-            + "[W|T|F][08|09|10|11|12|13|14|15|16|17][a|b|]-[1|2|3|4] "
+            + "[W|T|F][08|09|10|11|12|13|14|15|16|17][a|b|<none>]-[1|2|3|4] "
             + "(e.g., F12-3, W08-1, T17-4, T17a-4)";
     public static final Team NONE = new Team();
 
