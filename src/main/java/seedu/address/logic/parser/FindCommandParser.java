@@ -37,11 +37,13 @@ public class FindCommandParser implements Parser<FindCommand> {
                 .filter(s -> !s.isEmpty())
                 .collect(Collectors.toList());
 
-        for (String teamKeyword : teamKeywords) {
-            if (!Team.isValidName(teamKeyword)) {
-                throw new ParseException(String.format("%s is not a valid team name. %s",
-                        teamKeyword, Team.MESSAGE_CONSTRAINTS));
-            }
+        List<String> invalidTeams = teamKeywords.stream()
+                .filter(teamName -> !Team.isValidName(teamName))
+                .collect(Collectors.toList());
+
+        if (!invalidTeams.isEmpty()) {
+            throw new ParseException(String.format("The following team name(s) are not valid: %s.%n%s",
+                    String.join(", ", invalidTeams), Team.MESSAGE_CONSTRAINTS));
         }
 
         if (nameKeywords.isEmpty() && teamKeywords.isEmpty()) {
