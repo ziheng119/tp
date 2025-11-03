@@ -1,89 +1,69 @@
 @startuml
-hide circle
-skinparam classAttributeIconSize 0
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor LOGIC_COLOR_T4
+skinparam classBackgroundColor LOGIC_COLOR
 
-package "Logic Layer" as Logic {
-    interface Logic <<interface>> {
-        +execute(String)
-        +getAddressBook()
-        +getFilteredPersonList()
-        +getAddressBookFilePath()
-        +getGuiSettings()
-        +setGuiSettings(GuiSettings)
-    }
+package Logic as LogicPackage {
 
-    class LogicManager {
-        -AddressBookParser addressBookParser
-        +execute(String)
-        -saveModel()
-    }
+package "Parser Classes" as ParserClasses{
 
-    class AddressBookParser {
-        +parseCommand(String)
-    }
-
-    abstract class Command {
-        +execute(Model)
-    }
-
-    class FindCommand {
-        -NameContainsKeywordsPredicate predicate
-        +execute(model)
-    }
-
-    class AddStudentCommand {
-        -Person toAdd
-        +execute(model)
-    }
-
-    class CreateTeamCommand {
-        -String teamName
-        +execute(model)
-    }
-
-    class AddStudentToTeamCommand {
-        -Index studentIndex
-        -String teamName
-        +execute(model)
-    }
-
-    class RemoveFromTeamCommand {
-        -Index personIndex
-        -String teamName
-        +execute(model)
-    }
-
-    class DeleteCommand {
-        -Index targetIndex
-        -Email targetEmail
-        +execute(model)
-    }
-
-    class CommandResult {
-        -String feedbackToUser
-        -boolean showHelp
-        -boolean exit
-        +getFeedbackToUser()
-        +isShowHelp()
-        +isExit()
-    }
 }
 
-Logic.LogicManager ..|> Logic.Logic
-LogicManager "1" --> "1" AddressBookParser
-LogicManager "1" --> "1" Model
-LogicManager "1" --> "1" Storage
-AddressBookParser "1" --> "0..*" Command : parses to
+Class XYZCommand
 
+Class CommandResult
 
-note bottom
-  Other classes/subclasses are omitted for brevity.
-end note
-FindCommand --|> Command
-AddStudentCommand --|> Command
-CreateTeamCommand --|> Command
-AddStudentToTeamCommand --|> Command
-RemoveFromTeamCommand --|> Command
-DeleteCommand --|> Command
+Class "{abstract}\nCommand" as Command
+
+Class "<<interface>>\nLogic" as Logic
+
+Class LogicManager
+
+}
+
+package Model {
+
+Class HiddenModel #FFFFFF
+
+}
+
+package Storage {
+
+Class HiddenStorage #FFFFFF
+
+}
+
+Class HiddenOutside #FFFFFF
+
+HiddenOutside ..> Logic
+
+LogicManager .right.|> Logic
+
+LogicManager -right->"1" ParserClasses
+
+ParserClasses ..> XYZCommand : <<create>>
+
+XYZCommand -up-|> Command
+
+LogicManager .left.> Command : <<call>>
+
+LogicManager --> Model
+
+LogicManager --> Storage
+
+Storage --[hidden] Model
+
+Command .[hidden]up.> Storage
+
+Command .right.> Model
+
+note right of XYZCommand: Example commands: DeleteCommand,\nEditCommand, AddStudentCommand,\nFindCommand, CreateTeamCommand, etc.
+
+Logic ..> CommandResult
+
+LogicManager .down.> CommandResult
+
+Command .up.> CommandResult : <<create>>
 
 @enduml
