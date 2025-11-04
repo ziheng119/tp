@@ -80,6 +80,7 @@ Command word is case-insensitive. (i.e. `list` is equivalent to `LiSt`)
     - Cannot contain special characters like !@#$%^&\*() and numbers
 
 Valid Examples: John Doe, Alice, Mary Jane Smith, John S/O Doe
+
 Invalid Examples: John (starts with space), John@Doe (special character), empty string, Alice123 (numbers)
 
 ### Phone Number
@@ -92,6 +93,7 @@ Invalid Examples: John (starts with space), John@Doe (special character), empty 
     - No spaces, dashes, parentheses, or other characters allowed
 
 Valid Examples: 123, 1234567890, 999  
+
 Invalid Examples: 12 (too short), 123-456-7890 (contains dashes), abc123 (contains letters)
 
 ### Email
@@ -110,6 +112,7 @@ Invalid Examples: 12 (too short), 123-456-7890 (contains dashes), abc123 (contai
         - Must have at least one period separating domain labels
 
 Valid Examples: user@example.com, test.email+tag@domain.co.uk, user123@sub.domain.org  
+
 Invalid Examples: user@domain (no TLD), .user@domain.com (starts with dot), user@.domain.com (starts with dot)
 
 ### Github
@@ -123,6 +126,7 @@ Invalid Examples: user@domain (no TLD), .user@domain.com (starts with dot), user
     - Cannot have consecutive hyphens (--)
 
 Valid Examples: john-doe, alice123, user-name, a (single character)  
+
 Invalid Examples: -username (starts with hyphen), username- (ends with hyphen), user--name (consecutive hyphens), empty string
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:** Make sure the Github username is entered properly!
@@ -143,6 +147,7 @@ SWEatless is not responsible for ensuring that the Github username leads to an a
 
 
 Valid Examples: F12-3, T11-1, F08a1, W17-2
+
 Invalid Example: S12-3 (invalid day), F11-6 (invalid team number), T01-2 (invalid time), T03f-2 (invalid subgroup)
 
 When clicking on the team Github hyperlink, it will direct you to the Github organization associated with the team.
@@ -166,6 +171,7 @@ SWEatless only does a high-level RegEx check on the validity of the team name. T
     - Must be a non-zero positive integer
 
 Valid Examples: 1, 2, 5, 90
+
 Invalid Examples: 0 (is not non-zero), -1 (is not positive), abc (contains non-numeric characters)
 
 ## Features
