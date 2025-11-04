@@ -80,18 +80,29 @@ public class MainApp extends Application {
         try {
             addressBookOptional = storage.readAddressBook();
             if (!addressBookOptional.isPresent()) {
-                logger.info("Creating a new data file " + storage.getAddressBookFilePath()
-                        + " populated with a sample AddressBook.");
+                initialData = initializeSampleAddressBook();
+                return new ModelManager(initialData, userPrefs);
             }
-            initialData = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
+            initialData = addressBookOptional.get();
         } catch (DataLoadingException e) {
             logger.warning("Data file at " + storage.getAddressBookFilePath() + " could not be loaded."
                     + " Will be starting with an empty AddressBook.");
             storage.backupFile();
             initialData = new AddressBook();
         }
-
         return new ModelManager(initialData, userPrefs);
+    }
+
+    private ReadOnlyAddressBook initializeSampleAddressBook() {
+        logger.info("Creating a new data file " + storage.getAddressBookFilePath()
+                + " populated with a sample AddressBook.");
+        ReadOnlyAddressBook initialData = SampleDataUtil.getSampleAddressBook();
+        try {
+            storage.saveAddressBook(initialData);
+        } catch (IOException e) {
+            logger.warning("Data file at " + storage.getAddressBookFilePath() + " could not be saved.");
+        }
+        return initialData;
     }
 
     private void initLogging(Config config) {
