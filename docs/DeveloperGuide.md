@@ -11,6 +11,7 @@ title: Developer Guide
 ## **Acknowledgements**
 
 - This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org/)
+- Parts of this codebase and its documentation were drafted with AI assistance using Cursor (AI pair-programming editor). All AI-generated suggestions were reviewed, edited, and verified by the team for correctness, security, style, and licensing compatibility. Responsibility for the final code and documentation remains with the authors.
 
 ---
 
